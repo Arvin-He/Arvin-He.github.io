@@ -68,6 +68,7 @@ hexo version  #查看Hexo的版本<br>
 hexo deploy -g  #生成加部署<br>
 hexo server -g  #生成加预览<br>
 命令的简写<br>
+hexo c == hexo clean<br>
 hexo n == hexo new<br>
 hexo g == hexo generate<br>
 hexo s == hexo server<br>
@@ -104,3 +105,32 @@ tags: [Hexo,HTML,JavaScript]<br>
 
 ### 4.4 设置索引目录里的图片
 因为索引设置为提取文档前150个字符，所以想在索引目录中插入图片，就在文章开头插入图片即可。
+
+## 5. ERROR Local hexo not found in F:\Arvin-He.github.io
+Hexo搭建博客之后用Git已经将所有的source都同步到了git上，在另一台电脑上将源代码clone下来之后，直接执行 hexo g,出现错误<br>
+F:\Arvin-He.github.io (source) (hexo-site@0.0.0)<br>
+λ hexo g<br>
+ERROR Local hexo not found in F:\Arvin-He.github.io<br>
+ERROR Try running: 'npm install hexo --save'<br>
+
+解决办法:
+cd F:\Arvin-He.github.io
+npm install 
+hexo g
+
+原因:.gitignore文件里面忽略了node_modules文件夹，就是hexo所依赖的nodejs的模块,所以这个文件夹没有更新上去。所以用npm重新安装即可。
+
+## 6. 执行hexo g或hexo本地测试运行重启后页面空白,提示 : WARN No layout: index.html
+此时页面都是白的，使用hexo clean  然后从新Generated再次运行还是空白
+原因:在themes/文件夹的next主题是空的,因为next主题是作为submodule,是引用别人的仓库,并没有clone到本地来
+
+解决办法:
+cd F:\Arvin-He.github.io
+git submodule init
+git submodule update
+
+
+克隆含有子模块的项目:
+克隆一个含有子模块的项目。 当你在克隆这样的项目时，默认会包含该子模块目录，但其中还没有任何文件.
+你必须运行两个命令：git submodule init 用来初始化本地配置文件，
+而 git submodule update 则从该项目中抓取所有数据并检出父项目中列出的合适的提交。

@@ -23,10 +23,7 @@ deploy:
 解决办法: 在 blog 目录里 执行 npm install hexo-deployer-git --save 
 
 <!--More-->
-<<<<<<< HEAD
 
-=======
->>>>>>> 2748b2de0579656da6da259940c8bdd17d85ba6c
 ## 3. Error: fatal: Not a git repository (or any of the parent directories): .git
 FATAL Something's wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html
 Error: fatal: Not a git repository (or any of the parent directories): .git

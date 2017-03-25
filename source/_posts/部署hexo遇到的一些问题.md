@@ -22,6 +22,7 @@ deploy:
 ## 2.hexo部署失败 ERROR Deployer not found: git
 解决办法: 在 blog 目录里 执行 npm install hexo-deployer-git --save 
 
+<!--More-->
 
 ## 3. Error: fatal: Not a git repository (or any of the parent directories): .git
 FATAL Something's wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html

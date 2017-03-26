@@ -2,21 +2,25 @@
 title: hexo搭建github博客
 ---
 ## 一.搭建hexo
-___
+
 ## 1.1 准备条件
 1. 安装git
 2. 有github帐号,并有仓库username.github.io, 如Arvin-He.github.io
 3. 本地机器保存github的帐号和密码
+
 ## 1.2 安装hexo
 1. 安装nodejs
 2. 安装hexo, npm install -g hexo, 或者 npm install hexo-cli -g
+
 ## 1.3 hexo配置文件和next主题配置
 github page默认主题是landscape,这个主题不怎么喜欢,于是更换next主题
+
 ### 1.3.1 下载next主题
 ```
 $ cd your-hexo-site
 $ git clone https://github.com/iissnan/hexo-theme-next themes/next
 ```
+
 ### 1.3.2 更改next主题配置
 **注意:** 在 Hexo中的next主题中有两份主要的配置文件，名称都是 _config.yml。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。
 如何配置请参考官方文档:[hexo-next官方配置教程](http://theme-next.iissnan.com/getting-started.html)
@@ -32,9 +36,9 @@ hexo s          //本地运行<br>
 hexo d          //部署到github上去
 
 <!--More-->
-___
+---
 ## 二.hexo命令详解
-___
+
 ### 2.1 hexo命令
 hexo init 
 hexo new "postName" #新建文章<br>
@@ -57,9 +61,9 @@ hexo d -g #生成部署<br>
 hexo s -g #生成预览<br>
 
 
-
-## 三.搭建hexo过程中遇到的问题
 ---
+## 三.搭建hexo过程中遇到的问题
+
 ## 1. hexo无法上传到github, 但在本地localhost:4000是可以打开的
 On branch master<br>
 nothing to commit, working directory clean<br>
@@ -125,8 +129,6 @@ Error: fatal: Not a git repository (or any of the parent directories): .git
 解决办法:
     删除.deploy_git/ 文件夹,然后再次,hexo deploy, 就好了.
 
-
-
 ## 4. ERROR Local hexo not found in F:\Arvin-He.github.io
 Hexo搭建博客之后用Git已经将所有的source都同步到了git上，在另一台电脑上将源代码clone下来之后，直接执行 hexo g,出现错误<br>
 F:\Arvin-He.github.io (source) (hexo-site@0.0.0)<br>
@@ -143,7 +145,7 @@ npm install
 hexo g
 
 
-## 6. 执行hexo g或hexo本地测试运行重启后页面空白,提示 : WARN No layout: index.html
+## 5. 执行hexo g或hexo本地测试运行重启后页面空白,提示 : WARN No layout: index.html
 此时页面都是白的，使用hexo clean  然后从新Generated再次运行还是空白
 **原因:** 在themes/文件夹的next主题是空的,因为在我的github上的next主题是作为submodule,是引用别人的仓库,在clone到一台新的机器上时并没有clone到本地来,如果你没有通过submodule引用别人的仓库,就不会出现这个问题.
 
@@ -159,9 +161,17 @@ git submodule update
 你必须运行两个命令：git submodule init 用来初始化本地配置文件，
 而 git submodule update 则从该项目中抓取所有数据并检出父项目中列出的合适的提交。
 
-## 三.一些补充
+## 6. 部署到github上去后发现没有更新,还是上次的页面
+解决办法:
+1. 删除.deploy_git/文件夹<br>
+2. hexo clean //清除上次生成的静态文件<br>
+3. hexo g //重新生成静态文件<br>
+4. hexo d //部署到github上去<br>
 
-### 3.1 设置标题、分类、标签  
+--- 
+## 四.一些补充
+
+### 4.1 设置标题、分类、标签  
 在你的Markdown文章的开头添加, 如果使用hexo new命令新建文章则会自动生成<br>
  ```   
 ---
@@ -184,8 +194,8 @@ tags:
 tags: [Hexo,HTML,JavaScript]<br>
 多个分类也是如此
 
-### 3.2 设置索引目录里的图片
+### 4.2 设置索引目录里的图片
 因为索引设置为提取文档前150个字符，所以想在索引目录中插入图片，就在文章开头插入图片即可。
 
-### 3.3 添加阅读全文的折叠按钮
+### 4.3 添加阅读全文的折叠按钮
 在你写的文章中你想要折叠的位置输入:\<!--More-->,然后重新生成部署,就会看到折叠效果了.

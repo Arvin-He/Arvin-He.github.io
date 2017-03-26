@@ -19,6 +19,7 @@ git config --list #检查已有的配置信息
 git config user.name #查看git用户名
 git config user.email #查看git邮箱
 ```
+<!--More-->
 ## 3. git获取帮助
 想了解 Git 的各式工具该怎么用，可以阅读它们的使用帮助，方法有三：
 ```

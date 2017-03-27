@@ -86,3 +86,14 @@ $ git remote
 ```
 git remote add pb git://github.com/paulboone/ticgit.git
 ```
+
+## 9.修改.gitignore并更新本地和远程仓库
+1. 在.gitignore修改过滤规则,并保存.
+2. 更新本地和远程仓库
+```
+# 注意有个点“.”
+git rm -r --cached .
+git add -A
+git commit -m "update .gitignore"
+```
+

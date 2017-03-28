@@ -19,7 +19,7 @@ Win + Alt + P 打开设置界面
 ### 3. 设置cmder分屏显示
 设置快捷键
 打开设置面板选择keys & Macro,或者右击标题栏,在help中的Hotkeys中做如下设置
-找到Split:Move spliter rightward,并选中
+找到Split: spliter Duplicate active "shell" to right:split,并选中
 在下面设置快捷键,如ctrl+Alt+1
 保存设置,然后重启
 

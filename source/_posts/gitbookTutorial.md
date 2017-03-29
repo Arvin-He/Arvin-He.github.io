@@ -23,7 +23,7 @@ $ ./build.sh --jobs 4
 $ sudo cp bin/phantomjs /bin/
 $ sudo npm install gitbook-pdf -g  #重新进行安装
 ```
-
+<!--More-->
 **注意:**因为gitbook-pdf依赖这个,直接安装gitbook-pdf会报下面的错.
 ```
 Error: connect ETIMEDOUT

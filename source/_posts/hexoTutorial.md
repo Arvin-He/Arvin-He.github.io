@@ -1,5 +1,7 @@
 ---
 title: hexo搭建github博客
+date: 2017-03-25 15:26:36
+tags:
 ---
 ## 一.搭建hexo
 

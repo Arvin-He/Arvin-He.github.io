@@ -1,5 +1,8 @@
-# GitBook 使用
-
+---
+title: 使用GitBook
+date: 2017-03-29 14:48:37
+tags:
+---
 ## 1. 安装gitbook
 1. 安装nodejs和npm
 2. 安装gitbook命令行, npm install -g gitbook-cli

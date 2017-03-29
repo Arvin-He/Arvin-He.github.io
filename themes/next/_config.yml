@@ -46,8 +46,8 @@ menu:
     - Linux
     - HTML/CSS/JS
     - 其他
-  #categories: /categories
-  about: /about
+  # categories: /categories
+  # about: /about
   #sitemap: /sitemap.xml
   #commonweal: /404.html
 

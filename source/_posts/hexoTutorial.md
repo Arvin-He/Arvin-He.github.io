@@ -3,8 +3,7 @@ title: hexo搭建github博客
 date: 2017-03-25 15:26:36
 tags:
 ---
-## 一.搭建hexo
-
+## 1. 搭建hexo
 ## 1.1 准备条件
 1. 安装git
 2. 有github帐号,并有仓库username.github.io, 如Arvin-He.github.io
@@ -13,7 +12,7 @@ tags:
 ## 1.2 安装hexo
 1. 安装nodejs
 2. 安装hexo, npm install -g hexo, 或者 npm install hexo-cli -g
-
+<!--More-->
 ## 1.3 hexo配置文件和next主题配置
 github page默认主题是landscape,这个主题不怎么喜欢,于是更换next主题
 
@@ -37,10 +36,8 @@ hexo g          //生成静态文件
 hexo s          //本地运行
 hexo d          //部署到github上去
 
-<!--More-->
 ---
-## 二.hexo命令详解
-
+## 2. hexo命令详解
 ### 2.1 hexo命令
 hexo init 
 hexo new "postName" #新建文章
@@ -62,11 +59,10 @@ hexo d == hexo deploy<br>
 hexo d -g #生成部署
 hexo s -g #生成预览
 
-
 ---
-## 三.搭建hexo过程中遇到的问题
+## 3. 搭建hexo过程中遇到的问题
 
-## 1. hexo无法上传到github, 但在本地localhost:4000是可以打开的
+## 3.1 hexo无法上传到github, 但在本地localhost:4000是可以打开的
 On branch master
 nothing to commit, working directory clean
 bash: /dev/tty: No such device or address
@@ -95,11 +91,11 @@ deploy:
   repository: ssh://git@github.com/Arvin-He/Arvin-He.github.io.git
   branch: master
 
-## 2.hexo部署失败 ERROR Deployer not found: git
+## 3.2 hexo部署失败 ERROR Deployer not found: git
 原因: 缺少nodejs的依赖
 解决办法: 在 blog 目录里 执行 npm install hexo-deployer-git --save 
 
-## 3. Error: fatal: Not a git repository (or any of the parent directories): .git
+## 3.3 Error: fatal: Not a git repository (or any of the parent directories): .git
 FATAL Something's wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html
 Error: fatal: Not a git repository (or any of the parent directories): .git
     at ChildProcess.<anonymous> (F:\blogs\node_modules\hexo-util\lib\spawn.js:37:17)
@@ -125,7 +121,7 @@ Error: fatal: Not a git repository (or any of the parent directories): .git
 **解决办法:**
     删除.deploy_git/ 文件夹,然后再次,hexo deploy, 就好了.
 
-## 4. ERROR Local hexo not found in F:\Arvin-He.github.io
+## 3.4 ERROR Local hexo not found in F:\Arvin-He.github.io
 Hexo搭建博客之后用Git已经将所有的source都同步到了git上，在另一台电脑上将源代码clone下来之后，直接执行hexo g,出现错误.
 F:\Arvin-He.github.io (source) (hexo-site@0.0.0)
 $ hexo g<
@@ -137,7 +133,7 @@ cd F:\Arvin-He.github.io
 npm install 
 hexo g
 
-## 5. 执行hexo g或hexo本地测试运行重启后页面空白,提示 : WARN No layout: index.html
+## 3.5 执行hexo g或hexo本地测试运行重启后页面空白,提示 : WARN No layout: index.html
 此时页面都是白的，使用hexo clean  然后从新Generated再次运行还是空白
 **原因:** 在themes/文件夹的next主题是空的,因为在我的github上的next主题是作为submodule,是引用别人的仓库,在clone到一台新的机器上时并没有clone到本地来,如果你没有通过submodule引用别人的仓库,就不会出现这个问题.
 **解决办法:**
@@ -149,7 +145,7 @@ git submodule update
 你必须运行两个命令：git submodule init 用来初始化本地配置文件，
 而 git submodule update 则从该项目中抓取所有数据并检出父项目中列出的合适的提交。
 
-## 6. 部署到github上去后发现没有更新,还是上次的页面
+## 3.6 部署到github上去后发现没有更新,还是上次的页面
 **解决办法:**
 1. 删除.deploy_git/文件夹<br>
 2. hexo clean //清除上次生成的静态文件<br>
@@ -157,7 +153,7 @@ git submodule update
 4. hexo d //部署到github上去<br>
 
 --- 
-## 四.一些补充
+## 4. 一些补充
 
 ### 4.1 设置标题、分类、标签  
 在你的Markdown文章的开头添加, 如果使用hexo new命令新建文章则会自动生成<br>

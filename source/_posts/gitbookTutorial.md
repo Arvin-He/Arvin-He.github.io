@@ -10,7 +10,8 @@ tags:
 4. 安装phantomjs-1.9.7
 方法:
 windows下:
-网上下载phantomjs-1.9.7-windows版本,解压缩,并设置环境变量
+网上下载phantomjs-1.9.7-windows版本,解压缩,并设置环境变量.
+<!--More-->
 Linux下:
 1.从github上clone一份代码,[phantomjs的github网址](https://github.com/ariya/phantomjs.git),
 2.进入这个clone下的仓库,查看发布的版本信息,git tag
@@ -23,7 +24,6 @@ $ ./build.sh --jobs 4
 $ sudo cp bin/phantomjs /bin/
 $ sudo npm install gitbook-pdf -g  #重新进行安装
 ```
-<!--More-->
 **注意:**因为gitbook-pdf依赖这个,直接安装gitbook-pdf会报下面的错.
 ```
 Error: connect ETIMEDOUT

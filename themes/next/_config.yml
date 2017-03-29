@@ -161,8 +161,8 @@ avatar: /uploads/avatar.jpg
 toc:
   enable: true
 
-  # Automatically add list number to toc.
-  number: true
+  # Automatically add list number to toc. 不自动显示目录数字序号
+  number: false
 
 
 # Creative Commons 4.0 International License.

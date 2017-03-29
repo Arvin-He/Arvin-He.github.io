@@ -3,12 +3,12 @@ title: windows下通过命令行添加环境变量
 date: 2017-03-29 15:18:00
 tags:
 ---
-通过命令行追加环境变量,如添加C:\phantomjs
+## 1. 通过命令行追加环境变量,如添加C:\phantomjs
 ```
 SETX PATH "%PATH%;C:\\phantomjs" /M
 ```
 **注意:**重启才能生效
-
+<!--More-->
 如果写成下面的形式,则通过窗口查看机器的环境变量时会发现已经用C:\\phantomjs覆盖以前所有的环境变量,之前的环境变量全部没了.
 ```
 SETX PATH C:\\phantomjs /M

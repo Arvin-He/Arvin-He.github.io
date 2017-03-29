@@ -1,7 +1,7 @@
 ---
 title: cmder使用
 date: 2017-03-26 15:37:23
-tags:
+tags: 其他
 ---
 ## 1. cmder简介
 cmder是windows下一款很好用的命令行工具,支持绝大部分linux命令,自带git和vim.

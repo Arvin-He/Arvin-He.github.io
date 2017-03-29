@@ -1,7 +1,7 @@
 ---
 title: hexo搭建github博客
 date: 2017-03-25 15:26:36
-tags: Git
+tags: [hexo,Git]
 ---
 ## 1. 搭建hexo
 ## 1.1 准备条件

@@ -39,14 +39,8 @@ seo: false
 menu:
   home: /
   archives: /archives
-  tags:
-    - Python
-    - C/C++
-    - Git
-    - Linux
-    - HTML/CSS/JS
-    - 其他
-  # categories: /categories
+  tags: /tags 
+  categories: /categories
   # about: /about
   #sitemap: /sitemap.xml
   #commonweal: /404.html

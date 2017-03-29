@@ -1,7 +1,7 @@
 ---
 title: hexo搭建github博客
 date: 2017-03-25 15:26:36
-tags:
+tags: Git
 ---
 ## 1. 搭建hexo
 ## 1.1 准备条件
@@ -23,7 +23,9 @@ $ git clone https://github.com/iissnan/hexo-theme-next themes/next
 ```
 
 ### 1.3.2 更改next主题配置
-**注意:** 在 Hexo中的next主题中有两份主要的配置文件，名称都是 _config.yml。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。
+**注意:** 在 Hexo中的next主题中有两份主要的配置文件，名称都是 _config.yml。 
+其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；
+另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。
 如何配置请参考官方文档:[hexo-next官方配置教程](http://theme-next.iissnan.com/getting-started.html)
 
 

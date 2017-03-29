@@ -3,11 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Just for fun!
-subtitle:
-description:
+title: Just for fun!  #站点名，站点左上角
+subtitle: Learn and live.
+description: Learn and live. #给搜索引擎看的，对站点的描述，可以自定义
 author: Arvin
 language: zh-Hans
+email: junhe3209@gmail.com
 timezone:
 
 # URL

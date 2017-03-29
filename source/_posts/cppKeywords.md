@@ -1,7 +1,7 @@
 ---
-title: cppKeywords
+title: C++关键字
 date: 2017-03-29 19:32:11
-tags:
+tags: C/C++
 ---
 ## static关键字
 

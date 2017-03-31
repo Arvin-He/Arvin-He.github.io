@@ -3,7 +3,7 @@ title: hexo搭建github博客
 date: 2017-03-25 15:26:36
 tags: [hexo,Git]
 ---
-## 1. 搭建hexo
+# 1. 搭建hexo
 ## 1.1 准备条件
 1. 安装git
 2. 有github帐号,并有仓库username.github.io, 如Arvin-He.github.io
@@ -39,8 +39,8 @@ hexo s          //本地运行
 hexo d          //部署到github上去
 
 ---
-## 2. hexo命令详解
-### 2.1 hexo命令
+# 2. hexo命令详解
+## 2.1 hexo命令
 hexo init 
 hexo new "postName" #新建文章
 hexo new page "pageName" #新建页面
@@ -62,7 +62,7 @@ hexo d -g #生成部署
 hexo s -g #生成预览
 
 ---
-## 3. 搭建hexo过程中遇到的问题
+# 3. 搭建hexo过程中遇到的问题
 
 ## 3.1 hexo无法上传到github, 但在本地localhost:4000是可以打开的
 On branch master
@@ -154,8 +154,24 @@ git submodule update
 3. hexo g //重新生成静态文件<br>
 4. hexo d //部署到github上去<br>
 
+## 3.7 点击"标签"和"分类"没有跳出标签和分类
+
+原因:Tags和Category需要手动生成,即需要输入命令生成.
+方法:
+生成Tags和categories
+```
+$ cd path/to/hexo
+$ hexo new page tags
+$ hexo new page categories
+$ vim source/tags/index.md 
+在date下面一行输入: 
+type: "tags"
+$ vim source/categories/index.md
+在date下面一行输入: 
+type: "categories"
+```
 --- 
-## 4. 一些补充
+# 4. 一些补充
 
 ### 4.1 设置标题、分类、标签  
 在你的Markdown文章的开头添加, 如果使用hexo new命令新建文章则会自动生成<br>

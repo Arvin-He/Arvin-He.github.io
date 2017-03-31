@@ -9,11 +9,11 @@ categories: 工具
 1. 安装git
 2. 有github帐号,并有仓库username.github.io, 如Arvin-He.github.io
 3. 本地机器保存github的帐号和密码
-
+<!--More-->
 ## 1.2 安装hexo
 1. 安装nodejs
 2. 安装hexo, npm install -g hexo, 或者 npm install hexo-cli -g
-<!--More-->
+
 ## 1.3 hexo配置文件和next主题配置
 github page默认主题是landscape,这个主题不怎么喜欢,于是更换next主题
 
@@ -29,8 +29,39 @@ $ git clone https://github.com/iissnan/hexo-theme-next themes/next
 另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。
 如何配置请参考官方文档:[hexo-next官方配置教程](http://theme-next.iissnan.com/getting-started.html)
 
+## 1.4 设置标题、分类、标签  
+在你的Markdown文章的开头添加, 如果使用hexo new命令新建文章则会自动生成
+添加标签和分类,则首先确认站点配置文件里有tag_dir: tags这个配置选项打开
+然后确认确认主题配置文件里有tags: /tags这个配置选项打开
+最后在你的站点文章中添加如下:
+```   
+---
+title: 你的题目
+tags: 你的标签
+category: 你的分类
+---
+```
+多个标签的设置
+方式一：仿照Hexo配置文件中的写法
+tags:
+  - Hexo
+  - HTML
+  - JavaScript
+方式二：伪JavaScript数组写法
+tags: [Hexo,HTML,JavaScript]
+多个分类也是如此
 
-## 1.4 使用hexo
+## 1.5 设置索引目录里的图片
+因为索引设置为提取文档前150个字符，所以想在索引目录中插入图片，就在文章开头插入图片即可。
+
+## 1.6 添加阅读全文的折叠按钮
+在你写的文章中你想要折叠的位置输入:
+```
+<!--More-->
+```
+然后重新生成部署,就会看到折叠效果了.
+
+## 1.7 使用hexo
 新建一个目录如:F:/blog/,或者直接将git clone Arvin-He.github.io仓库,并创建一个分支,比如source
 cd Arvin-He.github.io
 hexo init       //文件夹自动生成建网站所需的文件
@@ -64,7 +95,6 @@ hexo s -g #生成预览
 
 ---
 # 3. 搭建hexo过程中遇到的问题
-
 ## 3.1 hexo无法上传到github, 但在本地localhost:4000是可以打开的
 On branch master
 nothing to commit, working directory clean
@@ -162,8 +192,8 @@ git submodule update
 生成Tags和categories
 ```
 $ cd path/to/hexo
-$ hexo new page tags
-$ hexo new page categories
+$ hexo new page tags              # 会在source/tags/目录下生成index.md
+$ hexo new page categories         # 会在source/categories/目录下生成index.md
 $ vim source/tags/index.md 
 在date下面一行输入: 
 type: "tags"
@@ -172,37 +202,3 @@ $ vim source/categories/index.md
 type: "categories"
 ```
 --- 
-# 4. 一些补充
-
-### 4.1 设置标题、分类、标签  
-在你的Markdown文章的开头添加, 如果使用hexo new命令新建文章则会自动生成<br>
-添加标签和分类,则首先确认站点配置文件里有tag_dir: tags这个配置选项打开
-然后确认确认主题配置文件里有tags: /tags这个配置选项打开
-最后在你的站点文章中添加如下:
- ```   
----
-title: 你的题目
-tags: 你的标签
-category: 你的分类
----
-```
-多个标签的设置<br>
-方式一：仿照Hexo配置文件中的写法<br>
-tags:
-  - Hexo
-  - HTML
-  - JavaScript
-
-方式二：伪JavaScript数组写法<br>
-tags: [Hexo,HTML,JavaScript]<br>
-多个分类也是如此
-
-### 4.2 设置索引目录里的图片
-因为索引设置为提取文档前150个字符，所以想在索引目录中插入图片，就在文章开头插入图片即可。
-
-### 4.3 添加阅读全文的折叠按钮
-在你写的文章中你想要折叠的位置输入:
-```
-<!--More-->
-```
-然后重新生成部署,就会看到折叠效果了.

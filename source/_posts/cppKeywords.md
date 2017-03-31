@@ -2,6 +2,7 @@
 title: C++关键字
 date: 2017-03-29 19:32:11
 tags: C/C++
+categories: 编程
 ---
 ## 1. static关键字
 ### 1.1 为什么需要static

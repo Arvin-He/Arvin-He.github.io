@@ -2,6 +2,7 @@
 title: myGitCheatList
 date: 2017-03-26 09:47:37
 tags: Git
+categories: 工具
 ---
 [Git Pro 第二版](https://git-scm.com/book/zh/v2)
 ## 1. 初次运行 Git 前的配置

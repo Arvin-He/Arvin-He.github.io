@@ -2,6 +2,7 @@
 title: 使用GitBook
 date: 2017-03-29 14:48:37
 tags: Git
+categories: 工具
 ---
 ## 1. 安装gitbook
 1. 安装nodejs和npm

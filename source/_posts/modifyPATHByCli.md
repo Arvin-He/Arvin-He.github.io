@@ -2,6 +2,7 @@
 title: windows下通过命令行添加环境变量
 date: 2017-03-29 15:18:00
 tags: 其他
+categories: 工具
 ---
 ## 1. 通过命令行追加环境变量,如添加C:\phantomjs
 ```

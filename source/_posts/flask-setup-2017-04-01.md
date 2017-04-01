@@ -1,5 +1,5 @@
 ---
-title: flaskvenvsetup
+title: flask环境设置
 date: 2017-04-01 14:46:19
 tags: [python,flask]
 categories: 编程

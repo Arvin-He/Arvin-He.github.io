@@ -1,6 +1,6 @@
 ---
 title: hexo搭建github博客
-date: 2017-03-25 15:26:36
+date: 2017-03-24 15:26:36
 tags: [hexo,Git]
 categories: 工具
 ---

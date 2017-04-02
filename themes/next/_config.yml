@@ -41,9 +41,9 @@ menu:
   archives: /archives
   tags: /tags 
   categories: /categories
-  # about: /about
+  about: /about
   #sitemap: /sitemap.xml
-  #commonweal: /404.html
+  commonweal: /404.html
 
 
 # Enable/Disable menu icons.

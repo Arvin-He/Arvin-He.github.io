@@ -29,7 +29,19 @@ $ git clone https://github.com/iissnan/hexo-theme-next themes/next
 另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。
 如何配置请参考官方文档:[hexo-next官方配置教程](http://theme-next.iissnan.com/getting-started.html)
 
-## 1.4 设置标题、分类、标签  
+## 1.4 设置分类、标签和"关于"页面
+### 1.4.1 生成Tags和categories
+```
+$ cd path/to/hexo
+$ hexo new page tags              # 会在source/tags/目录下生成index.md
+$ hexo new page categories        # 会在source/categories/目录下生成index.md
+$ vim source/tags/index.md 
+在date下面一行输入: 
+type: "tags"
+$ vim source/categories/index.md
+在date下面一行输入: 
+type: "categories"
+```
 在你的Markdown文章的开头添加, 如果使用hexo new命令新建文章则会自动生成
 添加标签和分类,则首先确认站点配置文件里有tag_dir: tags这个配置选项打开
 然后确认确认主题配置文件里有tags: /tags这个配置选项打开
@@ -50,6 +62,12 @@ tags:
 方式二：伪JavaScript数组写法
 tags: [Hexo,HTML,JavaScript]
 多个分类也是如此
+### 1.4.2 设置"关于"页面
+```
+$ cd path/to/hexo
+$ hexo new page "about"              # 会在source/about/目录下生成index.md
+```
+然后在souce/about/index.md中写入你想表达的内容.
 
 ## 1.5 设置索引目录里的图片
 因为索引设置为提取文档前150个字符，所以想在索引目录中插入图片，就在文章开头插入图片即可。

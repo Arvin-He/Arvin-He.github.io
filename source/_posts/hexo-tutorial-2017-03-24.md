@@ -245,3 +245,16 @@ type: "categories"
 后者中默认都是用http加载的js和css，所以不能直接用，故修改为https方式获取js与css，直接将page.js内容加入404.html页面，
 具体内容详见我的Github上的404页面.
 [知乎上解决办法链接](https://www.zhihu.com/question/49153090/answer/146374701)
+
+## 3.9 hexo使用hexo-generator-search站内搜索
+问题: 可以搜索。但是搜索的页面跳转不对.
+原因: 站点下的_config.yml配置文件的url没有配置.
+解决: 将url设置你github.io的站点的url.
+```
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://arvin-he.github.io
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+```

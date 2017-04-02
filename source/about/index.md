@@ -18,5 +18,5 @@ Motto: To be a better man.
 # 联系Arvin
 ===
 微信: JUNHE_1218
-E-mail: arvin3209@163.com
+E-mail: junhe3209@gmail.com
 GitHub: https://github.com/Arvin-He

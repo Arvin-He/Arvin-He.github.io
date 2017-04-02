@@ -60,6 +60,11 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
+# 设置站内检索功能
+search:
+  path: search.xml
+  field: all
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/

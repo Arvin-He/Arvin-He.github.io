@@ -79,7 +79,26 @@ $ hexo new page "about"              # 会在source/about/目录下生成index.m
 ```
 然后重新生成部署,就会看到折叠效果了.
 
-## 1.7 使用hexo
+## 1.7 使用hexo站内搜索
+1. 安装 hexo-generator-search，在站点的根目录下执行以下命令：
+```
+$ npm install hexo-generator-search --save
+```
+2. 站点配置文件_config.yml配置
+**注意:**在**站点**下的_config.yml配置,不是主题里的_config.yml.
+```
+search:
+  path: search.xml
+  field: all
+```
+3. 主题_config.yml配置
+本地搜索设置为true,否则界面上不会显示搜索按钮
+```
+# Local search
+local_search:
+  enable: true
+```
+## 1.8 使用hexo
 新建一个目录如:F:/blog/,或者直接将git clone Arvin-He.github.io仓库,并创建一个分支,比如source
 cd Arvin-He.github.io
 hexo init       //文件夹自动生成建网站所需的文件

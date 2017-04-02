@@ -7,7 +7,7 @@ title: Simple & Freedom  #站点名，站点左上角
 subtitle: Learn and live.
 description: Learn and live. #给搜索引擎看的，对站点的描述，可以自定义
 author: Arvin
-language: zh-Hans
+language: zh-CN
 timezone:
 
 # URL
@@ -68,7 +68,8 @@ search:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+# theme: next
+theme: manupassant
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

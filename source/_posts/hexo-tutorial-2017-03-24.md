@@ -220,3 +220,9 @@ $ vim source/categories/index.md
 type: "categories"
 ```
 --- 
+## 3.8 关于404页面在本地正常显示,在Github上不显示问题
+原因:Github Pages强制要求https，所以文档内对js和css的请求都需要经过https传输的才行，而腾讯的404公益页面使用的默认为http.
+其中search_children.js主要提取了data.js及page.js两个文件，前者是寻找儿童的数据，在Github中没问题,
+后者中默认都是用http加载的js和css，所以不能直接用，故修改为https方式获取js与css，直接将page.js内容加入404.html页面，
+具体内容详见我的Github上的404页面.
+[知乎上解决办法链接](https://www.zhihu.com/question/49153090/answer/146374701)

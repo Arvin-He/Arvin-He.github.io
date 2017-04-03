@@ -5,6 +5,7 @@ tags: [Hexo]
 categories: 工具
 description: 本文介绍如何采用hexo搭建个人博客,以及遇到的一些问题.
 ---
+![cute cat](hexo-tutorial-2017-03-24/5.jpg)
 ## 1. 安装Hexo及依赖
 ### 1.1 准备条件
 1. 安装git
@@ -177,6 +178,17 @@ search:
 local_search:
   enable: true
 ```
+
+### 3.7 在文章中插入本地图片
+1. 配置hexo下的\_config.yml中post_asset_folder: true
+2. 安装CodeFalling/hexo-asset-image的插件来加载本地图片,[插件地址](https://github.com/CodeFalling/hexo-asset-image)
+```
+npm install https://github.com/CodeFalling/hexo-asset-image --save
+```
+3. 插入图片
+![cute cat](newfolder/5.jpg)
+**注意:**当设置post_asset_folder为true参数后，在Hexo new newfile时会自动建立一个与文章同名的文件夹，
+可以把与该文章相关的所有资源都放到那个文件夹，如此一来，便可以方便的管理使用资源。
 
 ## 4. 使用hexo
 新建一个目录如:'hexo目录'

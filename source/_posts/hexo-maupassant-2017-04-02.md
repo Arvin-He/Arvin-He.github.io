@@ -1,14 +1,14 @@
 ---
-title: 更换maupassant主题
+title: maupassant主题使用
 date: 2017-04-02 21:36:58
 tags: [Hexo]
 categories: 工具
 ---
-# 1. maupassant主题简介
+## 1. maupassant主题简介
 Maupassant最初是由Cho为Typecho平台设计开发的一套响应式模板，体积只有20KB，在各种尺寸的设备上表现出色。
 [主题地址](https://github.com/tufu9441/maupassant-hexo)
-<!--More-->
-# 2. maupassant主题安装
+
+## 2. maupassant主题安装
 ```
 cd 'hexo博客目录'
 git clone https://github.com/tufu9441/maupassant-hexo.git themes/maupassant
@@ -16,7 +16,7 @@ npm install hexo-renderer-jade --save // 渲染器
 npm install hexo-renderer-sass --save
 npm install hexo-generator-feed --save // rss支持
 ```
-# 3. 修改配置文件
+## 3. 修改配置文件
 1. Hexo中_config.yml配置文件修改有两处
 - language: zh-CN
 - theme: maupassant
@@ -96,7 +96,8 @@ css: css
 version: 0.0.0
 
 ```
-# 4. 生成部署
+
+## 4. 生成部署
 ```
 hexo clean
 hexo g
@@ -104,8 +105,8 @@ hexo s
 hexo d
 ```
 
-# 5. 更换Maupassant遇到的问题
-1. 安装好并设置好相应配置文件后,执行hexo clean出现错误
+## 5. 更换Maupassant遇到的问题
+### 5.1 安装好并设置好相应配置文件后,执行hexo clean出现错误
 ERROR Plugin load failed: hexo-renderer-sass
 Error: %1 is not a valid Win32 application.
 原因: hexo-renderer-sass没有安装好
@@ -139,7 +140,8 @@ Error: %1 is not a valid Win32 application.
 }
 
 ```
-2. 本地运行hexo s出现页面布局错乱
+
+### 5.2 本地运行hexo s出现页面布局错乱
 原因:hexo-renderer-sass没有安装好,虽然页面能显示,但是总是错乱.
 出现这种情况是因为之前使用的主题是next主题,虽然配置文件都修改好,
 在安装hexo-renderer-sass依赖时出了点问题,在hexo-renderer-sass需要python2.7,
@@ -147,7 +149,7 @@ Error: %1 is not a valid Win32 application.
 就删除node_modules文件夹,重新安装吧.
 解决办法: 重新安装hexo-renderer-sass
 
-3. 设置本地搜索 
+### 5.3 设置本地搜索 
 Maupassant默认使用google搜索,如果要使用本地搜索需要做两件事:
 1. 安装依赖模块:hexo-generator-search
 ```

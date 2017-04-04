@@ -1,5 +1,5 @@
 ---
-title: maupassant-hexo主题使用
+title: Maupassant-hexo主题使用
 date: 2017-04-02 21:36:58
 tags: [Hexo]
 categories: 工具

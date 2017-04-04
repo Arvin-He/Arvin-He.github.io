@@ -1,7 +1,7 @@
 ---
 title: Windows下工具使用和技巧
 date: 2017-04-04 08:52:12
-tags: [Tools,Tricks]
+tags: [Tools]
 categories: 工具
 ---
 ## 1. cmder简介

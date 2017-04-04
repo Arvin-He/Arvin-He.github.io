@@ -1,9 +1,8 @@
 ---
-title: flask环境设置
+title: Flask环境设置
 date: 2017-04-01 14:46:19
-tags: [python,flask]
+tags: [Python,Flask]
 categories: 编程
-description: flask环境的搭建
 ---
 ## 1. flask环境搭建
 1. 创建一个文件夹microblog: mkdir microblog

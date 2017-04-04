@@ -1,7 +1,8 @@
 ---
-title: linux命令使用
+title: Linux命令使用
 date: 2017-03-30 21:10:18
 tags: Linux
+categories: 编程
 ---
 ### 1. 查看文件/文件夹占用空间大小和设备的空间使用率
 1. du(disk usage),顾名思义,查看目录/文件占用空间大小

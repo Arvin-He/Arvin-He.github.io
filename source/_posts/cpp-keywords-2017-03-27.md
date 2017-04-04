@@ -1,5 +1,5 @@
 ---
-title: C++关键字
+title: C++之static关键字
 date: 2017-03-27 19:32:11
 tags: C/C++
 categories: 编程

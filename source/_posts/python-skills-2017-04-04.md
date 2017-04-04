@@ -13,6 +13,3 @@ windows下同时安装了Python2.7.13与Python3.6后,默认的使用python2.
 2. 使用pip安装库
 - 安装到Python2时，就使用 pip2 install [name]
 - 安装到Python3时，就使用pip3 install [name]
-
-
-

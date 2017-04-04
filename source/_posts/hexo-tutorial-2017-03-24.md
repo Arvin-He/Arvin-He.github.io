@@ -3,9 +3,9 @@ title: Hexo搭建github博客
 date: 2017-03-24 15:26:36
 tags: [Hexo]
 categories: 工具
-description: 本文介绍如何采用hexo搭建个人博客,以及遇到的一些问题.
 ---
-![cute cat](hexo-tutorial-2017-03-24/5.jpg)
+![](hexo-tutorial-2017-03-24/5.jpg)
+
 ## 1. 安装Hexo及依赖
 ### 1.1 准备条件
 1. 安装git

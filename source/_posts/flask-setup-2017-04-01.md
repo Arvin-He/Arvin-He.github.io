@@ -3,11 +3,11 @@ title: flask环境设置
 date: 2017-04-01 14:46:19
 tags: [python,flask]
 categories: 编程
+description: flask环境的搭建
 ---
-# 1. flask环境搭建
+## 1. flask环境搭建
 1. 创建一个文件夹microblog: mkdir microblog
 2. 进入microblog目录中:cd microblog
-<!--More-->
 3. 在microblog创建虚拟环境: python -m venv flask, 该命令是在 flask 文件夹中创建一个完整的 Python 环境。
    如果你的python版本低于3.4(包括2.7),需要手动下载安装virtualenv,然后通过命令安装:
    virtualenv flask

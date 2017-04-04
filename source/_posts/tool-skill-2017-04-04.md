@@ -2,6 +2,7 @@
 title: Windows下工具使用和技巧
 date: 2017-04-04 08:52:12
 tags: [Tools,Tricks]
+categories: 工具
 ---
 ## 1. cmder简介
 cmder是windows下一款很好用的命令行工具,支持绝大部分linux命令,自带git和vim.

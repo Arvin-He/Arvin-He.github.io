@@ -1,7 +1,6 @@
 ---
-title: flask-module-2017-04-03
+title: Flask模版
 date: 2017-04-03 11:07:17
-tags: [Python,Flask]
+tags: [python,flask]
 ---
-
-![cute cat](flask-module-2017-04-03/5.jpg)
+![](flask-module-2017-04-03/5.jpg)

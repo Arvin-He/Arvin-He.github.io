@@ -4,12 +4,11 @@ date: 2017-03-28 14:48:37
 tags: Git
 categories: 工具
 ---
-# 1. 安装gitbook
+## 1. 安装gitbook
 1. 安装nodejs和npm
 2. 安装gitbook命令行, npm install -g gitbook-cli
 3. 查看gitbook是否安装, gitbook -V, 没有安装的话就会自动安装gitbook
 4. 安装phantomjs-1.9.7
-<!--More-->
 方法:
 windows下:
 网上下载phantomjs-1.9.7-windows版本,解压缩,并设置环境变量.
@@ -51,8 +50,9 @@ npm ERR!     /home/wangxq/repository/phantomjs/npm-debug.log
 ```
 5. 安装gitbook生成PDF模块, npm install gitbook-pdf -g
 6. 如果开始安装gitbook-pdf失败后,在安装了phantomjs之后需要重新安装npm install gitbook-pdf -g
-# 2. 使用gitbook
-## 2.1 README.md 与 SUMMARY.md创建和编写
+
+## 2. 使用gitbook
+### 2.1 README.md 与 SUMMARY.md创建和编写
 README.md 这个文件相当于一本Gitbook的简介。
 SUMMARY.md 这个文件是一本书的目录结构，使用Markdown语法
 ```
@@ -69,11 +69,12 @@ $ vim SUMMARY.md
  - [第二节](chapter2/section2.md)
 * [结束](end/README.md)
 
-## 2.2 生成图书目录结构
+### 2.2 生成图书目录结构
  ```
  gitbook init
  ```
-## 2.3 本地图书预览
+
+### 2.3 本地图书预览
 ```
 gitbook serve .
 ```
@@ -81,14 +82,14 @@ gitbook serve .
 在你的图书项目的目录中多了一个名为_book的文件目录，而这个目录中的文件，即是生成的静态
 网站内容。
 
-## 2.4 指定图书生成目录
+### 2.4 指定图书生成目录
 使用build参数生成到指定目录,与直接预览生成的静态网站文件不一样的是，使用这个命令，
 你可以将内容输入到你所想要的目录中去：
 ```
 $ mkdir /tmp/gitbook
 $ gitbook build --output=/tmp/gitbook
 ```
-# 3. 生成PDF
+## 3. 生成PDF
 **注意:**转pdf时需要calibre的ebook-convert组件支持,不然会保存,转换失败.
 解决办法:
 下载calibre,有windows和linux版的,安装好后,添加环境变量,再重执行gitbook pdf .,新生成pdf
@@ -98,7 +99,7 @@ gitbook pdf .
 ```
 **补充：**生成的pdf可以用calibre转成你想要的设备尺寸.
 
-# 4. 生成epub和mobi与电子书
+## 4. 生成epub和mobi与电子书
 ```
 gitbook epub .
 gitbook mobi .

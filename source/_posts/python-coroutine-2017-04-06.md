@@ -5,16 +5,17 @@ tags: Python
 categories: 编程
 ---
 
-### 协程简介
+### 1. 协程简介
 协程，即协作式程序，又称微线程、纤程，英文名Coroutine。
-其思想是，一系列互相依赖的协程间依次使用CPU，每次只有一个协程工作，而其他协程处于休眠状态。协程可以在运行期间的某个点上暂停执行，并在恢复运行时从暂停的点上继续执行。
+思想是，一系列互相依赖的协程间依次使用CPU，每次只有一个协程工作，而其他协程处于休眠状态。
+协程可以在运行期间的某个点上暂停执行，并在恢复运行时从暂停的点上继续执行。
 协程已经被证明是一种非常有用的程序组件，不仅被python、lua、ruby等脚本语言广泛采用，而且被新一代面向多核的编程语言如golang rust-lang等采用作为并发的基本单位。
 协程可以被认为是一种用户空间线程，与传统的线程相比，有2个主要的优点：
 - 与线程不同，协程是自己主动让出CPU，并交付他期望的下一个协程运行，而不是在任何时候都有可能被系统调度打断。因此协程的使用更加清晰易懂，并且多数情况下不需要锁机制。
 - 与线程相比，协程的切换由程序控制，发生在用户空间而非内核空间，因此切换的代价非常小。
 总结起来是一句话：协程可以认为是一种用户态线程，与系统提供的线程不同点是，它需要主动让出CPU时间，而不是由系统进行调度，即控制权在程序员手上。
 
-### Python协程史
+### 2. Python协程史
 * Python 2.2 中的生成器让代码执行过程可以暂停 (yield)
 * Python 2.5 中可以将值返回给暂停的生成器，这使得 Python 中协程的概念成为可能 (send)
 * Python 3.3 中的 yield from，使得重构生成器与将它们串联起来都很简单 (yield from)
@@ -22,7 +23,7 @@ categories: 编程
 * Python 3.5 使用async/await语法引入对协程的显式支持 (async/await)
 * Python 3.6 增强asyncio，支持异步生成器、异步解析式
 
-### yield
+### 3. yield关键字
 为了理解什么是 yield, 你必须理解什么是生成器(generator)。
 关于生成器我的理解是是：生成器保存的是算法，需要时再计算(惰性计算)
 创建生成器有两种方式：
@@ -102,8 +103,7 @@ for x in iterator:
 
 需要注意的是，第一次调用时，请使用next()语句或是send(None)，不能使用send发送一个非None的值，否则会出错，因为没有yield语句来接收这个值。
 
-### yield from
-
+### 4. yield from
 在PEP 380 为 Python 3.3 添加了 yield from之前，生成器都没有变动。
 严格来说，这一特性让你能够从迭代器（生成器刚好也是迭代器）中返回任何值，从而可以干净利索的方式重构生成器。
 
@@ -149,7 +149,7 @@ except StopIteration as exc:
 print(value)  # Prints '84'.
 ```
 
-### asyncio
+### 5. asyncio
 asyncio是一个基于事件循环的异步I/O库，Python3.4将其引入标准库，Python3.3可通过pip安装
 asyncio包括的内容很多很复杂，这里只会做基本的两点：协同程序和事件循环。
 
@@ -211,7 +211,7 @@ Future可以理解为延迟结果的抽象，在其他语言中也称作Promise.
 - 同步原语
 - 队列
 
-### async与await
+### 6. async与await
 PEP 492引入async/await语法，中明确了协程类型(原生协程)，用于区别于基于生成器的协程
 在以前，我们可以用生成器实现协程（PEP 342），后来又对其进行了改进，引入了yield from语法（PEP 380）。但仍有一些缺点：
 1. 协程和普通生成器使用相同的语法，所以很容易把它们搞混，初学者更是如此。
@@ -243,13 +243,13 @@ async def read_data(db):
 ```
 await与yield from相似，挂起read_data协程的执行直到db.fetch这个awaitable对象完成并返回结果数据。
 原生协程与生成器协程的区别与联系
-- 原生协程对象不实现__iter__和__next__方法。因此，他们不能够通过iter()，list()，tuple()和其他一些内置函数进行迭代。他们也不能用于for...in循环。在原生协程中尝试使用__iter__或者__next会触发TypeError异常。
+- 原生协程对象不实现\__iter\__和\__next\__方法。因此，他们不能够通过iter()，list()，tuple()和其他一些内置函数进行迭代。他们也不能用于for...in循环。在原生协程中尝试使用\__iter\__或者\__next会触发TypeError异常。
 - 未被装饰的生成器不能够yield from一个原生协程：这样会引发TypeError。
 - 基于生成器的协程(asyncio代码必须使用@asyncio.coroutine)可以yield from一个原生协程。
 - 对原生协程对象和原生协程函数调用inspect.isgenerator()和inspect.isgeneratorfunction()会返回False。
 - 协程内部基于生成器，原生协程与生成器协程共享实现过程。类似于生成器对象，原生协程包含throw()，send()和close()方法。
 
-### 异步生成器与异步解析式
+### 7. 异步生成器与异步解析式
 
 PEP 492 引入支持原生协程和async /await的语法到Python 3.5。 在Python 3.5实现里的一个值得注意的局限性就在于它不可能使用await和yield在同一个函数体中。 
 而在Python 3.6中，这个限制已解除，这使得定义异步生成器成为可能：
@@ -265,7 +265,7 @@ PEP 530 添加了对async for在list、set、dict解析式以及generator表达�
 此外，所有解析式都支持“await”表达式：
     result = [await fun() for fun in funcs if await condition()]
 
-### gevent
+### 8. gevent使用
 gevent是一个基于协同的Python网络库，它使用greenlet在libev事件循环之上提供高级同步API。
 主要特性：
 - 基于libev的快速事件循环

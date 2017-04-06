@@ -18,8 +18,37 @@ categories: 编程
 ['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']
 ```
 
-### 2. 生成器
-创建一个generator，有很多种方法。
-第一种，只要把一个列表生成式的[]改成()，就创建了一个generator.
-定义generator的另一种方法。如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator
-变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。
+### 2. 装饰器
+在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）,本质上，decorator就是一个返回函数的高阶函数.
+
+定义装饰器
+```python
+def log(func):
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+```
+其中,wrapper名字是自定义的,上面的log是一个decorator,接受一个函数作为参数，并返回一个函数。
+
+使用装饰器
+```python
+@log
+def now():
+    print('2017-4-25')
+```
+调用now()函数，不仅会运行now()函数本身，还会在运行now()函数前打印一行日志.
+
+### 3. 闭包
+
+
+### 4. 高阶函数
+
+
+### 5. 偏函数
+
+
+
+### 参考文档
+* [Python官方文档](https://docs.python.org/3/library/asyncio.html)
+* [廖雪峰Python教程](http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000)

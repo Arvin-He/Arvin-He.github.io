@@ -6,7 +6,8 @@ categories: 数据库
 ---
 
 ### 1. MySQL下载
-下载mysql-5.7.17-winx64.zip,32位机器下载mysql-5.7.17-wix32.zip,不要下载mysql-installer-community-5.7.17.0.msi.
+下载mysql-5.7.17-winx64.zip,32位机器下载mysql-5.7.17-wix32.zip,
+不要下载mysql-installer-community-5.7.17.0.msi.
 [mysql下载链接](https://dev.mysql.com/downloads/mysql/)
 
 ### 2. 解压mysql
@@ -65,13 +66,11 @@ net start mysql
 #进入mysql
 mysql -u root -p
 
-#移除mysql
+#移除mysql服务
 mysqld -remove
 
 #停止服务
 net stop mysql
-
-
 ```
 
 ### 9. 修改root帐号密码
@@ -88,7 +87,6 @@ net stop mysql
 ### 10. 一些其他命令
 ```
 mysql -u root -p #-u表示用户, -p表示需要输入密码
-
 ```
 
 ### 11. 一些问题

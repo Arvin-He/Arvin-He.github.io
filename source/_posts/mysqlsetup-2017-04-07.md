@@ -1,6 +1,6 @@
 ---
 title: MySQL免安装配置
-date: 2017-04-09 15:56:03
+date: 2017-04-07 15:56:03
 tags: MySQL
 categories: 数据库
 ---

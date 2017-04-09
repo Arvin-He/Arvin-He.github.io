@@ -71,3 +71,7 @@ git fetch 只是下载远程的库的内容，不做任何的合并,
 git reset 把HEAD指向刚刚下载的最新的版本
 ```
 
+### 8. 本地仓库首次推送到github远程仓库
+1. 在github上建立一个和本地同名的仓库名称
+2. 在本地命令行输入:`git remote add origin 远程仓库地址`
+3. 将本地仓库同步到github远程仓库:`git push -u origin master`

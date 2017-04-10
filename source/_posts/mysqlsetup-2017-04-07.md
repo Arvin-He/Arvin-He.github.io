@@ -95,3 +95,22 @@ MYSQL服务无法启动的原因是:没有初始化mysql数据目录,mysql5.7解
 
 解决方法:
 在bin目录下输入命令:`mysqld --initialize-insecure --user=mysql`,然后在mysql根目录下会自动生成一个data文件夹.
+
+2. Error 1045: Access denied for user 'root'@'localhost' (using password: YES)
+解决方法:
+- > net stop mysql  (停用MySQL服务,没启动的可以省略)
+- 找到安装路径 MySQL Server 5.7下的my.ini打开 my.ini,找到  [mysqld]  然后在下面加上
+这句： skip\_grant_tables （意思好像是 启动MySQL服务的时候跳过权限表认证  ）
+- 启动数据库修改密码了   
+>   net start mysql   (启动MySQL服务)--->   mysql  回车   (如果成功，将出现MySQL提示符)
+- 输入use mysql; （连接权限数据库）。
+- 改密码：update user set authentication_string=password("123") where user="root";（别忘了最后加分号)
+- 刷新权限（必须步骤）：flush privileges; 
+- 退出 quit
+- 将第3 步的 my.ini里的 skip\_grant_tables  去掉（启动MySQL服务的时候不能让他跳过权限表认证 ）
+- 重启MySQL ，再进入，使用用户名root和刚才设置的新密码123就可以登录了。 
+
+3. MySQL5.7更改密码时出现ERROR 1054 (42S22): Unknown column 'password' in 'field list'.
+新安装的MySQL5.7，登录时提示密码错误，安装的时候并没有更改密码，后来通过免密码登录的方式更改密码，输入update mysql.user  set password=password('123') where user='root'时提示ERROR 1054 (42S22): Unknown column 'password' in 'field list'，
+原因:原来是mysql数据库下已经没有password这个字段了，password字段改成了authentication_string.
+解决方法:update user set authentication_string=password("123") where user="root";（别忘了最后加分号)

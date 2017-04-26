@@ -8,10 +8,8 @@ categories: 编程
 在Ｃ/C++语言中允许用一个标识符来表示一个字符串，称为宏，该字符串可以是常数、表达式、格式串等。
 在编译预处理时，对程序中所有出现的“宏名”，都用宏定义中的字符串去替换，这称为“宏替换”或“宏展开”。
 宏定义是由源程序中的宏定义命令完成的。宏替换是由预处理程序自动完成的。若字符串是表达式，则称之为函数式宏定义.
-普通函数式宏定义：
-```
-MAX(a,b) { return a>b?a:b;}
-```
+普通函数式宏定义：`MAX(a,b) { return a>b?a:b;}`
+
 几个比较经典的宏函数
 1.
 ```
@@ -30,7 +28,7 @@ do{                                        \
 其实不行！C++会在背后偷偷的帮你现实一个默认的拷贝构造的版本，必须注意这个后门。
 
 如何禁止对象的拷贝复制
-```
+```cpp
 class CPeople  
 {  
     // ...  
@@ -40,8 +38,10 @@ private:
     const CPeople& operator=(const CPeople& rhis){...}  
 }; 
 ``` 
+
 这样的设计，可以部分的禁止的类的复制，但是对于友元函数和类成员函数来说，还是可以调用其相关的复制操作的。
-```
+
+```cpp
 class CPeople  
 {  
     // ...  
@@ -51,12 +51,13 @@ private:
     const CPeople& operator=(const CPeople& rhis); // 只声明不实现  
 }; 
 ``` 
+
 将拷贝构造函数与赋值函数，声明为private，并且不给出实现。这样就实现了类复制的完全禁止
 用户代码中的复制尝试将在编译时标记为错误，而成员函数与友元函数中的复制尝试将在链接时出现错误。
 上面介绍的这种技术在你熟悉的std::iostream类中已经得到了很好的应用，诸如ios_base、basic_ios和sentry，都采用这样的方式不允许复制操作。
-
 Boost为我们提供了另一种解决方式，这种方式更加完美，因为它可以将链接错误提前到编译时，毕竟早一点发现错误比晚发现要好。特意声明一个不可复制的类
-```
+
+```cpp
 boost::noncopyable
 #ifndef BOOST_NONCOPYABLE_HPP_INCLUDED    
 #define BOOST_NONCOPYABLE_HPP_INCLUDED        
@@ -80,19 +81,23 @@ namespace boost {
 } // namespace boost    
 #endif  // BOOST_NONCOPYABLE_HPP_INCLUDED 
 ```
-为了禁止拷贝对象，我们只需要让其私有继承自boost::noncopyable，
+
+为了禁止拷贝对象，我们只需要让其私有继承自boost::noncopyable
+
 ```
 class student:private boost::noncopyable
 {
 ......
 }
 ```
+
 当调用到派生类的拷贝构造函数或赋值函数进行复制时，不可避免的要调用基类对应的函数，因为这些操作是private，这样的操作会被编译器拒绝。
 需要注意，多重继承有时会使空基类noncopyable优化失效，所以这不适合用于多重继承的情形。
 
 另外，如果只是不想要使用默认的拷贝构造函数或赋值函数，可以使用C++11提供的delete，
 C++11则使用delete关键字显式指示编译器不生成函数的默认版本。比如：
-```
+
+```cpp
 class MyClass
 {
 public:
@@ -102,6 +107,7 @@ MyClass(const MyClass& )=delete;
 ......
 }
 ```
+
 当然，一旦函数被delete过了，那么重载该函数也是非法的，该函数我们习惯上称为删除函数。
 
 ### 3. C++虚析构函数
@@ -130,7 +136,8 @@ MyClass(const MyClass& )=delete;
   -  #ifdef只能使用单个条件,
   -  #if defined(NAME)则可以组合多个条件
 The difference between the two is that #ifdef can only use a single condition,while #if defined(NAME) can do compound conditionals.
-```
+
+```cpp
     #ifndef __EXPORT_H__
     #define __EXPORT_H__
 
@@ -141,14 +148,15 @@ The difference between the two is that #ifdef can only use a single condition,wh
     #endif
     #endif // __EXPORT_H__
 ```
+
 ### 5. C++之throw
 void myfunc(void)throw();
 这样的函数声明只是告诉此函数的使用者说，我不会抛出异常，方便调用者捕捉异常。
 而至于实现不实现异常捕获是你自己的事。函数是给别人用的，不是给自己用的。
 
 
-### 6.
-#
+### 6. 其他
+
 ```
 3. inline关键字
 4. extern关键字 
@@ -159,7 +167,4 @@ void myfunc(void)throw();
 9. 指针
 10. 函数指针
 11. 回调函数
-12. 线程
-13. 进程
-14. OOP六大原则
 ```

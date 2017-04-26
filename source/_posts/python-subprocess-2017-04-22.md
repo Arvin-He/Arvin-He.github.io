@@ -1,5 +1,5 @@
 ---
-title: python-subprocess-2017-04-22
+title: Python之subprocess模块
 date: 2017-04-22 10:44:12
 tags: Python
 categories: 编程

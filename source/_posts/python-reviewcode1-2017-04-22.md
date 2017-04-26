@@ -1,5 +1,5 @@
 ---
-title: python-reviewcode1-2017-04-22
+title: Python之一些杂记
 date: 2017-04-22 09:45:05
 tags: [Python]
 categories: 编程

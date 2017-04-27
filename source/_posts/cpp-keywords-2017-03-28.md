@@ -158,7 +158,6 @@ void myfunc(void)throw();
 ### 6. 其他
 
 ```
-3. inline关键字
 4. extern关键字 
 5. explicit关键字
 6. volatile关键字

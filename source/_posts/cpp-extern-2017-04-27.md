@@ -145,4 +145,4 @@ C++中const修饰的全局常量具有跟static相同的特性，即它们只能
 
 ### 参考
 
-* ![C/C++中extern关键字详解](http://www.cnblogs.com/yc_sunniwell/archive/2010/07/14/1777431.html)
+* [C/C++中extern关键字详解](http://www.cnblogs.com/yc_sunniwell/archive/2010/07/14/1777431.html)

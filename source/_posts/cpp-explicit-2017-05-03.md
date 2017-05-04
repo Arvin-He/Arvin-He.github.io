@@ -1,7 +1,7 @@
 ---
 title: C++之explicit关键字
 date: 2017-05-03 14:49:41
-tags: C++
+tags: C/C++
 categories: 编程
 ---
 ### explicit关键字

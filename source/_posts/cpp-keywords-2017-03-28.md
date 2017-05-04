@@ -158,7 +158,6 @@ void myfunc(void)throw();
 ### 6. 其他
 
 ```
-6. volatile关键字
 7. using关键字
 8. 四种类型Cast
 9. 指针

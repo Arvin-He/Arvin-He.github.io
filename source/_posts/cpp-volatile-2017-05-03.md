@@ -68,5 +68,5 @@ long square(volatile int *ptr)
 ```
 
 ### 参考
-* [](http://hedengcheng.com/?p=725)
-* [](http://blog.csdn.net/wuliming_sc/article/details/3717017)
+* [参考文章](http://hedengcheng.com/?p=725)
+* [参考文章](http://blog.csdn.net/wuliming_sc/article/details/3717017)

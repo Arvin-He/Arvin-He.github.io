@@ -206,5 +206,5 @@ typeid 定义在标准头文件`<typeinfo>`中，用于获取表达式的类型�
 
 ### 参考
 
-- [](http://www.cppblog.com/kesalin/archive/2012/10/28/type_cast.html)
-- [](http://www.cnblogs.com/goodhacker/archive/2011/07/20/2111996.html)
+- [参考文章](http://www.cppblog.com/kesalin/archive/2012/10/28/type_cast.html)
+- [参考文章](http://www.cnblogs.com/goodhacker/archive/2011/07/20/2111996.html)

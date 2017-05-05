@@ -215,5 +215,5 @@ double circle::PI = 3.1416;
 隐患: 头文件中的 static 函数会在每个文件中生成一份代码，这造成代码冗余倒不是最大的问题，最大的问题是可能带来库文件与工程文件同一函数的代码的不一致性，这有风险。
 
 
-* [参考](http://blog.csdn.net/keyeagle/article/details/6708077)
+* [参考文章](http://blog.csdn.net/keyeagle/article/details/6708077)
 * [参考文章](http://www.cnblogs.com/BeyondAnyTime/archive/2012/06/08/2542315.html)

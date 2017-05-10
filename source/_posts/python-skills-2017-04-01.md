@@ -46,3 +46,14 @@ python中set,list,tuple,dict都是表示对象,这些对象在给新对象赋值
 当你想要过滤掉列表中的元素,优先选用列表表达式.不要用循环加判断的方式.
 
 ### 7. 闭包中的自由变量
+
+
+### 8. Python 按给定的长度分割字符串
+```python
+import re
+aa = 'asdf21232465'
+b=re.findall(r'.{2}',aa)
+print b
+# or
+print [aa[i:i+2] for i in range(0, len(aa), 2)]
+```

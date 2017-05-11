@@ -23,6 +23,9 @@ menu:
   - page: archive
     directory: archives/
     icon: fa-archive
+  - page: projects
+    directory: projects/
+    icon: fa-archive
   - page: life
     directory: life/
     icon: fa-archive

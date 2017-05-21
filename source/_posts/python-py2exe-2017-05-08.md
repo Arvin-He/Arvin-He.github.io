@@ -1,5 +1,5 @@
 ---
-title: Python之程序打包发布
+title: Python之py2exe打包发布
 date: 2017-05-08 11:20:24
 tags: Python
 categories: 编程
@@ -76,9 +76,12 @@ hello World
 ```
 运行成功之后，与前面使用python hello.py是一样的结果，不过这个目录内容就可以发布到不同的电脑上进行运行，并不再需要安装python的安装程序。
 
-### cx_Freeze打包发布程序
+### py2exe使用出现的问题
+py2exe 使用简单,但是会出一些问题,如在打包文件时会出现递归溢出的问题
 
-### pyInstaller打包发布程序
+
+
+### cx_Freeze打包发布程序
 
 ### 将Python程序打包成.zip文件并发布 
 在部署Python程序的时候。一般是把所有的源代码复制到目标机器上。我发现一个更好的办法是把源代码打包成.zip文件，然后直接运行这个.zip文件。比如：`python besteam.zip`

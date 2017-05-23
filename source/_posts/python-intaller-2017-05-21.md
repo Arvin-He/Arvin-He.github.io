@@ -5,10 +5,11 @@ tags: Python
 categories: 编程
 ---
 ### Pyinstaller安装
-控制台窗口输入:`pip install pyinstaller`,回车就安装好pyinstaller
+控制台窗口输入:`pip install pyinstaller`,回车,然后开始自动安装pyinstaller
 
 ### Pyinstaller使用
-目录切换到你要打包程序的目录下, 在控制台窗口输入:`pyinstaller yourprogram.py`,回车,然后在你的程序目录下创建一个dist文件夹,里面包含你要打包的所有相关的东西.
+目录切换到你要打包程序的目录下, 在控制台窗口输入:`pyinstaller yourprogram.py`,回车,
+然后在你的程序目录下创建一个dist文件夹,里面包含你要打包的所有相关的东西.
 注意:配置文件不会被打包加进去
 
 ### 一些选项

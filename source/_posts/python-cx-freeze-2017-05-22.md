@@ -1,14 +1,17 @@
 ---
-title: python之cx_Freeze使用
+title: python之cx_Freeze打包发布
 date: 2017-05-22 17:26:02
 tags: Python
 categories: 编程
 ---
+### 安装cx_Freeze
+在控制台窗口输入:`pip install cx_Freeze`,回车,然后就自动安装cx_Freeze了.
+
 
 ### cx_Freeze使用
 与py2exe一样,需要在要打包的程序目录下创建一个setup.py, 当然也可以是其他名字
-然后在命令行差un港口输入:`python setup.py build`,回车,然后就会在程序目录下
-创建一个build文件夹,里面包含了需要用到的依赖
+然后在命令行窗口输入:`python setup.py build`,回车,然后就会在程序目录下
+创建一个build文件夹,里面打包了所有需要用到的依赖
 ```python
 # setup.py
 import sys

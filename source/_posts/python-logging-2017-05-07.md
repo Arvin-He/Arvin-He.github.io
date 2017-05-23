@@ -5,32 +5,29 @@ tags: Python
 categories: 编程
 ---
 ### 日志设定
-在软件开发过程中,需要将日志信息输出到控制台并写入到日志文件中.但是如何做呢?
+在软件开发过程中,需要将日志信息输出到控制台,写入到日志文件中.但是如何做呢?
+在你的应用程序创建一个模块,如logger.py
 
 ```python
-import logging  
+# logger.py
 
+import logging  
 # 创建一个logger  
 logger = logging.getLogger(__file__)  
 logger.setLevel(logging.DEBUG)  
-   
 # 创建一个handler，用于写入日志文件  
 fh = logging.FileHandler('mylog.log')  
 fh.setLevel(logging.DEBUG)  
-   
 # 再创建一个handler，用于输出到控制台  
 ch = logging.StreamHandler()  
 ch.setLevel(logging.DEBUG)  
-   
 # 定义handler的输出格式  
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')  
 fh.setFormatter(formatter)  
 ch.setFormatter(formatter)  
-  
 # 给logger添加handler  
 logger.addHandler(fh)  
 logger.addHandler(ch)  
-  
 # 记录一条日志  
 logger.info('this is first log.')  
 ```
@@ -59,7 +56,7 @@ logging.debug('This message should appear on the console')
 ### 关于root logger以及logger的父子关系
 关于root logger， 实际上logger实例之间还有父子关系， root logger就是处于最顶层的logger， 它是所有logger的祖先。如下图:
 
-![logger实例之间关系](python-logging-2017-05-07)
+![logger实例之间关系](python-logging-2017-05-07/1.png)
 
 root logger是默认的logger
 如果不创建logger实例， 直接调用logging.debug()、logging.info()logging.warning()、logging.error()、logging.critical()这些函数，那么使用的logger就是 root logger， 它可以自动创建，也是单实例的。
@@ -111,7 +108,12 @@ c.debug('foo')
 2017-05-07 16:04:29,893 - foo  
 2011-05-07 16:04:29,893 - DEBUG - foo 
 ```
-可见， 孩子logger没有任何handler，所以对消息不做处理。但是它把消息转发给了它的父亲以及root logger。最后输出两条日志。
+可见， 子logger没有任何handler，所以对消息不做处理。但是它把消息转发给了它的父亲以及root logger。最后输出两条日志。
+
+
+### 一些问题
+当你的应用程序用到了日志模块,并同时输出日志到控制台和文件中,打包发布并安装你的应用程序后,运行你的程序后有日志输出,当关闭应用程序会弹出一个弹框,让你去日志文件检查错误信息,并且会自动生成一个和应用程序同名的日志文件.这个弹框及和应用程序同名日志文件是怎么产生的呢?
+原因是:控制台窗口的句柄导致的,不要将日志文件输出到控制台窗口即可.
 
 ### 参考
 * [使用python的logging模块](http://kenby.iteye.com/blog/1162698)

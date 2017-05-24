@@ -5,8 +5,6 @@ tags: [Python]
 categories: 编程
 ---
 
-1. 列表生成式
-
 2. 偏函数
 
 3. 闭包

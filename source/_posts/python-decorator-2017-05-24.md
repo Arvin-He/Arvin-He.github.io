@@ -1,5 +1,5 @@
 ---
-title: python之装饰器
+title: Python之装饰器
 date: 2017-05-24 13:31:32
 tags: Python
 categories: 编程
@@ -168,7 +168,7 @@ def decorator(func):
 @decorator
 def hello(name="arvin"):
     print("Hello %s!" % name)
-    
+
 hello()
 
 # 执行

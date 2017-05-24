@@ -7,7 +7,6 @@ categories: 编程
 ### subprocess模块
 subprocess模块,即子进程模块,允许您生成新进程，并连接到输入/输出/错误管道，并获取其返回代码。
 
-
 ### subprocess模块使用
 调用subprocess模块的推荐方法是:推荐使用run()函数来处理几乎所有用例或情景。对于更高级的用例，可以直接使用基础的Popen接口。
 ```
@@ -21,10 +20,7 @@ subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, shell=
 如果检查为真，并且进程以非零退出代码退出，则将引发CalledProcessError异常。该异常的属性保存参数，退出代码以及stdout和stderr（如果被捕获）。
 如果指定了编码或错误，或者universal_newlines为true，则使用指定的编码和错误或io.TextIOWrapper默认文件在文本模式下打开stdin，stdout和stderr的文件对象。否则，文件对象将以二进制模式打开。
 
-
 args是所有调用所必需的，应该是一个字符串或一系列程序参数。通常优选提供参数序列，因为它允许模块处理任何所需的转义和引用参数（例如，允许文件名中的空格）。如果传递单个字符串，则shell必须为True（见下文），否则字符串必须简单地命名要执行的程序，而不指定任何参数。
-
-
 
 ### Popen构造函数
 ```

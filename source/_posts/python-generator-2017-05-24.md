@@ -239,6 +239,8 @@ StopIteration
 close函数的用法就是关闭生成器对象，其实调用send或者next函数都会‘open’这个生成器，期间生成器都会记录执行的中间结果，直到生成器被关闭为止
 
 ### throw函数的用法
+
+```python
 from random import randint
 
 def Gen(n):
@@ -256,7 +258,7 @@ if __name__=='__main__':
     #给生成器扔进去一个异常    
     c.throw(IOError)
     print (c.__next__())
-
+```
 执行结果：
 39
 get the IO Error

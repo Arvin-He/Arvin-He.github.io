@@ -1,5 +1,5 @@
 ---
-title: Python之py2exe打包发布
+title: Python之应用程序打包发布
 date: 2017-05-08 11:20:24
 tags: Python
 categories: 编程
@@ -22,7 +22,9 @@ categories: 编程
 
 PS.其中pyInstaller和cx\_Freeze都是不错的，stackoverflow上也有人建议用cx\_Freeze，说是更便捷些。pkg\_resources新版的pyInstaller貌似是支持的。
 
-### py2exe打包发布
+### 使用py2exe打包发布程序
+
+#### py2exe打包发布
 **注意:** 目前py2exe只支持到3.4版本,3.6版本不支持,主要是语法上不支持.
 
 1. 安装py2exe: `pip install py2exe`
@@ -49,9 +51,62 @@ setup(console=['hello.py'])
 4. 执行生成的exe程序
 经过上面的步骤，就可以进入目录dist下面进行运行exe程序了,双击就可运行.运行成功之后，与前面使用python hello.py是一样的结果，不过这个目录内容就可以发布到不同的电脑上进行运行，且不需要安装python。
 
-### py2exe使用出现的问题
+#### py2exe使用出现的问题
 1. py2exe 在打包简单的文件时能够正常工作,但打包稍微复杂的应用程序时会出现递归溢出的问题,打包失败,不知原因,且网上没有好的解决方法.
 2. 如果是PyQt的GUI应用程序,py2exe则不会将平台相关的东西(即PyQt下的platform文件夹)打包进来.
+
+### 使用Pyinstaller打包发布程序
+
+#### Pyinstaller安装
+控制台窗口输入:`pip install pyinstaller`,回车,然后开始自动安装pyinstaller
+
+#### Pyinstaller使用
+目录切换到你要打包程序的目录下, 在控制台窗口输入:`pyinstaller yourprogram.py`,回车,
+然后在你的程序目录下创建一个dist文件夹,里面包含你要打包的所有相关的东西.
+注意:配置文件不会被打包加进去
+
+#### 一些选项
+`python pyinstaller.py [opts] yourprogram.py`
+主要选项
+-F, -onefile 打包成一个exe文件
+-D, -onedir 创建一个目录，包含exe文件，但会依赖很多文件（默认选项）
+-c, -console, -nowindowed 使用控制台，无界面（默认）
+-w, -windowed, -noconsole 使用窗口，无控制台
+
+#### 缺点
+打包了很多东西,比较大
+
+### 使用cx_Freeze打包发布程序
+
+#### 安装cx_Freeze
+在控制台窗口输入:`pip install cx_Freeze`,回车,然后就自动安装cx_Freeze了.
+
+#### cx_Freeze使用
+与py2exe一样,需要在要打包的程序目录下创建一个setup.py, 当然也可以是其他名字
+然后在命令行窗口输入:`python setup.py build`,回车,然后就会在程序目录下
+创建一个build文件夹,里面打包了所有需要用到的依赖
+```python
+# setup.py
+import sys
+from cx_Freeze import setup, Executable
+# 依赖关系被自动检测，但可能需要微调
+build_exe_options = {"packages": ["os"], "excludes": ["tkinter"]}
+# GUI应用程序在Windows上需要不同的基础（默认值为控制台应用程序)
+base = None
+if sys.platform == "win32":
+    base = "Win32GUI"
+
+setup(  name = "guifoo",
+        version = "0.1",
+        description = "My GUI application!",
+        options = {"build_exe": build_exe_options},
+        executables = [Executable("guifoo.py", base=base)])
+
+```
+
+#### 打包成*.msi格式
+在命令行窗口输入:`python setup.py bdist_msi`,回车,就会在build目录下生成一个*.msi格式的软件安装包
+
 
 ### 将Python程序打包成.zip文件并发布 
 在部署Python程序的时候。一般是把所有的源代码复制到目标机器上。我发现一个更好的办法是把源代码打包成.zip文件，然后直接运行这个.zip文件。比如：`python besteam.zip`
@@ -75,3 +130,4 @@ besteamzip.close()
 * [Python依赖打包发布详细](http://www.cnblogs.com/turtle920/p/5370132.html)
 * [Freezing Your Code](http://docs.python-guide.org/en/latest/shipping/freezing/)
 * [http://www.tuicool.com/articles/Ivuaaq](http://www.tuicool.com/articles/Ivuaaq)
+* [http://cx-freeze.readthedocs.io/en/latest/distutils.html](http://cx-freeze.readthedocs.io/en/latest/distutils.html)

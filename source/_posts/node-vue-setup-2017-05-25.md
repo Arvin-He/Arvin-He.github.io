@@ -12,7 +12,7 @@ Node.js 的包管理器 npm，是全球最大的开源库生态系统。
 
 ### node安装
 windows下的NodeJS安装是比较方便的（v0.6.0版本之后，支持windows native），
-只需要登陆官网 ![node官网](http://nodejs.org/)，便可以看到首页的“INSTALL”按钮，直接点击就会自动下载安装了。
+只需要登陆官网 [node官网](http://nodejs.org/)，便可以看到首页的“INSTALL”按钮，直接点击就会自动下载安装了。
 
 安装完成后可以使用cmd（win+r然后输入cmd进入）测试下是否安装成功。
 方法：在cmd下输入node -v，出现版本提示就是完成了NodeJS的安装。
@@ -52,7 +52,7 @@ Vue.js是一个MVVM模式的框架.
 关于`npm run dev`命令，其中的“run”对应的是package.json文件中，scripts字段中的dev，也就是`node build/dev-server.js`命令的一个快捷方式。
  项目运行成功后，浏览器会自动打开localhost:8080（如果浏览器没有自动打开，可以手动输入）。运行成功后，会看到如下所示的界面。
  
- ![](vue-flask-2017-05-25/1.png)
+ ![](node-vue-setup-2017-05-25/1.png)
 
  ### 参考
  * [http://www.cnblogs.com/qdrw/articles/6380091.html](http://www.cnblogs.com/qdrw/articles/6380091.html)

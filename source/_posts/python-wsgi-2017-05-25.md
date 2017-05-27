@@ -1,7 +1,7 @@
 ---
 title: Python之WSGI
 date: 2017-05-25 13:17:45
-tags: Python,Web
+tags: [Python,Flask]
 categories: 编程
 ---
 ### WSGI概念

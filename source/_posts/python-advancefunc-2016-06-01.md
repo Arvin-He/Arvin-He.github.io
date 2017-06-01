@@ -75,6 +75,7 @@ Out[5]: [1, 4, 9, 16, 25]
 In [6]: list(map(str, [1, 2, 3, 4, 5]))
 Out[6]: ['1', '2', '3', '4', '5']
 ```
+
 map()传入的第一个参数是f，即函数对象本身。由于结果r是一个Iterator，Iterator是惰性序列，因此通过list()函数让它把整个序列都计算出来并返回一个list.
 
 2. reduce()高阶函数
@@ -117,17 +118,20 @@ list(filter(is_odd, [1, 2, 4, 5, 6, 9, 10, 15]))
 4. sorted()高阶函数
 排序也是在程序中经常用到的算法。排序的核心是比较两个元素的大小。sorted()函数也是一个高阶函数，它接受3个参数, 其中接收一个key函数来实现自定义的排序，key指定的函数将作用于list的每一个元素上，并根据key函数返回的结果进行排序, 例如按绝对值大小排序：
 ```python
+# sorted函数原型
 sorted(...)
     sorted(iterable, key=None, reverse=False) --> new sorted list
 
 >>> sorted([36, 5, -12, 9, -21], key=abs)
 [5, 9, -12, -21, 36]
 ```
+
 对字符串排序，是按照ASCII的大小比较的,现在，我们提出排序应该忽略大小写，按照字母序排序。
 ```python
 >>> sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower)
 ['about', 'bob', 'Credit', 'Zoo']
 ```
+
 要进行反向排序，不必改动key函数，可以传入第三个参数reverse=True：
 ```python
 >>> sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower, reverse=True)

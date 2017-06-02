@@ -1,5 +1,5 @@
 ---
-title: Node笔记
+title: Node笔记1
 date: 2017-06-01 15:45:03
 tags: NodeJS
 categories: 编程  
@@ -172,3 +172,6 @@ About to route a request for /
 Request for /favicon.ico received.
 About to route a request for /favicon.ico
 ```
+
+### 参考
+* [Node入门](http://www.nodebeginner.org/index-zh-cn.html#execution-in-the-kongdom-of-verbs)

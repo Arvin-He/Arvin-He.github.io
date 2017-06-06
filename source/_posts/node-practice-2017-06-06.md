@@ -150,7 +150,7 @@ npm init
 
 ### 使用风格指南
 所有的代码都保持统一风格有助于理解大型代码库。其中应该包含缩进、变量命名、最佳实践以及其他方面。
-如果想看一个实际的例子，请查看  RisingStack 编写的 ![Node.js 风格指南](https://github.com/RisingStack/node-style-guide)。
+如果想看一个实际的例子，请查看  RisingStack 编写的 [Node.js 风格指南](https://github.com/RisingStack/node-style-guide)。
 
 ### 保持风格一致
 JSCS 是一个JavaScript 编码风格检查工具。将JSCS加入项目对你来说小菜一碟：`npm install jscs --save-dev`, 你需要做的下一步关键就是在 package.json 文件中加入下面的代码来开启它：

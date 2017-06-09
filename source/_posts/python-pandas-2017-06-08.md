@@ -1118,6 +1118,8 @@ In [126]: plt.figure(); df.plot(); plt.legend(loc='best')
 Out[126]: <matplotlib.legend.Legend at 0x6c3e8f0>
 ```
 
+![](python-pandas-2017-06-08/2.png)
+
 ### 读写数据
 #### CSV
 ```python

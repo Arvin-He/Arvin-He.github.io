@@ -474,4 +474,4 @@ USE: Thread-3
 
 
 ### 参考
-* [https://juejin.im/post/5845134da22b9d006c2959c3](https://juejin.im/post/5845134da22b9d006c2959c3)
+* [理解Python并发编程 - 线程篇](https://juejin.im/post/5845134da22b9d006c2959c3)

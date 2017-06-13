@@ -5,7 +5,7 @@ tags: Python
 categories: 编程
 ---
 
-### 多进程模块(multiprocessing)
+### 多进程模块(multiprocessing)简介
 multiprocessing是多进程模块，多进程提供了任务并发性，能充分利用多核处理器, 避免了GIL（全局解释锁）对资源的影响。由于GIL（全局解释锁）的问题，多线程并不能充分利用多核处理器，如果是一个CPU计算型的任务，应该使用多进程模块 multiprocessing 。它的工作方式与线程库完全不同，但是两种库的语法却非常相似。multiprocessing给每个进程赋予单独的Python解释器，这样就规避了全局解释锁所带来的问题。
 
 #### multiprocessing常用类:

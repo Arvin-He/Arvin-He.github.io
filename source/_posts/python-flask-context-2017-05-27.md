@@ -1,7 +1,7 @@
 ---
 title: Flask之上下文机制
 date: 2017-05-27 11:29:30
-tags: [Pthon,Flask]
+tags: [Python,Flask]
 categories: 编程
 ---
 ### 上下文（application context 和 request context）

@@ -4,8 +4,6 @@ date: 2017-04-14 14:07:22
 tags: [Python]
 categories: 编程
 ---
-8. 多线程
-
 9. 多进程
 
 11. 设计模式
@@ -16,7 +14,7 @@ categories: 编程
 
 15. matplotlib使用 python的数据可视化最常用的matplotlib，用于科学制图——基础的绘图，已经集成在pandas里此外，ggplot2在R语言下的绘图神器，也同时支持python的哟，非常推荐。
 
-17. scrapy框架使用
+17. scrapy
 
 19. statsmodels：统计包，设计各种统计模型，包括回归、广义回归、假设检验等，结果类似于R语言，会给出各种检验结果。
 

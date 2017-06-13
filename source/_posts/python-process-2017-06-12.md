@@ -5,8 +5,54 @@ tags: Python
 categories: 编程
 ---
 
-### 多进程模块
-由于GIL（全局解释锁）的问题，多线程并不能充分利用多核处理器，如果是一个CPU计算型的任务，应该使用多进程模块 multiprocessing 。它的工作方式与线程库完全不同，但是两种库的语法却非常相似。multiprocessing给每个进程赋予单独的Python解释器，这样就规避了全局解释锁所带来的问题。下面将讲述多进程之间的通信
+### 多进程模块(multiprocessing)
+multiprocessing是多进程模块，多进程提供了任务并发性，能充分利用多核处理器, 避免了GIL（全局解释锁）对资源的影响。由于GIL（全局解释锁）的问题，多线程并不能充分利用多核处理器，如果是一个CPU计算型的任务，应该使用多进程模块 multiprocessing 。它的工作方式与线程库完全不同，但是两种库的语法却非常相似。multiprocessing给每个进程赋予单独的Python解释器，这样就规避了全局解释锁所带来的问题。
+
+#### multiprocessing常用类:
+1. `Process(group=None, target=None, name=None, args=(), kwargs={})`
+派生一个进程对象，然后调用start()方法启动
+2. `Pool(processes=None, initializer=None, initargs=())`
+返回一个进程池对象，processes进程池进程数量
+3. `Pipe(duplex=True)`
+返回两个连接对象由管道连接
+4. `Queue(maxsize=0)`
+返回队列对象，操作方法跟Queue.Queue一样
+5. `multiprocessing.dummy`
+这个库是用于实现多线程
+
+
+#### Process()类有以下些方法：
+`run()`
+`start()` :启动进程对象
+`join([timeout])` :等待子进程终止，才返回结果。可选超时。
+`name` : 进程名字
+`is_alive()` :返回进程是否存活
+`daemon` : 进程的守护标记，一个布尔值
+`pid`: 返回进程ID
+`exitcode` :子进程退出状态码
+`terminate()` :终止进程。在unix上使用SIGTERM信号，在windows上使用TerminateProcess()。
+
+#### Pool()类有以下些方法：
+`apply(func, args=(), kwds={})` :等效内建函数apply()
+`apply_async(func, args=(), kwds={}, callback=None)` : 异步，等效内建函数apply()
+`map(func, iterable, chunksize=None)` : 等效内建函数map()
+`map_async(func, iterable, chunksize=None, callback=None)` :异步，等效内建函数map()
+`imap(func, iterable, chunksize=1)` :等效内建函数itertools.imap()
+`imap_unordered(func, iterable, chunksize=1)` :像imap()方法，但结果顺序是任意的
+`close()` :关闭进程池
+`terminate()` : 终止工作进程，垃圾收集连接池对象
+`join()` :等待工作进程退出。必须先调用close()或terminate()
+
+#### `Pool.apply_async()`和`Pool.map_aysnc()`又提供了以下几个方法：
+`get([timeout])` : 获取结果对象里的结果。如果超时没有，则抛出TimeoutError异常
+`wait([timeout])` : 等待可用的结果或超时
+`ready()` : 返回调用是否已经完成
+`successful()`
+
+
+
+
+下面将讲述多进程之间的通信
 ```python
 import time
 import multiprocessing
@@ -85,14 +131,54 @@ def f(conn):
 parent_conn, child_conn = Pipe()
 p = Process(target=f, args=(child_conn,))
 p.start()
-print parent_conn.recv()
+print(parent_conn.recv())
 p.join()
 ```
 
 其中Pipe返回的是管道2边的对象：「父连接」和「子连接」。当子连接发送一个带有hello字符串的列表，父连接就会收到，所以parent_conn.recv()就会打印出来。这样就可以简单的实现在多进程之间传输Python内置的数据结构了。但是先说明，不能被xmlrpclib序列化的对象是不能这么传输的。
 
+### 队列
 
+### 同步机制
+multiprocessing的Lock、Condition、Event、RLock、Semaphore等同步原语和threading模块的机制是一样的，用法也类似.
 
+### 进程间共享状态
+multiprocessing提供的在进程间共享状态的方式有2种：
+
+#### 共享内存
+主要通过Value或者Array来实现。常见的共享的有以下几种：
+```python
+In [1]: from multiprocessing.sharedctypes import typecode_to_type
+
+In [2]: typecode_to_type
+Out[2]:
+{'B': ctypes.c_ubyte,
+ 'H': ctypes.c_ushort,
+ 'I': ctypes.c_ulong,
+ 'L': ctypes.c_ulong,
+ 'b': ctypes.c_byte,
+ 'c': ctypes.c_char,
+ 'd': ctypes.c_double,
+ 'f': ctypes.c_float,
+ 'h': ctypes.c_short,
+ 'i': ctypes.c_long,
+ 'l': ctypes.c_long,
+ 'u': ctypes.c_wchar}
+ ```
+
+ 而且共享的时候还可以给Value或者Array传递lock参数来决定是否带锁，如果不指定默认为RLock。
+
+ ### 进程间对象共享
+一个multiprocessing.Manager对象会控制一个服务器进程，其他进程可以通过代理的方式来访问这个服务器进程。
+常见的共享方式有以下几种：
+1. Namespace。创建一个可分享的命名空间。
+2. Value/Array。和上面共享ctypes对象的方式一样。
+3. dict/list。创建一个可分享的dict/list，支持对应数据结构的方法。
+4. Condition/Event/Lock/Queue/Semaphore。创建一个可分享的对应同步原语的对象。
+
+### 分布式的进程间通信
+用Manager和Queue就可以实现简单的分布式的不同服务器的不同进程间的通信（C/S模式）。
 
 ### 参考
 * [理解Python并发编程 - 进程篇](https://juejin.im/post/5847853661ff4b006c431c64)
+* [Python多进程与多线程](https://yq.aliyun.com/articles/65091?utm_campaign=wenzhang&utm_medium=article&utm_source=QQ-qun&utm_content=m_8078)

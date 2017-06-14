@@ -1,7 +1,7 @@
 ---
 title: 正则表达式使用
 date: 2017-03-30 13:58:36
-tags: [Regular]
+tags: [RegExp]
 categories: 编程  
 ---
 ### 1. 常用元字符

@@ -49,68 +49,137 @@ multiprocessing是多进程模块，多进程提供了任务并发性，能充�
 `ready()` : 返回调用是否已经完成
 `successful()`
 
-
-
-
-下面将讲述多进程之间的通信
+### multiprocessing使用
+一个简单的例子
 ```python
-import time
-import multiprocessing
+from multiprocessing import Process
+import os
 
-
-def profile(func):
-    def wrapper(*args, **kwargs):
-        import time
-        start = time.time()
-        func(*args, **kwargs)
-        end   = time.time()
-        print('COST: {}'.format(end - start))
-    return wrapper
-
-
-def fib(n):
-    if n<= 2:
-        return 1
-    return fib(n-1) + fib(n-2)
-
-
-@profile
-def nomultiprocess():
-    fib(35)
-    fib(35)
-
-
-@profile
-def hasmultiprocess():
-    jobs = []
-    for i in range(2):
-        # 注意这里传参数,会报错,需要在执行前加上 freeze_support()
-        p = multiprocessing.Process(target=fib, args=(35,))
-        p.start()
-        jobs.append(p)
-
-    for p in jobs:
-        p.join()
+def worker(name):
+    print(name)
+    print("parent pid = {}".format(os.getppid()))
+    print("current pid = {}".format(os.getpid()))
 
 if __name__ == "__main__":
-    multiprocessing.freeze_support()
-    nomultiprocess()
-    hasmultiprocess()
+    p = Process(target=worker, args=('func worker', ))
+    p.start()
+    p.join()
+    print(p.name)
+
+#输出结果
+func worker
+parent pid = 5476
+current pid = 5992
+Process-1
 ```
 
-运行结果:
+关于`join([timeout])`方法说明:如果可选参数timeout为None(默认值)，该方法将阻塞，直到调用join()方法的进程终止。如果超时为正数，则阻塞最多超时timeout的设定值。请注意，如果方法终止或方法超时，该方法返回None。检查进程的exitcode以确定是否终止。
+
+给子进程命名,方便管理
+```python
+from multiprocessing import Process
+import os
+
+
+def worker1():
+    print("this is worker1 func")
+    print("current pid = {}".format(os.getpid()))
+
+
+def worker2():
+    print("this is worker2 func")
+    print("current pid = {}".format(os.getpid()))
+
+
+if __name__ == "__main__":
+    print("parent pid = {}".format(os.getppid()))
+    for n in range(3):
+        p1 = Process(name="worker1", target=worker1)
+        p1.start()
+        p1.join()
+        print("child process name = {}".format(p1.name))
+    p2 = Process(name="worker2", target=worker2)
+    p2.start()
+    p2.join()
+    print("child process name = {}".format(p2.name))
+
+# 输出结果
+parent pid = 2816
+this is worker1 func
+current pid = 2428
+child process name = worker1
+this is worker1 func
+current pid = 3192
+child process name = worker1
+this is worker1 func
+current pid = 4736
+child process name = worker1
+this is worker2 func
+current pid = 976
+child process name = worker2
 ```
-COST: 5.3473060131073
-COST: 3.7542150020599365
-```
+
+关于daemon
+这里的daemon不同于linux中守护进程的概念,这里的daemon参数是一个布尔值,
+如果daemon为None则创建子进程时daemon参数从父进程继承过来.
+如果daemon为true,则创建的子进程随着父进程退出而退出,
+如果daemon为false,则创建的子进程随着父进程退出而不退出,
+注意: 一个守护进程不允许创建子进程,否则当父进程退出后,该守护进程终止后会使由该守守护进守护进程创建的子进程变成独立进程,此外，它们不是Unix守护程序或服务，它们是正常进程，如果非守护进程已退出，则该进程将被终止（并且未加入）。
+
 
 ### 进程池
 **有一点要强调：**任务的执行周期决定于CPU核数和任务分配算法。
 ```python
+from multiprocessing import Pool, current_process
+import os, time, sys
+
+def worker(n):
+    print('hello world', n)
+    # 获取当前进程名字
+    print('process name:', current_process().name)
+    # 休眠用于执行时有时间查看当前执行的进程
+    time.sleep(1)
+
+if __name__ == '__main__':
+    p = Pool(processes=3)
+    for i in range(8):
+        r = p.apply_async(worker, args=(i,))
+        # 获取结果中的数据
+        r.get(timeout=5)  
+    p.close()
+
+# 运行结果:
+hello world 0
+process name: SpawnPoolWorker-2
+hello world 1
+process name: SpawnPoolWorker-3
+hello world 2
+process name: SpawnPoolWorker-1
+hello world 3
+process name: SpawnPoolWorker-2
+hello world 4
+process name: SpawnPoolWorker-3
+hello world 5
+process name: SpawnPoolWorker-1
+hello world 6
+process name: SpawnPoolWorker-2
+hello world 7
+process name: SpawnPoolWorker-3
+```
+
+进程池生成了3个子进程，通过循环执行8次worker函数，进程池会从子进程1开始去处理任务，当到达最大进程时，会继续从子进程1开始。
+
+进程池map方法, map()方法是将序列中的元素通过函数处理返回新列表。
+```python
 from multiprocessing import Pool
 
-pool = Pool(2)
-pool.map(fib, [35] * 2)
+def worker(url):
+    return 'http://%s' % url
+urls = ['www.baidu.com', 'www.jd.com']
+pool = Pool(2)s
+r = pool.map(worker, urls)
+pool.close()
+print(r)
 ```
 
 上面的hasmultiprocess函数的用法非常中规中矩且常见，但是我认为更好的写法是使用Pool，也就是对应线程池的进程池. 其中map方法用起来和内置的map函数一样，却有多进程的支持。
@@ -120,6 +189,7 @@ pool.map(fib, [35] * 2)
 
 ### 基于Pipe的parmap
 进程间的通信（IPC）常用的是rpc、socket、pipe（管道）和消息队列（queue）。
+ultiprocessing支持两种类型进程间通信：Queue和Pipe。
 多进程模块中涉及到了后面3种。先看一个官网给出的最基本的管道的例子：
 ```python
 from multiprocessing import Process, Pipe

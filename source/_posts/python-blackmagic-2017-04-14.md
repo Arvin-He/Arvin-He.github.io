@@ -4,17 +4,13 @@ date: 2017-04-14 14:07:22
 tags: [Python]
 categories: 编程
 ---
-9. 多进程
+17. scrapy
 
 11. 设计模式
 
 12. 算法
 
-14. 对于numpy和scipy是作为科学计算用的，提供各种向量矩阵计算、优化、随机数生成等等
-
-15. matplotlib使用 python的数据可视化最常用的matplotlib，用于科学制图——基础的绘图，已经集成在pandas里此外，ggplot2在R语言下的绘图神器，也同时支持python的哟，非常推荐。
-
-17. scrapy
+15. matplotlib
 
 19. statsmodels：统计包，设计各种统计模型，包括回归、广义回归、假设检验等，结果类似于R语言，会给出各种检验结果。
 

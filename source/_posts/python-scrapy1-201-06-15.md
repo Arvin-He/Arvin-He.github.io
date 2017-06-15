@@ -175,7 +175,7 @@ print(ret)
 
 语法规则：
 `Selector(response=response查询对象).xpath(‘//li[re:test(@class, “item-d*”)]//@href’).extract()`，即根据re正则匹配，test即匹配，属性名是class，匹配的正则表达式是”item-d*”，然后获取该标签的href属性。
-[更多选择器规则]()http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/selectors.html)
+[更多选择器规则](http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/selectors.html)
 
 选择器规则示例:
 ```python

@@ -407,6 +407,14 @@ ITEM_PIPELINES = {
 # 每行后面的整型值，确定了他们运行的顺序，item按数字从低到高的顺序，通过pipeline，通常将这些数字定义在0-1000范围内。
 ```
 
+### 设置编码
+自Scrapy1.2 起，增加了`FEED_EXPORT_ENCODING`属性，用于设置输出编码.在settings.py中添加下面的配置即可.
+`FEED_EXPORT_ENCODING = 'utf-8'`
+
+### 运行爬虫
+首先需要列出所有可运行的爬虫，输入: `scrapy list`, 回车, 这会列出所有爬虫类中指定的name属性。
+然后，我们可以按照name来指定运行爬虫, 如:`scrapy crawl 'csdn_blog' -o blog.json`.
+
 
 ### 参考
 * [http://python.jobbole.com/86405/](http://python.jobbole.com/86405/)

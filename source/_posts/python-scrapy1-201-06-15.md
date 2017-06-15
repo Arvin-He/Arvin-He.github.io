@@ -415,6 +415,12 @@ ITEM_PIPELINES = {
 首先需要列出所有可运行的爬虫，输入: `scrapy list`, 回车, 这会列出所有爬虫类中指定的name属性。
 然后，我们可以按照name来指定运行爬虫, 如:`scrapy crawl 'csdn_blog' -o blog.json`.
 
+### 关于ROBOTSTXT_OBEY
+在settings.py文件，ROBOTSTXT_OBEY默认为True，就是要遵守robots.txt 的规则.
+那么 robots.txt 是什么东西呢？
+robots.txt 是遵循 Robot 协议的一个文件，它保存在网站的服务器中，它的作用是，告诉**搜索引擎爬虫**，本网站哪些目录下的网页不希望被爬取收录。在Scrapy启动后，会在第一时间访问网站的 robots.txt 文件，然后决定该网站的爬取范围。当然，我们并不是在做搜索引擎，而且在某些情况下我们想要获取的内容恰恰是被 robots.txt 所禁止访问的。所以，某些时候，我们就要将此配置项设置为 False ，拒绝遵守 Robot协议 ！所以在这里设置为False。当然可能本次爬取不一定会被它限制，但一般来说会首先选择禁止它。
+
+
 
 ### 参考
 * [http://python.jobbole.com/86405/](http://python.jobbole.com/86405/)

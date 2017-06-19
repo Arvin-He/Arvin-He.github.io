@@ -199,19 +199,21 @@ hexo g          //生成静态文件
 hexo s          //本地运行
 hexo d          //部署到github上去
 
-## 5. hexo命令详解
-### 5.1 hexo命令
+## 5. hexo使用
+### 5.1 hexo命令详解
 hexo init 
 hexo new "postName" #新建文章
+hexo new draft "postName" #新建草稿文章
 hexo new page "pageName" #新建页面
-hexo clean 清除生成的静态文件
+hexo clean #清除生成的静态文件
 hexo generate #生成静态页面至public目录
 hexo server #开启预览访问端口(默认端口4000，'ctrl + c'关闭server)
 hexo deploy #将.deploy目录部署到GitHub
 hexo help  # 查看帮助
 hexo version  #查看Hexo的版本
 hexo deploy -g  #生成加部署
-hexo server -g  #生成加预览<br>
+hexo server -g  #生成加预览
+hexo server --draft  #本地预览包括草稿文件<br>
 常用命令的简写
 hexo n == hexo new
 hexo g == hexo generate
@@ -220,6 +222,24 @@ hexo d == hexo deploy<br>
 常用组合
 hexo d -g #生成部署
 hexo s -g #生成预览
+
+### 5.2 hexo使用流程
+一般用`hexo new <article>`来新建一篇文章, 这样新建的一篇文章是放在`source/_post`目录下的, 然后使用`hexo g`指令编译markldown
+文件, 将编译的HTML结果放在public目下, 之后`hexo d`,命令将public目录下的所有文档部署到github上去.
+但有时写了多篇文章,但是只有一篇文章需要发布,其他文章没有完成. 我们并不希望未完成的文章也发布出去, 这时就需要hexo的draft机制.
+
+#### 5.2.1 新建草稿
+使用`hexo new draft <article>` 命令新建一个草稿, 新建的文章放在`source/_drafts`目录下, `hexo g` 和 `hexo d`命令不会编译部署
+`source/_drafts`目录下的文章.
+
+#### 5.2.2 本机预览草稿
+使用`hexo server --draft`命令, 其中Hexo的Hexo server另外提供`--draft`参数，同时搭配`hexo-browsersync plugins`，就可以实现一边
+使用文本编辑器编辑markdown文章，一边使用浏览器预览文章。
+
+#### 5.2.3 将草稿发布为正式文章
+使用`hexo publish <filename>`命令, 该命令只是将文章从`source/_drafts`目录移到`source/_posts`目录下而已。之后的`hexo generate`与
+`hexo deploy`的用法还是完全一样的。
+**注意:**若日后想將正式文章反悔成为草稿，只需**手动**將文章从`source/_posts`目录移动到`source/_drafts`目录即可。
 
 ## 6. 搭建hexo过程中遇到的问题
 ### 6.1 hexo无法上传到github, 但在本地localhost:4000是可以打开的

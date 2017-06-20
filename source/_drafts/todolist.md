@@ -59,7 +59,7 @@ tags:
 
 6. Network Programming
     * Gevent
-    * AysincIO
+    * Aysincio
     * Celery
     * zmq
     * ...

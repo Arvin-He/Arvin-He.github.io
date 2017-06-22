@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
 运行结果:
 
-![](dp-factorymode-2017-06-22/2.png)
+![](dp-simplefactory-2017-06-22/2.png)
 
 
 ### C++ 实现
@@ -229,7 +229,7 @@ int main(int argc, char *argv[])
 
 运行结果:
 
-![](dp-factorymode-2017-06-22/1.png)
+![](dp-simplefactory-2017-06-22/1.png)
 
 ###  模式分析
 * 将对象的创建和对象本身业务处理分离可以降低系统的耦合度，使得两者修改起来都相对容易。

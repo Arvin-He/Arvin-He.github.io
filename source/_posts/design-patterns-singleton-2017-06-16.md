@@ -1,7 +1,7 @@
 ---
 title: 设计模式之单例模式
 date: 2017-06-16 17:21:49
-tags: [Python,C/C++,设计模式]
+tags: [设计模式]
 categories: 编程
 ---
 ### 单例模式

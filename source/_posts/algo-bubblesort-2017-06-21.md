@@ -21,6 +21,7 @@ categories: 编程
 
 ### Python实现
 ```python
+my_list = [3, 5, 2, 6, 14, 9, 7, 1, 6]
 def bubble_sort(raw_list):
     count = len(raw_list)
     for i in range(0, count):
@@ -33,18 +34,41 @@ def bubble_sort(raw_list):
     return raw_list
 ```
 
+运行结果:
+![](algo-bubblesort-2017-06-21/2.png)
+
 ### C++实现
 ```cpp
+#include <iostream>
+using namespace std;
+
 void bubble_sort(int arr[], int len)
 {
-    for (int i=0; i<len-1; i++)
+    for (int i=0; i<len; i++)
     {
-        for (int j=len-1; j>i; j--)
+        for (int j=i+1; j<len; j++)
         {
-            int temp = arr[i];
-            arr[j] = arr[j-1];
-            arr[j-1] = temp;
+            if (arr[i] > arr[j])
+            {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
         }
     }
 }
+
+int main(int argc, char *argv[])
+{
+    int arr[] = {3, 5, 2, 6, 14, 9, 7, 1, 6};
+    bubble_sort(arr, 9);
+    for (int i=0; i<9; i++)
+        cout << arr[i] <<"   ";
+
+    return 0;
+}
 ```
+
+运行结果:
+
+![](algo-bubblesort-2017-06-21/1.png)

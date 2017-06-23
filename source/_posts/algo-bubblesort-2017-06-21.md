@@ -21,17 +21,17 @@ categories: 编程
 
 ### Python实现
 ```python
-my_list = [3, 5, 2, 6, 14, 9, 7, 1, 6]
+arr = [3, 5, 2, 6, 14, 9, 7, 1, 6]
 def bubble_sort(raw_list):
-    count = len(raw_list)
+    count = len(arr)
     for i in range(0, count):
         for j in range(i+1, count):
-            if raw_list[i] > raw_list[j]:
-                raw_list[i], raw_list[j] = raw_list[j], raw_list[i]
-                #temp = raw_list[j]
-                #raw_list[j] = raw_list[i]
-                #raw_list[i] = temp
-    return raw_list
+            if arr[i] > arr[j]:
+                arr[i], arr[j] = arr[j], arr[i]
+                #temp = arr[j]
+                #arr[j] = arr[i]
+                #arr[i] = temp
+    return arr
 ```
 
 运行结果:
@@ -58,6 +58,28 @@ void bubble_sort(int arr[], int len)
     }
 }
 
+// 改进的冒泡排序
+//每次从后往前冒一个最小值，且每次能确定一个数在序列中的最终位置
+void bubble_sort(int arr[], int len)
+{
+    //比较n-1次
+    for (int i = 0; i < len-1; i++)
+    {         
+        bool exchange = true;   // 冒泡的改进，若在一趟中没有发生逆序，则该序列已有序
+        for (int j = len-1; j >i; j--)  // 每次从后边冒出一个最小值
+        {    
+            if (arr[j] < arr[j - 1])   // 发生逆序，则交换
+            {   
+                swap(arr[j], arr[j - 1]);
+                exchange = false;
+            }
+        }
+        if (exchange){
+            return;
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
     int arr[] = {3, 5, 2, 6, 14, 9, 7, 1, 6};
@@ -72,3 +94,6 @@ int main(int argc, char *argv[])
 运行结果:
 
 ![](algo-bubblesort-2017-06-21/1.png)
+
+### 参考
+* [https://segmentfault.com/a/1190000004994003](https://segmentfault.com/a/1190000004994003)

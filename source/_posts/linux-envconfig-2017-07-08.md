@@ -112,3 +112,9 @@ apt install ttf-wqy-*
 
 ### 在终端输入reboot,结果到了重新安装镜像的界面了
 Virtualbox安装好debian ,在终端输入reboot,结果到了重新安装镜像的界面了。这是因为安装的磁盘iso还在光驱中。所以，reboot会从光驱驱动，重新进入安装界面。这个时候，我一般不点击reboot。而是直接点击virtualbox的poweroff键。让他关闭虚拟机。然后在关闭虚拟机后，先弹出光驱中的iso。然后再重启virtualbox中的linux OS。
+
+###
+arvin is not in the sudoers file
+this incident will be reported
+you have mail in /var/mail/arvin
+

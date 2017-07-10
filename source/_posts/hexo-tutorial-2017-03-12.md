@@ -15,12 +15,13 @@ categories: 工具
 ### 1.2 安装hexo
 1. 安装nodejs
 2. 安装hexo, npm install -g hexo, 或者 npm install hexo-cli -g
+这里hexo需要全局安装,因为在终端要用到hexo命令,至于hexo的以来就不需要全局安装了,在所在的项目目录下安装即可.
 
 ### 1.3 安装hexo依赖
-在hexo的根目录下有一个package.json文件,里面是hexo需要的依赖.
+在hexo的根目录下有一个package.json文件,里面是hexo需要的依赖.依赖需要一个一个安装好.
 如果要添加其他模块的依赖,比如增加本地搜索功能时,需要安装hexo-generator-search模块,则使用命令:
 ```
-npm install -g hexo-generator-search --save
+npm install hexo-generator-search --save
 ```
 在hexo根目录下node_modules文件夹下就会安装hexo-generator-search模块,并在package.json中写入对应的
 hexo-generator-search依赖条目.
@@ -34,21 +35,22 @@ hexo-generator-search依赖条目.
     "version": "3.2.2"
   },
   "dependencies": {
-    "hexo": "^3.2.2",
+    "hexo": "^3.3.7",
+    "hexo-asset-image": "git+https://github.com/CodeFalling/hexo-asset-image.git",
     "hexo-deployer-git": "^0.2.0",
     "hexo-generator-archive": "^0.1.4",
     "hexo-generator-category": "^0.1.3",
     "hexo-generator-feed": "^1.2.0",
-    "hexo-generator-index": "^0.2.0",
+    "hexo-generator-index": "^0.2.1",
     "hexo-generator-json-content": "^3.0.1",
     "hexo-generator-search": "^1.0.4",
     "hexo-generator-tag": "^0.2.0",
     "hexo-renderer-ejs": "^0.2.0",
     "hexo-renderer-jade": "^0.3.0",
-    "hexo-renderer-marked": "^0.2.10",
-    "hexo-renderer-sass": "^0.3.1",
-    "hexo-renderer-stylus": "^0.3.1",
-    "hexo-server": "^0.2.0"
+    "hexo-renderer-marked": "^0.2.11",
+    "hexo-renderer-sass": "^0.3.2",
+    "hexo-renderer-stylus": "^0.3.3",
+    "hexo-server": "^0.2.1"
   }
 }
 ```
@@ -364,3 +366,6 @@ root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 ```
+
+### 7. nodejs版本问题
+nodejs版本不要太高,最好不用最新版本,最新版本会废弃一些API, 如果hexo或者hexo插件里用到了那些废弃的api,这会让你的应用跑不起来.

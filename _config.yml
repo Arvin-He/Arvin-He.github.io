@@ -8,6 +8,7 @@ subtitle: Learn and live.
 description: Learn and live. #给搜索引擎看的，对站点的描述，可以自定义
 author: Arvin
 language: zh-CN
+# language: zh-Hans
 timezone:
 
 # URL
@@ -89,8 +90,8 @@ search:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 # theme: next
-theme: maupassant
-# theme: pure
+# theme: maupassant
+theme: pure
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

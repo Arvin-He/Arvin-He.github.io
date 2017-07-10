@@ -3,6 +3,7 @@ title: Linux环境搭建指南(debian9)
 date: 2017-07-08 10:15:18
 tags: Linux
 categories: 工具
+layout: single-column
 ---
 ## 关于virtualbox
 1. 安装增强功能

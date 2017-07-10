@@ -1,7 +1,7 @@
 ---
 title: 关于Arvin
 date: 2017-04-02 10:05:08
-layout: page
+layout: single-column
 ---
 ---
 其实关于我没有什么想说的,只是想好好生活,做好自己喜欢的事.

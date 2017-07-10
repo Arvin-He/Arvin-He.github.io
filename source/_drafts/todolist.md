@@ -81,3 +81,6 @@ tags:
 # Linux
  * bash shell
  * 
+
+ # 使用CI
+ 使用CI对本地仓库做自动化部署

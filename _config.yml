@@ -88,8 +88,8 @@ search:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
-# theme: maupassant
+# theme: next
+theme: maupassant
 # theme: pure
 
 # Deployment

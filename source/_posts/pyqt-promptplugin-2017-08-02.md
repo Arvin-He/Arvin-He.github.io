@@ -1,7 +1,7 @@
 ---
 title: PyQt控件提升和插件
 date: 2017-08-02 19:56:13
-tags: [Python, PyQt5]
+tags: [PyQt5]
 categories: 编程
 ---
 
@@ -15,20 +15,20 @@ categories: 编程
 第二步：重写一些事件或者添加你定制的属性或方法
 第三步：在QT Designer中提升
 
-![](py-pyqtpromptplugin-2017-08-02/1.png)
+![](pyqt-promptplugin-2017-08-02/1.png)
 
 在QT Designer中打开你的ui，然后选中你要提升的控件，右击提升为，填好“提升的类名称”：就是你继承并定义的类
 头文件：就是你继承定义的类所在的头文件名称
 点击“添加”，在上面要添加头文件所在的路径
 最后点击“提升”
 
-![](py-pyqtpromptplugin-2017-08-02/2.png)
+![](pyqt-promptplugin-2017-08-02/2.png)
 
 如何在QTableWidgets添加右键菜单
 在属性编辑中，就会发现对象的类名称变为你自定义的类名称了，如上图所示。
 提升时最好在designer中提升，在代码中做提升不知道怎么做，因为最后，打开ui文件发现，ui文件相比没有提升的是有不同的，如下图所示。
 
-![](py-pyqtpromptplugin-2017-08-02/3.png)
+![](pyqt-promptplugin-2017-08-02/3.png)
 
 
 

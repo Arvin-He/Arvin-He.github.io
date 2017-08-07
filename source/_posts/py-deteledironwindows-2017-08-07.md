@@ -4,8 +4,11 @@ date: 2017-08-07 09:40:36
 tags: Python
 categories: 编程
 ---
-在windows下启动目录`C:\Users\aron\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`下添加一个`killkingsoft.py`脚本,然后每次开机自动执行该脚本.
-注意:在windows下启动目录`C:\Users\aron\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`下的脚本或者bat文件都会在开机时自动执行.
+windows启动目录:`C:\Users\aron\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+在windows下启动目录下添加一个`killkingsoft.py`脚本,然后每次开机自动执行该脚本.
+注意:在windows下启动目录下的脚本或者bat文件都会在开机时自动执行.
+
+
 之前使用`shutil.rmtree  os.remove  os.rmdir`都没有成功,都报出如下错误:
 `PermissionError: [WinError 5] 拒绝访问。: 'c:\\ProgramData\\kingsoft'`
 后来找到解决办法,如下:

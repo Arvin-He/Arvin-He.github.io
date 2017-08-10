@@ -67,3 +67,8 @@ NSIS有window版和unicode版本, 注意添加相关环境变量
 
 ### 制作deb包
 linux下分发软件是deb包的形式
+
+
+### 一些问题
+使用cx_freeze打包python程序,在打包sqlalchemy程序时,`C:\programs File\Python36\Lib\site-packages\sqlalchemy\sql\default_comparator.pyc`这个模块没有被打包进来,但是其他模块都被打包进来了.
+解决办法: 复制`default_comparator.py`文件或者在`__pychae__`目录下复制`default_comparator.pyc`到你的打包目录中对应的目录.然后再通过NSIS打包.

@@ -72,3 +72,20 @@ linux下分发软件是deb包的形式
 ### 一些问题
 使用cx_freeze打包python程序,在打包sqlalchemy程序时,`C:\programs File\Python36\Lib\site-packages\sqlalchemy\sql\default_comparator.pyc`这个模块没有被打包进来,但是其他模块都被打包进来了.
 解决办法: 复制`default_comparator.py`文件或者在`__pychae__`目录下复制`default_comparator.pyc`到你的打包目录中对应的目录.然后再通过NSIS打包.
+
+在python3.4中使用cx_freeze打包能将sqlalchemy中的`default_comparator.pyc`打包,在python3.6却唯独漏掉这个`default_comparator.pyc`,原因未知,
+解决办法:
+在`cx_freeze`的`setup.py`脚本中的`build_exe_options`中的packages中添加sqlalchemy,这样就会将sqlalchemy完成打包进来,不会漏掉一个模块,格式如下:
+```python
+# 依赖会自动检测,但会需要微调
+build_exe_options = {
+    "packages": ["sqlalchemy"],
+    "excludes": ["tkinter"],
+    "includes": [],
+    "include_files": []
+}
+```
+
+
+### 关于cx_freeze的setup.py的脚本问题
+使用cx-freeze进行打包时,setup.py必须放在程序运行脚本的根目录下,如果将setup.py放到同级的一个文件夹中(如make文件夹,为了不污染源代码),打包出来后的exe运行报错.提示模块找不到.

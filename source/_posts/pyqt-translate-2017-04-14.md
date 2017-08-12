@@ -1,7 +1,7 @@
 ---
-title: PyQt的翻译机制分析
+title: PyQt5的翻译机制分析
 date: 2017-04-14 14:17:42
-tags: [Python,PyQt]
+tags: [PyQt5]
 categories: 编程
 ---
 ### 1. PyQt中的翻译流程

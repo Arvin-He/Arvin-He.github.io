@@ -15,7 +15,7 @@ categories: 工具
 ### 1.2 安装hexo
 1. 安装nodejs
 2. 安装hexo, npm install -g hexo, 或者 npm install hexo-cli -g
-这里hexo需要全局安装,因为在终端要用到hexo命令,至于hexo的以来就不需要全局安装了,在所在的项目目录下安装即可.
+这里hexo需要全局安装,因为在终端要用到hexo命令,至于hexo的依赖就不需要全局安装了,在所在的项目目录下安装即可.
 
 ### 1.3 安装hexo依赖
 在hexo的根目录下有一个package.json文件,里面是hexo需要的依赖.依赖需要一个一个安装好.

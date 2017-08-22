@@ -64,3 +64,29 @@ web安全相关
 
 
 
+数据结构
+算法
+网络编程
+socket
+http/tcp/ip
+并发
+异步
+数据库(mysql/monogodb/redis)多表查询
+
+python
+flask/django/tonado/webpy
+celery
+
+
+java
+
+shell脚本
+
+js/css/html
+
+vue/react
+
+nodejs
+
+设计模式
+

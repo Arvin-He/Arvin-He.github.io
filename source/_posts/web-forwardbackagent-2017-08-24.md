@@ -15,3 +15,6 @@ categories: 编程
 ![](web-forwardbackagent-2017-08-24/2.png)
 
 两者的区别在于代理的对象不一样：正向代理代理的对象是客户端，反向代理代理的对象是服务端
+
+### 参考
+* [知乎](https://www.zhihu.com/question/24723688)

@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Learn and live."><title>Web之Get和Post区别 | Simple &amp; Freedom</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Web之Get和Post区别</h1><a id="logo" href="/.">Simple &amp; Freedom</a><p class="description">Learn and live.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/essay/"><i class="fa fa-archive"> 随笔</i></a><a href="/readnotes/"><i class="fa fa-archive"> 读书笔记</i></a><a href="/life/"><i class="fa fa-archive"> 生活</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/404.html"><i class="fa fa-heartbeat"> 公益404</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Web之Get和Post区别</h1><div class="post-meta">Aug 25, 2017<span> | </span><span class="category"><a href="/categories/编程/">编程</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><h3 id="两种-HTTP-请求方法：GET-和-POST"><a href="#两种-HTTP-请求方法：GET-和-POST" class="headerlink" title="两种 HTTP 请求方法：GET 和 POST"></a>两种 HTTP 请求方法：GET 和 POST</h3><p>在客户机和服务器之间进行请求-响应时，两种最常被用到的方法是：GET 和 POST。</p>
+<p>GET - 从指定的资源请求数据。</p>
+<p>POST - 向指定的资源提交要被处理的数据</p>
+<h3 id="GET-方法"><a href="#GET-方法" class="headerlink" title="GET 方法"></a>GET 方法</h3><p>请注意，查询字符串（名称/值对）是在 GET 请求的 URL 中发送的：<br><code>/test/demo_form.asp?name1=value1&amp;name2=value2</code></p>
+<p>有关 GET 请求的其他一些注释：</p>
+<ul>
+<li>GET 请求可被缓存</li>
+<li>GET 请求保留在浏览器历史记录中</li>
+<li>GET 请求可被收藏为书签</li>
+<li>GET 请求不应在处理敏感数据时使用</li>
+<li>GET 请求有长度限制</li>
+<li>GET 请求只应当用于取回数据</li>
+</ul>
+<h3 id="POST-方法"><a href="#POST-方法" class="headerlink" title="POST 方法"></a>POST 方法</h3><p>请注意，查询字符串（名称/值对）是在 POST 请求的 HTTP 消息主体中发送的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">POST /test/demo_form.asp HTTP/1.1</div><div class="line">Host: w3schools.com</div><div class="line">name1=value1&amp;name2=value2</div></pre></td></tr></table></figure></p>
+<p>有关 POST 请求的其他一些注释：</p>
+<ul>
+<li>OST 请求不会被缓存</li>
+<li>POST 请求不会保留在浏览器历史记录中</li>
+<li>POST 不能被收藏为书签</li>
+<li>POST 请求对数据长度没有要求</li>
+</ul>
+<h3 id="GET-与-POST区别"><a href="#GET-与-POST区别" class="headerlink" title="GET 与 POST区别"></a>GET 与 POST区别</h3><ol>
+<li><p>GET提交的数据会放在URL之后，以?分割URL和传输数据，参数之间以&amp;相连，如EditPosts.aspx?name=test1&amp;id=123456.  POST方法是把提交的数据放在HTTP包的Body中.</p>
+</li>
+<li><p>GET提交的数据大小有限制（因为浏览器对URL的长度有限制），而POST方法提交的数据没有限制.</p>
+</li>
+<li><p>GET方式需要使用Request.QueryString来取得变量的值，而POST方式通过Request.Form来获取变量的值。</p>
+</li>
+<li><p>GET方式提交数据，会带来安全问题，比如一个登录页面，通过GET方式提交数据时，用户名和密码将出现在URL上，如果页面可以被缓存或者其他人可以访问这台机器，就可以从历史记录获得该用户的账号和密码.</p>
+</li>
+</ol>
+<h3 id="一些误区"><a href="#一些误区" class="headerlink" title="一些误区"></a>一些误区</h3><p>误区一：POST可以比GET提交更多更长的数据？<br>由于使用GET方法提交数据时，以?分割URL和传输数据，参数之间以&amp;相连，在URL后面添加需要提交的参数，有人就会说了，浏览器地址栏输入的参数是有限的，而POST不用再地址栏输入，所以POST就比GET可以提交更多的数据。难道真的是这样的么？<br>而实际上，URL不存在参数上限的问题，HTTP协议规范<strong>没有</strong>对URL长度进行限制。这个限制是特定的浏览器及服务器对它的限制。IE对URL长度的限制是2083字节(2K+35)。对于其他浏览器，如Netscape、FireFox等，理论上没有长度限制，其限制取决于操作系统的支持。<br>同时，POST是没有大小限制的，HTTP协议规范也没有进行大小限制。POST数据是没有限制的，<strong>起限制作用的是服务器的处理程序的处理能力。</strong><br>总归一句话，这个限制是针对所有HTTP请求的，与GET、POST没有多少关系。</p>
+<p>误区二：POST比GET安全？<br>首先，我们要承认安全的概念有很多种，要是从最基本的肉眼看到就不安全，肉眼看不到那就是安全的概念说呢，GET确实没有POST安全，毕竟小白用户确实可以看到在URL中带有的数据信息，这个你无法狡辩。那么要是往严谨了说呢，POST是不是要比GET安全呢？其实不是的。<br>上面也说了，GET将提交到服务器的数据添加到URL中了，可见；虽然POST的数据，你肉眼看不到，你抓个包看看，在HTTP包的包体中，我们提交的数据时仍然可见的.</p>
+<h3 id="比较GET-与-POST"><a href="#比较GET-与-POST" class="headerlink" title="比较GET 与 POST"></a>比较GET 与 POST</h3><p>下面的表格比较了两种 HTTP 方法：GET 和 POST。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GET</th>
+<th>POST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>后退按钮/刷新</td>
+<td>无害</td>
+<td>数据会被重新提交（浏览器应该告知用户数据会被重新提交）。</td>
+</tr>
+<tr>
+<td>书签</td>
+<td>可收藏为书签</td>
+<td>不可收藏为书签</td>
+</tr>
+<tr>
+<td>缓存</td>
+<td>能被缓存</td>
+<td>不能缓存</td>
+</tr>
+<tr>
+<td>编码类型</td>
+<td>application/x-www-form-urlencoded</td>
+<td>application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。</td>
+</tr>
+<tr>
+<td>历史</td>
+<td>参数保留在浏览器历史中。</td>
+<td>参数不会保存在浏览器历史中。</td>
+</tr>
+<tr>
+<td>对数据长度的限制</td>
+<td>是的。当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。</td>
+<td>无限制。</td>
+</tr>
+<tr>
+<td>对数据类型的限制</td>
+<td>只允许 ASCII 字符。</td>
+<td>没有限制。也允许二进制数据。</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！</td>
+<td>POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</td>
+</tr>
+<tr>
+<td>可见性</td>
+<td>数据在 URL 中对所有人都是可见的。</td>
+<td>数据不会显示在 URL 中。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>很多时候，大家都觉的使用GET很方便，毕竟使用POST要用到Form，但是，你要知道，你使用GET方法时，浏览器可能会缓存你的地址等信息，还会留下历史记录，而对于POST方法呢，则不会进行缓存。在开发中，一定要分清楚GET和POST的使用场合，什么时候要使用GET，什么时候要使用POST，自己做到心中有数。</p>
+<p>可能，你在Google类似的文章的时候，可能会看到分析POST和PUT区别的文章，这又是一类纠结的东西，更多的时候，我们分析这种东西都是分实际情景，结合设计者的语义去使用.</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp" target="_blank" rel="external">w3cschool</a></li>
+</ul>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://arvin-he.github.io/2017/08/25/web-getpost-2017-08-25/" data-id="cj7fgv50e00czbkvi6sdf9vw4" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Web/">Web</a></div><div class="post-nav"><a href="/2017/08/25/web-rest-2017-08-25/" class="pre">Web之REST概念</a><a href="/2017/08/25/py-scrapy1-2017-08-25/" class="next">爬虫基础知识(一)</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">103</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/OOP/" style="font-size: 15px;">OOP</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/方法/" style="font-size: 15px;">方法</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/NodeJS/" style="font-size: 15px;">NodeJS</a> <a href="/tags/NSIS/" style="font-size: 15px;">NSIS</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/PyQt5/" style="font-size: 15px;">PyQt5</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/RegExp/" style="font-size: 15px;">RegExp</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a> <a href="/tags/web/" style="font-size: 15px;">web</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/08/learn-minds-2017-06-19/">怎样避免陷入无止境地看教程的陷阱</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/py-packproblems-2017-09-01/">Python程序打包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/py-stdin-2017-08-30/">Python中关于在GUI应用程序读取stdin内容</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/28/linux-backup-2017-08-28/">Linux系统之镜像备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/web-rest-2017-08-25/">Web之REST概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/web-getpost-2017-08-25/">Web之Get和Post区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/py-scrapy1-2017-08-25/">爬虫基础知识(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/py-jsonrpc-2017-08-25/">Python之jsonrpc</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/web-forwardbackagent-2017-08-24/">正向代理和反向代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/23/py-scrapysummer-2017-08-23/">Python爬虫总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Simple &amp; Freedom.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

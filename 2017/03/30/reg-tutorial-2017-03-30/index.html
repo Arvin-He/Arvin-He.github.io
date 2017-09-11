@@ -1,0 +1,496 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Learn and live."><title>正则表达式使用 | Simple &amp; Freedom</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">正则表达式使用</h1><a id="logo" href="/.">Simple &amp; Freedom</a><p class="description">Learn and live.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/essay/"><i class="fa fa-archive"> 随笔</i></a><a href="/readnotes/"><i class="fa fa-archive"> 读书笔记</i></a><a href="/life/"><i class="fa fa-archive"> 生活</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/404.html"><i class="fa fa-heartbeat"> 公益404</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">正则表达式使用</h1><div class="post-meta">Mar 30, 2017<span> | </span><span class="category"><a href="/categories/编程/">编程</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><h3 id="1-常用元字符"><a href="#1-常用元字符" class="headerlink" title="1. 常用元字符"></a>1. 常用元字符</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">元字符</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">.</td>
+<td style="text-align:left">匹配除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\w</td>
+<td style="text-align:left">匹配字母或数字或下划线或汉字</td>
+</tr>
+<tr>
+<td style="text-align:left">\s</td>
+<td style="text-align:left">匹配任意的空白符</td>
+</tr>
+<tr>
+<td style="text-align:left">\d</td>
+<td style="text-align:left">匹配数字</td>
+</tr>
+<tr>
+<td style="text-align:left">\b</td>
+<td style="text-align:left">匹配单词的开始或结束</td>
+</tr>
+<tr>
+<td style="text-align:left">^</td>
+<td style="text-align:left">匹配字符串的开始</td>
+</tr>
+<tr>
+<td style="text-align:left">$</td>
+<td style="text-align:left">匹配字符串的结束</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<ul>
+<li>\b 代表着单词的开头或结尾,即单词的分界处.通常英文的单词是由空格,标点符号或者换行来分隔的,<br>但是\b并不匹配这些单词分隔字符中的任何一个,它只匹配一个<strong>位置</strong>. </li>
+<li>. 点号也是一个元字符,匹配除换行符意外的任意任意字符.</li>
+<li>* 星号元字符,代表的不是字符,也不是位置,而是数量.它指定*前面的内容可以连续重复使用任意次数来使整个表达式得到匹配.</li>
+<li>.* 则表示匹配任意数量的不包含换行的字符</li>
+<li>\d 元字符,匹配一位数字</li>
+<li>\s 匹配任意的空白符,包括空格,制表符(Tab),换行符,中文全角空格等.</li>
+<li>\w 匹配字母,数字,下划线或汉字等.</li>
+<li>\d+ 匹配1个或者更多连续的数字</li>
+<li>+ 与 * 的区别:</li>
+<li>* 匹配重复任意次,也可能是0次</li>
+<li>+ 匹配重复1次或更多次</li>
+</ul>
+<h3 id="2-字符转义"><a href="#2-字符转义" class="headerlink" title="2. 字符转义"></a>2. 字符转义</h3><p>查找匹配.或<em>或\等字符就得使用\来取消这些字符的特殊意义,因为它们会被解释成别的意思。<br>因此，应该使用.和\</em>和\. 例如：C:\Windows匹配C:\Windows。</p>
+<h3 id="3-重复匹配次数的限定符"><a href="#3-重复匹配次数的限定符" class="headerlink" title="3. 重复匹配次数的限定符"></a>3. 重复匹配次数的限定符</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">代码/语法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">重复零次或更多次</td>
+</tr>
+<tr>
+<td style="text-align:left">+</td>
+<td style="text-align:left">重复一次或更多次</td>
+</tr>
+<tr>
+<td style="text-align:left">?</td>
+<td style="text-align:left">重复零次或一次</td>
+</tr>
+<tr>
+<td style="text-align:left">{n}</td>
+<td style="text-align:left">重复n次</td>
+</tr>
+<tr>
+<td style="text-align:left">{n,}</td>
+<td style="text-align:left">重复n次或更多次</td>
+</tr>
+<tr>
+<td style="text-align:left">{n,m}</td>
+<td style="text-align:left">重复n到m次</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-指定匹配范围"><a href="#4-指定匹配范围" class="headerlink" title="4. 指定匹配范围"></a>4. 指定匹配范围</h3><p>匹配在指定字符范围或集合中的一个字符,用[指定你的字符范围或集合]<br>如[aeiou] 匹配任何一个英文元音字母<br>[.?!] 匹配标点符号(.或?或!)<br>[0-9]代表的含意与\d就是完全一致的：匹配一位数字</p>
+<h3 id="5-多条件匹配"><a href="#5-多条件匹配" class="headerlink" title="5. 多条件匹配"></a>5. 多条件匹配</h3><p>多条件匹配,如果满足其中任意一个匹配条件则匹配,多个匹配条件使用|将多个匹配条件隔开.<br><strong>注意:</strong> 使用多条件匹配要注意各个条件的顺序,多条件匹配是从左到右地测试每个条件，如果满足了某个条件，就不会去再管其它的条件了。<br>例如:<br>\d{5}-\d{4}|\d{5}这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。<br>如果你把它改成\d{5}|\d{5}-\d{4}的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。</p>
+<h3 id="6-分组"><a href="#6-分组" class="headerlink" title="6. 分组"></a>6. 分组</h3><p>重复单个字符: 直接在字符后面加上限定符<br>重复多个字符: 使用括号指定子表达式,再对这个子表达式加次数限定符<br>组号分配原则：<br>分组0对应整个正则表达式<br>实际上组号分配过程是要从左向右扫描两遍的：第一遍只给未命名组分配，第二遍只给命名组分配－－因此所有命名组的组号都大于未命名的组号<br>你可以使用(?:exp)这样的语法来剥夺一个分组对组号分配的参与权<br>例如:匹配IP<br>((2[0-4]\d|25[0-5]|[01]?\d\d?).){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)<br>常用分组语法:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">分类</th>
+<th style="text-align:left">语法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">捕获</td>
+<td style="text-align:left">(exp)</td>
+<td style="text-align:left">匹配exp,并捕获文本到自动命名的组里</td>
+</tr>
+<tr>
+<td style="text-align:left">捕获</td>
+<td style="text-align:left">(?<name>exp)</name></td>
+<td style="text-align:left">匹配exp,并捕获文本到名称为name的组里，也可以写成(?’name’exp)</td>
+</tr>
+<tr>
+<td style="text-align:left">捕获</td>
+<td style="text-align:left">(?:exp)</td>
+<td style="text-align:left">匹配exp,不捕获匹配的文本，也不给此分组分配组号</td>
+</tr>
+<tr>
+<td style="text-align:left">零宽断言</td>
+<td style="text-align:left">(?=exp)</td>
+<td style="text-align:left">匹配exp前面的位置</td>
+</tr>
+<tr>
+<td style="text-align:left">零宽断言</td>
+<td style="text-align:left">(?&lt;=exp)</td>
+<td style="text-align:left">匹配 exp后面的位置</td>
+</tr>
+<tr>
+<td style="text-align:left">零宽断言</td>
+<td style="text-align:left">(?!exp)</td>
+<td style="text-align:left">匹配后面跟的不是exp的位置</td>
+</tr>
+<tr>
+<td style="text-align:left">零宽断言</td>
+<td style="text-align:left">(?&lt;!exp)</td>
+<td style="text-align:left">匹配前面不是exp的位置</td>
+</tr>
+<tr>
+<td style="text-align:left">注释</td>
+<td style="text-align:left">(?#comment)</td>
+<td style="text-align:left">这种类型的分组不对正则表达式的处理产生任何影响，用于提供注释让人阅读</td>
+</tr>
+</tbody>
+</table>
+<p>第三个(?:exp)不会改变正则表达式的处理方式，只是这样的组匹配的内容不会像前两种那样被捕获到某个组里面，也不会拥有组号。</p>
+<h3 id="7-反义"><a href="#7-反义" class="headerlink" title="7. 反义"></a>7. 反义</h3><p>有时需要查找不属于某个能简单定义的字符类的字符。比如想查找除了数字以外，其它任意字符都行的情况.<br>常用到的反义：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">语法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\W</td>
+<td style="text-align:left">匹配任意不是字母，数字，下划线，汉字的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\S</td>
+<td style="text-align:left">匹配任意不是空白符的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\D</td>
+<td style="text-align:left">匹配任意非数字的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\B</td>
+<td style="text-align:left">匹配不是单词开头或结束的位置</td>
+</tr>
+</tbody>
+</table>
+<p>例如:<br>[^x]    匹配除了x以外的任意字符<br>[^aeiou]    匹配除了aeiou这几个字母以外的任意字符</p>
+<h3 id="8-后向引用"><a href="#8-后向引用" class="headerlink" title="8. 后向引用"></a>8. 后向引用</h3><p>使用小括号指定一个子表达式后，匹配这个子表达式的文本(也就是此分组捕获的内容)可以在表达式或其它程序中作进一步的处理。默认情况下，每个分组会自动拥有一个组号，规则是：从左向右，以分组的左括号为标志，第一个出现的分组的组号为1，第二个为2，以此类推。后向引用用于重复搜索前面某个分组匹配的文本。</p>
+<p>你也可以自己指定子表达式的组名。指定一个子表达式的组名语法：<br>(?<word>\w+)(或者把尖括号换成’也行：(?’Word’\w+)),这样就把\w+的组名指定为Word了。要反向引用这个分组捕获的内容，你可以使用\k<word>,所以上一个例子也可以写成这样：\b(?<word>\w+)\b\s+\k<word>\b。</word></word></word></word></p>
+<h3 id="9-注释"><a href="#9-注释" class="headerlink" title="9. 注释"></a>9. 注释</h3><p>小括号的另一种用途是通过语法(?#comment)来包含注释</p>
+<p>要包含注释的话，最好是启用“忽略模式里的空白符”选项，这样在编写表达式时能任意的添加空格，Tab，换行，而实际使用时这些都将被忽略。启用这个选项后，在#后面到这一行结束的所有文本都将被当成注释忽略掉。<br>例如，我们可以前面的一个表达式写成这样：<br>(?&lt;=    # 断言要匹配的文本的前缀<br>&lt;(\w+)&gt; # 查找尖括号括起来的字母或数字(即HTML/XML标签)<br>)       # 前缀结束<br>.*      # 匹配任意文本<br>(?=     # 断言要匹配的文本的后缀<br>&lt;\/\1&gt;  # 查找尖括号括起来的内容：前面是一个”/“，后面是先前捕获的标签<br>)       # 后缀结束</p>
+<h3 id="10-贪婪与懒惰"><a href="#10-贪婪与懒惰" class="headerlink" title="10. 贪婪与懒惰"></a>10. 贪婪与懒惰</h3><p>正则表达式通常的行为是贪婪匹配<br>贪婪匹配:一次匹配尽可能多的字符<br>懒惰匹配:一次匹配尽可能少的字符<br>贪婪匹配转懒惰匹配:只要在后面加上?<br>懒惰限定符:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">语法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">*?</td>
+<td style="text-align:left">重复任意次，但尽可能少重复</td>
+</tr>
+<tr>
+<td style="text-align:left">+?</td>
+<td style="text-align:left">重复1次或更多次，但尽可能少重复</td>
+</tr>
+<tr>
+<td style="text-align:left">??</td>
+<td style="text-align:left">重复0次或1次，但尽可能少重复</td>
+</tr>
+<tr>
+<td style="text-align:left">{n,m}?</td>
+<td style="text-align:left">重复n到m次，但尽可能少重复</td>
+</tr>
+<tr>
+<td style="text-align:left">{n,}?</td>
+<td style="text-align:left">重复n次以上，但尽可能少重复</td>
+</tr>
+</tbody>
+</table>
+<h3 id="11-处理选项"><a href="#11-处理选项" class="headerlink" title="11. 处理选项"></a>11. 处理选项</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IgnoreCase(忽略大小写)</td>
+<td style="text-align:left">匹配时不区分大小写。</td>
+</tr>
+<tr>
+<td style="text-align:left">Multiline(多行模式)</td>
+<td style="text-align:left">更改^和$的含义,使它们分别在任意一行的行首和行尾匹配,而不仅仅在整个字符串的开头和结尾匹配。(在此模式下,$的精确含意是:匹配\n之前的位置以及字符串结束前的位置.)</td>
+</tr>
+<tr>
+<td style="text-align:left">Singleline(单行模式)</td>
+<td style="text-align:left">更改.的含义，使它与每一个字符匹配（包括换行符\n）。</td>
+</tr>
+<tr>
+<td style="text-align:left">IgnorePatternWhitespace(忽略空白)</td>
+<td style="text-align:left">忽略表达式中的非转义空白并启用由#标记的注释。</td>
+</tr>
+<tr>
+<td style="text-align:left">ExplicitCapture(显式捕获)</td>
+<td style="text-align:left">仅捕获已被显式命名的组。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-递归匹配-平衡组"><a href="#12-递归匹配-平衡组" class="headerlink" title="12. 递归匹配/平衡组"></a>12. 递归匹配/平衡组</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">语法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">(?’group’)</td>
+<td style="text-align:left">把捕获的内容命名为group,并压入堆栈(Stack)</td>
+</tr>
+<tr>
+<td style="text-align:left">(?’-group’)</td>
+<td style="text-align:left">从堆栈上弹出最后压入堆栈的名为group的捕获内容，如果堆栈本来为空，则本分组的匹配失败</td>
+</tr>
+<tr>
+<td style="text-align:left">(?(group)yes&#124;no)</td>
+<td style="text-align:left">如果堆栈上存在以名为group的捕获内容的话，继续匹配yes部分的表达式，否则继续匹配no部分</td>
+</tr>
+<tr>
+<td style="text-align:left">(?!)</td>
+<td style="text-align:left">零宽负向先行断言，由于没有后缀表达式，试图匹配总是失败</td>
+</tr>
+</tbody>
+</table>
+<p>我们需要做的是每碰到了左括号，就在压入一个”Open”,每碰到一个右括号，就弹出一个，到了最后就看看堆栈是否为空－－如果不为空那就证明左括号比右括号多，那匹配就应该失败。正则表达式引擎会进行回溯(放弃最前面或最后面的一些字符)，尽量使整个表达式得到匹配。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;                         #最外层的左括号</div><div class="line">    [^&lt;&gt;]*                #最外层的左括号后面的不是括号的内容</div><div class="line">    (</div><div class="line">        (</div><div class="line">            (?&apos;Open&apos;&lt;)    #碰到了左括号，在黑板上写一个&quot;Open&quot;</div><div class="line">            [^&lt;&gt;]*       #匹配左括号后面的不是括号的内容</div><div class="line">        )+</div><div class="line">        (</div><div class="line">            (?&apos;-Open&apos;&gt;)   #碰到了右括号，擦掉一个&quot;Open&quot;</div><div class="line">            [^&lt;&gt;]*        #匹配右括号后面不是括号的内容</div><div class="line">        )+</div><div class="line">    )*</div><div class="line">    (?(Open)(?!))         #在遇到最外层的右括号前面，判断黑板上还有没有没擦掉的&quot;Open&quot;；如果还有，则匹配失败</div><div class="line"></div><div class="line">&gt;                         #最外层的右括号</div></pre></td></tr></table></figure></p>
+<p>平衡组的一个最常见的应用就是匹配HTML,下面这个例子可以匹配嵌套的<div>标签：</div></p>
+<p><div[^>]<em>&gt;[^&lt;&gt;]</em>(((?’Open’<div[^>]<em>&gt;)[^&lt;&gt;]</em>)+((?’-Open’)[^&lt;&gt;]<em>)+)</em>(?(Open)(?!)).</div[^></div[^></p>
+<h3 id="13-未详细讨论的语法"><a href="#13-未详细讨论的语法" class="headerlink" title="13. 未详细讨论的语法"></a>13. 未详细讨论的语法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">代码/语法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">\a</td>
+<td style="text-align:left">报警字符(打印它的效果是电脑嘀一声)</td>
+</tr>
+<tr>
+<td style="text-align:left">\b</td>
+<td style="text-align:left">通常是单词分界位置，但如果在字符类里使用代表退格</td>
+</tr>
+<tr>
+<td style="text-align:left">\t</td>
+<td style="text-align:left">制表符，Tab</td>
+</tr>
+<tr>
+<td style="text-align:left">\r</td>
+<td style="text-align:left">回车</td>
+</tr>
+<tr>
+<td style="text-align:left">\v</td>
+<td style="text-align:left">竖向制表符</td>
+</tr>
+<tr>
+<td style="text-align:left">\f</td>
+<td style="text-align:left">换页符</td>
+</tr>
+<tr>
+<td style="text-align:left">\n</td>
+<td style="text-align:left">换行符</td>
+</tr>
+<tr>
+<td style="text-align:left">\e</td>
+<td style="text-align:left">Escape</td>
+</tr>
+<tr>
+<td style="text-align:left">\0nn</td>
+<td style="text-align:left">ASCII代码中八进制代码为nn的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\xnn</td>
+<td style="text-align:left">ASCII代码中十六进制代码为nn的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\unnnn</td>
+<td style="text-align:left">Unicode代码中十六进制代码为nnnn的字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\cN</td>
+<td style="text-align:left">ASCII控制字符。比如\cC代表Ctrl+C</td>
+</tr>
+<tr>
+<td style="text-align:left">\A</td>
+<td style="text-align:left">字符串开头(类似^，但不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td style="text-align:left">\Z</td>
+<td style="text-align:left">字符串结尾或行尾(不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td style="text-align:left">\z</td>
+<td style="text-align:left">字符串结尾(类似$，但不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td style="text-align:left">\G</td>
+<td style="text-align:left">当前搜索的开头</td>
+</tr>
+<tr>
+<td style="text-align:left">\p{name}</td>
+<td style="text-align:left">Unicode中命名为name的字符类，例如\p{IsGreek}</td>
+</tr>
+<tr>
+<td style="text-align:left">(?&gt;exp)</td>
+<td style="text-align:left">贪婪子表达式</td>
+</tr>
+<tr>
+<td style="text-align:left">(?\<x>-<y>exp)</y></x></td>
+<td style="text-align:left">平衡组</td>
+</tr>
+<tr>
+<td style="text-align:left">(?im-nsx:exp)</td>
+<td style="text-align:left">在子表达式exp中改变处理选项</td>
+</tr>
+<tr>
+<td style="text-align:left">(?im-nsx)</td>
+<td style="text-align:left">为表达式后面的部分改变处理选项</td>
+</tr>
+<tr>
+<td style="text-align:left">(?(exp)yes\</td>
+<td style="text-align:left">no)</td>
+<td>把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no</td>
+</tr>
+<tr>
+<td style="text-align:left">(?(exp)yes)</td>
+<td style="text-align:left">同上，只是使用空表达式作为no</td>
+</tr>
+<tr>
+<td style="text-align:left">(?(name)yes\</td>
+<td style="text-align:left">no)</td>
+<td>如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no</td>
+</tr>
+<tr>
+<td style="text-align:left">(?(name)yes)</td>
+<td style="text-align:left">同上，只是使用空表达式作为no</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14-常用正则表达式"><a href="#14-常用正则表达式" class="headerlink" title="14. 常用正则表达式"></a>14. 常用正则表达式</h3><p><strong>说明：</strong>正则表达式通常用于两种任务：1.验证，2.搜索/替换。<br>用于验证时，通常需要在前后分别加上^和$，以匹配整个待验证字符串；<br>搜索/替换时是否加上此限定则根据搜索的要求而定，<br>此外，也有可能要在前后加上\b而不是^和$。<br>此表所列的常用正则表达式，除个别外均未在前后加上任何限定，请根据需要，自行处理。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">正则表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">网址（URL）</td>
+<td style="text-align:left">[a-zA-z]+://[^\s]*</td>
+</tr>
+<tr>
+<td style="text-align:left">IP地址(IP Address)</td>
+<td style="text-align:left">((2[0-4]\d</td>
+<td>25[0-5]</td>
+<td>[01]?\d\d?).){3}(2[0-4]\d</td>
+<td>25[0-5]</td>
+<td>[01]?\d\d?)</td>
+</tr>
+<tr>
+<td style="text-align:left">电子邮件(Email)</td>
+<td style="text-align:left">\w+([-+.]\w+)<em>@\w+([-.]\w+)</em>.\w+([-.]\w+)*</td>
+</tr>
+<tr>
+<td style="text-align:left">QQ号码</td>
+<td style="text-align:left">[1-9]\d{4,}</td>
+</tr>
+<tr>
+<td style="text-align:left">HTML标记(包含内容或自闭合)</td>
+<td style="text-align:left">&lt;(.<em>)(.</em>)&gt;.*&lt;\/\1&gt;</td>
+<td>&lt;(.*) \/&gt;</td>
+</tr>
+<tr>
+<td style="text-align:left">密码(由数字/大写字母/小写字母/标点符号组成，四种都必有，8位以上)</td>
+<td style="text-align:left">(?=^.{8,}$)(?=.<em>\d)(?=.</em>\W+)(?=.<em>[A-Z])(?=.</em>[a-z])(?!.<em>\n).</em>$</td>
+</tr>
+<tr>
+<td style="text-align:left">日期(年-月-日)</td>
+<td style="text-align:left">(\d{4}</td>
+<td>\d{2})-((1[0-2])</td>
+<td>(0?[1-9]))-(([12][0-9])</td>
+<td>(3[01])</td>
+<td>(0?[1-9]))</td>
+</tr>
+<tr>
+<td style="text-align:left">日期(月/日/年)</td>
+<td style="text-align:left">((1[0-2])</td>
+<td>(0?[1-9]))/(([12][0-9])</td>
+<td>(3[01])</td>
+<td>(0?[1-9]))/(\d{4}</td>
+<td>\d{2})</td>
+</tr>
+<tr>
+<td style="text-align:left">时间(小时:分钟, 24小时制)</td>
+<td style="text-align:left">((1</td>
+<td>0?)[0-9]</td>
+<td>2[0-3]):([0-5][0-9])</td>
+</tr>
+<tr>
+<td style="text-align:left">汉字(字符)</td>
+<td style="text-align:left">[\u4e00-\u9fa5]</td>
+</tr>
+<tr>
+<td style="text-align:left">中文及全角标点符号(字符)</td>
+<td style="text-align:left">[\u3000-\u301e\ufe10-\ufe19\ufe30-\ufe44\ufe50-\ufe6b\uff01-\uffee]</td>
+</tr>
+<tr>
+<td style="text-align:left">中国大陆固定电话号码</td>
+<td style="text-align:left">(\d{4}-</td>
+<td>\d{3}-)?(\d{8}</td>
+<td>\d{7})</td>
+</tr>
+<tr>
+<td style="text-align:left">中国大陆手机号码</td>
+<td style="text-align:left">1\d{10}</td>
+</tr>
+<tr>
+<td style="text-align:left">中国大陆邮政编码</td>
+<td style="text-align:left">[1-9]\d{5}</td>
+</tr>
+<tr>
+<td style="text-align:left">中国大陆身份证号(15位或18位)</td>
+<td style="text-align:left">\d{15}(\d\d[0-9xX])?</td>
+</tr>
+<tr>
+<td style="text-align:left">非负整数(正整数或零)</td>
+<td style="text-align:left">\d+</td>
+</tr>
+<tr>
+<td style="text-align:left">正整数</td>
+<td style="text-align:left">[0-9]<em>[1-9][0-9]</em></td>
+</tr>
+<tr>
+<td style="text-align:left">负整数</td>
+<td style="text-align:left">-[0-9]<em>[1-9][0-9]</em></td>
+</tr>
+<tr>
+<td style="text-align:left">整数</td>
+<td style="text-align:left">-?\d+</td>
+</tr>
+<tr>
+<td style="text-align:left">小数</td>
+<td style="text-align:left">(-?\d+)(.\d+)?</td>
+</tr>
+<tr>
+<td style="text-align:left">不包含abc的单词</td>
+<td style="text-align:left">\b((?!abc)\w)+\b</td>
+</tr>
+</tbody>
+</table>
+<p><strong>说明:</strong>该文章参考<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">正则表达式教程</a></p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://arvin-he.github.io/2017/03/30/reg-tutorial-2017-03-30/" data-id="cj7fgv50400cebkvi2qkxhwsw" class="article-share-link">分享到</a><div class="tags"><a href="/tags/RegExp/">RegExp</a></div><div class="post-nav"><a href="/2017/03/31/gitcmd-2017-03-31/" class="pre">Git命令使用</a><a href="/2017/03/29/cpp-const-keyword-2017-03-29/" class="next">C/C++之const关键字</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">103</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/OOP/" style="font-size: 15px;">OOP</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/方法/" style="font-size: 15px;">方法</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/NodeJS/" style="font-size: 15px;">NodeJS</a> <a href="/tags/NSIS/" style="font-size: 15px;">NSIS</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/PyQt5/" style="font-size: 15px;">PyQt5</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/RegExp/" style="font-size: 15px;">RegExp</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a> <a href="/tags/web/" style="font-size: 15px;">web</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/08/learn-minds-2017-06-19/">怎样避免陷入无止境地看教程的陷阱</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/py-packproblems-2017-09-01/">Python程序打包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/py-stdin-2017-08-30/">Python中关于在GUI应用程序读取stdin内容</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/28/linux-backup-2017-08-28/">Linux系统之镜像备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/web-rest-2017-08-25/">Web之REST概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/web-getpost-2017-08-25/">Web之Get和Post区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/py-scrapy1-2017-08-25/">爬虫基础知识(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/py-jsonrpc-2017-08-25/">Python之jsonrpc</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/web-forwardbackagent-2017-08-24/">正向代理和反向代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/23/py-scrapysummer-2017-08-23/">Python爬虫总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Simple &amp; Freedom.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Learn and live."><title>Python之应用程序打包发布 | Simple &amp; Freedom</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Python之应用程序打包发布</h1><a id="logo" href="/.">Simple &amp; Freedom</a><p class="description">Learn and live.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/essay/"><i class="fa fa-archive"> 随笔</i></a><a href="/readnotes/"><i class="fa fa-archive"> 读书笔记</i></a><a href="/life/"><i class="fa fa-archive"> 生活</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/404.html"><i class="fa fa-heartbeat"> 公益404</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Python之应用程序打包发布</h1><div class="post-meta">May 8, 2017<span> | </span><span class="category"><a href="/categories/编程/">编程</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><h3 id="Windows上Python程序打包发布方式"><a href="#Windows上Python程序打包发布方式" class="headerlink" title="Windows上Python程序打包发布方式"></a>Windows上Python程序打包发布方式</h3><ul>
+<li>.py文件：直接提供源码，使用者自行安装Python并且安装依赖的各种库。(Python官方的各种安装包就是这样做的)</li>
+<li>.pyc文件：不愿意公开源码,可使用pyc文件发布，pyc文件是Python解释器可以识别的二进制码，故发布后也是跨平台的，需要使用者安装相应版本的Python和依赖库。</li>
+<li>可执行文件：包含了Python和依赖库,用户只要点击快捷方式即可. 比较麻烦的是需要针对不同平台需要打包不同的可执行文件.</li>
+</ul>
+<h3 id="各种打包工具的对比如下："><a href="#各种打包工具的对比如下：" class="headerlink" title="各种打包工具的对比如下："></a>各种打包工具的对比如下：</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">Solution</th>
+<th>Windows</th>
+<th>Linux</th>
+<th>OS X</th>
+<th>Python 3</th>
+<th>License</th>
+<th>One-file mode</th>
+<th>Zipfile import</th>
+<th>Eggs</th>
+<th>pkg_resources support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">bbFreeze</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>MIT</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td style="text-align:left">py2exe</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>MIT</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td style="text-align:left">pyInstaller</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>GPL</td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td style="text-align:left">cx_Freeze</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>PSF</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td style="text-align:left">py2app</td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>MIT</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>PS.其中pyInstaller和cx_Freeze都是不错的，stackoverflow上也有人建议用cx_Freeze，说是更便捷些。pkg_resources新版的pyInstaller貌似是支持的。</p>
+<h3 id="使用py2exe打包发布程序"><a href="#使用py2exe打包发布程序" class="headerlink" title="使用py2exe打包发布程序"></a>使用py2exe打包发布程序</h3><h4 id="py2exe打包发布"><a href="#py2exe打包发布" class="headerlink" title="py2exe打包发布"></a>py2exe打包发布</h4><p><strong>注意:</strong> 目前py2exe只支持到3.4版本,3.6版本不支持,主要是语法上不支持.</p>
+<ol>
+<li>安装py2exe: <code>pip install py2exe</code></li>
+<li><p>准备好你要打包的程序,如hello.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># hello.py</span></div><div class="line">print(<span class="string">"hello"</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建安装脚本程序（setup.py）<br>使用py2exe工具里需要一个setup.py的脚本，在你需要打包的应用程序目录下创建一个setup.py脚本文件,具体内容如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#python 3.4</span></div><div class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup</div><div class="line"><span class="keyword">import</span> py2exe</div><div class="line"></div><div class="line">setup(console=[<span class="string">'hello.py'</span>])</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在这个脚本里调用setup函数，创建控制台应用程序，它的入口主文件是hello.py文件。</p>
+<ol>
+<li><p>运行脚本（setup.py）文件<br>在控制台窗口中进入到需要打包的应用程序目录下,在控制台窗口里输入命令：<code>python setup.py py2exe</code>,回车,然后就开始自动打包.<br>运行这个命令成功之后，会在当前的目录下面创建一个发布的目录dist，所有需要发布的文件就会拷贝到此目录下面。</p>
+</li>
+<li><p>执行生成的exe程序<br>经过上面的步骤，就可以进入目录dist下面进行运行exe程序了,双击就可运行.运行成功之后，与前面使用python hello.py是一样的结果，不过这个目录内容就可以发布到不同的电脑上进行运行，且不需要安装python。</p>
+</li>
+</ol>
+<h4 id="py2exe使用出现的问题"><a href="#py2exe使用出现的问题" class="headerlink" title="py2exe使用出现的问题"></a>py2exe使用出现的问题</h4><ol>
+<li>py2exe 在打包简单的文件时能够正常工作,但打包稍微复杂的应用程序时会出现递归溢出的问题,打包失败,不知原因,且网上没有好的解决方法.</li>
+<li>如果是PyQt的GUI应用程序,py2exe则不会将平台相关的东西(即PyQt下的platform文件夹)打包进来.</li>
+</ol>
+<h3 id="使用Pyinstaller打包发布程序"><a href="#使用Pyinstaller打包发布程序" class="headerlink" title="使用Pyinstaller打包发布程序"></a>使用Pyinstaller打包发布程序</h3><h4 id="Pyinstaller安装"><a href="#Pyinstaller安装" class="headerlink" title="Pyinstaller安装"></a>Pyinstaller安装</h4><p>控制台窗口输入:<code>pip install pyinstaller</code>,回车,然后开始自动安装pyinstaller</p>
+<h4 id="Pyinstaller使用"><a href="#Pyinstaller使用" class="headerlink" title="Pyinstaller使用"></a>Pyinstaller使用</h4><p>目录切换到你要打包程序的目录下, 在控制台窗口输入:<code>pyinstaller yourprogram.py</code>,回车,<br>然后在你的程序目录下创建一个dist文件夹,里面包含你要打包的所有相关的东西.<br>注意:配置文件不会被打包加进去</p>
+<h4 id="一些选项"><a href="#一些选项" class="headerlink" title="一些选项"></a>一些选项</h4><p><code>python pyinstaller.py [opts] yourprogram.py</code><br>主要选项<br>-F, -onefile 打包成一个exe文件<br>-D, -onedir 创建一个目录，包含exe文件，但会依赖很多文件（默认选项）<br>-c, -console, -nowindowed 使用控制台，无界面（默认）<br>-w, -windowed, -noconsole 使用窗口，无控制台</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>打包了很多东西,比较大</p>
+<h3 id="使用cx-Freeze打包发布程序"><a href="#使用cx-Freeze打包发布程序" class="headerlink" title="使用cx_Freeze打包发布程序"></a>使用cx_Freeze打包发布程序</h3><h4 id="安装cx-Freeze"><a href="#安装cx-Freeze" class="headerlink" title="安装cx_Freeze"></a>安装cx_Freeze</h4><p>在控制台窗口输入:<code>pip install cx_Freeze</code>,回车,然后就自动安装cx_Freeze了.</p>
+<h4 id="cx-Freeze使用"><a href="#cx-Freeze使用" class="headerlink" title="cx_Freeze使用"></a>cx_Freeze使用</h4><p>与py2exe一样,需要在要打包的程序目录下创建一个setup.py, 当然也可以是其他名字<br>然后在命令行窗口输入:<code>python setup.py build</code>,回车,然后就会在程序目录下<br>创建一个build文件夹,里面打包了所有需要用到的依赖<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># setup.py</span></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">from</span> cx_Freeze <span class="keyword">import</span> setup, Executable</div><div class="line"><span class="comment"># 依赖关系被自动检测，但可能需要微调</span></div><div class="line">build_exe_options = &#123;<span class="string">"packages"</span>: [<span class="string">"os"</span>], <span class="string">"excludes"</span>: [<span class="string">"tkinter"</span>]&#125;</div><div class="line"><span class="comment"># GUI应用程序在Windows上需要不同的基础（默认值为控制台应用程序)</span></div><div class="line">base = <span class="keyword">None</span></div><div class="line"><span class="keyword">if</span> sys.platform == <span class="string">"win32"</span>:</div><div class="line">    base = <span class="string">"Win32GUI"</span></div><div class="line"></div><div class="line">setup(  name = <span class="string">"guifoo"</span>,</div><div class="line">        version = <span class="string">"0.1"</span>,</div><div class="line">        description = <span class="string">"My GUI application!"</span>,</div><div class="line">        options = &#123;<span class="string">"build_exe"</span>: build_exe_options&#125;,</div><div class="line">        executables = [Executable(<span class="string">"guifoo.py"</span>, base=base)])</div></pre></td></tr></table></figure></p>
+<h4 id="打包成-msi格式"><a href="#打包成-msi格式" class="headerlink" title="打包成*.msi格式"></a>打包成*.msi格式</h4><p>在命令行窗口输入:<code>python setup.py bdist_msi</code>,回车,就会在build目录下生成一个*.msi格式的软件安装包</p>
+<h3 id="将Python程序打包成-zip文件并发布"><a href="#将Python程序打包成-zip文件并发布" class="headerlink" title="将Python程序打包成.zip文件并发布"></a>将Python程序打包成.zip文件并发布</h3><p>在部署Python程序的时候。一般是把所有的源代码复制到目标机器上。我发现一个更好的办法是把源代码打包成.zip文件，然后直接运行这个.zip文件。比如：<code>python besteam.zip</code><br>它的秘密是在.zip文件中包含一个__main__.py，当python运行这个zip时，会自动找到它并运行。__main__.py的内容一般是调用主脚本。一行即可，比如:<code>import besteam</code>,<br>如果不想让源代码发布出去，这更是一个好办法。不需要手动地找出编译后的python字节码文件。python提供了一个zipfile. PyZipFile的类自动地将源代码编译成字节码并打包在一起。下面是一个简单的示例脚本：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*- </span></div><div class="line"><span class="keyword">import</span> zipfile, os </div><div class="line">besteamzip = zipfile.PyZipFile(<span class="string">"besteam.zip"</span> ,<span class="string">"w"</span>, zipfile.ZIP_DEFLATED) </div><div class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> (<span class="string">"__main__.py"</span>, <span class="string">"besteam.py"</span>): </div><div class="line">    besteamzip.writepy(filename)</div><div class="line"><span class="keyword">for</span> dirname <span class="keyword">in</span> os.listdir(<span class="string">"."</span>):</div><div class="line">    initfile=os.path.join(dirname, <span class="string">"__init__.py"</span>)</div><div class="line">    <span class="keyword">if</span> os.path.isdir(dirname) <span class="keyword">and</span> os.path.exists(initfile):</div><div class="line">        besteamzip.writepy(dirname)</div><div class="line">besteamzip.close()</div></pre></td></tr></table></figure></p>
+<p>需要注意的是,Python各个版本的字节码是不兼容的。所以，如果运行环境中有多个版本的Python就不能这么搞了，要么制作多个包，要么发布源代码。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://www.cnblogs.com/turtle920/p/5370132.html" target="_blank" rel="external">Python依赖打包发布详细</a></li>
+<li><a href="http://docs.python-guide.org/en/latest/shipping/freezing/" target="_blank" rel="external">Freezing Your Code</a></li>
+<li><a href="http://www.tuicool.com/articles/Ivuaaq" target="_blank" rel="external">http://www.tuicool.com/articles/Ivuaaq</a></li>
+<li><a href="http://cx-freeze.readthedocs.io/en/latest/distutils.html" target="_blank" rel="external">http://cx-freeze.readthedocs.io/en/latest/distutils.html</a></li>
+</ul>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://arvin-he.github.io/2017/05/08/python-packprograms-2017-05-08/" data-id="cj7fgv4zt00c2bkvilbzehrab" class="article-share-link">分享到</a><div class="tags"><a href="/tags/Python/">Python</a></div><div class="post-nav"><a href="/2017/05/09/python-pyenv-2017-05-09/" class="pre">Python之pyenv与virtualenv使用</a><a href="/2017/05/07/python-logging-2017-05-07/" class="next">Python之logging模块</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">103</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/OOP/" style="font-size: 15px;">OOP</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/方法/" style="font-size: 15px;">方法</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/NodeJS/" style="font-size: 15px;">NodeJS</a> <a href="/tags/NSIS/" style="font-size: 15px;">NSIS</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/PyQt5/" style="font-size: 15px;">PyQt5</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/RegExp/" style="font-size: 15px;">RegExp</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a> <a href="/tags/web/" style="font-size: 15px;">web</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/08/learn-minds-2017-06-19/">怎样避免陷入无止境地看教程的陷阱</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/01/py-packproblems-2017-09-01/">Python程序打包问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/py-stdin-2017-08-30/">Python中关于在GUI应用程序读取stdin内容</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/28/linux-backup-2017-08-28/">Linux系统之镜像备份</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/web-rest-2017-08-25/">Web之REST概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/web-getpost-2017-08-25/">Web之Get和Post区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/py-scrapy1-2017-08-25/">爬虫基础知识(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/25/py-jsonrpc-2017-08-25/">Python之jsonrpc</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/24/web-forwardbackagent-2017-08-24/">正向代理和反向代理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/23/py-scrapysummer-2017-08-23/">Python爬虫总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Simple &amp; Freedom.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

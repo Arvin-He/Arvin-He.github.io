@@ -23,6 +23,11 @@ Win + Alt + P 打开设置界面
 在下面设置快捷键,如ctrl+Alt+1
 保存设置,然后重启.
 
+### 1.4 cmder目录
+cmder不要放在c:/program files目录下,因为当你修改cmder设置,然后要保存设置时无法保存,因为往c:/program files写设置信息需要管理员权限,
+所以cmder还是放在C盘根目录下,或者其他盘的目录下.
+
+
 ## 2. 通过命令行追加环境变量
 例如添加C:\phantomjs
 ```

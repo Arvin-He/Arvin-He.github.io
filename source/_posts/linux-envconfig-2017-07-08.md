@@ -18,6 +18,15 @@ cd  /media/cdrom0
 sh  ./VBoxLinuxAdditions.run 
 ```
 
+在xubuntu上
+安装编译环境，执行如下命令
+sudo apt-get install build-essential
+映射设备
+sudo mount /dev/cdrom /media/cdrom
+进入cd /media/cdrom
+执行 sudo ./VBoxLinuxAdditions.run
+完成后重启
+
 然后设置切换显示模式,注意使用快捷键切换
 
 ### 设置共享文件夹

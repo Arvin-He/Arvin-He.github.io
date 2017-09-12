@@ -4,6 +4,41 @@
   
     
     <entry>
+      <title><![CDATA[mongoDB笔记]]></title>
+      <url>http://arvin-he.github.io/2017/09/12/mongodb-notes1-2017-09-12/</url>
+      <content type="html"><![CDATA[<h2 id="常见的关系型数据库"><a href="#常见的关系型数据库" class="headerlink" title="常见的关系型数据库"></a>常见的关系型数据库</h2><p>关系数据库管理系统(Relational DataBase Management System，RDBMS)<br>MySQL、PostgreSQL、SQLite、Oracle、MS SQLServer </p>
+<h3 id="mongoDB简介"><a href="#mongoDB简介" class="headerlink" title="mongoDB简介"></a>mongoDB简介</h3><p>MongoDB(源自单词 humongous)是一种较新的数据库，它没有表、模式、SQL 或行的概念。<br>它没有事务、ACID 兼容性、连接、外键或其他许多容易在凌晨引起问题的特性。</p>
+<p>记住：MongoDB 不会尝试为所有人完成所有事情。但对于许多目的(例如构建 Web 应用)，<br>MongoDB 是一个能够实现解决方案的完美工具。</p>
+<p>MongoDB 以C++编写，因此迁移相对容易，并且可以在任何位置运行该应用。MongoDB 提供了一个功能丰富的面向文档数据库，并且对运行速度和扩展性做了优化。它也几乎可运行在任何目标上。MongoDB的网站上包含了可运行在 Linux、Mac OS、Windows 和 Solaris 中的安装文件。</p>
+<p><strong>警告：</strong><br>32 位版本的 MongoDB 数据库大小被限制为小于等于 2GB，因为 MongoDB 内部使用内存<br>映射文件来实现高性能。在 32 位系统中任何大于 2GB 的文件都需要一些特殊的处理，这样会<br>降低处理速度，也会使应用代码变得复杂。官方关于该限制的观点是：64 位环境很容易获得；<br>因此，增加代码的复杂性并不是很好的权衡之计。64 位版本的 MongoDB 可以实现所有的意图<br>和目的，并且不含任何限制。</p>
+<h3 id="关于BSON"><a href="#关于BSON" class="headerlink" title="关于BSON"></a>关于BSON</h3><p>MongoDB 并未使用 JSON 存储数据，而使用由 MongoDB 团队开发的一种称为<br>BSON(二进制 JSON 的英文简称)的开放数据格式。大多数情况下，使用 BSON 取代 JSON 并不<br>会改变处理数据的方式。BSON 通过使计算机更容易处理和搜索文档的方式，使 MongoDB 处<br>理速度变得更快。BSON 还添加了一些标准 JSON 不支持的特性，包括数字数据(例如 int32 和<br>int64)的许多扩展类型，以及支持处理二进制数据。</p>
+<p>BSON 是一个开放标准，在网址 <a href="http://bsonspec.org/上可以找到它的规范。当人们听到" target="_blank" rel="external">http://bsonspec.org/上可以找到它的规范。当人们听到</a> BSON<br>是 JSON 的二进制形式时，他们期望 BSON 占用的空间要比 JSON 少得多。不过，事实并不一<br>定是这样的；许多情况下，BSON 版本与相同的 JSON 相比要占用更多的空间。</p>
+<p>首先，要记住 MongoDB 的设计目标是快速，而不是节省空间。虽然这并不意味着 MongoDB<br>会浪费空间(它不会)；不过，如果处理数据的速度更快(它确实是这样的)，那么存储文档时的一<br>点开销是完全可以接受的。简单地说，BSON 更易于遍历(即浏览)，遍历索引页非常快。</p>
+<p>BSON 支持在一个文档中存储最多 16MB 的二进制数据，</p>
+<h3 id="关于唯一键"><a href="#关于唯一键" class="headerlink" title="关于唯一键"></a>关于唯一键</h3><p>MongoDB 要求每个文档必须有唯一标识符；在 MongoDB 中，该标识符<br>被称为_id。除非为该字段指定某个值，否则 MongoDB 将自动创建唯一值。即使是在已经成熟<br>的 RDBMS 数据库世界中，也存在着是应该自己提供唯一键还是由数据库提供的分歧。最近，<br>由数据库创建唯一键的方式已经变得更加流行。MongoDB 是一个分布式数据库，所以其主要<br>目标之一是消除对共享资源的依赖(例如检查主键是否独一无二)。非分布式的数据库通常使用<br>一个简单的主键，例如自动递增的序列号。MongoDB 的默认_id 格式是一个 ObjectId，它是一<br>个 12 字节的唯一标识符，可以独立地在分布式环境中生成。<br>之前，使用 MongoDB 的大多数开发者似乎更喜欢创建自己的唯一键，由自己来维护键的<br>唯一性。然而，现在人们更愿意使用 MongoDB 创建的默认 ID 值。不过，在使用 RDBMS 数据<br>库时，选择哪种方式更多地取决于个人偏好。我们更愿意使用数据库提供的值，因为这意味着<br>我们可以保证键是唯一的，并且是独立的。<br>最终，你必须决定哪种方式更适合自己。如果有信心保证自己的键一定是唯一的(并且可能<br>不会改变)，那么就可以使用。如果不确定键的唯一性或者不希望担心这件事情，最好还是使用<br>MongoDB 提供的默认键。</p>
+<h3 id="关于集合"><a href="#关于集合" class="headerlink" title="关于集合"></a>关于集合</h3><p>集合有点类似于表，但它们不那么死板。集合非常像一个贴有标签的盒子。<br>最后但并非最不重要的是，集合可以按需求即时创建。尤其是，在第一次尝试保存文档时，<br>MongoDB 将创建引用它的集合。这意味着可以按照需求即时创建集合(但并不是应该这么做)。<br>因为 MongoDB 也允许动态地创建索引，执行其他数据库级别的命令，所以可以利用该特性构<br>建出一些非常动态的应用。</p>
+<p>理解 MongoDB 中数据库的最简单方式就是将它看成一个集合的集合</p>
+<h3 id="存储二进制数据"><a href="#存储二进制数据" class="headerlink" title="存储二进制数据"></a>存储二进制数据</h3><p>GridFS 是 MongoDB 在数据库中存储二进制数据的解决方案。<br>GridFS 通过在 files 集合中存储文件的信息(称为元数据)来实现。数据本身被分成多块(称为<br>信息块)存储在 chunks 集合中。这种方式使数据存储既简单又有扩展性；还使范围操作(例如获<br>取文件的特定部分)变得更简单。</p>
+<h3 id="实施分片"><a href="#实施分片" class="headerlink" title="实施分片"></a>实施分片</h3><p>对于涉及大规模部署的应用，自动分片可能是 MongoDB 最重要和最常用的特性。<br>在自动分片场景中，MongoDB 将处理所有数据的分割和重组。它将保证数据进入正确的<br>服务器，并以最高效的方式运行查询和重组结果。事实上，从开发者的角度看，使用含有数百<br>个分片的 MongoDB 数据库和使用单个 MongoDB 数据库并没有区别。</p>
+<h3 id="使用-map-和-reduce-函数"><a href="#使用-map-和-reduce-函数" class="headerlink" title="使用 map 和 reduce 函数"></a>使用 map 和 reduce 函数</h3><p>MongoDB 并不要求使用 map 和 reduce 函数。事实上，MongoDB 只依赖于简单的查询语法，<br>这种语法与 MySQL 中使用的类似。不过，对于希望使用该功能的人，MongoDB 也提供了对这<br>些函数的支持。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> mongoDB </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[怎样避免陷入无止境地看教程的陷阱]]></title>
       <url>http://arvin-he.github.io/2017/09/08/learn-minds-2017-06-19/</url>
       <content type="html"><![CDATA[<p><img src="/2017/09/08/learn-minds-2017-06-19/1.jpeg" alt=""></p>
@@ -7456,6 +7491,12 @@
     </entry>
     
     <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://arvin-he.github.io/categories/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于Arvin]]></title>
       <url>http://arvin-he.github.io/about/index.html</url>
       <content type="html"><![CDATA[<hr>
@@ -7475,30 +7516,6 @@
 <h1 id="联系Arvin"><a href="#联系Arvin" class="headerlink" title="联系Arvin"></a>联系Arvin</h1><hr>
 <p>微信: JUNHE_1218<br>E-mail: junhe3209@gmail.com<br>GitHub: <a href="https://github.com/Arvin-He" target="_blank" rel="external">https://github.com/Arvin-He</a></p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://arvin-he.github.io/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[life]]></title>
-      <url>http://arvin-he.github.io/life/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[essay]]></title>
-      <url>http://arvin-he.github.io/essay/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[readnotes]]></title>
-      <url>http://arvin-he.github.io/readnotes/index.html</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
@@ -7566,6 +7583,24 @@
     <entry>
       <title><![CDATA[tags]]></title>
       <url>http://arvin-he.github.io/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[essay]]></title>
+      <url>http://arvin-he.github.io/essay/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[readnotes]]></title>
+      <url>http://arvin-he.github.io/readnotes/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[life]]></title>
+      <url>http://arvin-he.github.io/life/index.html</url>
       <content type="html"></content>
     </entry>
     

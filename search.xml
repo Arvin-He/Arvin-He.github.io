@@ -4,8 +4,198 @@
   
     
     <entry>
+      <title><![CDATA[Python定时器]]></title>
+      <url>http://arvin-he.github.io/2017/09/20/py-timer-2017-09-20/</url>
+      <content type="html"><![CDATA[<h3 id="python中定时器"><a href="#python中定时器" class="headerlink" title="python中定时器"></a>python中定时器</h3><p>python中的定时器在threading模块中,而且只执行一次, 那么如何定时循环调用呢?<br>Timer:  隔一定时间调用一个函数,如果想实现每隔一段时间就调用一个函数的话，就要在Timer调用的函数中，再次设置Timer。<br>Timer其实是Thread的一个派生类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(name)</span>:</span></div><div class="line">    print(<span class="string">"hello %s\n"</span> % name)</div><div class="line">    <span class="keyword">global</span> timer</div><div class="line">    timer = threading.Timer(<span class="number">2.0</span>, hello, [<span class="string">"world"</span>])</div><div class="line">    timer.start()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    timer = threading.Timer(<span class="number">2.0</span>, hello, [<span class="string">"world"</span>])</div><div class="line">    timer.start()</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Linux一些常用命令]]></title>
+      <url>http://arvin-he.github.io/2017/09/19/linux-cmds-2017-09-19/</url>
+      <content type="html"><![CDATA[<h2 id="scp命令"><a href="#scp命令" class="headerlink" title="scp命令"></a>scp命令</h2><p>scp是secure copy的简写，用于在Linux下进行远程拷贝文件或文件夹.scp传输是加密的。可能会稍微影响一下速度。当你服务器硬盘变为只读 read only system时，用scp可以帮你把文件移出来。另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。</p>
+<p>命令格式：<br>scp [参数] [原路径] [目标路径]</p>
+<h3 id="从本地服务器复制到远程服务器："><a href="#从本地服务器复制到远程服务器：" class="headerlink" title="从本地服务器复制到远程服务器："></a>从本地服务器复制到远程服务器：</h3><p>命令格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">scp local_file remote_username@remote_ip:remote_folder  </div><div class="line">或者  </div><div class="line">scp local_file remote_username@remote_ip:remote_file  </div><div class="line">或者  </div><div class="line">scp local_file remote_ip:remote_folder  </div><div class="line">或者  </div><div class="line">scp local_file remote_ip:remote_file</div></pre></td></tr></table></figure></p>
+<p>第1,2个指定了用户名，命令执行后需要输入用户密码，<br>第1个仅指定了远程的目录，文件名字不变，<br>第2个指定了文件名<br>第3,4个没有指定用户名，命令执行后需要输入用户名和密码，<br>第3个仅指定了远程的目录，文件名字不变，<br>第4个指定了文件名 </p>
+<h3 id="从本地拷贝文件夹到远程服务器："><a href="#从本地拷贝文件夹到远程服务器：" class="headerlink" title="从本地拷贝文件夹到远程服务器："></a>从本地拷贝文件夹到远程服务器：</h3><p>命令格式：<br><code>scp -r local_folder remote_username@remote_ip:remote_folder</code><br>或者<br><code>scp -r local_folder remote_ip:remote_folder</code><br>第1个指定了用户名，命令执行后需要输入用户密码；<br>第2个没有指定用户名，命令执行后需要输入用户名和密码；</p>
+<h3 id="从远程服务器复制到本地服务器："><a href="#从远程服务器复制到本地服务器：" class="headerlink" title="从远程服务器复制到本地服务器："></a>从远程服务器复制到本地服务器：</h3><p>从远程复制到本地的scp命令与上面的命令相似，只要将从本地复制到远程的命令后面2个参数互换顺序就行了。</p>
+<p><code>scp arvin@192.168.120.204:/opt/soft/nginx-0.5.38.tar.gz /opt/soft/</code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[python之beautifulsoup使用]]></title>
+      <url>http://arvin-he.github.io/2017/09/18/py-bs4-2017-09-18/</url>
+      <content type="html"><![CDATA[<h3 id="find-find-all"><a href="#find-find-all" class="headerlink" title="find()/find_all()"></a>find()/find_all()</h3><p>find() 返回文档中符合条件的tag，如果没找到符合条件的tag返回Node<br>find_all()返回文档中全部符合条件的tag的列表，如果不存在返回空列表<br>注意find()函数返回的是符合条件的tag，因此可以进行链式调用，如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#先查找class属性为‘post-content’的div标签，然后查找该div标签下的所有的img标签</span></div><div class="line">soup.find(<span class="string">'div'</span>, class_=<span class="string">'post-content'</span>).find_all(<span class="string">'img'</span>)</div></pre></td></tr></table></figure></p>
+<p>而<code>find_all()</code>返回的是列表，列表是不存在find()和find_all()函数的，因此不能进行链式调用</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[mongodb笔记(三)]]></title>
+      <url>http://arvin-he.github.io/2017/09/18/mongodb-note3-2017-09-18/</url>
+      <content type="html"><![CDATA[<h3 id="mongodb突然无法打开"><a href="#mongodb突然无法打开" class="headerlink" title="mongodb突然无法打开"></a>mongodb突然无法打开</h3><p>检查mongodb数据所在的文件夹下是否有一个类似”locked file”,删掉这个文件,然后再开启mongodb</p>
+<h3 id="再说插入操作"><a href="#再说插入操作" class="headerlink" title="再说插入操作"></a>再说插入操作</h3><p>单条插入<br>批量插入</p>
+<h3 id="find操作"><a href="#find操作" class="headerlink" title="find操作"></a>find操作</h3><p>查询是用的最多的操作了, 常用的有2类:</p>
+<ol>
+<li><blockquote>
+<p>, &gt;=, &lt;, &lt;=, !=, =</p>
+</blockquote>
+</li>
+<li>And，OR，In，NotIn</li>
+</ol>
+<p>这些操作在mongodb里面都有对应封装.</p>
+<ol>
+<li>“$gt”, “$gte”, “$lt”, “$lte”, “$ne”, “”<br>这些与上面 &gt;, &gt;=, &lt;, &lt;=, !=, = 这6个符号操作一一对应</li>
+<li>“”, “$or”, “$in”，”$nin”<br>与 And，OR，In，NotIn 操作一一对应</li>
+</ol>
+<p>正则表达式匹配<br>在mongodb中还有一个特殊的匹配，那就是支持正则表达式.</p>
+<p>$where操作</p>
+<h3 id="update操作"><a href="#update操作" class="headerlink" title="update操作"></a>update操作</h3><p>整体更新<br>局部更新</p>
+<p>局部更新:<br>mongodb中已经给我们提供了两个修改器： $inc 和 $set。</p>
+<p>$inc修改器<br>$inc也就是increase的缩写，自增$inc指定的值，如果“文档”中没有此key，则会创建key。</p>
+<p>$set修改器</p>
+<h3 id="upsert操作"><a href="#upsert操作" class="headerlink" title="upsert操作"></a>upsert操作</h3><p>upsert操作就是说：如果我没有查到，我就在数据库里面新增一条，其实这样也有好处，就是避免了我在数据库里面判断是update还是add操作，使用起来很简单将update的第三个参数设为true即可。</p>
+<h3 id="批量更新"><a href="#批量更新" class="headerlink" title="批量更新"></a>批量更新</h3><p>在mongodb中如果匹配多条，默认的情况下只更新第一条，那么如果我们有需求必须批量更新，那么在mongodb中实现也是很简单的，在update的第四个参数中设为true即可.</p>
+<h3 id="查询某一字段重复的记录"><a href="#查询某一字段重复的记录" class="headerlink" title="查询某一字段重复的记录"></a>查询某一字段重复的记录</h3><h3 id="查询某一字段重复的记录的数目"><a href="#查询某一字段重复的记录的数目" class="headerlink" title="查询某一字段重复的记录的数目"></a>查询某一字段重复的记录的数目</h3>]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> MongoDB </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Python笔记]]></title>
+      <url>http://arvin-he.github.io/2017/09/18/py-note1-2017-09-18/</url>
+      <content type="html"><![CDATA[<h3 id="python路径操作"><a href="#python路径操作" class="headerlink" title="python路径操作"></a>python路径操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"><span class="comment">#创建目录</span></div><div class="line">os.mkdir(<span class="string">"D:\\python\\2"</span>)</div><div class="line"><span class="comment">#删除目录</span></div><div class="line">os.rmdir(<span class="string">"D:\\python\\2"</span>)</div><div class="line"></div><div class="line"><span class="comment">#创建多级目录</span></div><div class="line">os.makedirs(<span class="string">"D:\\python\\oo\\2\\3"</span>)</div><div class="line"><span class="comment">#删除多级目录</span></div><div class="line">os.removedirs(<span class="string">"D:\\python\\oo\\2\\3"</span>)</div><div class="line"></div><div class="line"><span class="comment">#获取目录下文件夹及文件</span></div><div class="line">paths=os.listdir(<span class="string">"D:\\python"</span>)</div><div class="line"><span class="keyword">for</span> path <span class="keyword">in</span> paths:</div><div class="line">    print(path)</div><div class="line"></div><div class="line"><span class="comment">#获取当前目录位置</span></div><div class="line">path1=os.getcwd()</div><div class="line">print(path1)</div><div class="line"></div><div class="line"><span class="comment">#切换目录</span></div><div class="line">os.chdir(<span class="string">"D:\\python\\oo\\3"</span>)</div><div class="line">path2=os.getcwd()</div><div class="line">print(path2)</div><div class="line"></div><div class="line"><span class="comment">#遍历所有子目录及文件</span></div><div class="line"><span class="keyword">for</span> p1,d,filelist <span class="keyword">in</span> os.walk(<span class="string">'D:'</span>+os.sep+<span class="string">'python'</span>):</div><div class="line">    <span class="keyword">for</span> f1 <span class="keyword">in</span> filelist:</div><div class="line">        fp=os.path.join(p1,f1)</div><div class="line">        print(fp)</div></pre></td></tr></table></figure>
+<h3 id="python文件压缩操作"><a href="#python文件压缩操作" class="headerlink" title="python文件压缩操作"></a>python文件压缩操作</h3><h3 id="python数据库连接操作"><a href="#python数据库连接操作" class="headerlink" title="python数据库连接操作"></a>python数据库连接操作</h3><h3 id="python字符串操作"><a href="#python字符串操作" class="headerlink" title="python字符串操作"></a>python字符串操作</h3><h3 id="python异常处理"><a href="#python异常处理" class="headerlink" title="python异常处理"></a>python异常处理</h3><h3 id="python日志操作"><a href="#python日志操作" class="headerlink" title="python日志操作"></a>python日志操作</h3>]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[mongodb笔记(二)]]></title>
+      <url>http://arvin-he.github.io/2017/09/13/mongodb-note2-2017-09-13/</url>
+      <content type="html"><![CDATA[<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
+<li>mongoDB三要素: 数据库，集合，文档，其中“集合”就是对应关系数据库中的“表”，“文档”对应“行”。</li>
+<li>mongoDB发布版本: 32bit和64bit<ul>
+<li>根据业界规则，偶数为“稳定版”(如：1.6.X，1.8.X)，奇数为“开发版”(如：1.7.X，1.9.X)</li>
+<li>32bit的mongodb最大只能存放2G的数据，64bit就没有限制</li>
+</ul>
+</li>
+</ol>
+<h3 id="mongoDB安装与启动"><a href="#mongoDB安装与启动" class="headerlink" title="mongoDB安装与启动"></a>mongoDB安装与启动</h3><ol>
+<li>安装: 安装就不多说了,注意安装完将mongodb安装目录下的bin目录(C:\Program Files\MongoDB\Server\3.4\bin)放到环境变量中去,默认是没有放到环境变量中.这样有一些很好用的工具和命令可以在终端使用.</li>
+<li>启动: 启动之前必须给monggodb指定一个文件夹,这里取名为”mongodata”,路径位:C:\mongodata,用来存放mongodb的数据。如果你将mongodb安装在C:/program File目录下,那么这个mongodata文件夹不要放在C:/program File目录下.因为这需要管理员权限才能添加和删除文件夹.</li>
+<li>在终端指定数据存放地点:<br>mongod –dbpath=C:/mongodata</li>
+<li>查看是否成功:<br>最后要看下是否开启成功，从图中的信息中获知，mongodb采用27017端口，那么我们就在浏览器里面键入“<a href="http://localhost:27017/”，" target="_blank" rel="external">http://localhost:27017/”，</a><br>打开后，mongodb告诉我们在27017上Add 1000可以用http模式查看mongodb的管理信息(貌似在新版本3.4.9没有成功)。</li>
+</ol>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>在终端指定数据存放点后,mongod –dbpath=C:/mongodata,不要关闭该终端,再开一个终端，输入mongo命令打开shell，其实这个shell就是mongodb的客户端，同时也是一个js的编译器，默认连接的是“test”数据库。</p>
+<ol>
+<li>insert操作</li>
+</ol>
+<p><img src="/2017/09/13/mongodb-note2-2017-09-13/1.png" alt=""></p>
+<ol>
+<li>find 操作</li>
+</ol>
+<p>这里要注意两点：<br>“_id”： 这个字段是数据库默认给我们加的GUID，目的就是保证数据的唯一性。<br>严格的按照Bson的形式书写文档，不过也没关系，错误提示还是很强大的。</p>
+<p><img src="/2017/09/13/mongodb-note2-2017-09-13/2.png" alt=""></p>
+<ol>
+<li>update操作</li>
+</ol>
+<p>update方法的第一个参数为“查找的条件”，第二个参数为“更新的值”。</p>
+<p><img src="/2017/09/13/mongodb-note2-2017-09-13/3.png" alt=""></p>
+<ol>
+<li>remove操作</li>
+</ol>
+<p>删除指定数据</p>
+<p><img src="/2017/09/13/mongodb-note2-2017-09-13/4.png" alt=""></p>
+<p>删除所有数据</p>
+<p><img src="/2017/09/13/mongodb-note2-2017-09-13/5.png" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> mongoDB </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[mongoDB笔记]]></title>
-      <url>http://arvin-he.github.io/2017/09/12/mongodb-notes1-2017-09-12/</url>
+      <url>http://arvin-he.github.io/2017/09/12/mongodb-note1-2017-09-12/</url>
       <content type="html"><![CDATA[<h2 id="常见的关系型数据库"><a href="#常见的关系型数据库" class="headerlink" title="常见的关系型数据库"></a>常见的关系型数据库</h2><p>关系数据库管理系统(Relational DataBase Management System，RDBMS)<br>MySQL、PostgreSQL、SQLite、Oracle、MS SQLServer </p>
 <h3 id="mongoDB简介"><a href="#mongoDB简介" class="headerlink" title="mongoDB简介"></a>mongoDB简介</h3><p>MongoDB(源自单词 humongous)是一种较新的数据库，它没有表、模式、SQL 或行的概念。<br>它没有事务、ACID 兼容性、连接、外键或其他许多容易在凌晨引起问题的特性。</p>
 <p>记住：MongoDB 不会尝试为所有人完成所有事情。但对于许多目的(例如构建 Web 应用)，<br>MongoDB 是一个能够实现解决方案的完美工具。</p>
@@ -7491,12 +7681,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://arvin-he.github.io/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[关于Arvin]]></title>
       <url>http://arvin-he.github.io/about/index.html</url>
       <content type="html"><![CDATA[<hr>
@@ -7581,8 +7765,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://arvin-he.github.io/tags/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://arvin-he.github.io/categories/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -7593,14 +7777,20 @@
     </entry>
     
     <entry>
-      <title><![CDATA[readnotes]]></title>
-      <url>http://arvin-he.github.io/readnotes/index.html</url>
+      <title><![CDATA[life]]></title>
+      <url>http://arvin-he.github.io/life/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[life]]></title>
-      <url>http://arvin-he.github.io/life/index.html</url>
+      <title><![CDATA[tags]]></title>
+      <url>http://arvin-he.github.io/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[readnotes]]></title>
+      <url>http://arvin-he.github.io/readnotes/index.html</url>
       <content type="html"></content>
     </entry>
     

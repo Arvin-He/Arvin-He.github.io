@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.3.7"
+    "version": "3.3.9"
   },
   "dependencies": {
     "hexo": "^3.3.7",
-    "hexo-asset-image": "git+https://github.com/CodeFalling/hexo-asset-image.git",
+    "hexo-asset-image": "https://github.com/CodeFalling/hexo-asset-image",
     "hexo-deployer-git": "^0.2.0",
     "hexo-fs": "^0.2.2",
     "hexo-generator-archive": "^0.1.4",

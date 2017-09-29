@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title><![CDATA[Python 缓存机制与 functools.lru_cache]]></title>
+      <url>http://arvin-he.github.io/2017/09/29/py-cache-2017-09-29/</url>
+      <content type="html"><![CDATA[<h3 id="缓存概念"><a href="#缓存概念" class="headerlink" title="缓存概念"></a>缓存概念</h3><p>缓存是一种将定量数据加以保存以备迎合后续请求的处理方式，目的是为了加快数据的检索速度<br>下面看一个例子:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCache</span>:</span></div><div class="line">    <span class="string">""""""</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""Constructor"""</span></div><div class="line">        self.cache = &#123;&#125;</div><div class="line">        self.max_cache_size = <span class="number">10</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__contains__</span><span class="params">(self, key)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        根据该键是否存在于缓存当中返回True或者False</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> key <span class="keyword">in</span> self.cache</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self, key, value)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        更新该缓存字典，您可选择性删除最早条目</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.cache <span class="keyword">and</span> len(self.cache) &gt;= self.max_cache_size:</div><div class="line">            self.remove_oldest()</div><div class="line">        self.cache[key] = &#123;<span class="string">'date_accessed'</span>: datetime.datetime.now(),</div><div class="line">                           <span class="string">'value'</span>: value&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_oldest</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        删除具备最早访问日期的输入数据</span></div><div class="line"><span class="string">        """</span></div><div class="line">        oldest_entry = <span class="keyword">None</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> self.cache:</div><div class="line">            <span class="keyword">if</span> oldest_entry == <span class="keyword">None</span>:</div><div class="line">                oldest_entry = key</div><div class="line">            <span class="keyword">elif</span> self.cache[key][<span class="string">'date_accessed'</span>] &lt; self.cache[oldest_entry][<span class="string">'date_accessed'</span>]:</div><div class="line">                oldest_entry = key</div><div class="line"></div><div class="line">        self.cache.pop(oldest_entry)</div><div class="line"></div><div class="line"><span class="meta">    @property</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        返回缓存容量大小</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> len(self.cache)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment">#测试缓存</span></div><div class="line">    keys = [<span class="string">'test'</span>, <span class="string">'red'</span>, <span class="string">'fox'</span>, <span class="string">'fence'</span>, <span class="string">'junk'</span>, \</div><div class="line">            <span class="string">'other'</span>, <span class="string">'alpha'</span>, <span class="string">'bravo'</span>, <span class="string">'cal'</span>, <span class="string">'devo'</span>, <span class="string">'ele'</span>]</div><div class="line">    s = <span class="string">'abcdefghijklmnop'</span></div><div class="line">    cache = MyCache()</div><div class="line">    <span class="keyword">for</span> i, key <span class="keyword">in</span> enumerate(keys):</div><div class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> cache:</div><div class="line">            <span class="keyword">continue</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            value = <span class="string">''</span>.join([random.choice(s) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>)])</div><div class="line">            cache.update(key, value)</div><div class="line">        print(<span class="string">"#%s iterations, #%s cached entries"</span> % (i+<span class="number">1</span>, cache.size))</div></pre></td></tr></table></figure></p>
+<p>在 Python 的 3.2 版本中，引入了一个非常优雅的缓存机器，即 functool 模块中的 <code>lru_cache</code> 装饰器。如果要在 python2 中使用 <code>lru_cahce</code> 需要安装 <code>functools32</code>。lru_cache 原型如下：<code>@functools.lru_cache(maxsize=None, typed=False)</code><br>使用functools模块的lur_cache装饰器，可以缓存最多 maxsize 个此函数的调用结果，从而提高程序执行的效率，特别适合于耗时的函数。参数maxsize为最多缓存的次数，如果为None，则无限制，设置为2n时，性能最佳；<br>被 <code>lru_cache</code> 装饰的函数会有 <code>cache_clear</code> 和 <code>cache_info</code> 两个方法，分别用于清除缓存和查看缓存信息。<br>这里用一个简单的示例演示 lru_cache 效果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> lru_cache</div><div class="line"><span class="meta">@lru_cache(None)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">    print(<span class="string">"calculating: %s + %s"</span> % (x, y))</div><div class="line">    <span class="keyword">return</span> x + y</div><div class="line"></div><div class="line">print(add(<span class="number">1</span>, <span class="number">2</span>))</div><div class="line">print(add(<span class="number">1</span>, <span class="number">2</span>))</div><div class="line">print(add(<span class="number">2</span>, <span class="number">3</span>))</div><div class="line"></div><div class="line"><span class="comment">#输出结果：</span></div><div class="line">calculating: <span class="number">1</span> + <span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">3</span></div><div class="line">calculating: <span class="number">2</span> + <span class="number">3</span></div><div class="line"><span class="number">5</span></div></pre></td></tr></table></figure></p>
+<p>从结果可以看出，当第二次调用 add(1, 2) 时，并没有真正执行函数体，而是直接返回缓存的结果。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://blog.konghy.cn/2016/04/20/python-cache/" target="_blank" rel="external">http://blog.konghy.cn/2016/04/20/python-cache/</a></li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[谷歌浏览器常用快捷键]]></title>
       <url>http://arvin-he.github.io/2017/09/29/chrome-hotkey-2017-09-29/</url>
       <content type="html"><![CDATA[<h3 id="Chrome窗口和标签页快捷键："><a href="#Chrome窗口和标签页快捷键：" class="headerlink" title="Chrome窗口和标签页快捷键："></a>Chrome窗口和标签页快捷键：</h3><ol>
@@ -110,7 +136,7 @@
 <li>ip被封禁后,有的会过段时间解除封禁</li>
 <li>代理ip不是全部可靠的,通常有效代理大概在70%左右</li>
 </ol>
-]]></content>
+<h3 id="爬虫错误处理方法"><a href="#爬虫错误处理方法" class="headerlink" title="爬虫错误处理方法"></a>爬虫错误处理方法</h3>]]></content>
       
         <categories>
             
@@ -190,7 +216,7 @@
 <h3 id="从远程服务器复制到本地服务器："><a href="#从远程服务器复制到本地服务器：" class="headerlink" title="从远程服务器复制到本地服务器："></a>从远程服务器复制到本地服务器：</h3><p>从远程复制到本地的scp命令与上面的命令相似，只要将从本地复制到远程的命令后面2个参数互换顺序就行了。</p>
 <p><code>scp arvin@192.168.120.204:/opt/soft/nginx-0.5.38.tar.gz /opt/soft/</code></p>
 <h3 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h3><p> 当使用SSH 或者 telent 远程登录到 Linux 服务器,经常有一些长时间运行的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端窗口，但是他们执行的时间太长了。必须等待它执行完毕，在此期间可不能关掉终端窗口或者断开连接，也不能关机, 否则这个任务就会被杀掉，一切半途而废了。显然,这不是我们所希望的.</p>
-<p>screen命令可以远程运行服务器程序并观察程序执行,即使关闭终端或者关闭电脑也不要紧,服务器上的程序也一直在运行.<br>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 创建一个screen会话窗口</div><div class="line">screen -S test</div><div class="line"><span class="meta">#</span> 执行程序</div><div class="line">python3 test.py</div><div class="line"><span class="meta">#</span> 查看正在运行的程序,会显示程序执行的pid</div><div class="line">screen -ls</div><div class="line"><span class="meta">#</span> 查看某个程序在终端的输出, 6245是执行成的pid</div><div class="line">screen -r -D 6245</div></pre></td></tr></table></figure></p>
+<p>screen命令可以远程运行服务器程序并观察程序执行,即使关闭终端或者关闭电脑也不要紧,服务器上的程序也一直在运行.<br>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 创建一个screen会话窗口</span></div><div class="line">screen -S test</div><div class="line"><span class="meta">#</span><span class="bash"> 执行程序</span></div><div class="line">python3 test.py</div><div class="line"><span class="meta">#</span><span class="bash"> 查看正在运行的程序,会显示程序执行的pid</span></div><div class="line">screen -ls</div><div class="line"><span class="meta">#</span><span class="bash"> 查看某个程序在终端的输出, 6245是执行成的pid</span></div><div class="line">screen -r -D 6245</div></pre></td></tr></table></figure></p>
 <p><strong>注意:</strong> 如果程序在运行时,不要按下CTRL+C, 这样会中止程序的运行,直接关闭终端窗口就可以了,这样不会关闭程序的运行.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">其他常用的命令选项有：</div><div class="line">-c file	使用配置文件file，而不使用默认的$HOME/.screenrc</div><div class="line">-d|-D [pid.tty.host]	不开启新的screen会话，而是断开其他正在运行的screen会话</div><div class="line">-h num	指定历史回滚缓冲区大小为num行</div><div class="line">-list|-ls	列出现有screen会话，格式为pid.tty.host</div><div class="line">-d -m	启动一个开始就处于断开模式的会话</div><div class="line">-r sessionowner/ [pid.tty.host]	重新连接一个断开的会话。多用户模式下连接到其他用户screen会话需要指定sessionowner，需要setuid-root权限</div><div class="line">-S sessionname	创建screen会话时为会话指定一个名字</div><div class="line">-v	显示screen版本信息</div><div class="line">-wipe [match]	同-list，但删掉那些无法连接的会话</div></pre></td></tr></table></figure>
 <p>下例显示当前有两个处于detached状态的screen会话，你可以使用<code>screen -r &lt;screen_pid&gt;</code>重新连接上.<br>如果由于某种原因其中一个会话死掉了（例如人为杀掉该会话），这时screen -list会显示该会话为dead状态。使用screen -wipe命令清除该会话.</p>
@@ -7852,12 +7878,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://arvin-he.github.io/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[404 Not Found：该页无法显示]]></title>
       <url>http://arvin-he.github.io/404/index.html</url>
       <content type="html"><![CDATA[<style type="text/css">
@@ -7942,14 +7962,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[essay]]></title>
-      <url>http://arvin-he.github.io/essay/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://arvin-he.github.io/categories/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[life]]></title>
-      <url>http://arvin-he.github.io/life/index.html</url>
+      <title><![CDATA[essay]]></title>
+      <url>http://arvin-he.github.io/essay/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -7962,6 +7982,12 @@
     <entry>
       <title><![CDATA[tags]]></title>
       <url>http://arvin-he.github.io/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[life]]></title>
+      <url>http://arvin-he.github.io/life/index.html</url>
       <content type="html"></content>
     </entry>
     

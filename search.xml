@@ -4,6 +4,161 @@
   
     
     <entry>
+      <title><![CDATA[谷歌浏览器常用快捷键]]></title>
+      <url>http://arvin-he.github.io/2017/09/29/chrome-hotkey-2017-09-29/</url>
+      <content type="html"><![CDATA[<h3 id="Chrome窗口和标签页快捷键："><a href="#Chrome窗口和标签页快捷键：" class="headerlink" title="Chrome窗口和标签页快捷键："></a>Chrome窗口和标签页快捷键：</h3><ol>
+<li>Ctrl+N    打开新窗口</li>
+<li>Ctrl+T    打开新标签页</li>
+<li>Ctrl+Shift+N    在隐身模式下打开新窗口</li>
+<li>Ctrl+O，然后选择文件，在谷歌浏览器中打开计算机上的文件</li>
+<li>按住 Ctrl 键，然后点击链接，从后台在新标签页中打开链接，但您仍停留在当前标签页中</li>
+<li>按住 Ctrl+Shift 键，然后点击链接    在新标签页中打开链接，同时切换到新打开的标签页</li>
+<li>按住 Shift 键，然后点击链接    在新窗口中打开链接</li>
+<li>Alt+F4    关闭当前浏览器窗口</li>
+<li>Ctrl+Shift+T 重新打开上次关闭的标签页。谷歌浏览器可记住最近关闭的 10 个标签页。</li>
+<li>将链接拖动到标签页内    在指定标签页中打开链接</li>
+<li>将链接拖动到两个标签页之间    在标签页横条的指定位置建立一个新标签页，在该标签页中打开链接</li>
+<li>Ctrl+1 到 Ctrl+8    切换到指定位置编号的标签页。您按下的数字代表标签页横条上的相应标签位置。</li>
+<li>Ctrl+9    切换到最后一个标签页</li>
+<li>Ctrl+Tab 或 Ctrl+PgDown    切换到下一个标签页</li>
+<li>Ctrl+Shift+Tab 或 Ctrl+PgUp    切换到上一个标签页</li>
+<li>Ctrl+W 或 Ctrl+F4    关闭当前标签页或弹出式窗口</li>
+<li>Alt+Home    打开主页</li>
+</ol>
+<h3 id="Chrome地址栏快捷键-："><a href="#Chrome地址栏快捷键-：" class="headerlink" title="Chrome地址栏快捷键 ："></a>Chrome地址栏快捷键 ：</h3><h4 id="在地址栏，进行下列操作之一："><a href="#在地址栏，进行下列操作之一：" class="headerlink" title="在地址栏，进行下列操作之一："></a>在地址栏，进行下列操作之一：</h4><ol>
+<li>键入搜索字词    使用默认搜索引擎进行搜索</li>
+<li>键入网址中”www.”和”.com”之间的部分，然后按Ctrl+Enter 键    为您在地址栏中输入的内容添加”www.”和”.com”，然后打开网址</li>
+<li>键入搜索引擎关键字或网址，按 Tab键，然后键入搜索字词    使用与关键字或网址相关联的搜索引擎进行搜索。如果谷歌浏览器可以识别您要使用的搜索引擎，则会提示您按 Tab 键。</li>
+<li>F6 或 Ctrl+L 或 Alt+D    选中网址区域中的内容</li>
+<li>键入网址，然后按 Alt+Enter 键    在新标签页中打开网址</li>
+<li>打开谷歌chrome浏览器各功能的快捷键</li>
+<li>Ctrl+B    打开和关闭书签栏</li>
+<li>Ctrl+Shift+B    打开书签管理器</li>
+<li>Ctrl+H    查看”历史记录”页</li>
+<li>Ctrl+J    查看”下载”页</li>
+<li>Shift+Escape    查看任务管理器</li>
+<li>Shift+Alt+T    将焦点设置在工具栏上。使用键盘上的向右和向左箭头，可导航至工具栏上的不同按钮。</li>
+</ol>
+<h3 id="Chrome网页快捷键："><a href="#Chrome网页快捷键：" class="headerlink" title="Chrome网页快捷键："></a>Chrome网页快捷键：</h3><ol>
+<li>Ctrl+P    打印当前页</li>
+<li>Ctrl+S    保存当前页</li>
+<li>F5    重新加载当前页</li>
+<li>Esc    停止加载当前页</li>
+<li>Ctrl+F    打开”在网页上查找”框</li>
+<li>点击鼠标中键或滚轮（只在谷歌浏览器测试版（只有英文版）中可用）    激活自动滚动。当您移动鼠标时，网页会根据鼠标的移动方向自动滚动。</li>
+<li>Ctrl+F5 或 Shift+F5    重新加载当前页，但忽略缓存内容</li>
+<li>按住 Alt 键，然后点击链接    下载链接</li>
+<li>Ctrl+G 或 F3    查找与您在”在网页上查找”框中输入的内容相匹配的下一个匹配项</li>
+<li>Ctrl+Shift+G 或 Shift+F3    查找与您在”在网页上查找”框中输入的内容相匹配的上一个匹配项</li>
+<li>Ctrl+U    查看源代码</li>
+<li>将链接拖动到书签栏    将链接加入书签</li>
+<li>Ctrl+D    将当前网页加入书签</li>
+<li>Ctrl++，或者按住 Ctrl 键并向上滚动鼠标滚轮    放大网页上的所有内容</li>
+<li>Ctrl+-，或者按住 Ctrl 键并向下滚动鼠标滚轮    缩小网页上的所有内容</li>
+<li>Ctrl+0    将网页上的所有内容都恢复到正常大小</li>
+<li>空格键                             向下滚动网页。</li>
+<li>Home                               转至网页顶部。</li>
+<li>End                                转至网页底部。</li>
+<li>按住 Shift 键的同时滚动鼠标滚轮。  在网页上横向滚动。</li>
+</ol>
+<h3 id="浏览器文本快捷键："><a href="#浏览器文本快捷键：" class="headerlink" title="浏览器文本快捷键："></a>浏览器文本快捷键：</h3><ol>
+<li>Ctrl+C                             将突出显示的内容复制到剪贴板中。</li>
+<li>Ctrl+V 或 Shift+Insert             从剪贴板中粘贴内容。</li>
+<li>Ctrl+Shift+V                       从剪贴板中粘贴内容(不带格式)。</li>
+<li>Ctrl+X 或 Shift+Delete             删除突出显示的内容并将其复制到剪贴板中。</li>
+</ol>
+<h3 id="chrome命令16个非常有用的chrome-命令，操作方法与上述类似。"><a href="#chrome命令16个非常有用的chrome-命令，操作方法与上述类似。" class="headerlink" title="chrome命令16个非常有用的chrome://命令，操作方法与上述类似。"></a>chrome命令16个非常有用的chrome://命令，操作方法与上述类似。</h3><ol>
+<li>chrome://downloads 等同于从菜单中查看下载内容，其快捷键是Ctrl+J</li>
+<li>chrome://extensions 等同于菜单-工具-扩展</li>
+<li>chrome://plugins 显示已安装插件 </li>
+<li>chrome://bookmarks 等同于菜单-书签-书签管理器，快捷键Ctrl+Shift+O</li>
+<li>chrome://history 等同于从菜单-历史直接访问，快捷键 Ctrl+H</li>
+<li>chrome://restart 重启chrome浏览器</li>
+<li>chrome://apps 打开chrome网上应用商店</li>
+<li>chrome://flags 可用来启用或者关闭某些chrome的体验特性</li>
+<li>chrome://dns 显示浏览器预抓取的主机名列表，让你随时了解DNS状态</li>
+<li>chrome://memory 重定向到chrome://memory-redirect/，显示系统运行中的浏览器内存使用情况，以及浏览器中进程的详细信息。</li>
+<li>chrome://net-internals 显示网络相关信息，用来捕获浏览器生成的网络事件，可导出数据，可查看DNS主机解析缓存。</li>
+<li>chrome://quota-internals 用来显示浏览器所使用磁盘空间配额的情况。</li>
+<li>chrome://sessions 该命令用来显示当前运行的浏览器的会话信息数以及详细列表</li>
+<li>chrome://settings 该命令可通过菜单-选项直接访问，可用来控制浏览器各项设置值</li>
+<li>chrome://sync-internals 用来显示 chrome 的同步状态</li>
+<li>chrome://about/ 查看 chrome 所有的命令</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 谷歌 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[爬虫笔记]]></title>
+      <url>http://arvin-he.github.io/2017/09/29/scrapy-notes2-2017-09-29/</url>
+      <content type="html"><![CDATA[<h3 id="一些常识"><a href="#一些常识" class="headerlink" title="一些常识"></a>一些常识</h3><ol>
+<li>代理ip会被集体封禁,然后过一段时间再开放</li>
+<li>ip被封禁后,有的会过段时间解除封禁</li>
+<li>代理ip不是全部可靠的,通常有效代理大概在70%左右</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 爬虫 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[MongoDB配置]]></title>
+      <url>http://arvin-he.github.io/2017/09/27/mongodb-config-2017-09-27/</url>
+      <content type="html"><![CDATA[<h3 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb"></a>安装mongodb</h3><p>安装就免了吧,安装好mongodb,然后配置环境变量</p>
+<h3 id="创建MongoDB配置文件"><a href="#创建MongoDB配置文件" class="headerlink" title="创建MongoDB配置文件"></a>创建MongoDB配置文件</h3><p>先创建一个配置文件,名称为mongodb.cfg,配置内容为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#数据文件存放位置</div><div class="line">dbpath=F:/mongodb/data/db</div><div class="line"></div><div class="line">#日志文件存放位置</div><div class="line">logpath=F:/mongodb/data/log/mongodb.log</div><div class="line"></div><div class="line">#PID的路径</div><div class="line">pidfilepath=F:/mongodb/pid/mongodb.pid</div><div class="line"></div><div class="line">#端口号</div><div class="line">port=27017</div><div class="line"></div><div class="line">#错误日志采用追加模式，配置这个选项后mongodb的日志会追加到现有的日志文件</div><div class="line">logappend=true</div><div class="line"></div><div class="line">#启用日志文件，默认启用</div><div class="line">journal=true</div><div class="line"></div><div class="line">#这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false</div><div class="line">quiet=true</div><div class="line"></div><div class="line">#打开28017网页端口（若不开启注释掉即可）</div><div class="line">rest=true</div></pre></td></tr></table></figure></p>
+<h3 id="启动mongodb"><a href="#启动mongodb" class="headerlink" title="启动mongodb"></a>启动mongodb</h3><p>在终端执行:<code>mongod --config F:/mongodb/config/mongodb.cfg</code><br>然后在浏览器输入:127.0.0.1:27017,回车会看到网页有”It looks like you are trying to access MongoDB over HTTP on the native driver port.”,则表明启动成功</p>
+<h3 id="注册mongodb服务"><a href="#注册mongodb服务" class="headerlink" title="注册mongodb服务"></a>注册mongodb服务</h3><p>如果每次都按照步骤三那样操作，岂不是很麻烦，按照如下命令来创建并启动MongoDB服务，就可以通过windows服务来管理MongoDB的启动和关闭了.<br>安装mongodb服务,在终端输入: <code>mongod --config F:/mongodb/config/mongodb.cfg --install --serviceName MongoDB</code><br>启动mongodb服务,在终端输入: <code>net start MongoDB</code>, 回车,然后有提示出来:MongoDB服务正在启动, MongoDB服务已经启动成功</p>
+<h3 id="去除mongodb服务"><a href="#去除mongodb服务" class="headerlink" title="去除mongodb服务"></a>去除mongodb服务</h3><p>如果需要去除MongoDB服务，执行如下命令：<br><code>mongod --remove --serviceName MongoDB</code></p>
+<h3 id="如何创建用户管理员"><a href="#如何创建用户管理员" class="headerlink" title="如何创建用户管理员"></a>如何创建用户管理员</h3><p>用户管理员是第一个要创建的用户。在没有创建任何用户之前，你可以随意创建用户；但数据库中一旦有了用户，那么未登录的客户端就没有权限做任何操作了，除非使用db.auth(username, password)方法登录。</p>
+<p>用户管理员的角色名叫 userAdminAnyDatabase，这个角色只能在 admin 数据库中创建。下面是一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; use admin</div><div class="line">switched to db admin</div><div class="line">&gt; db.createUser(&#123;user:&quot;root&quot;,pwd:&quot;root&quot;,roles:[&quot;userAdminAnyDatabase&quot;]&#125;)</div><div class="line">Successfully added user: &#123; &quot;user&quot; : &quot;root&quot;, &quot;roles&quot; : [ &quot;userAdminAnyDatabase&quot; ] &#125;</div></pre></td></tr></table></figure></p>
+<p>这个例子创建了一个名为 root 的用户管理员。创建完了这个用户之后，我们应该马上以该用户的身份登录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.auth(&quot;root&quot;,&quot;root123&quot;)</div><div class="line">1</div><div class="line">db.auth() 方法返回 1 表示登录成功。接下来我们为指定的数据库创建访问所需的账号。</div></pre></td></tr></table></figure></p>
+<h3 id="如何创建数据库用户"><a href="#如何创建数据库用户" class="headerlink" title="如何创建数据库用户"></a>如何创建数据库用户</h3><p>首先保证你已经以用户管理员的身份登录 admin 数据库。然后用 use 命令切换到目标数据库，<br>同样用 db.createUser() 命令来创建用户，其中角色名为 “readWrite”。</p>
+<p>普通的数据库用户角色有两种，read 和 readWrite。顾名思义，前者只能读取数据不能修改，后者可以读取和修改。<br>下面是一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; use test</div><div class="line">switched to db test</div><div class="line">&gt; db.createUser(&#123;user:&quot;testuser&quot;,pwd:&quot;testpass&quot;,roles:[&quot;readWrite&quot;]&#125;)</div><div class="line">Successfully added user: &#123; &quot;user&quot; : &quot;testuser&quot;, &quot;roles&quot; : [ &quot;readWrite&quot; ] &#125;</div><div class="line">&gt; db.auth(&quot;testuser&quot;,&quot;testpass&quot;)</div><div class="line">1</div></pre></td></tr></table></figure></p>
+<p>这样 MongoDB 的数据安全性就得到保障了，没有登录的客户端将无法执行任何命令。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> MongoDB </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Python定时器]]></title>
       <url>http://arvin-he.github.io/2017/09/20/py-timer-2017-09-20/</url>
       <content type="html"><![CDATA[<h3 id="python中定时器"><a href="#python中定时器" class="headerlink" title="python中定时器"></a>python中定时器</h3><p>python中的定时器在threading模块中,而且只执行一次, 那么如何定时循环调用呢?<br>Timer:  隔一定时间调用一个函数,如果想实现每隔一段时间就调用一个函数的话，就要在Timer调用的函数中，再次设置Timer。<br>Timer其实是Thread的一个派生类</p>
@@ -34,6 +189,22 @@
 <h3 id="从本地拷贝文件夹到远程服务器："><a href="#从本地拷贝文件夹到远程服务器：" class="headerlink" title="从本地拷贝文件夹到远程服务器："></a>从本地拷贝文件夹到远程服务器：</h3><p>命令格式：<br><code>scp -r local_folder remote_username@remote_ip:remote_folder</code><br>或者<br><code>scp -r local_folder remote_ip:remote_folder</code><br>第1个指定了用户名，命令执行后需要输入用户密码；<br>第2个没有指定用户名，命令执行后需要输入用户名和密码；</p>
 <h3 id="从远程服务器复制到本地服务器："><a href="#从远程服务器复制到本地服务器：" class="headerlink" title="从远程服务器复制到本地服务器："></a>从远程服务器复制到本地服务器：</h3><p>从远程复制到本地的scp命令与上面的命令相似，只要将从本地复制到远程的命令后面2个参数互换顺序就行了。</p>
 <p><code>scp arvin@192.168.120.204:/opt/soft/nginx-0.5.38.tar.gz /opt/soft/</code></p>
+<h3 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h3><p> 当使用SSH 或者 telent 远程登录到 Linux 服务器,经常有一些长时间运行的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端窗口，但是他们执行的时间太长了。必须等待它执行完毕，在此期间可不能关掉终端窗口或者断开连接，也不能关机, 否则这个任务就会被杀掉，一切半途而废了。显然,这不是我们所希望的.</p>
+<p>screen命令可以远程运行服务器程序并观察程序执行,即使关闭终端或者关闭电脑也不要紧,服务器上的程序也一直在运行.<br>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 创建一个screen会话窗口</div><div class="line">screen -S test</div><div class="line"><span class="meta">#</span> 执行程序</div><div class="line">python3 test.py</div><div class="line"><span class="meta">#</span> 查看正在运行的程序,会显示程序执行的pid</div><div class="line">screen -ls</div><div class="line"><span class="meta">#</span> 查看某个程序在终端的输出, 6245是执行成的pid</div><div class="line">screen -r -D 6245</div></pre></td></tr></table></figure></p>
+<p><strong>注意:</strong> 如果程序在运行时,不要按下CTRL+C, 这样会中止程序的运行,直接关闭终端窗口就可以了,这样不会关闭程序的运行.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">其他常用的命令选项有：</div><div class="line">-c file	使用配置文件file，而不使用默认的$HOME/.screenrc</div><div class="line">-d|-D [pid.tty.host]	不开启新的screen会话，而是断开其他正在运行的screen会话</div><div class="line">-h num	指定历史回滚缓冲区大小为num行</div><div class="line">-list|-ls	列出现有screen会话，格式为pid.tty.host</div><div class="line">-d -m	启动一个开始就处于断开模式的会话</div><div class="line">-r sessionowner/ [pid.tty.host]	重新连接一个断开的会话。多用户模式下连接到其他用户screen会话需要指定sessionowner，需要setuid-root权限</div><div class="line">-S sessionname	创建screen会话时为会话指定一个名字</div><div class="line">-v	显示screen版本信息</div><div class="line">-wipe [match]	同-list，但删掉那些无法连接的会话</div></pre></td></tr></table></figure>
+<p>下例显示当前有两个处于detached状态的screen会话，你可以使用<code>screen -r &lt;screen_pid&gt;</code>重新连接上.<br>如果由于某种原因其中一个会话死掉了（例如人为杀掉该会话），这时screen -list会显示该会话为dead状态。使用screen -wipe命令清除该会话.</p>
+<h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h3><p>kill[参数][进程号]</p>
+<p>init进程是不可杀的,<br>init是Linux系统操作中不可缺少的程序之一。所谓的init进程，它是一个由内核启动的用户级进程。内核自行启动（已经被载入内存，开始运行，并已初始化所有的设备驱动程序和数据结构等）之后，就通过启动一个用户级程序init的方式，完成引导进程。所以,init始终是第一个进程（其进程编号始终为1）。 其它所有进程都是init进程的子孙。init进程是不可杀的！</p>
+<p>常用的信号：只有第9种信号(SIGKILL)才可以无条件终止进程，其他信号进程都有权利忽略<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">HUP    1    终端断线</div><div class="line">INT     2    中断（同 Ctrl + C）</div><div class="line">QUIT    3    退出（同 Ctrl + \）</div><div class="line">TERM   15    终止</div><div class="line">KILL    9    强制终止</div><div class="line">CONT   18    继续（与STOP相反， fg/bg命令）</div><div class="line">STOP    19    暂停（同 Ctrl + Z）</div></pre></td></tr></table></figure></p>
+<p>彻底杀死进程:<br>命令：<code>kill –9 3268</code></p>
+<p>应注意:</p>
+<ol>
+<li><p>信号使进程强行终止，这常会带来一些副作用，如数据丢失或者终端无法恢复到正常状态。发送信号时必须小心，只有在万不得已时，才用kill信号(9)，因为进程不能首先捕获它。</p>
+</li>
+<li><p>要撤销所有的后台作业，可以输入kill 0。因为有些在后台运行的命令会启动多个进程，跟踪并找到所有要杀掉的进程的PID是件很麻烦的事。这时，使用kill 0来终止所有由当前shell启动的进程，是个有效的方法。</p>
+</li>
+</ol>
 ]]></content>
       
         <categories>
@@ -7681,25 +7852,9 @@
     </entry>
     
     <entry>
-      <title><![CDATA[关于Arvin]]></title>
-      <url>http://arvin-he.github.io/about/index.html</url>
-      <content type="html"><![CDATA[<hr>
-<p>其实关于我没有什么想说的,只是想好好生活,做好自己喜欢的事.<br>喜欢简单舒适的格调.<br>Motto: To be a better man.</p>
-<h1 id="喜欢做的事"><a href="#喜欢做的事" class="headerlink" title="喜欢做的事"></a>喜欢做的事</h1><hr>
-<p>喜欢读书<br>喜欢健身<br>喜欢写写文章<br>…</p>
-<h1 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h1><p>以技术学习与分享为主，主要关注：</p>
-<ul>
-<li>Python3</li>
-<li>Web全栈</li>
-<li>Node.js</li>
-<li>JavaScript</li>
-<li>Linux</li>
-<li>BigData</li>
-<li>AI</li>
-</ul>
-<h1 id="联系Arvin"><a href="#联系Arvin" class="headerlink" title="联系Arvin"></a>联系Arvin</h1><hr>
-<p>微信: JUNHE_1218<br>E-mail: junhe3209@gmail.com<br>GitHub: <a href="https://github.com/Arvin-He" target="_blank" rel="external">https://github.com/Arvin-He</a></p>
-]]></content>
+      <title><![CDATA[categories]]></title>
+      <url>http://arvin-he.github.io/categories/index.html</url>
+      <content type="html"></content>
     </entry>
     
     <entry>
@@ -7765,9 +7920,25 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://arvin-he.github.io/categories/index.html</url>
-      <content type="html"></content>
+      <title><![CDATA[关于Arvin]]></title>
+      <url>http://arvin-he.github.io/about/index.html</url>
+      <content type="html"><![CDATA[<hr>
+<p>其实关于我没有什么想说的,只是想好好生活,做好自己喜欢的事.<br>喜欢简单舒适的格调.<br>Motto: To be a better man.</p>
+<h1 id="喜欢做的事"><a href="#喜欢做的事" class="headerlink" title="喜欢做的事"></a>喜欢做的事</h1><hr>
+<p>喜欢读书<br>喜欢健身<br>喜欢写写文章<br>…</p>
+<h1 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h1><p>以技术学习与分享为主，主要关注：</p>
+<ul>
+<li>Python3</li>
+<li>Web全栈</li>
+<li>Node.js</li>
+<li>JavaScript</li>
+<li>Linux</li>
+<li>BigData</li>
+<li>AI</li>
+</ul>
+<h1 id="联系Arvin"><a href="#联系Arvin" class="headerlink" title="联系Arvin"></a>联系Arvin</h1><hr>
+<p>微信: JUNHE_1218<br>E-mail: junhe3209@gmail.com<br>GitHub: <a href="https://github.com/Arvin-He" target="_blank" rel="external">https://github.com/Arvin-He</a></p>
+]]></content>
     </entry>
     
     <entry>
@@ -7783,14 +7954,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://arvin-he.github.io/tags/index.html</url>
+      <title><![CDATA[readnotes]]></title>
+      <url>http://arvin-he.github.io/readnotes/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[readnotes]]></title>
-      <url>http://arvin-he.github.io/readnotes/index.html</url>
+      <title><![CDATA[tags]]></title>
+      <url>http://arvin-he.github.io/tags/index.html</url>
       <content type="html"></content>
     </entry>
     

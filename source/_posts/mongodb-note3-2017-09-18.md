@@ -53,3 +53,14 @@ upsert操作就是说：如果我没有查到，我就在数据库里面新增�
 
 ### 查询某一字段重复的记录的数目
 
+
+
+### 查询和删除某一字段不是数字的记录
+```
+# 查询某一字段不是数字的记录
+db.getCollection('phone').find({"tel": {"$regex": '^[^0-9]+$'}})
+# 查询某一字段不是数字的记录的数目
+db.getCollection('phone').find({"tel": {"$regex": '^[^0-9]+$'}}).count()
+# 删除某一字段不是数字的记录
+db.getCollection('phone').remove({"tel": {"$regex": '^[^0-9]+$'}})
+```

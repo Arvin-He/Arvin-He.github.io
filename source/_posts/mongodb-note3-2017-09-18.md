@@ -64,3 +64,82 @@ db.getCollection('phone').find({"tel": {"$regex": '^[^0-9]+$'}}).count()
 # 删除某一字段不是数字的记录
 db.getCollection('phone').remove({"tel": {"$regex": '^[^0-9]+$'}})
 ```
+
+### 数据库合并
+
+```
+# -*- coding: utf-8 -*-
+import os
+import sys
+from pymongo import MongoClient
+import gevent
+from gevent import monkey
+from gevent.pool import Pool
+import subprocess
+from logger import Logging
+
+monkey.patch_all()
+
+
+logname = os.path.splitext(os.path.basename(__file__))[0]
+logger = Logging(logname)
+log = logger.logObject
+
+# 连接mongodb数据库,并返回数据库对象
+
+
+def connectDB(user, passwd, host, db_name):
+    client = MongoClient(
+        'mongodb://{}:{}@{}/{}'.format(user, passwd, host, db_name))
+    return client[db_name]
+
+
+db1 = connectDB("xxx", "xxxxxx", "ip:port", "xxxx")
+db2 = connectDB("xxxxx", "******",
+                "ip:port", "qqqq")
+movie1 = db1["xxx1"]
+movie2 = db2["xxx2"]
+
+
+def get_item():
+    for index, item in enumerate(movie2.find({}, no_cursor_timeout=True)):
+        log.info("获取第{}条数据.".format(index + 1))
+        item["time"] = float("{:.3f}".format(int(item["time"] * 1000)))
+        yield item
+
+
+def mergedb(item):
+    if movie1.find({"tel": item["tel"], "time": item["time"]}).count() < 1:
+        movie1.insert(item)
+    else:
+        log.info("该数据已经存在!")
+
+
+def backupdb():
+    log.info("开始导出testdb数据库phone集合...")
+    dst = os.path.join("data", "{}.dat".format("phone"))
+    try:
+        subprocess.check_call(["mongoexport",
+                               "-h", "ip:port",
+                               "-u", "xxx.xx",
+                               "-p", "xxxx",
+                               "-d", "xxxxx",
+                               "-c", "xxxx",
+                               "-o", dst])
+        log.info("导出{}数据成功".format(dst))
+    except Exception as e:
+        log.error("导出MongoDB数据出错...")
+        log.error(e)
+        log.info("数据导出中止...")
+        return
+
+
+if __name__ == "__main__":
+    pool = Pool(100)
+    try:
+        pool.map(mergedb, get_item())
+    except Exception as e:
+        log.error(e)
+        sys.exit()
+
+```

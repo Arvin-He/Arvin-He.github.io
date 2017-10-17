@@ -49,6 +49,8 @@ scp local_file remote_ip:remote_file
 screen命令可以远程运行服务器程序并观察程序执行,即使关闭终端或者关闭电脑也不要紧,服务器上的程序也一直在运行.
 简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。
 ```shell
+# ssh登陆. 注意:需要先通过ssh登陆远程服务器才能使用screen
+ssh user@ip
 # 创建一个screen会话窗口
 screen -S test
 # 执行程序
@@ -57,7 +59,14 @@ python3 test.py
 screen -ls
 # 查看某个程序在终端的输出, 6245是执行成的pid
 screen -r -D 6245
+# 杀掉screen中的session
+kill -9 6245
+screen -ls
+# 清除dead 会话
+screen -wipe test
 ```
+(Detached)---->挂起状态，无终端在连接会话
+(Attached)---->有终端在连接会话。
 **注意:** 如果程序在运行时,不要按下CTRL+C, 这样会中止程序的运行,直接关闭终端窗口就可以了,这样不会关闭程序的运行.
 
 ```
@@ -74,6 +83,8 @@ screen -r -D 6245
 ```
 下例显示当前有两个处于detached状态的screen会话，你可以使用`screen -r <screen_pid>`重新连接上.
 如果由于某种原因其中一个会话死掉了（例如人为杀掉该会话），这时screen -list会显示该会话为dead状态。使用screen -wipe命令清除该会话.
+
+
 
 ### kill
 kill[参数][进程号]

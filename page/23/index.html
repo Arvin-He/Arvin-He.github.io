@@ -1,8 +1,1426 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Learn and live."><title>Simple &amp; Freedom | Learn and live.</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Simple &amp; Freedom</h1><a id="logo" href="/.">Simple &amp; Freedom</a><p class="description">Learn and live.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/essay/"><i class="fa fa-archive"> 随笔</i></a><a href="/readnotes/"><i class="fa fa-archive"> 读书笔记</i></a><a href="/life/"><i class="fa fa-archive"> 生活</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/404.html"><i class="fa fa-heartbeat"> 公益404</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2017/04/22/python-subprocess-2017-04-22/">Python之subprocess模块</a></h1><div class="post-meta">2017-04-22</div><div class="post-content"><h3 id="subprocess模块"><a href="#subprocess模块" class="headerlink" title="subprocess模块"></a>subprocess模块</h3><p>subprocess模块,即子进程模块,允许您生成新进程，并连接到输入/输出/错误管道，并获取其返回代码。<br>subprocess包主要功能是执行外部的命令和程序。</p></div><p class="readmore"><a href="/2017/04/22/python-subprocess-2017-04-22/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/22/python-reviewcode1-2017-04-22/">Python之一些杂记</a></h1><div class="post-meta">2017-04-22</div><div class="post-content"><h3 id="1-取指定文件所在目录的父目录"><a href="#1-取指定文件所在目录的父目录" class="headerlink" title="1. 取指定文件所在目录的父目录"></a>1. 取指定文件所在目录的父目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">方式1: os.path.dirname(os.path.dirname(__file__))</div><div class="line">方式2: os.path.dirname(os.path.dirname(os.path.abspath(__file__)))</div></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/04/22/python-reviewcode1-2017-04-22/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/18/http-note5-2017-04-18/">Http读书笔记第五章</a></h1><div class="post-meta">2017-04-18</div><div class="post-content"><h3 id="与-HTTP-协作的-Web-服务器"><a href="#与-HTTP-协作的-Web-服务器" class="headerlink" title="与 HTTP 协作的 Web 服务器"></a>与 HTTP 协作的 Web 服务器</h3><p>一台 Web 服务器可搭建多个独立域名的 Web 网站，也可作为通信路径上的中转服务器提升传输效率。</p></div><p class="readmore"><a href="/2017/04/18/http-note5-2017-04-18/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/17/http-note4-2017-04-17/">Http读书笔记第四章</a></h1><div class="post-meta">2017-04-17</div><div class="post-content"><h3 id="返回结果的-HTTP-状态码"><a href="#返回结果的-HTTP-状态码" class="headerlink" title="返回结果的 HTTP 状态码"></a>返回结果的 HTTP 状态码</h3><p>HTTP 状态码负责表示客户端 HTTP 请求的返回结果、标记服务器端的处理是否正常、通知出现的错误等工作。</p></div><p class="readmore"><a href="/2017/04/17/http-note4-2017-04-17/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/04/16/http-note3-2017-04-16/">Http读书笔记第三章</a></h1><div class="post-meta">2017-04-16</div><div class="post-content"><p>术语:<br>MIME:（Multipurpose Internet Mail Extensions，多用途因特网邮件扩展）</p>
-<h3 id="HTTP-报文"><a href="#HTTP-报文" class="headerlink" title="HTTP 报文"></a>HTTP 报文</h3><p>用于 HTTP 协议交互的信息被称为 HTTP 报文.<br>请求端（客户端）的HTTP 报文叫做请求报文，响应端（服务器端）的叫做响应报文。HTTP 报文本身是由多行（用 CR+LF 作换行符）数据构成的字符串文本。<br>HTTP 报文大致可分为报文首部和报文主体两块。两者由最初出现的空行（CR+LF）来划分,通常，并不一定要有报文主体。</p></div><p class="readmore"><a href="/2017/04/16/http-note3-2017-04-16/">阅读更多</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/22/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/24/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">111</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/谷歌/" style="font-size: 15px;">谷歌</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/OOP/" style="font-size: 15px;">OOP</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/方法/" style="font-size: 15px;">方法</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 15px;">MongoDB</a> <a href="/tags/mongoDB/" style="font-size: 15px;">mongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 15px;">NodeJS</a> <a href="/tags/NSIS/" style="font-size: 15px;">NSIS</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/PyQt5/" style="font-size: 15px;">PyQt5</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/RegExp/" style="font-size: 15px;">RegExp</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/py-cache-2017-09-29/">Python 缓存机制与 functools.lru_cache</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/chrome-hotkey-2017-09-29/">谷歌浏览器常用快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/scrapy-notes2-2017-09-29/">爬虫笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/27/mongodb-config-2017-09-27/">MongoDB配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/20/py-timer-2017-09-20/">Python定时器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/19/linux-cmds-2017-09-19/">Linux一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-bs4-2017-09-18/">python之beautifulsoup使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/mongodb-note3-2017-09-18/">mongodb笔记(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-note1-2017-09-18/">Python笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/13/mongodb-note2-2017-09-13/">mongodb笔记(二)</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Simple &amp; Freedom.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
-if (search_path.length == 0) {
-   search_path = 'search.xml';
-}
-var path = '/' + search_path;
-searchFunc(path, 'local-search-input', 'local-search-result');
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Simple & Freedom" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Learn and live.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simple &amp; Freedom">
+<meta property="og:url" content="http://arvin-he.github.io/page/23/index.html">
+<meta property="og:site_name" content="Simple &amp; Freedom">
+<meta property="og:description" content="Learn and live.">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple &amp; Freedom">
+<meta name="twitter:description" content="Learn and live.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://arvin-he.github.io/page/23/"/>
+
+
+
+
+
+  <title>Simple & Freedom</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Simple & Freedom</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learn and live.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/04/24/cpp-oop-2017-04-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/24/cpp-oop-2017-04-24/" itemprop="url">OOP基本特征和基本原则</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T16:00:15+08:00">
+                2017-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/2017/04/24/cpp-oop-2017-04-24/1.png" alt=""></p>
+<h3 id="面向对象三个基本特征"><a href="#面向对象三个基本特征" class="headerlink" title="面向对象三个基本特征"></a>面向对象三个基本特征</h3><p>面向对象的三个基本特征是：封装、继承、多态</p>
+<ul>
+<li>封装</li>
+</ul>
+<p>封装是面向对象的特征之一，是对象和类概念的主要特性。封装，也就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。</p>
+<ul>
+<li>继承</li>
+</ul>
+<p>继承是指这样一种能力：它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下对这些功能进行扩展。通过继承创建的新类称为“子类”或“派生类”，被继承的类称为“基类”、“父类”或“超类”。</p>
+<p>要实现继承，可以通过“继承”（Inheritance）和“组合”（Composition）来实现。</p>
+<ul>
+<li>多态性</li>
+</ul>
+<p>多态性（polymorphisn）是允许将父对象设置成为和一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作。简单的说：允许将子类类型的指针赋值给父类类型的指针。</p>
+<p>实现多态，有两种方式，覆盖和重载。覆盖和重载的区别在于，覆盖在运行时决定，即运行时多态,重载是在编译时决定,即编译时多态。<br>并且覆盖和重载的机制不同，例如在 Java 中，重载方法的签名必须不同于原先方法的，但对于覆盖签名必须相同。</p>
+<h3 id="面向对象类关系"><a href="#面向对象类关系" class="headerlink" title="面向对象类关系"></a>面向对象类关系</h3><p>类与类之间主要有6种关系模式，这六种模板写法导致了平时书写代码的不同耦合度。具体如下所列（耦合度依次增强排列）：</p>
+<ol>
+<li>依赖关系<br>一般而言，依赖关系在Java语言中体现为局域变量、方法的形参，或者对静态方法的调用。</li>
+<li>关联关系<br>使一个类知道另一个类的属性和方法。关联可以是双向的，也可以是单向的。在Java语言中，关联关系一般使用成员变量来实现。</li>
+<li>聚合关系<br>聚合是关联关系的一种，是强的关联关系，聚合是整体和个体之间的关系。与关联关系一样，聚合关系也是通过实例变量实现的，但是关联关系所涉及的两个类是处在同一层次上的，而在聚合关系中，两个类是处在不平等层次上的，一个代表整体，另一个代表部分。</li>
+<li>组合关系<br>组合是关联关系的一种，是比聚合关系强的关系。它要求普通的聚合关系中代表整体的对象负责代表部分对象的生命周期，组合关系是不能共享的。代表整体的对象需要负责保持部分对象和存活，在一些情况下将负责代表部分的对象湮灭掉。代表整体的对象可以将代表部分的对象传递给另一个对象，由后者负责此对象的生命周期。换言之，代表部分的对象在每一个时刻只能与一个对象发生组合关系，由后者排他地负责生命周期。部分和整体的生命周期一样。</li>
+<li>继承关系<br>继承表示类与类（或者接口与接口）之间的父子关系。</li>
+<li>实现关系<br>接口定义好操作的集合，由实现类去完成接口的具体操作。</li>
+</ol>
+<h3 id="面向对象的基本原则"><a href="#面向对象的基本原则" class="headerlink" title="面向对象的基本原则"></a>面向对象的基本原则</h3><h4 id="1-单一职责原则"><a href="#1-单一职责原则" class="headerlink" title="1. 单一职责原则"></a>1. 单一职责原则</h4><p>单一职责原则的英文名称是 Single Responsibility Principle，简称是 SPR，简单地说就是一个类只做一件事，这个设计原则备受争议却又极其重要。<br>很多时候都是需要个人经验来界定。当然，最大的问题就是对职责的定义，什么是类的职责，以及怎么划分类的职责。</p>
+<p>单一职责原则是实现高内聚、低耦合的指导方针，它是最简单但又最难运用的原则。<br>每一个职责都是变化的一个轴线，如果一个类有一个以上的职责，这些职责就耦合在了一起。这会导致脆弱的设计。当一个职责发生变化时，可能会影响其它的职责。另外，多个职责耦合在一起，会影响复用性。</p>
+<p>单一职责所表达出的用意就是“单一”二字.如何划分一个类、一个函数的职责，每个人都有自己的看法，这需要根据个人经验、具体的业务逻辑而定。但是，它也有一些基本的指导原则，例如，两个完全不一样的功能就不应该放在一个类中。一个类中应该是一组相关性很高的函数、数据的封装。工程师可以不断地审视自己的代码，根据具体的业务、功能对类进行相应的拆分，我想这会是你优化代码迈出的第一步。</p>
+<h4 id="2-开闭原则"><a href="#2-开闭原则" class="headerlink" title="2. 开闭原则"></a>2. 开闭原则</h4><p>开闭原则的英文全称是Open Close Principle，简称OCP.一个软件实体应当对扩展开放，对修改关闭。即软件实体应尽量在不修改原有代码的情况下进行扩展。当软件需要变化时，我们应该尽量通过扩展的方式来实现变化，而不是通过修改已有的代码来实现。</p>
+<p>为了满足开闭原则，需要对系统进行抽象化设计，抽象化是开闭原则的关键。在Java、C#等编程语言中，可以为系统定义一个相对稳定的抽象层，而将不同的实现行为移至具体的实现层中完成。在很多面向对象编程语言中都提供了接口、抽象类等机制，可以通过它们定义系统的抽象层，再通过具体类来进行扩展。如果需要修改系统的行为，无须对抽象层进行任何改动，只需要增加新的具体类来实现新的业务功能即可，实现在不修改已有代码的基础上扩展系统的功能，达到开闭原则的要求。</p>
+<p>开闭原则指导我们，当软件需要变化时，应该尽量通过扩展的方式来实现变化，而不是通过修改已有的代码来实现。这里的“应该尽量”4个字说明OCP原则并不是说绝对不可以修改原始类的，当我们嗅到原来的代码“腐化气味”时，应该尽早地重构，以使得代码恢复到正常的“进化”轨道，而不是通过继承等方式添加新的实现，这会导致类型的膨胀以及历史遗留代码的冗余。我们的开发过程中也没有那么理想化的状况，完全地不用修改原来的代码，因此，在开发过程中需要自己结合具体情况进行考量，是通过修改旧代码还是通过继承使得软件系统更稳定、更灵活，在保证去除“代码腐化”的同时，也保证原有模块的正确性。</p>
+<h4 id="3-里氏代换原则"><a href="#3-里氏代换原则" class="headerlink" title="3. 里氏代换原则"></a>3. 里氏代换原则</h4><p>里氏替换原则英文全称是Liskov Substitution Principle，简称LSP.面向对象的语言的三大特点是继承、封装、多态，里氏替换原则就是依赖于继承、多态这两大特性。里氏替换原则简单来说就是所有引用基类、接口的地方必须能透明地使用其子类的对象。通俗点讲，只要父类能出现的地方子类就可以出现，而且替换为子类也不会产生任何报错或者异常，使用者可能根本就不需要知道是子类还是父类。但是，反过来就不行了，有子类出现的地方，父类未必就能使用。</p>
+<p>在使用里氏代换原则时需要注意如下几个问题：</p>
+<ol>
+<li>子类的所有方法必须在父类中声明，或子类必须实现父类中声明的所有方法。根据里氏代换原则，为了保证系统的扩展性，在程序中通常使用父类来进行定义，如果一个方法只存在子类中，在父类中不提供相应的声明，则无法在以父类定义的对象中使用该方法。</li>
+<li>我们在运用里氏代换原则时，尽量把父类设计为抽象类或者接口，让子类继承父类或实现父接口，并实现在父类中声明的方法，运行时，子类实例替换父类实例，我们可以很方便地扩展系统的功能，同时无须修改原有子类的代码，增加新的功能可以通过增加一个新的子类来实现。里氏代换原则是开闭原则的具体实现手段之一。</li>
+<li>Java语言中，在编译阶段，Java编译器会检查一个程序是否符合里氏代换原则，这是一个与实现无关的、纯语法意义上的检查，但Java编译器的检查是有局限的。</li>
+</ol>
+<p>里氏替换原则的核心原理是抽象，抽象又依赖于继承这个特性，在OOP当中，继承的优缺点都相当明显。 </p>
+<ul>
+<li><p>继承的优点如下：<br>（1）代码重用，减少创建类的成本，每个子类都拥有父类的方法和属性；<br>（2）子类与父类基本相似，但又与父类有所区别；<br>（3）提高代码的可扩展性。</p>
+</li>
+<li><p>继承的缺点如下：<br>（1）继承是侵入性的，只要继承就必须拥有父类的所有属性和方法；<br>（2）可能造成子类代码冗余、灵活性降低，因为子类必须拥有父类的属性和方法。</p>
+</li>
+</ul>
+<h4 id="4-接口隔离原则"><a href="#4-接口隔离原则" class="headerlink" title="4. 接口隔离原则"></a>4. 接口隔离原则</h4><p>接口隔离原则英文全称是InterfaceSegregation Principles，简称ISP.使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它不需要的接口。另一种定义是：类间的依赖关系应该建立在最小的接口上。接口隔离原则将非常庞大、臃肿的接口拆分成为更小的和更具体的接口，这样客户将会只需要知道他们感兴趣的方法。接口隔离原则的目的是系统解开耦合，从而容易重构、更改和重新部署。</p>
+<p>这里的“接口”往往有两种不同的含义：<br>一种是指一个类型所具有的方法特征的集合，仅仅是一种逻辑上的抽象；<br>另外一种是指某种语言具体的“接口”定义，有严格的定义和结构，比如Java语言中的interface。<br>对于这两种不同的含义，ISP的表达方式以及含义都有所不同：</p>
+<p>当把“接口”理解成一个类型所提供的所有方法特征的集合的时候，这就是一种逻辑上的概念，接口的划分将直接带来类型的划分。可以把接口理解成角色，一个接口只能代表一个角色，每个角色都有它特定的一个接口，此时，这个原则可以叫做“角色隔离原则”。</p>
+<p>如果把“接口”理解成狭义的特定语言的接口，那么ISP表达的意思是指接口仅仅提供客户端需要的行为，客户端不需要的行为则隐藏起来，应当为客户端提供尽可能小的单独的接口，而不要提供大的总接口。在面向对象编程语言中，实现一个接口就需要实现该接口中定义的所有方法，因此大的总接口使用起来不一定很方便，为了使接口的职责单一，需要将大接口中的方法根据其职责不同分别放在不同的小接口中，以确保每个接口使用起来都较为方便，并都承担某一单一角色。接口应该尽量细化，同时接口中的方法应该尽量少，每个接口中只包含一个客户端（如子模块或业务逻辑类）所需的方法即可，这种机制也称为“定制服务”，即为不同的客户端提供宽窄不同的接口。</p>
+<h4 id="5-迪米特法则"><a href="#5-迪米特法则" class="headerlink" title="5. 迪米特法则"></a>5. 迪米特法则</h4><p>迪米特原则英文全称为Law of Demeter，简称LOD，也称为最少知识原则（Least Knowledge Principle）.一个软件实体应当尽可能少地与其他实体发生相互作用.通俗地讲，一个类应该对自己需要耦合或调用的类知道得最少，类的内部如何实现、如何复杂都与调用者或者依赖者没关系，调用者或者依赖者只需要知道他需要的方法即可，其他的我一概不关心。类与类之间的关系越密切，耦合度越大，当一个类发生改变时，对另一个类的影响也越大。</p>
+<p>迪米特原则还有一个英文解释是：Only talk to your immedate friends（只与直接的朋友通信）。什么叫做直接的朋友呢？每个对象都必然会与其他对象有耦合关系，两个对象之间的耦合就成为朋友关系，这种关系的类型有很多例如组合、聚合、依赖等。</p>
+<p>如果一个系统符合迪米特法则，那么当其中某一个模块发生修改时，就会尽量少地影响其他模块，扩展会相对容易，这是对软件实体之间通信的限制，迪米特法则要求限制软件实体之间通信的宽度和深度。迪米特法则可降低系统的耦合度，使类与类之间保持松散的耦合关系。<br>迪米特法则还有几种定义形式，包括：不要和“陌生人”说话、只与你的直接朋友通信等，在迪米特法则中，对于一个对象，其朋友包括以下几类：<br>(1) 当前对象本身(this)；<br>(2) 以参数形式传入到当前对象方法中的对象；<br>(3) 当前对象的成员对象；<br>(4) 如果当前对象的成员对象是一个集合，那么集合中的元素也都是朋友；<br>(5) 当前对象所创建的对象。<br>任何一个对象，如果满足上面的条件之一，就是当前对象的“朋友”，否则就是“陌生人”。在应用迪米特法则时，一个对象只能与直接朋友发生交互，不要与“陌生人”发生直接交互，这样做可以降低系统的耦合度，一个对象的改变不会给太多其他对象带来影响。</p>
+<p>迪米特法则要求我们在设计系统时，应该尽量减少对象之间的交互，如果两个对象之间不必彼此直接通信，那么这两个对象就不应当发生任何直接的相互作用，如果其中的一个对象需要调用另一个对象的某一个方法的话，可以通过第三者转发这个调用。简言之，就是通过引入一个合理的第三者来降低现有对象之间的耦合度。</p>
+<p>在将迪米特法则运用到系统设计中时，要注意下面的几点：在类的划分上，应当尽量创建松耦合的类，类之间的耦合度越低，就越有利于复用，一个处在松耦合中的类一旦被修改，不会对关联的类造成太大波及；在类的结构设计上，每一个类都应当尽量降低其成员变量和成员函数的访问权限；在类的设计上，只要有可能，一个类型应当设计成不变类；在对其他类的引用上，一个对象对其他对象的引用应当降到最低。</p>
+<h4 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h4><p>具体依赖抽象，上层依赖下层。假设B是较A低的模块，但B需要使用到A的功能，这个时候，B不应当直接使用A中的具体类；而应当由B定义一抽象接口，并由A来实现这个抽象接口，B只使用这个抽象接口；这样就达到了依赖倒置的目的，B也解除了对A的依赖，反过来是A依赖于B定义的抽象接口。通过上层模块难以避免依赖下层模块，假如B也直接依赖A的实现，那么就可能造成循环依赖。</p>
+<p>赖倒置原则的几个关键点如下。</p>
+<ul>
+<li>高层模块不应该依赖底层模块，两者都应该依赖其抽象。</li>
+<li>抽象不应该依赖细节。</li>
+<li>细节应该依赖抽象。</li>
+</ul>
+<p>采用依赖倒置原则可以减少类之间的耦合性，提高系统的稳定性，降低并行开发引起的风险，提高代码的可读性和可维护性。</p>
+<h4 id="7-合成复用原则"><a href="#7-合成复用原则" class="headerlink" title="7. 合成复用原则"></a>7. 合成复用原则</h4><p>尽量使用对象组合，而不是继承来达到复用的目的。</p>
+<p>合成复用原则就是在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分；新对象通过委派调用已有对象的方法达到复用功能的目的。简言之：复用时要尽量使用组合/聚合关系（关联关系），少用继承。</p>
+<p>在面向对象设计中，可以通过两种方法在不同的环境中复用已有的设计和实现，即通过组合/聚合关系或通过继承，但首先应该考虑使用组合/聚合，组合/聚合可以使系统更加灵活，降低类与类之间的耦合度，一个类的变化对其他类造成的影响相对较少；其次才考虑继承，在使用继承时，需要严格遵循里氏代换原则，有效使用继承会有助于对问题的理解，降低复杂度，而滥用继承反而会增加系统构建和维护的难度以及系统的复杂度，因此需要慎重使用继承复用。</p>
+<p>通过继承来进行复用的主要问题在于继承复用会破坏系统的封装性，因为继承会将基类的实现细节暴露给子类，由于基类的内部细节通常对子类来说是可见的，所以这种复用又称“白箱”复用，如果基类发生改变，那么子类的实现也不得不发生改变；从基类继承而来的实现是静态的，不可能在运行时发生改变，没有足够的灵活性；而且继承只能在有限的环境中使用（如类没有声明为不能被继承）</p>
+<p>由于组合或聚合关系可以将已有的对象（也可称为成员对象）纳入到新对象中，使之成为新对象的一部分，因此新对象可以调用已有对象的功能，这样做可以使得成员对象的内部实现细节对于新对象不可见，所以这种复用又称为“黑箱”复用，相对继承关系而言，其耦合度相对较低，成员对象的变化对新对象的影响不大，可以在新对象中根据实际需要有选择性地调用成员对象的操作；合成复用可以在运行时动态进行，新对象可以动态地引用与成员对象类型相同的其他对象。</p>
+<p>一般而言，如果两个类之间是“Has-A”的关系应使用组合或聚合，如果是“Is-A”关系可使用继承。”Is-A”是严格的分类学意义上的定义，意思是一个类是另一个类的”一种”；而”Has-A”则不同，它表示某一个角色具有某一项责任。</p>
+<h4 id="写在最后的话"><a href="#写在最后的话" class="headerlink" title="写在最后的话"></a>写在最后的话</h4><p>设计模式的四大要素中就明确指出，模式的运用应该根据软件系统所面临的问题来决定是否需要使用现有的设计。也就是说，再出现问题或者你预计会出现那样的问题时，才推荐使用特定的设计模式，而不是将各种设计模式套进你的软件中。</p>
+<p>不管在设计、实现、测试之间有多少时间都应该避免过度设计，它会打破你的反馈回路，使你的设计得不到反馈，从而慢慢陷入危险中。所以你只需要保持简单的设计，这样就有时间来测试该设计是否真的可行，然后作出最后的决策。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://wubaoguo.com/2015/08/28/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/" target="_blank" rel="external">面向对象设计的基本原则</a></li>
+<li><a href="https://itsmelo.github.io/2016/11/20/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99%E5%92%8C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_blank" rel="external">面向对象六大原则和设计模式</a></li>
+<li><a href="http://blog.csdn.net/yanbober/article/details/45312243" target="_blank" rel="external"> 设计模式之面向对象七大基本原则</a></li>
+<li><a href="http://blog.csdn.net/yanbober/article/details/45312127" target="_blank" rel="external">设计模式之面向对象与类基础特征概念</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/04/23/http-note6-2017-04-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/23/http-note6-2017-04-23/" itemprop="url">Http读书笔记第六章</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-23T20:31:18+08:00">
+                2017-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="http首部"><a href="#http首部" class="headerlink" title="http首部"></a>http首部</h3><p>http首部内容为客户端和服务器分别处理请求和响应提供所需要的信息</p>
+<p><img src="http-note6-2017-04-23/1.jpg" alt=""></p>
+<h3 id="HTTP-请求报文"><a href="#HTTP-请求报文" class="headerlink" title="HTTP 请求报文"></a>HTTP 请求报文</h3><p>在请求中，HTTP 报文由方法、URI、HTTP 版本、HTTP 首部字段等部分构成。</p>
+<h3 id="HTTP-响应报文"><a href="#HTTP-响应报文" class="headerlink" title="HTTP 响应报文"></a>HTTP 响应报文</h3><p>在响应中，HTTP 报文由 HTTP 版本、状态码（数字和原因短语）、HTTP 首部字段 3 部分构成.</p>
+<h3 id="HTTP-首部字段"><a href="#HTTP-首部字段" class="headerlink" title="HTTP 首部字段"></a>HTTP 首部字段</h3><p>HTTP 首部字段是由首部字段名和字段值构成的，中间用冒号“:” 分隔。</p>
+<p>HTTP 首部字段根据实际用途被分为以下 4 种类型。<br>通用首部字段（General Header Fields）<br>请求报文和响应报文两方都会使用的首部。</p>
+<p>请求首部字段（Request Header Fields）<br>从客户端向服务器端发送请求报文时使用的首部。补充了请求的附加内容、客户端信息、响应内容相关优先级等信息。</p>
+<p>响应首部字段（Response Header Fields）<br>从服务器端向客户端返回响应报文时使用的首部。补充了响应的附加内容，也会要求客户端附加额外的内容信息。</p>
+<p>实体首部字段（Entity Header Fields）<br>针对请求报文和响应报文的实体部分使用的首部。补充了资源内容更新时间等与实体有关的信息。</p>
+<h3 id="HTTP-1-1-首部字段一览"><a href="#HTTP-1-1-首部字段一览" class="headerlink" title="HTTP/1.1 首部字段一览"></a>HTTP/1.1 首部字段一览</h3><h4 id="通用首部字段"><a href="#通用首部字段" class="headerlink" title="通用首部字段"></a>通用首部字段</h4><p>首部字段名 说明<br>Cache-Control 控制缓存的行为<br>指令的参数是可选的，多个指令之间通过“,”分隔</p>
+<p>Connection 逐跳首部、连接的管理<br>Date 创建报文的日期时间<br>Pragma 报文指令<br>Trailer 报文末端的首部一览<br>Transfer-Encoding 指定报文主体的传输编码方式<br>Upgrade 升级为其他协议<br>Via 代理服务器的相关信息<br>Warning 错误通知</p>
+<h4 id="请求首部字段"><a href="#请求首部字段" class="headerlink" title="请求首部字段"></a>请求首部字段</h4><p>首部字段名 说明<br>Accept 用户代理可处理的媒体类型<br>Accept-Charset 优先的字符集<br>Accept-Encoding 优先的内容编码<br>Accept-Language 优先的语言（自然语言）<br>Authorization Web认证信息<br>Expect 期待服务器的特定行为<br>From 用户的电子邮箱地址<br>Host 请求资源所在服务器<br>If-Match 比较实体标记（ETag）<br>If-Modified-Since 比较资源的更新时间<br>If-None-Match 比较实体标记（与 If-Match 相反）<br>If-Range 资源未更新时发送实体 Byte 的范围请求<br>If-Unmodified-Since 比较资源的更新时间（与If-Modified-Since相反）<br>Max-Forwards 最大传输逐跳数<br>Proxy-Authorization 代理服务器要求客户端的认证信息<br>Range 实体的字节范围请求<br>Referer 对请求中 URI 的原始获取方<br>TE 传输编码的优先级<br>User-Agent HTTP 客户端程序的信息</p>
+<h4 id="响应首部字段"><a href="#响应首部字段" class="headerlink" title="响应首部字段"></a>响应首部字段</h4><p>首部字段名 说明<br>Accept-Ranges 是否接受字节范围请求<br>Age 推算资源创建经过时间<br>ETag 资源的匹配信息<br>Location 令客户端重定向至指定URI<br>Proxy-Authenticate 代理服务器对客户端的认证信息<br>Retry-After 对再次发起请求的时机要求<br>Server HTTP服务器的安装信息<br>Vary 代理服务器缓存的管理信息<br>WWW-Authenticate 服务器对客户端的认证信息</p>
+<h4 id="实体首部字段"><a href="#实体首部字段" class="headerlink" title="实体首部字段"></a>实体首部字段</h4><p>首部字段名 说明<br>Allow 资源可支持的HTTP方法<br>Content-Encoding 实体主体适用的编码方式<br>Content-Language 实体主体的自然语言<br>Content-Length 实体主体的大小（单位：字节）<br>Content-Location 替代对应资源的URI<br>Content-MD5 实体主体的报文摘要<br>Content-Range 实体主体的位置范围<br>Content-Type 实体主体的媒体类型<br>Expires 实体主体过期的日期时间<br>Last-Modified 资源的最后修改日期时间</p>
+<h4 id="End-to-end-首部和-Hop-by-hop-首部"><a href="#End-to-end-首部和-Hop-by-hop-首部" class="headerlink" title="End-to-end 首部和 Hop-by-hop 首部"></a>End-to-end 首部和 Hop-by-hop 首部</h4><p>HTTP 首部字段将定义成缓存代理和非缓存代理的行为，分成 2 种类型。<br>端到端首部（End-to-end Header）<br>分在此类别中的首部会转发给请求 / 响应对应的最终接收目标，且必<br>须保存在由缓存生成的响应中，另外规定它必须被转发。</p>
+<p>逐跳首部（Hop-by-hop Header）<br>分在此类别中的首部只对单次转发有效，会因通过缓存或代理而不再转发。HTTP/1.1 和之后版本中，如果要使用 hop-by-hop 首部，需提供 Connection 首部字段。</p>
+<h4 id="其他所有字段都属于端到端首部。"><a href="#其他所有字段都属于端到端首部。" class="headerlink" title="其他所有字段都属于端到端首部。"></a>其他所有字段都属于端到端首部。</h4><p>Connection<br>Keep-Alive<br>Proxy-Authenticate<br>Proxy-Authorization<br>Trailer<br>TE<br>Transfer-Encoding<br>Upgrade</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/04/22/python-subprocess-2017-04-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/22/python-subprocess-2017-04-22/" itemprop="url">Python之subprocess模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-22T10:44:12+08:00">
+                2017-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="subprocess模块"><a href="#subprocess模块" class="headerlink" title="subprocess模块"></a>subprocess模块</h3><p>subprocess模块,即子进程模块,允许您生成新进程，并连接到输入/输出/错误管道，并获取其返回代码。<br>subprocess包主要功能是执行外部的命令和程序。</p>
+<h3 id="subprocess模块使用"><a href="#subprocess模块使用" class="headerlink" title="subprocess模块使用"></a>subprocess模块使用</h3><p>subprocess包中定义有数个创建子进程的函数，这些函数分别以不同的方式创建子进程，可以根据需要来从中选取一个使用。另外subprocess还提供了一些管理标准流(standard stream)和管道(pipe)的工具，从而在进程间使用文本通信。</p>
+<p>使用subprocess包中的函数创建子进程的时候，要注意:</p>
+<ul>
+<li>在创建子进程之后，父进程是否暂停，并等待子进程运行</li>
+<li>函数返回什么</li>
+<li>当returncode不为0时，父进程如何处理</li>
+</ul>
+<p>subprocess.call()<br>父进程等待子进程完成<br>返回退出信息(returncode，相当于exit code，见Linux进程基础)</p>
+<p>subprocess.check_call()<br>父进程等待子进程完成<br>返回0<br>检查退出信息，如果returncode不为0，则举出错误subprocess.CalledProcessError，该对象包含有returncode属性，可用try…except…来检查(见Python错误处理)。</p>
+<p>subprocess.check_output()<br>父进程等待子进程完成<br>返回子进程向标准输出的输出结果<br>检查退出信息，如果returncode不为0，则举出错误subprocess.CalledProcessError，该对象包含有returncode属性和output属性，output属性为标准输出的输出结果，可用try…except…来检查。</p>
+<p>这三个函数的使用方法相类似，以subprocess.call()来说明:<br>我们将程序名(ls)和所带的参数(-l)一起放在一个表中传递给subprocess.call()<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> subprocess</div><div class="line">rc = subprocess.call([<span class="string">"ls"</span>,<span class="string">"-l"</span>])</div><div class="line">subprocess.check_call(</div><div class="line">            [<span class="string">"svn"</span>, <span class="string">"export"</span>, <span class="string">"--force"</span>, <span class="string">"--revision"</span>, revision, src, dst],</div><div class="line">            stdout=subprocess.DEVNULL)</div><div class="line">output = subprocess.check_output(</div><div class="line">        [<span class="string">"svn"</span>, <span class="string">"log"</span>, svn_path, <span class="string">"-v"</span>, <span class="string">"--limit"</span>, <span class="string">"1"</span>]).decode(<span class="string">"gbk"</span>).strip()</div></pre></td></tr></table></figure></p>
+<p>也可以通过一个shell来解释一整个字符串:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> subprocess</div><div class="line">out = subprocess.call(<span class="string">"ls -l"</span>, shell=<span class="keyword">True</span>)</div><div class="line">out = subprocess.call(<span class="string">"cd .."</span>, shell=<span class="keyword">True</span>)</div></pre></td></tr></table></figure></p>
+<p>上面使用了shell=True这个参数。这个时候，我们使用一整个字符串，而不是一个列表来运行子进程。<br>Python将先运行一个shell，再用这个shell来解释这整个字符串。</p>
+<p>关于Popen()<br>实际上，上面的三个函数都是基于Popen()的封装(wrapper)。这些封装的目的在于让我们容易使用子进程。<br>当我们想要更个性化的需求的时候，就要转向Popen类，该类生成的对象用来代表子进程。<br>与上面的封装不同，Popen对象创建后，主程序不会自动等待子进程完成。我们必须调用对象的wait()方法，父进程才会等待 (也就是阻塞block)：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> subprocess</div><div class="line">child = subprocess.Popen([<span class="string">"ping"</span>,<span class="string">"-c"</span>,<span class="string">"5"</span>,<span class="string">"www.google.com"</span>])</div><div class="line">print(<span class="string">"parent process"</span>)</div></pre></td></tr></table></figure></p>
+<p>从运行结果中看到，父进程在开启子进程之后并没有等待child的完成，而是直接运行print。<br>对比等待的情况:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> subprocess</div><div class="line">child = subprocess.Popen([<span class="string">"ping"</span>,<span class="string">"-c"</span>,<span class="string">"5"</span>,<span class="string">"www.google.com"</span>])</div><div class="line">child.wait()</div><div class="line">print(<span class="string">"parent process"</span>)</div></pre></td></tr></table></figure></p>
+<p>此外，你还可以在父进程中对子进程进行其它操作，比如我们上面例子中的child对象:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">child.poll()           # 检查子进程状态</div><div class="line">child.kill()           # 终止子进程</div><div class="line">child.send_signal()    # 向子进程发送信号</div><div class="line">child.terminate()      # 终止子进程</div></pre></td></tr></table></figure></p>
+<p>子进程的PID存储在child.pid</p>
+<p>子进程的文本流控制<br>沿用child子进程) 子进程的标准输入，标准输出和标准错误也可以通过如下属性表示:</p>
+<ul>
+<li>child.stdin</li>
+<li>child.stdout</li>
+<li>child.stderr</li>
+</ul>
+<p>我们可以在Popen()建立子进程的时候改变标准输入、标准输出和标准错误，并可以利用subprocess.PIPE将多个子进程的输入和输出连接在一起，构成管道(pipe):<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> subprocess</div><div class="line">child1 = subprocess.Popen([<span class="string">"ls"</span>,<span class="string">"-l"</span>], stdout=subprocess.PIPE)</div><div class="line">child2 = subprocess.Popen([<span class="string">"wc"</span>], stdin=child1.stdout,stdout=subprocess.PIPE)</div><div class="line">out = child2.communicate()</div><div class="line">print(out)</div></pre></td></tr></table></figure></p>
+<p>subprocess.PIPE实际上为文本流提供一个缓存区。child1的stdout将文本输出到缓存区，随后child2的stdin从该PIPE中将文本读取走。child2的输出文本也被存放在PIPE中，直到communicate()方法从PIPE中读取出PIPE中的文本。<br>要注意的是，communicate()是Popen对象的一个方法，该方法会阻塞父进程，直到子进程完成。</p>
+<p>我们还可以利用communicate()方法来使用PIPE给子进程输入:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> subprocess</div><div class="line">child = subprocess.Popen([<span class="string">"cat"</span>], stdin=subprocess.PIPE)</div><div class="line">child.communicate(<span class="string">"vamei"</span>.encode())</div></pre></td></tr></table></figure></p>
+<p>我们启动子进程之后，cat会等待输入，直到我们用communicate()输入”vamei”。</p>
+<p>调用subprocess模块的推荐方法是:推荐使用run()函数来处理几乎所有用例或情景。对于更高级的用例，可以直接使用基础的Popen接口。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, shell=False, timeout=None, check=False, encoding=None, errors=None)</div></pre></td></tr></table></figure></p>
+<p>运行由args描述的命令。等待命令完成，然后返回一个CompletedProcess实例。<br>完整的run函数签名与Popen构造函数大致相同(除了超时，输入和检查外)，该函数的所有参数都传递给该接口。<br>默认情况下，这不捕获stdout或stderr。要做到这一点，通过PIPE的stdout和/或stderr参数。<br>超时参数传递给Popen.communicate（）。如果超时过期，则子进程将被杀死并等待。在子进程终止后，将重新提出TimeoutExpired异常。<br>输入的参数传递给Popen.communicate（），从而传递给子进程的stdin。如果使用，它必须是一个字节序列，如果指定了编码或错误，或者是universal_newlines为真，则为字符串。使用时，内部Popen对象将自动使用stdin = PIPE创建，并且stdin参数也可能不被使用。<br>如果检查为真，并且进程以非零退出代码退出，则将引发CalledProcessError异常。该异常的属性保存参数，退出代码以及stdout和stderr（如果被捕获）。<br>如果指定了编码或错误，或者universal_newlines为true，则使用指定的编码和错误或io.TextIOWrapper默认文件在文本模式下打开stdin，stdout和stderr的文件对象。否则，文件对象将以二进制模式打开。</p>
+<p>args是所有调用所必需的，应该是一个字符串或一系列程序参数。通常优选提供参数序列，因为它允许模块处理任何所需的转义和引用参数（例如，允许文件名中的空格）。如果传递单个字符串，则shell必须为True（见下文），否则字符串必须简单地命名要执行的程序，而不指定任何参数。</p>
+<h3 id="Popen构造函数"><a href="#Popen构造函数" class="headerlink" title="Popen构造函数"></a>Popen构造函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class subprocess.Popen(args, bufsize=-1, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=True, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0, restore_signals=True, start_new_session=False, pass_fds=(), *, encoding=None, errors=None)</div></pre></td></tr></table></figure>
+<p>在新进程中执行子程序。在POSIX上，该类使用os.execvp（）类似的行为来执行子程序。在Windows上，该类使用Windows CreateProcess（）函数.<br>args应该是程序参数的序列，或者是一个单个的字符串。默认情况下，如果args是序列，则要执行的程序是args中的第一个项目。如果args是字符串，则解释是平台依赖的，并在下面描述。请参阅shell和可执行参数，以获得与默认行为的更多差异。除非另有说明，否则建议将args作为序列。</p>
+<p>在Windows上，如果args是一个序列，它将以转换参数序列到Windows上的字符串中所述的方式转换为字符串。这是因为底层的CreateProcess（）对字符串运行.<br>shell参数（默认为False）指定是否使用shell作为程序执行。如果shell为True，则建议将args作为字符串而不是序列传递。</p>
+<h3 id="Popen-Objects-Popen对象"><a href="#Popen-Objects-Popen对象" class="headerlink" title="Popen Objects(Popen对象)"></a>Popen Objects(Popen对象)</h3><p>Popen类的实例有以下几种方法：<br>Popen.poll():检查子进程是否终止。设置并返回returncode属性。<br>Popen.wait(timeout=None):等待子进程终止。设置并返回returncode属性.如果进程在超时秒后没有终止，请引发超时突发异常。捕获这个异常是安全的，并重试等待。<br>当使用stdout = PIPE或stderr = PIPE时，这将会死锁，并且子进程向管道生成足够的输出，从而阻止等待OS管道缓冲区接受更多数据。使用Popen.communicate（）使用管道避免这种情况。<br>Popen.communicate(input=None, timeout=None):与进程交互：将数据发送到stdin。从stdout和stderr读取数据，直到文件到达。等待进程终止。可选的输入参数应该是要发送到子进程的数据，否则，如果没有数据发送给子进程，则为None。如果流以文本模式打开，则输入必须是字符串。否则，它必须是字节。<br>communication（）返回一个元组（stdout_data，stderr_data）。如果流以文本模式打开，数据将为字符串;否则，字节。<br>请注意，如果要将数据发送到进程的stdin，则需要使用stdin = PIPE创建Popen对象。类似地，要在结果元组中获得除None之外的任何内容，您还需要给出stdout = PIPE和/或stderr = PIPE.<br>如果进程在超时秒后没有终止，则会引发一个TimeoutExpired异常。捕捉此异常并重试通信不会丢失任何输出。<br>如果超时过期，子进程不会被终止，所以为了正确清理，运行良好的应用程序应该杀死子进程并完成通信：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">proc = subprocess.Popen(...)</div><div class="line">try:</div><div class="line">    outs, errs = proc.communicate(timeout=15)</div><div class="line">except TimeoutExpired:</div><div class="line">    proc.kill()</div><div class="line">    outs, errs = proc.communicate()</div></pre></td></tr></table></figure></p>
+<p>读取的数据被缓冲在内存中，因此如果数据很大或无限制，则不要使用此方法。</p>
+<p>Popen.terminate():</p>
+<h3 id="旧的高级API"><a href="#旧的高级API" class="headerlink" title="旧的高级API"></a>旧的高级API</h3><p>在Python 3.5之前，这subprocess中函数中的check_output, check_call, call这三个函数包含了高级API到子进程。现在可以在很多情况下使用run（），但很多现有的代码调用这些函数。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/04/22/python-reviewcode1-2017-04-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/22/python-reviewcode1-2017-04-22/" itemprop="url">Python之一些杂记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-22T09:45:05+08:00">
+                2017-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-取指定文件所在目录的父目录"><a href="#1-取指定文件所在目录的父目录" class="headerlink" title="1. 取指定文件所在目录的父目录"></a>1. 取指定文件所在目录的父目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">方式1: os.path.dirname(os.path.dirname(__file__))</div><div class="line">方式2: os.path.dirname(os.path.dirname(os.path.abspath(__file__)))</div></pre></td></tr></table></figure>
+<p>dirname是获取输入路径的目录.<br>尽量用方式2,方式1有风险,当你将目录切到当前的脚本所在的目录时并运行该脚本,输出的目录是空.方式2就不会存在这种问题.看下面的例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">print(&quot;file1 = &#123;&#125;&quot;.format(__file__))</div><div class="line">print(&quot;file2 = &#123;&#125;&quot;.format(os.path.abspath(__file__)))</div><div class="line">print(&quot;dir1 = &#123;&#125;&quot;.format(os.path.dirname(__file__)))</div><div class="line">print(&quot;dir2 = &#123;&#125;&quot;.format(os.path.dirname(os.path.dirname(__file__))))</div><div class="line">print(&quot;dir3 = &#123;&#125;&quot;.format(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))</div><div class="line"></div><div class="line">输出结果:</div><div class="line">F:\2.2&gt;python _build/translate.py</div><div class="line">file1 = _build/translate.py</div><div class="line">file2 = F:\2.2\_build\translate.py</div><div class="line">dir1 = _build</div><div class="line">dir2 =</div><div class="line">dir3 = F:\2.2</div></pre></td></tr></table></figure></p>
+<h3 id="2-pwd-pwd与cwd"><a href="#2-pwd-pwd与cwd" class="headerlink" title="2. pwd,$pwd与cwd"></a>2. pwd,$pwd与cwd</h3><p>都指某个进程运行时所在的目录.<br>pwd 是linux 自带的命令.全称:pathname of the current working directory.<br>$PWD 是个系统变量<br>cwd: 不是系统自带的命令, 但是属于系统的属性.全称: current working directory . 不但在 /proc/{id} 这个目录下可以看到cwd, 在很多其他的编程语言中也可以看到( 例如grunt ).<br>有时候 pwd 与 $PWD  给出的结果不同.</p>
+<h3 id="3-decode与encode"><a href="#3-decode与encode" class="headerlink" title="3. decode与encode"></a>3. decode与encode</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/04/18/http-note5-2017-04-18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/18/http-note5-2017-04-18/" itemprop="url">Http读书笔记第五章</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T22:56:17+08:00">
+                2017-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="与-HTTP-协作的-Web-服务器"><a href="#与-HTTP-协作的-Web-服务器" class="headerlink" title="与 HTTP 协作的 Web 服务器"></a>与 HTTP 协作的 Web 服务器</h3><p>一台 Web 服务器可搭建多个独立域名的 Web 网站，也可作为通信路径上的中转服务器提升传输效率。</p>
+<h3 id="用单台虚拟主机实现多个域名"><a href="#用单台虚拟主机实现多个域名" class="headerlink" title="用单台虚拟主机实现多个域名"></a>用单台虚拟主机实现多个域名</h3><p>HTTP/1.1 规范允许一台 HTTP 服务器搭建多个 Web 站点<br>提供 Web 托管服务（Web Hosting Service）的供应商，可以用一台服务器为多位客户服务，也可以以每位客户持有的域名运行各自不同的网站。这是因为利用了虚拟主机（Virtual Host，又称虚拟服务器）的功能。<br>即使物理层面只有一台服务器，但只要使用虚拟主机的功能，则可以假想已具有多台服务器。</p>
+<p>如果一台服务器内托管了 www.tricorder.jp 和 www.hackr.jp 这两个域名，当收到请求时就需要弄清楚究竟要访问哪个域名。<br>在相同的 IP 地址下，由于虚拟主机可以寄存多个不同主机名和域名的 Web 网站，因此在发送 HTTP 请求时，必须在 Host 首部内完整指定主机名或域名的 URI。</p>
+<h3 id="通信数据转发程序-：代理、网关、隧道"><a href="#通信数据转发程序-：代理、网关、隧道" class="headerlink" title="通信数据转发程序 ：代理、网关、隧道"></a>通信数据转发程序 ：代理、网关、隧道</h3><p>HTTP 通信时，除客户端和服务器以外，还有一些用于通信数据转发的应用程序，例如代理、网关和隧道。它们可以配合服务器工作.<br>这些应用程序和服务器可以将请求转发给通信线路上的下一站服务器，并且能接收从那台服务器发送的响应再转发给客户端。</p>
+<ol>
+<li>代理<br>代理是一种有转发功能的应用程序，它扮演了位于服务器和客户端“中间人”的角色，接收由客户端发送的请求并转发给服务器，同时也接收服务器返回的响应并转发给客户端。代理服务器的基本行为就是接收客户端发送的请求后转发给其他服务器。代理不改变请求 URI，会直接发送给前方持有资源的目标服务器。<br>持有资源实体的服务器被称为源服务器。从源服务器返回的响应经过代理服务器后再传给客户端。<br>在 HTTP 通信过程中，可级联多台代理服务器。请求和响应的转发会经过数台类似锁链一样连接起来的代理服务器。转发时，需要附加Via 首部字段以标记出经过的主机信息。<br>使用代理服务器的理由有：利用缓存技术减少网络带宽的流量，组织内部针对特定网站的访问控制，以获取访问日志为主要目的，等等。<br>代理有多种使用方法，按两种基准分类。一种是是否使用缓存，另一种是是否会修改报文。</li>
+</ol>
+<ul>
+<li>缓存代理<br>代理转发响应时，缓存代理（Caching Proxy）会预先将资源的副本（缓存）保存在代理服务器上。当代理再次接收到对相同资源的请求时，就可以不从源服务器那里获<br>取资源，而是将之前缓存的资源作为响应返回。</li>
+<li>透明代理<br>转发请求或响应时，不对报文做任何加工的代理类型被称为透明代理（Transparent Proxy）。反之，对报文内容进行加工的代理被称为非透明代理。</li>
+</ul>
+<ol>
+<li>网关<br>网关是转发其他服务器通信数据的服务器，接收从客户端发送来的请求时，它就像自己拥有资源的源服务器一样对请求进行处理。有时客户端可能都不会察觉，自己的通信目标是一个网关。<br>网关的工作机制和代理十分相似。而网关能使通信线路上的服务器提供非 HTTP 协议服务。利用网关能提高通信的安全性，因为可以在客户端与网关之间的通信线路上加密以确保连接的安全。比如，网关可以连接数据库，使用SQL 语句查询数据。另外，在 Web 购物网站上进行信用卡结算时，网关可以和信用卡结算系统联动。</li>
+<li>隧道<br>隧道是在相隔甚远的客户端和服务器两者之间进行中转，并保持双方通信连接的应用程序。<br>隧道可按要求建立起一条与其他服务器的通信线路，届时使用 SSL 等加密手段进行通信。隧道的目的是确保客户端能与服务器进行安全的通信。<br>隧道本身不会去解析 HTTP 请求。也就是说，请求保持原样中转给之后的服务器。隧道会在通信双方断开连接时结束。<br>隧道本身是透明的，客户端不用在意隧道的存在.</li>
+</ol>
+<h3 id="保存资源的缓存"><a href="#保存资源的缓存" class="headerlink" title="保存资源的缓存"></a>保存资源的缓存</h3><p>缓存是指代理服务器或客户端本地磁盘内保存的资源副本。利用缓存可减少对源服务器的访问，因此也就节省了通信流量和通信时间。<br>缓存服务器是代理服务器的一种，并归类在缓存代理类型中。换句话说，当代理转发从服务器返回的响应时，代理服务器将会保存一份资源的副本。<br>缓存服务器的优势在于利用缓存可避免多次从源服务器转发资源。因此客户端可就近从缓存服务器上获取资源，而源服务器也不必多次处理相同的请求了。</p>
+<h4 id="缓存的有效期限"><a href="#缓存的有效期限" class="headerlink" title="缓存的有效期限"></a>缓存的有效期限</h4><p>当遇上源服务器上的资源更新时，如果还是使用不变的缓存，那就会演变成返回更新前的“旧”资源了。<br>即使存在缓存，也会因为客户端的要求、缓存的有效期等因素，向源服务器确认资源的有效性。若判断缓存失效，缓存服务器将会再次从源服务器上获取“新”资源。</p>
+<h4 id="客户端的缓存"><a href="#客户端的缓存" class="headerlink" title="客户端的缓存"></a>客户端的缓存</h4><p>缓存不仅可以存在于缓存服务器内，还可以存在客户端浏览器中。以Internet Explorer 程序为例，把客户端缓存称为临时网络文件（Temporary Internet File）。<br>浏览器缓存如果有效，就不必再向服务器请求相同的资源了，可以直接从本地磁盘内读取。<br>另外，和缓存服务器相同的一点是，当判定缓存过期后，会向源服务器确认资源的有效性。若判断浏览器缓存失效，浏览器会再次请求新资源。</p>
+<h3 id="在-HTTP-出现之前的协议"><a href="#在-HTTP-出现之前的协议" class="headerlink" title="在 HTTP 出现之前的协议"></a>在 HTTP 出现之前的协议</h3><ul>
+<li>FTP（File Transfer Protocol）<br>传输文件时使用的协议。该协议历史久远，可追溯到 1973 年前后，比 TCP/IP 协议族的出现还要早。虽然它在 1995 年被 HTTP 的流量（Traffic）超越，但时至今日，仍被广泛沿用。</li>
+<li>NNTP（Network News Transfer Protocol）<br>用于 NetNews 电子会议室内传送消息的协议。在 1986 年前后出现，属于比较古老的一类协议。现在，利用 Web 交换信息已成主流，所以该协议已经不怎么使用了。</li>
+<li>Archie<br>搜索 anonymous FTP 公开的文件信息的协议。1990 年前后出现，现在已经不常使用。</li>
+<li>WAIS（Wide Area Information Servers）<br>以关键词检索多个数据库使用的协议。1991 年前后出现。由于现在已经被 HTTP 协议替代，也已经不怎么使用了。</li>
+<li>Gopher<br>查找与互联网连接的计算机内信息的协议。1991 年前后出现，由于现在已经被 HTTP 协议替代，也已经不怎么使用了。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Arvin</p>
+              <p class="site-description motion-element" itemprop="description">Learn and live.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Arvin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

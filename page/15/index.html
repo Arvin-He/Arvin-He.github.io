@@ -1,9 +1,1485 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Learn and live."><title>Simple &amp; Freedom | Learn and live.</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Simple &amp; Freedom</h1><a id="logo" href="/.">Simple &amp; Freedom</a><p class="description">Learn and live.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/essay/"><i class="fa fa-archive"> 随笔</i></a><a href="/readnotes/"><i class="fa fa-archive"> 读书笔记</i></a><a href="/life/"><i class="fa fa-archive"> 生活</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/404.html"><i class="fa fa-heartbeat"> 公益404</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2017/06/12/python-process-2017-06-12/">Python之进程</a></h1><div class="post-meta">2017-06-12</div><div class="post-content"><h3 id="多进程模块-multiprocessing-简介"><a href="#多进程模块-multiprocessing-简介" class="headerlink" title="多进程模块(multiprocessing)简介"></a>多进程模块(multiprocessing)简介</h3><p>multiprocessing是多进程模块，多进程提供了任务并发性，能充分利用多核处理器, 避免了GIL（全局解释锁）对资源的影响。由于GIL（全局解释锁）的问题，多线程并不能充分利用多核处理器，如果是一个CPU计算型的任务，应该使用多进程模块 multiprocessing 。它的工作方式与线程库完全不同，但是两种库的语法却非常相似。multiprocessing给每个进程赋予单独的Python解释器，这样就规避了全局解释锁所带来的问题。</p></div><p class="readmore"><a href="/2017/06/12/python-process-2017-06-12/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/06/12/python-thread-2017-06-12/">Python之线程</a></h1><div class="post-meta">2017-06-12</div><div class="post-content"><h3 id="关于GIL"><a href="#关于GIL" class="headerlink" title="关于GIL"></a>关于GIL</h3><p>Python（特指CPython）的多线程不能利用多核的优势，这是因为全局解释锁（GIL）的限制。如果是cpu密集型(计算型)的任务，使用多线程GIL就会让多线程变慢。<br>GIL是必须的，这是Python设计的问题：Python解释器是非线程安全的。这意味着当从线程内尝试安全的访问Python对象的时候将有一个全局的强制锁。 在任何时候，仅仅一个单一的线程能够获取Python对象或者C API。每100个字节的Python指令解释器将重新获取锁，这（潜在的）阻塞了I/O操作。因为锁，CPU密集型的代码使用线程库时，不会获得性能的提高（但是当它使用之后介绍的多进程库时，性能可以获得提高）。</p></div><p class="readmore"><a href="/2017/06/12/python-thread-2017-06-12/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/06/09/python-magicVarFunc-2017-06-09/">Python之_magic变量和函数</a></h1><div class="post-meta">2017-06-09</div><div class="post-content"><h3 id="关于下划线-的说明"><a href="#关于下划线-的说明" class="headerlink" title="关于下划线(_)的说明"></a>关于下划线(_)的说明</h3><ul>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Simple & Freedom" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Learn and live.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simple &amp; Freedom">
+<meta property="og:url" content="http://arvin-he.github.io/page/15/index.html">
+<meta property="og:site_name" content="Simple &amp; Freedom">
+<meta property="og:description" content="Learn and live.">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple &amp; Freedom">
+<meta name="twitter:description" content="Learn and live.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://arvin-he.github.io/page/15/"/>
+
+
+
+
+
+  <title>Simple & Freedom</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Simple & Freedom</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learn and live.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/06/15/dp-brief-2017-06-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/15/dp-brief-2017-06-15/" itemprop="url">设计模式简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T15:00:49+08:00">
+                2017-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><p>在软件工程中，设计模式（design pattern）是对软件设计中普遍存在（反复出现）的各种问题，所提出的解决方案。这个术语是由埃里希·伽玛（Erich Gamma）等人在1990年代从建筑设计领域引入到计算机科学的。<br>设计模式并不直接用来完成代码的编写，而是描述在各种不同情况下，要怎么解决问题的一种方案。面向对象设计模式通常以类别或对象来描述其中的关系和相互作用，但不涉及用来完成应用程序的特定类别或对象。设计模式能使不稳定依赖于相对稳定、具体依赖于相对抽象，避免会引起麻烦的紧耦合，以增强软件设计面对并适应变化的能力。<br>并非所有的软件模式都是设计模式，设计模式特指软件“设计”层次上的问题。还有其它非设计模式的模式，如架构模式。同时，算法不能算是一种设计模式，因为算法主要是用来解决计算上的问题，而非设计上的问题。</p>
+<h3 id="设计模式分类"><a href="#设计模式分类" class="headerlink" title="设计模式分类"></a>设计模式分类</h3><p>设计模式主要分3大类,每一类中又有几个不同的模式</p>
+<ol>
+<li>创建型模式</li>
+<li>结构型模式</li>
+<li>行为型模式</li>
+</ol>
+<h3 id="创建型模式"><a href="#创建型模式" class="headerlink" title="创建型模式"></a>创建型模式</h3><ol>
+<li>简单工厂模式</li>
+<li>工厂方法模式</li>
+<li>抽象工厂模式</li>
+<li>建造者模式</li>
+<li>单例模式</li>
+</ol>
+<h3 id="结构型模式"><a href="#结构型模式" class="headerlink" title="结构型模式"></a>结构型模式</h3><ol>
+<li>适配器模式</li>
+<li>桥接模式</li>
+<li>装饰模式</li>
+<li>外观模式</li>
+<li>享元模式</li>
+<li>代理模式</li>
+</ol>
+<h3 id="行为型模式"><a href="#行为型模式" class="headerlink" title="行为型模式"></a>行为型模式</h3><ol>
+<li>命令模式</li>
+<li>中介者模式</li>
+<li>观察者模式</li>
+<li>状态模式</li>
+<li>策略模式</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/06/15/python-scrapy1-201-06-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/15/python-scrapy1-201-06-15/" itemprop="url">Python之Scrapy初识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T13:09:52+08:00">
+                2017-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Scrapy简介"><a href="#Scrapy简介" class="headerlink" title="Scrapy简介"></a>Scrapy简介</h3><p>Scrapy是用Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求方便的修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持。Scratch，是抓取的意思，Scrapy大概是源于Scratch吧.Scrapy 使用了 Twisted异步网络库来处理网络通讯。整体架构大致如下:</p>
+<p><img src="/2017/06/15/python-scrapy1-201-06-15/1.png" alt=""></p>
+<h3 id="Scrapy框架及组件"><a href="#Scrapy框架及组件" class="headerlink" title="Scrapy框架及组件"></a>Scrapy框架及组件</h3><ul>
+<li>引擎(Scrapy)<br>用来处理整个系统的数据流处理, 触发事务(框架核心)</li>
+<li>调度器(Scheduler)<br>用来接受引擎发过来的请求, 压入队列中, 并在引擎再次请求的时候返回. 可以想像成一个URL（抓取网页的网址或者说是链接）的优先队列, 由它来决定下一个要抓取的网址是什么, 同时去除重复的网址</li>
+<li>下载器(Downloader)<br>用于下载网页内容, 并将网页内容返回给蜘蛛(Scrapy下载器是建立在twisted这个高效的异步模型上的)</li>
+<li>爬虫(Spiders)<br>爬虫是主要干活的, 用于从特定的网页中提取自己需要的信息, 即所谓的实体(Item)。用户也可以从中提取出链接,让Scrapy继续抓取下一个页面.</li>
+<li>项目管道(Pipeline)<br>负责处理爬虫从网页中抽取的实体，主要的功能是持久化实体、验证实体的有效性、清除不需要的信息。当页面被爬虫解析后，将被发送到项目管道，并经过几个特定的次序处理数据。</li>
+<li>下载器中间件(Downloader Middlewares)<br>位于Scrapy引擎和下载器之间的框架，主要是处理Scrapy引擎与下载器之间的请求及响应。</li>
+<li>爬虫中间件(Spider Middlewares)<br>介于Scrapy引擎和爬虫之间的框架，主要工作是处理蜘蛛的响应输入和请求输出。</li>
+<li>调度中间件(Scheduler Middlewares)<br>介于Scrapy引擎和调度之间的中间件，从Scrapy引擎发送到调度的请求和响应。</li>
+</ul>
+<p>Scarpy运作流程:</p>
+<ol>
+<li>引擎从调度器中取出一个链接(URL)用于接下来的抓取</li>
+<li>引擎把URL封装成一个请求(Request)传给下载器</li>
+<li>下载器把资源下载下来，并封装成应答包(Response)</li>
+<li>爬虫解析Response</li>
+<li>解析出实体（Item）,则交给实体管道进行进一步的处理</li>
+<li>解析出的是链接（URL）,则把URL交给调度器等待抓取</li>
+</ol>
+<h3 id="Scrapy安装"><a href="#Scrapy安装" class="headerlink" title="Scrapy安装"></a>Scrapy安装</h3><p>Scrapy已经支持python3,使用pip安装, 在命令行窗口输入: <code>pip install scrapy</code>, 回车.<br><strong>注意：</strong> windows平台需要依赖pywin32，请根据自己系统32/64位选择下载安装，<a href="https://sourceforge.net/projects/pywin32/" target="_blank" rel="external">下载地址</a></p>
+<h3 id="Scrapy基本使用"><a href="#Scrapy基本使用" class="headerlink" title="Scrapy基本使用"></a>Scrapy基本使用</h3><h4 id="创建爬虫项目"><a href="#创建爬虫项目" class="headerlink" title="创建爬虫项目"></a>创建爬虫项目</h4><p>运行命令: <code>scrapy startproject project_name</code>, 回车, 自动创建的目录如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">λ tree /F .</div><div class="line">C:\USERS\ARON\SCRAPYTEST</div><div class="line">│  scrapy.cfg</div><div class="line">│</div><div class="line">└─scrapytest</div><div class="line">    │  items.py</div><div class="line">    │  middlewares.py</div><div class="line">    │  pipelines.py</div><div class="line">    │  settings.py</div><div class="line">    │  __init__.py</div><div class="line">    │</div><div class="line">    ├─spiders</div><div class="line">       │  __init__.py</div></pre></td></tr></table></figure></p>
+<p>文件说明：<br>scrapy.cfg  项目的配置信息,主要为Scrapy命令行工具提供一个基础的配置信息(真正爬虫相关的配置信息在settings.py文件中）<br>items.py    设置数据存储模板，用于结构化数据，如：Django的Model<br>pipelines   数据处理行为，如：一般结构化的数据持久化<br>settings.py 配置文件，如：递归的层数、并发数，延迟下载等<br>spiders     爬虫目录，如：创建文件，编写爬虫规则<br>注意：一般创建爬虫文件时，以网站域名命名</p>
+<h4 id="编写爬虫"><a href="#编写爬虫" class="headerlink" title="编写爬虫"></a>编写爬虫</h4><p>编写一个爬取校花网上的校花图片, 在spiders目录中新建 xiaohuar_spider.py 文件<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#! /usr/bin/python3</span></div><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> scrapy</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">XiaoHuarSpider</span><span class="params">(scrapy.spider.Spider)</span>:</span></div><div class="line">    name = <span class="string">"xiaohuar"</span></div><div class="line">    allowed_domains = [<span class="string">"xiaohuar.com"</span>]</div><div class="line">    start_urls = [<span class="string">"http://www.xiaohuar.com/hua/"</span>]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></div><div class="line">        current_url = response.current_url</div><div class="line">        body = response.body</div><div class="line">        unicode_body = response.body_as_unicode()</div></pre></td></tr></table></figure></p>
+<p><strong>注意点:</strong></p>
+<ol>
+<li>爬虫文件需要定义一个类，并继承scrapy.spiders.Spider</li>
+<li>必须定义name，即爬虫名，如果没有name，会报错.</li>
+<li>编写函数parse，<strong>注意:</strong>该函数名不能改变，因为Scrapy源码中默认callback函数的函数名就是parse；</li>
+<li>定义需要爬取的url，放在list中，因为可以爬取多个url，Scrapy源码是一个For循环，从上到下爬取这些url，使用生成器迭代将url发送给下载器下载url的html。</li>
+</ol>
+<h4 id="运行爬虫"><a href="#运行爬虫" class="headerlink" title="运行爬虫"></a>运行爬虫</h4><p>进入scarpytest目录, 运行命令:<code>scrapy crawl xiaohau --nolog</code>, 回车<br>格式：scrapy crawl+爬虫名  –nolog即不显示日志</p>
+<h3 id="scrapy查询语法"><a href="#scrapy查询语法" class="headerlink" title="scrapy查询语法"></a>scrapy查询语法</h3><p>当爬取大量的网页，如果自己写正则匹配，会很麻烦，也很浪费时间，令人欣慰的是，scrapy内部支持更简单的查询语法，帮助我们去html中查询我们需要的标签和标签内容以及标签属性。下面逐一进行介绍：</p>
+<ul>
+<li>查询子子孙孙中的某个标签(以div标签为例)：<code>//div</code></li>
+<li>查询儿子中的某个标签(以div标签为例)：<code>/div</code></li>
+<li>查询标签中带有某个class属性的标签：<code>//div[@class=’c1′]</code>,即子子孙孙中标签是div且class=‘c1’的标签</li>
+<li>查询标签中带有某个class=‘c1’并且自定义属性name=‘alex’的标签：<code>//div[@class=’c1′][@name=’alex’]</code></li>
+<li>查询某个标签的文本内容：<code>//div/span/text()</code> 即查询子子孙孙中div下面的span标签中的文本内容</li>
+<li>查询某个属性的值（例如查询a标签的href属性）：<code>//a/@href</code></li>
+</ul>
+<p>示例:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></div><div class="line">    <span class="comment"># 分析页面</span></div><div class="line">    <span class="comment"># 找到页面中符合规则的内容（校花图片），保存</span></div><div class="line">    <span class="comment"># 找到所有的a标签，再访问其他a标签，一层一层的搞下去</span></div><div class="line"></div><div class="line">    hxs = HtmlXPathSelector(response)<span class="comment">#创建查询对象</span></div><div class="line"></div><div class="line">    <span class="comment"># 如果url是 http://www.xiaohuar.com/list-1-\d+.html</span></div><div class="line">    <span class="comment">#如果url能够匹配到需要爬取的url，即本站url</span></div><div class="line">    <span class="keyword">if</span> re.match(<span class="string">'http://www.xiaohuar.com/list-1-\d+.html'</span>, response.url): </div><div class="line">        <span class="comment">#select中填写查询目标，按scrapy查询语法书写</span></div><div class="line">        items = hxs.select(<span class="string">'//div[@class="item_list infinite_scroll"]/div'</span>) </div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(items)):</div><div class="line">            <span class="comment">#查询所有img标签的src属性，即获取校花图片地址</span></div><div class="line">            src = hxs.select(<span class="string">'//div[@class="item_list infinite_scroll"]/div[%d]//div[@class="img"]/a/img/@src'</span> % i).extract()</div><div class="line">            <span class="comment">#获取span的文本内容，即校花姓名</span></div><div class="line">            name = hxs.select(<span class="string">'//div[@class="item_list infinite_scroll"]/div[%d]//div[@class="img"]/span/text()'</span> % i).extract() </div><div class="line">            <span class="comment">#校花学校</span></div><div class="line">            school = hxs.select(<span class="string">'//div[@class="item_list infinite_scroll"]/div[%d]//div[@class="img"]/div[@class="btns"]/a/text()'</span> % i).extract() </div><div class="line">            <span class="keyword">if</span> src:</div><div class="line">                <span class="comment">#相对路径拼接</span></div><div class="line">                ab_src = <span class="string">"http://www.xiaohuar.com"</span> + src[<span class="number">0</span>]</div><div class="line">                <span class="comment">#文件名，因为python27默认编码格式是unicode编码，因此我们需要编码成utf-8</span></div><div class="line">                file_name = <span class="string">"%s_%s.jpg"</span> % (school[<span class="number">0</span>].encode(<span class="string">'utf-8'</span>), name[<span class="number">0</span>].encode(<span class="string">'utf-8'</span>)) </div><div class="line">                file_path = os.path.join(<span class="string">"/Users/wupeiqi/PycharmProjects/beauty/pic"</span>, file_name)</div><div class="line">                urllib.urlretrieve(ab_src, file_path)</div></pre></td></tr></table></figure></p>
+<p>注：<code>urllib.urlretrieve(ab_src, file_path)</code> ，接收文件路径和需要保存的路径，会自动去文件路径下载并保存到我们指定的本地路径。</p>
+<h3 id="递归爬取网页"><a href="#递归爬取网页" class="headerlink" title="递归爬取网页"></a>递归爬取网页</h3><p>上述代码仅仅实现了一个url的爬取，如果该url的爬取的内容中包含了其他url，而我们也想对其进行爬取，那么如何实现递归爬取网页呢？<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 获取所有的url，继续访问，并在其中寻找相同的url</span></div><div class="line">all_urls = hxs.select(<span class="string">'//a/@href'</span>).extract()</div><div class="line"><span class="keyword">for</span> url <span class="keyword">in</span> all_urls:</div><div class="line">    <span class="keyword">if</span> url.startswith(<span class="string">'http://www.xiaohuar.com/list-1-'</span>):</div><div class="line">        <span class="keyword">yield</span> Request(url, callback=self.parse)</div></pre></td></tr></table></figure></p>
+<p>通过yield生成器向每一个url发送request请求,并执行返回函数parse,从而递归获取校花图片和校花姓名学校等信息。<br>注：可以修改settings.py 中的配置文件，以此来指定“递归”的层数，如: <code>DEPTH_LIMIT = 1</code></p>
+<h3 id="scrapy查询语法中的正则："><a href="#scrapy查询语法中的正则：" class="headerlink" title="scrapy查询语法中的正则："></a>scrapy查询语法中的正则：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> scrapy.selector <span class="keyword">import</span> Selector</div><div class="line"><span class="keyword">from</span> scrapy.http <span class="keyword">import</span> HtmlResponse</div><div class="line">html = <span class="string">"""&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="string">&lt;html&gt;</span></div><div class="line"><span class="string">&lt;head lang="en"&gt;</span></div><div class="line"><span class="string">    &lt;meta charset="UTF-8"&gt;</span></div><div class="line"><span class="string">    &lt;title&gt;&lt;/title&gt;</span></div><div class="line"><span class="string">&lt;/head&gt;</span></div><div class="line"><span class="string">&lt;body&gt;</span></div><div class="line"><span class="string">    &lt;li class="item-"&gt;&lt;a href="link.html"&gt;first item&lt;/a&gt;&lt;/li&gt;</span></div><div class="line"><span class="string">    &lt;li class="item-0"&gt;&lt;a href="link1.html"&gt;first item&lt;/a&gt;&lt;/li&gt;</span></div><div class="line"><span class="string">    &lt;li class="item-1"&gt;&lt;a href="link2.html"&gt;second item&lt;/a&gt;&lt;/li&gt;</span></div><div class="line"><span class="string">&lt;/body&gt;</span></div><div class="line"><span class="string">&lt;/html&gt;</span></div><div class="line"><span class="string">"""</span></div><div class="line">response = HtmlResponse(url=<span class="string">'http://example.com'</span>, body=html,encoding=<span class="string">'utf-8'</span>)</div><div class="line">ret = Selector(response=response).xpath(<span class="string">'//li[re:test(@class, "item-\d*")]//@href'</span>).extract()</div><div class="line">print(ret)</div></pre></td></tr></table></figure>
+<p>语法规则：<br><code>Selector(response=response查询对象).xpath(‘//li[re:test(@class, “item-d*”)]//@href’).extract()</code>，即根据re正则匹配，test即匹配，属性名是class，匹配的正则表达式是”item-d*”，然后获取该标签的href属性。<br><a href="http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/selectors.html" target="_blank" rel="external">更多选择器规则</a></p>
+<p>选择器规则示例:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> scrapy</div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"><span class="keyword">from</span> tutorial.items <span class="keyword">import</span> JinLuoSiItem</div><div class="line"><span class="keyword">from</span> scrapy.http <span class="keyword">import</span> Request</div><div class="line"><span class="keyword">from</span> scrapy.selector <span class="keyword">import</span> HtmlXPathSelector</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JinLuoSiSpider</span><span class="params">(scrapy.spiders.Spider)</span>:</span></div><div class="line">    count = <span class="number">0</span></div><div class="line">    url_set = set()</div><div class="line"> </div><div class="line">    name = <span class="string">"jluosi"</span></div><div class="line">    domain = <span class="string">'http://www.jluosi.com'</span></div><div class="line">    allowed_domains = [<span class="string">"jluosi.com"</span>]</div><div class="line"> </div><div class="line">    start_urls = [</div><div class="line">        <span class="string">"http://www.jluosi.com:80/ec/goodsDetail.action?jls=QjRDNEIzMzAzOEZFNEE3NQ=="</span>,</div><div class="line">    ]</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></div><div class="line">        md5_obj = hashlib.md5()</div><div class="line">        md5_obj.update(response.url)</div><div class="line">        md5_url = md5_obj.hexdigest()</div><div class="line">        <span class="keyword">if</span> md5_url <span class="keyword">in</span> JinLuoSiSpider.url_set:</div><div class="line">            <span class="keyword">pass</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            JinLuoSiSpider.url_set.add(md5_url)</div><div class="line">            hxs = HtmlXPathSelector(response)</div><div class="line">            <span class="keyword">if</span> response.url.startswith(<span class="string">'http://www.jluosi.com:80/ec/goodsDetail.action'</span>):</div><div class="line">                item = JinLuoSiItem()</div><div class="line">                item[<span class="string">'company'</span>] = hxs.select(<span class="string">'//div[@class="ShopAddress"]/ul/li[1]/text()'</span>).extract()</div><div class="line">                item[<span class="string">'link'</span>] = hxs.select(<span class="string">'//div[@class="ShopAddress"]/ul/li[2]/text()'</span>).extract()</div><div class="line">                item[<span class="string">'qq'</span>] = hxs.select(<span class="string">'//div[@class="ShopAddress"]//a/@href'</span>).re(<span class="string">'.*uin=(?P&lt;qq&gt;\d*)&amp;'</span>)</div><div class="line">                item[<span class="string">'address'</span>] = hxs.select(<span class="string">'//div[@class="ShopAddress"]/ul/li[4]/text()'</span>).extract()</div><div class="line"> </div><div class="line">                item[<span class="string">'title'</span>] = hxs.select(<span class="string">'//h1[@class="goodsDetail_goodsName"]/text()'</span>).extract()</div><div class="line"> </div><div class="line">                item[<span class="string">'unit'</span>] = hxs.select(<span class="string">'//table[@class="R_WebDetail_content_tab"]//tr[1]//td[3]/text()'</span>).extract()</div><div class="line">                product_list = []</div><div class="line">                product_tr = hxs.select(<span class="string">'//table[@class="R_WebDetail_content_tab"]//tr'</span>)</div><div class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,len(product_tr)):</div><div class="line">                    temp = &#123;</div><div class="line">                        <span class="string">'standard'</span>:hxs.select(<span class="string">'//table[@class="R_WebDetail_content_tab"]//tr[%d]//td[2]/text()'</span> %i).extract()[<span class="number">0</span>].strip(),</div><div class="line">                        <span class="string">'price'</span>:hxs.select(<span class="string">'//table[@class="R_WebDetail_content_tab"]//tr[%d]//td[3]/text()'</span> %i).extract()[<span class="number">0</span>].strip(),</div><div class="line">                    &#125;</div><div class="line">                    product_list.append(temp)</div><div class="line"> </div><div class="line">                item[<span class="string">'product_list'</span>] = product_list</div><div class="line">                <span class="keyword">yield</span> item</div><div class="line"> </div><div class="line">            current_page_urls = hxs.select(<span class="string">'//a/@href'</span>).extract()</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(current_page_urls)):</div><div class="line">                url = current_page_urls[i]</div><div class="line">                <span class="keyword">if</span> url.startswith(<span class="string">'http://www.jluosi.com'</span>):</div><div class="line">                    url_ab = url</div><div class="line">                    <span class="keyword">yield</span> Request(url_ab, callback=self.parse)</div></pre></td></tr></table></figure></p>
+<p>获取响应cookie<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></div><div class="line">    <span class="keyword">from</span> scrapy.http.cookies <span class="keyword">import</span> CookieJar</div><div class="line">    cookieJar = CookieJar()</div><div class="line">    cookieJar.extract_cookies(response, response.request)</div><div class="line">    print(cookieJar._cookies)</div></pre></td></tr></table></figure></p>
+<h3 id="格式化处理"><a href="#格式化处理" class="headerlink" title="格式化处理"></a>格式化处理</h3><p>上述实例只是简单的图片处理，所以在parse方法中直接处理。如果对于想要获取更多的数据（获取页面的价格、商品名称、QQ等），则可以利用Scrapy的items将数据格式化，然后统一交由pipelines来处理。即不同功能用不同文件实现。</p>
+<p>items：即用户需要爬取哪些数据，是用来格式化数据，并告诉pipelines哪些数据需要保存。</p>
+<p>示例items.py文件：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># Define here the models for your scraped items</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># See documentation in:</span></div><div class="line"><span class="comment"># http://doc.scrapy.org/en/latest/topics/items.html</span></div><div class="line"><span class="keyword">import</span> scrapy</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JieYiCaiItem</span><span class="params">(scrapy.Item)</span>:</span></div><div class="line">    company = scrapy.Field()</div><div class="line">    title = scrapy.Field()</div><div class="line">    qq = scrapy.Field()</div><div class="line">    info = scrapy.Field()</div><div class="line">    more = scrapy.Field()</div></pre></td></tr></table></figure></p>
+<p>即：需要爬取所有url中的公司名，title，qq，基本信息info，更多信息more。<br>上述定义模板，以后对于从请求的源码中获取的数据同样按照此结构来获取，所以在spider中需要有一下操作：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> scrapy</div><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"><span class="keyword">from</span> beauty.items <span class="keyword">import</span> JieYiCaiItem</div><div class="line"><span class="keyword">from</span> scrapy.http <span class="keyword">import</span> Request</div><div class="line"><span class="keyword">from</span> scrapy.selector <span class="keyword">import</span> HtmlXPathSelector</div><div class="line"><span class="keyword">from</span> scrapy.spiders <span class="keyword">import</span> CrawlSpider, Rule</div><div class="line"><span class="keyword">from</span> scrapy.linkextractors <span class="keyword">import</span> LinkExtractor</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JieYiCaiSpider</span><span class="params">(scrapy.spiders.Spider)</span>:</span></div><div class="line">    count = <span class="number">0</span></div><div class="line">    url_set = set()</div><div class="line"> </div><div class="line">    name = <span class="string">"jieyicai"</span></div><div class="line">    domain = <span class="string">'http://www.jieyicai.com'</span></div><div class="line">    allowed_domains = [<span class="string">"jieyicai.com"</span>]</div><div class="line"> </div><div class="line">    start_urls = [<span class="string">"http://www.jieyicai.com"</span>,]</div><div class="line"> </div><div class="line">    rules = [</div><div class="line">        <span class="comment">#下面是符合规则的网址,但是不抓取内容,只是提取该页的链接(这里网址是虚构的,实际使用时请替换)</span></div><div class="line">        <span class="comment">#Rule(SgmlLinkExtractor(allow=(r'http://test_url/test?page_index=\d+'))),</span></div><div class="line">        <span class="comment">#下面是符合规则的网址,提取内容,(这里网址是虚构的,实际使用时请替换)</span></div><div class="line">        <span class="comment">#Rule(LinkExtractor(allow=(r'http://www.jieyicai.com/Product/Detail.aspx?pid=\d+')), callback="parse"),</span></div><div class="line">    ]</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></div><div class="line">        md5_obj = hashlib.md5()</div><div class="line">        md5_obj.update(response.url)</div><div class="line">        md5_url = md5_obj.hexdigest()</div><div class="line">        <span class="keyword">if</span> md5_url <span class="keyword">in</span> JieYiCaiSpider.url_set:</div><div class="line">            <span class="keyword">pass</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            JieYiCaiSpider.url_set.add(md5_url)</div><div class="line">            </div><div class="line">            hxs = HtmlXPathSelector(response)</div><div class="line">            <span class="keyword">if</span> response.url.startswith(<span class="string">'http://www.jieyicai.com/Product/Detail.aspx'</span>):</div><div class="line">                item = JieYiCaiItem()</div><div class="line">                item[<span class="string">'company'</span>] = hxs.select(<span class="string">'//span[@class="username g-fs-14"]/text()'</span>).extract()</div><div class="line">                item[<span class="string">'qq'</span>] = hxs.select(<span class="string">'//span[@class="g-left bor1qq"]/a/@href'</span>).re(<span class="string">'.*uin=(?P&lt;qq&gt;\d*)&amp;'</span>)</div><div class="line">                item[<span class="string">'info'</span>] = hxs.select(<span class="string">'//div[@class="padd20 bor1 comard"]/text()'</span>).extract()</div><div class="line">                item[<span class="string">'more'</span>] = hxs.select(<span class="string">'//li[@class="style4"]/a/@href'</span>).extract()</div><div class="line">                item[<span class="string">'title'</span>] = hxs.select(<span class="string">'//div[@class="g-left prodetail-text"]/h2/text()'</span>).extract()</div><div class="line">                <span class="keyword">yield</span> item</div><div class="line"> </div><div class="line">            current_page_urls = hxs.select(<span class="string">'//a/@href'</span>).extract()</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(current_page_urls)):</div><div class="line">                url = current_page_urls[i]</div><div class="line">                <span class="keyword">if</span> url.startswith(<span class="string">'/'</span>):</div><div class="line">                    url_ab = JieYiCaiSpider.domain + url</div><div class="line">                    <span class="keyword">yield</span> Request(url_ab, callback=self.parse)</div><div class="line">```                    </div><div class="line"></div><div class="line">上述代码中：对url进行md5加密的目的是避免url过长，也方便保存在缓存或数据库中。</div><div class="line">此处代码的关键在于：</div><div class="line">* 将获取的数据封装在了Item对象中</div><div class="line">* <span class="keyword">yield</span> Item对象 （一旦parse中执行<span class="keyword">yield</span> Item对象，则自动将该对象交个pipelines的类来处理）</div><div class="line"></div><div class="line">```python</div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># Define your item pipelines here</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span></div><div class="line"><span class="comment"># See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html</span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">from</span> twisted.enterprise <span class="keyword">import</span> adbapi</div><div class="line"><span class="keyword">import</span> MySQLdb.cursors</div><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">mobile_re = re.compile(<span class="string">r'(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]&#123;8&#125;'</span>)</div><div class="line">phone_re = re.compile(<span class="string">r'(\d+-\d+|\d+)'</span>)</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JsonPipeline</span><span class="params">(object)</span>:</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.file = open(<span class="string">'/Users/wupeiqi/PycharmProjects/beauty/beauty/jieyicai.json'</span>, <span class="string">'wb'</span>)</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_item</span><span class="params">(self, item, spider)</span>:</span></div><div class="line">        line = <span class="string">"%s  %s\n"</span> % (item[<span class="string">'company'</span>][<span class="number">0</span>].encode(<span class="string">'utf-8'</span>), item[<span class="string">'title'</span>][<span class="number">0</span>].encode(<span class="string">'utf-8'</span>))</div><div class="line">        self.file.write(line)</div><div class="line">        <span class="keyword">return</span> item</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DBPipeline</span><span class="params">(object)</span>:</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.db_pool = adbapi.ConnectionPool(<span class="string">'MySQLdb'</span>,</div><div class="line">                                             db=<span class="string">'DbCenter'</span>,</div><div class="line">                                             user=<span class="string">'root'</span>,</div><div class="line">                                             passwd=<span class="string">'123'</span>,</div><div class="line">                                             cursorclass=MySQLdb.cursors.DictCursor,</div><div class="line">                                             use_unicode=<span class="keyword">True</span>)</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_item</span><span class="params">(self, item, spider)</span>:</span></div><div class="line">        query = self.db_pool.runInteraction(self._conditional_insert, item)</div><div class="line">        query.addErrback(self.handle_error)</div><div class="line">        <span class="keyword">return</span> item</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_conditional_insert</span><span class="params">(self, tx, item)</span>:</span></div><div class="line">        tx.execute(<span class="string">"select nid from company where company = %s"</span>, (item[<span class="string">'company'</span>][<span class="number">0</span>], ))</div><div class="line">        result = tx.fetchone()</div><div class="line">        <span class="keyword">if</span> result:</div><div class="line">            <span class="keyword">pass</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            phone_obj = phone_re.search(item[<span class="string">'info'</span>][<span class="number">0</span>].strip())</div><div class="line">            phone = phone_obj.group() <span class="keyword">if</span> phone_obj <span class="keyword">else</span> <span class="string">' '</span></div><div class="line"> </div><div class="line">            mobile_obj = mobile_re.search(item[<span class="string">'info'</span>][<span class="number">1</span>].strip())</div><div class="line">            mobile = mobile_obj.group() <span class="keyword">if</span> mobile_obj <span class="keyword">else</span> <span class="string">' '</span></div><div class="line"> </div><div class="line">            values = (</div><div class="line">                item[<span class="string">'company'</span>][<span class="number">0</span>],</div><div class="line">                item[<span class="string">'qq'</span>][<span class="number">0</span>],</div><div class="line">                phone,</div><div class="line">                mobile,</div><div class="line">                item[<span class="string">'info'</span>][<span class="number">2</span>].strip(),</div><div class="line">                item[<span class="string">'more'</span>][<span class="number">0</span>])</div><div class="line">            tx.execute(<span class="string">"insert into company(company,qq,phone,mobile,address,more) values(%s,%s,%s,%s,%s,%s)"</span>, values)</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_error</span><span class="params">(self, e)</span>:</span></div><div class="line">        print(<span class="string">'error'</span>,e)</div></pre></td></tr></table></figure></p>
+<p>上述代码中多个类的目的是，可以同时保存在文件和数据库中，保存的优先级可以在配置文件settings中定义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ITEM_PIPELINES = &#123;</div><div class="line">    &apos;beauty.pipelines.DBPipeline&apos;: 300,</div><div class="line">    &apos;beauty.pipelines.JsonPipeline&apos;: 100,</div><div class="line">&#125;</div><div class="line"># 每行后面的整型值，确定了他们运行的顺序，item按数字从低到高的顺序，通过pipeline，通常将这些数字定义在0-1000范围内。</div></pre></td></tr></table></figure>
+<h3 id="设置编码"><a href="#设置编码" class="headerlink" title="设置编码"></a>设置编码</h3><p>自Scrapy1.2 起，增加了<code>FEED_EXPORT_ENCODING</code>属性，用于设置输出编码.在settings.py中添加下面的配置即可.<br><code>FEED_EXPORT_ENCODING = &#39;utf-8&#39;</code></p>
+<h3 id="运行爬虫-1"><a href="#运行爬虫-1" class="headerlink" title="运行爬虫"></a>运行爬虫</h3><p>首先需要列出所有可运行的爬虫，输入: <code>scrapy list</code>, 回车, 这会列出所有爬虫类中指定的name属性。<br>然后，我们可以按照name来指定运行爬虫, 如:<code>scrapy crawl &#39;csdn_blog&#39; -o blog.json</code>.</p>
+<h3 id="关于ROBOTSTXT-OBEY"><a href="#关于ROBOTSTXT-OBEY" class="headerlink" title="关于ROBOTSTXT_OBEY"></a>关于ROBOTSTXT_OBEY</h3><p>在settings.py文件，ROBOTSTXT_OBEY默认为True，就是要遵守robots.txt 的规则.<br>那么 robots.txt 是什么东西呢？<br>robots.txt 是遵循 Robot 协议的一个文件，它保存在网站的服务器中，它的作用是，告诉<strong>搜索引擎爬虫</strong>，本网站哪些目录下的网页不希望被爬取收录。在Scrapy启动后，会在第一时间访问网站的 robots.txt 文件，然后决定该网站的爬取范围。当然，我们并不是在做搜索引擎，而且在某些情况下我们想要获取的内容恰恰是被 robots.txt 所禁止访问的。所以，某些时候，我们就要将此配置项设置为 False ，拒绝遵守 Robot协议 ！所以在这里设置为False。当然可能本次爬取不一定会被它限制，但一般来说会首先选择禁止它。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://python.jobbole.com/86405/" target="_blank" rel="external">http://python.jobbole.com/86405/</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/06/12/python-process-2017-06-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/12/python-process-2017-06-12/" itemprop="url">Python之进程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T16:17:27+08:00">
+                2017-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="多进程模块-multiprocessing-简介"><a href="#多进程模块-multiprocessing-简介" class="headerlink" title="多进程模块(multiprocessing)简介"></a>多进程模块(multiprocessing)简介</h3><p>multiprocessing是多进程模块，多进程提供了任务并发性，能充分利用多核处理器, 避免了GIL（全局解释锁）对资源的影响。由于GIL（全局解释锁）的问题，多线程并不能充分利用多核处理器，如果是一个CPU计算型的任务，应该使用多进程模块 multiprocessing 。它的工作方式与线程库完全不同，但是两种库的语法却非常相似。multiprocessing给每个进程赋予单独的Python解释器，这样就规避了全局解释锁所带来的问题。</p>
+<h4 id="multiprocessing常用类"><a href="#multiprocessing常用类" class="headerlink" title="multiprocessing常用类:"></a>multiprocessing常用类:</h4><ol>
+<li><code>Process(group=None, target=None, name=None, args=(), kwargs={})</code><br>派生一个进程对象，然后调用start()方法启动</li>
+<li><code>Pool(processes=None, initializer=None, initargs=())</code><br>返回一个进程池对象，processes进程池进程数量</li>
+<li><code>Pipe(duplex=True)</code><br>返回两个连接对象由管道连接</li>
+<li><code>Queue(maxsize=0)</code><br>返回队列对象，操作方法跟Queue.Queue一样</li>
+<li><code>multiprocessing.dummy</code><br>这个库是用于实现多线程</li>
+</ol>
+<h4 id="Process-类有以下些方法："><a href="#Process-类有以下些方法：" class="headerlink" title="Process()类有以下些方法："></a>Process()类有以下些方法：</h4><p><code>run()</code><br><code>start()</code> :启动进程对象<br><code>join([timeout])</code> :等待子进程终止，才返回结果。可选超时。<br><code>name</code> : 进程名字<br><code>is_alive()</code> :返回进程是否存活<br><code>daemon</code> : 进程的守护标记，一个布尔值<br><code>pid</code>: 返回进程ID<br><code>exitcode</code> :子进程退出状态码<br><code>terminate()</code> :终止进程。在unix上使用SIGTERM信号，在windows上使用TerminateProcess()。</p>
+<h4 id="Pool-类有以下些方法："><a href="#Pool-类有以下些方法：" class="headerlink" title="Pool()类有以下些方法："></a>Pool()类有以下些方法：</h4><p><code>apply(func, args=(), kwds={})</code> :等效内建函数apply()<br><code>apply_async(func, args=(), kwds={}, callback=None)</code> : 异步，等效内建函数apply()<br><code>map(func, iterable, chunksize=None)</code> : 等效内建函数map()<br><code>map_async(func, iterable, chunksize=None, callback=None)</code> :异步，等效内建函数map()<br><code>imap(func, iterable, chunksize=1)</code> :等效内建函数itertools.imap()<br><code>imap_unordered(func, iterable, chunksize=1)</code> :像imap()方法，但结果顺序是任意的<br><code>close()</code> :关闭进程池<br><code>terminate()</code> : 终止工作进程，垃圾收集连接池对象<br><code>join()</code> :等待工作进程退出。必须先调用close()或terminate()</p>
+<h4 id="Pool-apply-async-和Pool-map-aysnc-又提供了以下几个方法："><a href="#Pool-apply-async-和Pool-map-aysnc-又提供了以下几个方法：" class="headerlink" title="Pool.apply_async()和Pool.map_aysnc()又提供了以下几个方法："></a><code>Pool.apply_async()</code>和<code>Pool.map_aysnc()</code>又提供了以下几个方法：</h4><p><code>get([timeout])</code> : 获取结果对象里的结果。如果超时没有，则抛出TimeoutError异常<br><code>wait([timeout])</code> : 等待可用的结果或超时<br><code>ready()</code> : 返回调用是否已经完成<br><code>successful()</code></p>
+<h3 id="multiprocessing使用"><a href="#multiprocessing使用" class="headerlink" title="multiprocessing使用"></a>multiprocessing使用</h3><p>一个简单的例子<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(name)</span>:</span></div><div class="line">    print(name)</div><div class="line">    print(<span class="string">"parent pid = &#123;&#125;"</span>.format(os.getppid()))</div><div class="line">    print(<span class="string">"current pid = &#123;&#125;"</span>.format(os.getpid()))</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    p = Process(target=worker, args=(<span class="string">'func worker'</span>, ))</div><div class="line">    p.start()</div><div class="line">    p.join()</div><div class="line">    print(p.name)</div><div class="line"></div><div class="line"><span class="comment">#输出结果</span></div><div class="line">func worker</div><div class="line">parent pid = <span class="number">5476</span></div><div class="line">current pid = <span class="number">5992</span></div><div class="line">Process<span class="number">-1</span></div></pre></td></tr></table></figure></p>
+<p>关于<code>join([timeout])</code>方法说明:如果可选参数timeout为None(默认值)，该方法将阻塞，直到调用join()方法的进程终止。如果超时为正数，则阻塞最多超时timeout的设定值。请注意，如果方法终止或方法超时，该方法返回None。检查进程的exitcode以确定是否终止。</p>
+<p>给子进程命名,方便管理<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker1</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"this is worker1 func"</span>)</div><div class="line">    print(<span class="string">"current pid = &#123;&#125;"</span>.format(os.getpid()))</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker2</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"this is worker2 func"</span>)</div><div class="line">    print(<span class="string">"current pid = &#123;&#125;"</span>.format(os.getpid()))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    print(<span class="string">"parent pid = &#123;&#125;"</span>.format(os.getppid()))</div><div class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">        p1 = Process(name=<span class="string">"worker1"</span>, target=worker1)</div><div class="line">        p1.start()</div><div class="line">        p1.join()</div><div class="line">        print(<span class="string">"child process name = &#123;&#125;"</span>.format(p1.name))</div><div class="line">    p2 = Process(name=<span class="string">"worker2"</span>, target=worker2)</div><div class="line">    p2.start()</div><div class="line">    p2.join()</div><div class="line">    print(<span class="string">"child process name = &#123;&#125;"</span>.format(p2.name))</div><div class="line"></div><div class="line"><span class="comment"># 输出结果</span></div><div class="line">parent pid = <span class="number">2816</span></div><div class="line">this <span class="keyword">is</span> worker1 func</div><div class="line">current pid = <span class="number">2428</span></div><div class="line">child process name = worker1</div><div class="line">this <span class="keyword">is</span> worker1 func</div><div class="line">current pid = <span class="number">3192</span></div><div class="line">child process name = worker1</div><div class="line">this <span class="keyword">is</span> worker1 func</div><div class="line">current pid = <span class="number">4736</span></div><div class="line">child process name = worker1</div><div class="line">this <span class="keyword">is</span> worker2 func</div><div class="line">current pid = <span class="number">976</span></div><div class="line">child process name = worker2</div></pre></td></tr></table></figure></p>
+<p>关于daemon<br>这里的daemon不同于linux中守护进程的概念,这里的daemon参数是一个布尔值,<br>如果daemon为None则创建子进程时daemon参数从父进程继承过来.<br>如果daemon为true,则创建的子进程随着父进程退出而退出,<br>如果daemon为false,则创建的子进程随着父进程退出而不退出,<br>注意: 一个守护进程不允许创建子进程,否则当父进程退出后,该守护进程终止后会使由该守守护进守护进程创建的子进程变成独立进程,此外，它们不是Unix守护程序或服务，它们是正常进程，如果非守护进程已退出，则该进程将被终止（并且未加入）。</p>
+<h3 id="进程池"><a href="#进程池" class="headerlink" title="进程池"></a>进程池</h3><p><strong>有一点要强调：</strong>任务的执行周期决定于CPU核数和任务分配算法。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool, current_process</div><div class="line"><span class="keyword">import</span> os, time, sys</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(n)</span>:</span></div><div class="line">    print(<span class="string">'hello world'</span>, n)</div><div class="line">    <span class="comment"># 获取当前进程名字</span></div><div class="line">    print(<span class="string">'process name:'</span>, current_process().name)</div><div class="line">    <span class="comment"># 休眠用于执行时有时间查看当前执行的进程</span></div><div class="line">    time.sleep(<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    p = Pool(processes=<span class="number">3</span>)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>):</div><div class="line">        r = p.apply_async(worker, args=(i,))</div><div class="line">        <span class="comment"># 获取结果中的数据</span></div><div class="line">        r.get(timeout=<span class="number">5</span>)  </div><div class="line">    p.close()</div><div class="line"></div><div class="line"><span class="comment"># 运行结果:</span></div><div class="line">hello world <span class="number">0</span></div><div class="line">process name: SpawnPoolWorker<span class="number">-2</span></div><div class="line">hello world <span class="number">1</span></div><div class="line">process name: SpawnPoolWorker<span class="number">-3</span></div><div class="line">hello world <span class="number">2</span></div><div class="line">process name: SpawnPoolWorker<span class="number">-1</span></div><div class="line">hello world <span class="number">3</span></div><div class="line">process name: SpawnPoolWorker<span class="number">-2</span></div><div class="line">hello world <span class="number">4</span></div><div class="line">process name: SpawnPoolWorker<span class="number">-3</span></div><div class="line">hello world <span class="number">5</span></div><div class="line">process name: SpawnPoolWorker<span class="number">-1</span></div><div class="line">hello world <span class="number">6</span></div><div class="line">process name: SpawnPoolWorker<span class="number">-2</span></div><div class="line">hello world <span class="number">7</span></div><div class="line">process name: SpawnPoolWorker<span class="number">-3</span></div></pre></td></tr></table></figure></p>
+<p>进程池生成了3个子进程，通过循环执行8次worker函数，进程池会从子进程1开始去处理任务，当到达最大进程时，会继续从子进程1开始。</p>
+<p>进程池map方法, map()方法是将序列中的元素通过函数处理返回新列表。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">worker</span><span class="params">(url)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="string">'http://%s'</span> % url</div><div class="line">urls = [<span class="string">'www.baidu.com'</span>, <span class="string">'www.jd.com'</span>]</div><div class="line">pool = Pool(<span class="number">2</span>)s</div><div class="line">r = pool.map(worker, urls)</div><div class="line">pool.close()</div><div class="line">print(r)</div></pre></td></tr></table></figure></p>
+<p>上面的hasmultiprocess函数的用法非常中规中矩且常见，但是我认为更好的写法是使用Pool，也就是对应线程池的进程池. 其中map方法用起来和内置的map函数一样，却有多进程的支持。</p>
+<h3 id="dummy模块"><a href="#dummy模块" class="headerlink" title="dummy模块"></a>dummy模块</h3><p>当出现要从多线程改成多进程或者多进程改成多线程的时候，可以使用multiprocessing.dummy这个子模块，dummy」这个词有「模仿」的意思，如果分不清任务是CPU密集型还是IO密集型就是用这个模块. <code>from multiprocessing.dummy import Pool</code>, 这样在多线程/多进程之间切换非常方便。如果一个任务拿不准是CPU密集还是I/O密集型，且没有其它不能选择多进程方式的因素，都统一直接上多进程模式。</p>
+<h3 id="基于Pipe的parmap"><a href="#基于Pipe的parmap" class="headerlink" title="基于Pipe的parmap"></a>基于Pipe的parmap</h3><p>进程间的通信（IPC）常用的是rpc、socket、pipe（管道）和消息队列（queue）。<br>ultiprocessing支持两种类型进程间通信：Queue和Pipe。<br>多进程模块中涉及到了后面3种。先看一个官网给出的最基本的管道的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Pipe</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(conn)</span>:</span></div><div class="line">    conn.send([<span class="string">'hello'</span>])</div><div class="line">    conn.close()</div><div class="line"></div><div class="line">parent_conn, child_conn = Pipe()</div><div class="line">p = Process(target=f, args=(child_conn,))</div><div class="line">p.start()</div><div class="line">print(parent_conn.recv())</div><div class="line">p.join()</div></pre></td></tr></table></figure></p>
+<p>其中Pipe返回的是管道2边的对象：「父连接」和「子连接」。当子连接发送一个带有hello字符串的列表，父连接就会收到，所以parent_conn.recv()就会打印出来。这样就可以简单的实现在多进程之间传输Python内置的数据结构了。但是先说明，不能被xmlrpclib序列化的对象是不能这么传输的。</p>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><h3 id="同步机制"><a href="#同步机制" class="headerlink" title="同步机制"></a>同步机制</h3><p>multiprocessing的Lock、Condition、Event、RLock、Semaphore等同步原语和threading模块的机制是一样的，用法也类似.</p>
+<h3 id="进程间共享状态"><a href="#进程间共享状态" class="headerlink" title="进程间共享状态"></a>进程间共享状态</h3><p>multiprocessing提供的在进程间共享状态的方式有2种：</p>
+<h4 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h4><p>主要通过Value或者Array来实现。常见的共享的有以下几种：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">1</span>]: <span class="keyword">from</span> multiprocessing.sharedctypes <span class="keyword">import</span> typecode_to_type</div><div class="line"></div><div class="line">In [<span class="number">2</span>]: typecode_to_type</div><div class="line">Out[<span class="number">2</span>]:</div><div class="line">&#123;<span class="string">'B'</span>: ctypes.c_ubyte,</div><div class="line"> <span class="string">'H'</span>: ctypes.c_ushort,</div><div class="line"> <span class="string">'I'</span>: ctypes.c_ulong,</div><div class="line"> <span class="string">'L'</span>: ctypes.c_ulong,</div><div class="line"> <span class="string">'b'</span>: ctypes.c_byte,</div><div class="line"> <span class="string">'c'</span>: ctypes.c_char,</div><div class="line"> <span class="string">'d'</span>: ctypes.c_double,</div><div class="line"> <span class="string">'f'</span>: ctypes.c_float,</div><div class="line"> <span class="string">'h'</span>: ctypes.c_short,</div><div class="line"> <span class="string">'i'</span>: ctypes.c_long,</div><div class="line"> <span class="string">'l'</span>: ctypes.c_long,</div><div class="line"> <span class="string">'u'</span>: ctypes.c_wchar&#125;</div></pre></td></tr></table></figure></p>
+<p> 而且共享的时候还可以给Value或者Array传递lock参数来决定是否带锁，如果不指定默认为RLock。</p>
+<h3 id="进程间对象共享"><a href="#进程间对象共享" class="headerlink" title="进程间对象共享"></a>进程间对象共享</h3><p>一个multiprocessing.Manager对象会控制一个服务器进程，其他进程可以通过代理的方式来访问这个服务器进程。<br>常见的共享方式有以下几种：</p>
+<ol>
+<li>Namespace。创建一个可分享的命名空间。</li>
+<li>Value/Array。和上面共享ctypes对象的方式一样。</li>
+<li>dict/list。创建一个可分享的dict/list，支持对应数据结构的方法。</li>
+<li>Condition/Event/Lock/Queue/Semaphore。创建一个可分享的对应同步原语的对象。</li>
+</ol>
+<h3 id="分布式的进程间通信"><a href="#分布式的进程间通信" class="headerlink" title="分布式的进程间通信"></a>分布式的进程间通信</h3><p>用Manager和Queue就可以实现简单的分布式的不同服务器的不同进程间的通信（C/S模式）。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://juejin.im/post/5847853661ff4b006c431c64" target="_blank" rel="external">理解Python并发编程 - 进程篇</a></li>
+<li><a href="https://yq.aliyun.com/articles/65091?utm_campaign=wenzhang&amp;utm_medium=article&amp;utm_source=QQ-qun&amp;utm_content=m_8078" target="_blank" rel="external">Python多进程与多线程</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/06/12/python-thread-2017-06-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/12/python-thread-2017-06-12/" itemprop="url">Python之线程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T10:25:11+08:00">
+                2017-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="关于GIL"><a href="#关于GIL" class="headerlink" title="关于GIL"></a>关于GIL</h3><p>Python（特指CPython）的多线程不能利用多核的优势，这是因为全局解释锁（GIL）的限制。如果是cpu密集型(计算型)的任务，使用多线程GIL就会让多线程变慢。<br>GIL是必须的，这是Python设计的问题：Python解释器是非线程安全的。这意味着当从线程内尝试安全的访问Python对象的时候将有一个全局的强制锁。 在任何时候，仅仅一个单一的线程能够获取Python对象或者C API。每100个字节的Python指令解释器将重新获取锁，这（潜在的）阻塞了I/O操作。因为锁，CPU密集型的代码使用线程库时，不会获得性能的提高（但是当它使用之后介绍的多进程库时，性能可以获得提高）。</p>
+<h3 id="线程同步机制"><a href="#线程同步机制" class="headerlink" title="线程同步机制"></a>线程同步机制</h3><p>Python线程包含多种同步机制:</p>
+<ol>
+<li>Semaphore（信号量）</li>
+<li>Lock（锁）</li>
+<li>RLock（可重入锁）</li>
+<li>Condition（条件）</li>
+<li>Event</li>
+<li>Queue</li>
+</ol>
+<h3 id="Semaphore（信号量）"><a href="#Semaphore（信号量）" class="headerlink" title="Semaphore（信号量）"></a>Semaphore（信号量）</h3><p>在多线程编程中，为了防止不同的线程同时对一个公用的资源（比如全局变量）进行修改，需要进行同时访问的数量（通常是1）。<br>信号量同步基于内部计数器，每调用一次acquire()，计数器减1；每调用一次release()，计数器加1.当计数器为0时，acquire()调用被阻塞。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> random</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread, Semaphore</div><div class="line"></div><div class="line">sema = Semaphore(<span class="number">3</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(tid)</span>:</span></div><div class="line">    <span class="keyword">with</span> sema:</div><div class="line">        print(<span class="string">'&#123;&#125; acquire sema'</span>.format(tid))</div><div class="line">        wt = random() * <span class="number">2</span></div><div class="line">        time.sleep(wt)</div><div class="line">    print(<span class="string">'&#123;&#125; release sema'</span>.format(tid))</div><div class="line"></div><div class="line"></div><div class="line">threads = []</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</div><div class="line">    t = Thread(target=foo, args=(i,))</div><div class="line">    threads.append(t)</div><div class="line">    t.start()</div><div class="line"></div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">    t.join()</div></pre></td></tr></table></figure></p>
+<p>这个例子中，限制了同时能访问资源的数量为3。看一下运行的效果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">0 acquire sema</div><div class="line">1 acquire sema</div><div class="line">2 acquire sema</div><div class="line">0 release sema</div><div class="line">3 acquire sema</div><div class="line">2 release sema</div><div class="line">4 acquire sema</div><div class="line">1 release sema</div><div class="line">3 release sema</div><div class="line">4 release sema</div></pre></td></tr></table></figure></p>
+<h3 id="Lock（锁）"><a href="#Lock（锁）" class="headerlink" title="Lock（锁）"></a>Lock（锁）</h3><p>Lock也可以叫做<strong>互斥锁</strong>，其实相当于信号量为1。<br>不加锁：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</div><div class="line"></div><div class="line">value = <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">global</span> value</div><div class="line">    newvalue = value + <span class="number">1</span></div><div class="line">    time.sleep(<span class="number">0.001</span>)  <span class="comment"># 使用sleep让线程有机会切换</span></div><div class="line">    value = newvalue</div><div class="line"></div><div class="line"></div><div class="line">threads = []</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</div><div class="line">    t = Thread(target=foo)</div><div class="line">    t.start()</div><div class="line">    threads.append(t)</div><div class="line"></div><div class="line"><span class="comment"># 创建了100个线程</span></div><div class="line">print(len(threads))</div><div class="line"></div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">    t.join()</div><div class="line"></div><div class="line">print(value)</div></pre></td></tr></table></figure></p>
+<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">100</div><div class="line">10</div></pre></td></tr></table></figure></p>
+<p>加锁<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread, Lock</div><div class="line"></div><div class="line"><span class="comment"># 全局变量</span></div><div class="line">value = <span class="number">0</span></div><div class="line">lock = Lock()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">global</span> value</div><div class="line">    <span class="comment"># 加锁,执行完会自动释放锁</span></div><div class="line">    <span class="keyword">with</span> lock:</div><div class="line">        new = value + <span class="number">1</span></div><div class="line">        time.sleep(<span class="number">0.001</span>)</div><div class="line">        value = new</div><div class="line"></div><div class="line">threads = []</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</div><div class="line">    t = Thread(target=foo)</div><div class="line">    t.start()</div><div class="line">    threads.append(t)</div><div class="line"></div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">    t.join()</div><div class="line"></div><div class="line">print(value)</div></pre></td></tr></table></figure></p>
+<p>运行结果:100</p>
+<h3 id="RLock（可重入锁）"><a href="#RLock（可重入锁）" class="headerlink" title="RLock（可重入锁）"></a>RLock（可重入锁）</h3><p>acquire() 能够不被阻塞的被同一个线程调用多次。但是要注意的是release()需要调用与acquire()相同的次数才能释放锁。</p>
+<h3 id="Condition（条件）"><a href="#Condition（条件）" class="headerlink" title="Condition（条件）"></a>Condition（条件）</h3><p>一个线程等待特定条件，而另一个线程发出特定条件满足的信号。最好说明的例子就是「生产者/消费者」模型：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">(cond)</span>:</span></div><div class="line">    t = threading.currentThread()</div><div class="line">    <span class="keyword">with</span> cond:</div><div class="line">        <span class="comment"># wait()方法创建了一个名为waiter的锁，</span></div><div class="line">        <span class="comment"># 并且设置锁的状态为locked。这个waiter锁用于线程间的通讯</span></div><div class="line">        cond.wait()</div><div class="line">        print(<span class="string">'&#123;&#125;: Resource is available to consumer'</span>.format(t.name))</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">producer</span><span class="params">(cond)</span>:</span></div><div class="line">    t = threading.currentThread()</div><div class="line">    <span class="keyword">with</span> cond:</div><div class="line">        print(<span class="string">'&#123;&#125;: Making resource available'</span>.format(t.name))</div><div class="line">        <span class="comment"># 释放waiter锁，唤醒消费者</span></div><div class="line">        cond.notifyAll()</div><div class="line"></div><div class="line"></div><div class="line">condition = threading.Condition()</div><div class="line"></div><div class="line">c1 = threading.Thread(name=<span class="string">'c1'</span>, target=consumer, args=(condition,))</div><div class="line">c2 = threading.Thread(name=<span class="string">'c2'</span>, target=consumer, args=(condition,))</div><div class="line">p = threading.Thread(name=<span class="string">'p'</span>, target=producer, args=(condition,))</div><div class="line"></div><div class="line">c1.start()</div><div class="line">time.sleep(<span class="number">1</span>)</div><div class="line">c2.start()</div><div class="line">time.sleep(<span class="number">1</span>)</div><div class="line">p.start()</div></pre></td></tr></table></figure></p>
+<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">p: Making resource available</div><div class="line">c2: Resource is available to consumer</div><div class="line">c1: Resource is available to consumer</div></pre></td></tr></table></figure></p>
+<p>可以看到生产者发送通知之后，消费者都收到了。</p>
+<h3 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h3><p>一个线程发送/传递事件，另外的线程等待事件的触发.同样的用「生产者/消费者」模型的例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"></div><div class="line">TIMEOUT = <span class="number">2</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">(event, mylist)</span>:</span></div><div class="line">    t = threading.currentThread()</div><div class="line">    <span class="keyword">while</span> <span class="number">1</span>:</div><div class="line">        event_is_set = event.wait(TIMEOUT)</div><div class="line">        <span class="keyword">if</span> event_is_set:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                integer = mylist.pop()</div><div class="line">                print(<span class="string">'&#123;&#125; popped from list by &#123;&#125;'</span>.format(integer, t.name))</div><div class="line">                <span class="comment"># 重置事件状态</span></div><div class="line">                event.clear()</div><div class="line">            <span class="keyword">except</span> IndexError:</div><div class="line">                <span class="comment"># 为了让刚启动时容错</span></div><div class="line">                <span class="keyword">pass</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">producer</span><span class="params">(event, mylist)</span>:</span></div><div class="line">    t = threading.currentThread()</div><div class="line">    <span class="keyword">while</span> <span class="number">1</span>:</div><div class="line">        integer = randint(<span class="number">10</span>, <span class="number">100</span>)</div><div class="line">        mylist.append(integer)</div><div class="line">        print(<span class="string">'&#123;&#125; appended to list by &#123;&#125;'</span>.format(integer, t.name))</div><div class="line">        <span class="comment"># 设置事件</span></div><div class="line">        event.set()</div><div class="line">        time.sleep(<span class="number">1</span>)</div><div class="line"></div><div class="line"></div><div class="line">event = threading.Event()</div><div class="line">mylist = []</div><div class="line">threads = []</div><div class="line"></div><div class="line"><span class="keyword">for</span> name <span class="keyword">in</span> (<span class="string">'consumer1'</span>, <span class="string">'consumer2'</span>):</div><div class="line">    t = threading.Thread(name=name, target=consumer, args=(event, mylist))</div><div class="line">    t.start()</div><div class="line">    threads.append(t)</div><div class="line"></div><div class="line">p = threading.Thread(name=<span class="string">'producer1'</span>, target=producer, args=(event, mylist))</div><div class="line">p.start()</div><div class="line">threads.append(p)</div><div class="line"></div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> threads:</div><div class="line">    t.join()</div></pre></td></tr></table></figure>
+<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">86 appended to list by producer1 </div><div class="line">86 popped from list by consumer1 </div><div class="line">29 appended to list by producer1 </div><div class="line">29 popped from list by consumer1 </div><div class="line">36 appended to list by producer1 </div><div class="line">36 popped from list by consumer2 </div><div class="line">47 appended to list by producer1 </div><div class="line">47 popped from list by consumer2 </div><div class="line">16 appended to list by producer1 </div><div class="line">16 popped from list by consumer1 </div><div class="line">95 appended to list by producer1 </div><div class="line">95 popped from list by consumer1 </div><div class="line">51 appended to list by producer1 </div><div class="line">51 popped from list by consumer1 </div><div class="line">36 appended to list by producer1 </div><div class="line">36 popped from list by consumer1 </div><div class="line">12 appended to list by producer1 </div><div class="line">12 popped from list by consumer1 </div><div class="line">12 appended to list by producer1 </div><div class="line">12 popped from list by consumer1</div></pre></td></tr></table></figure></p>
+<p>可以看到事件被2个消费者比较平均的接收并处理了。如果使用了wait方法，线程就会等待我们设置事件，这也有助于保证任务的完成。</p>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><p>队列在并发开发中最常用的。我们借助「生产者/消费者」模式来理解：<br>生产者把生产的「消息」放入队列，消费者从这个队列中对去对应的消息执行。</p>
+<p>大家主要关心如下4个方法就好了：</p>
+<ol>
+<li>put: 向队列中添加一个项。</li>
+<li>get: 从队列中删除并返回一个项。</li>
+<li>task_done: 当某一项任务完成时调用。</li>
+<li>join: 阻塞直到所有的项目都被处理完。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> random</div><div class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> Queue</div><div class="line"></div><div class="line">q = Queue()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">double</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n * <span class="number">2</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">producer</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">while</span> <span class="number">1</span>:</div><div class="line">        wt = random()</div><div class="line">        time.sleep(wt)</div><div class="line">        q.put((double, wt))</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">while</span> <span class="number">1</span>:</div><div class="line">        task, arg = q.get()</div><div class="line">        print(arg, task(arg))</div><div class="line">        q.task_done()</div><div class="line"></div><div class="line"><span class="keyword">for</span> target <span class="keyword">in</span>(producer, consumer):</div><div class="line">    t = threading.Thread(target=target)</div><div class="line">    t.start()</div></pre></td></tr></table></figure>
+<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">0.5001101134617869 1.0002202269235738</div><div class="line">0.2397443354990395 0.479488670998079</div><div class="line">0.018426830503480485 0.03685366100696097</div><div class="line">0.9260989761246562 1.8521979522493124</div><div class="line">0.808116115591099 1.616232231182198</div><div class="line">0.5868108877921562 1.1736217755843124</div><div class="line">0.5195607837070528 1.0391215674141057</div><div class="line">0.32311190835552184 0.6462238167110437</div></pre></td></tr></table></figure></p>
+<p>这就是最简化的队列架构。</p>
+<p>Queue模块还自带了PriorityQueue（带有优先级）和LifoQueue（后进先出）2种特殊队列。<br>下面展示线程安全的优先级队列的用法，<br>PriorityQueue要求我们put的数据的格式是(priority_number, data)，我们看看下面的例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> PriorityQueue</div><div class="line"></div><div class="line">q = PriorityQueue()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">double</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n*<span class="number">2</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">producer</span><span class="params">()</span>:</span></div><div class="line">    count = <span class="number">0</span></div><div class="line">    <span class="keyword">while</span> <span class="number">1</span>:</div><div class="line">        <span class="keyword">if</span> count &gt; <span class="number">5</span>:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        pri = randint(<span class="number">0</span>, <span class="number">100</span>)</div><div class="line">        print(<span class="string">'put :&#123;&#125;'</span>.format(pri))</div><div class="line">        <span class="comment"># (priority, func, args)</span></div><div class="line">        q.put((pri, double, pri))</div><div class="line">        count += <span class="number">1</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">while</span> <span class="number">1</span>:</div><div class="line">        <span class="keyword">if</span> q.empty():</div><div class="line">            <span class="keyword">break</span></div><div class="line">        pri, task, arg = q.get()</div><div class="line">        print(<span class="string">'[PRI:&#123;&#125;] &#123;&#125; * 2 = &#123;&#125;'</span>.format(pri, arg, task(arg)))</div><div class="line">        q.task_done()</div><div class="line">        time.sleep(<span class="number">0.1</span>)</div><div class="line"></div><div class="line"></div><div class="line">t = threading.Thread(target=producer)</div><div class="line">t.start()</div><div class="line">time.sleep(<span class="number">1</span>)</div><div class="line">t = threading.Thread(target=consumer)</div><div class="line">t.start()</div></pre></td></tr></table></figure>
+<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">put :54</div><div class="line">put :70</div><div class="line">put :62</div><div class="line">put :54</div><div class="line">put :20</div><div class="line">put :75</div><div class="line">[PRI:20] 20 * 2 = 40</div><div class="line">[PRI:54] 54 * 2 = 108</div><div class="line">[PRI:54] 54 * 2 = 108</div><div class="line">[PRI:62] 62 * 2 = 124</div><div class="line">[PRI:70] 70 * 2 = 140</div><div class="line">[PRI:75] 75 * 2 = 150</div></pre></td></tr></table></figure></p>
+<p>可以看到put时的数字是随机的，但是get时先从优先级更高（数字小表示优先级高）开始获取的。</p>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>面向对象开发中，创建和销毁对象是很费时间的，因为创建一个对象要获取内存资源或者其它更多资源。无节制的创建和销毁线程是一种极大的浪费。那我们可不可以把执行完任务的线程不销毁而重复利用呢？仿佛就是把这些线程放进一个池子，一方面我们可以控制同时工作的线程数量，一方面也避免了创建和销毁产生的开销。</p>
+<p>线程池在标准库中其实是有体现的，只是在官方文章中基本没有被提及：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">1</span>]: <span class="keyword">from</span> multiprocessing.pool <span class="keyword">import</span> ThreadPool</div><div class="line"></div><div class="line">In [<span class="number">2</span>]: pool = ThreadPool(<span class="number">5</span>)</div><div class="line"></div><div class="line">In [<span class="number">3</span>]: pool.map(<span class="keyword">lambda</span> x: x**<span class="number">2</span>, range(<span class="number">5</span>))</div><div class="line">Out[<span class="number">3</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>]</div></pre></td></tr></table></figure></p>
+<p>自己实现:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> random</div><div class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> Queue</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">double</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n*<span class="number">2</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span><span class="params">(threading.Thread)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, queue)</span>:</span></div><div class="line">        super(Worker, self).__init__()</div><div class="line">        self._q = queue</div><div class="line">        self.daemon = <span class="keyword">True</span></div><div class="line">        self.start()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="number">1</span>:</div><div class="line">            f, args, kwargs = self._q.get()</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                <span class="comment"># 线程名字</span></div><div class="line">                print(<span class="string">'USE: &#123;&#125;'</span>.format(self.name))</div><div class="line">                print(f(*args, **kwargs))</div><div class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">                print(e)</div><div class="line">            self._q.task_done()</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadPool</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num_t=<span class="number">5</span>)</span>:</span></div><div class="line">        self._q = Queue(num_t)</div><div class="line">        <span class="comment"># 创建5个工作线程</span></div><div class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(num_t):</div><div class="line">            Worker(self._q)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_task</span><span class="params">(self,  f,  *args, **kwargs)</span>:</span></div><div class="line">        self._q.put((f, args, kwargs))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wait_complete</span><span class="params">(self)</span>:</span></div><div class="line">        self._q.join()</div><div class="line"></div><div class="line"></div><div class="line">pool = ThreadPool()</div><div class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">8</span>):</div><div class="line">    wt = random()</div><div class="line">    pool.add_task(double, wt)</div><div class="line">    time.sleep(wt)</div><div class="line"></div><div class="line">pool.wait_complete()</div></pre></td></tr></table></figure></p>
+<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">USE: Thread-1</div><div class="line">0.4563649806005714</div><div class="line">USE: Thread-2</div><div class="line">1.818831738188373</div><div class="line">USE: Thread-3</div><div class="line">1.3641601633838014</div><div class="line">USE: Thread-4</div><div class="line">1.4812490759517853</div><div class="line">USE: Thread-5</div><div class="line">0.9838021089438205</div><div class="line">USE: Thread-1</div><div class="line">0.5131452235979674</div><div class="line">USE: Thread-2</div><div class="line">1.7305538822346334</div><div class="line">USE: Thread-3</div><div class="line">1.8682661663096352</div></pre></td></tr></table></figure></p>
+<p>线程池会保证同时提供5个线程工作，但是我们有8个待完成的任务，可以看到线程按顺序被循环利用了。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="https://juejin.im/post/5845134da22b9d006c2959c3" target="_blank" rel="external">理解Python并发编程 - 线程篇</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/06/09/python-magicVarFunc-2017-06-09/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/09/python-magicVarFunc-2017-06-09/" itemprop="url">Python之_magic变量和函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T17:34:35+08:00">
+                2017-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="关于下划线-的说明"><a href="#关于下划线-的说明" class="headerlink" title="关于下划线(_)的说明"></a>关于下划线(_)的说明</h3><ul>
 <li>单下划线开头：弱内部使用标识，无法被from M import *所引用</li>
-<li>单下划线结尾：避免和python关键字冲突，可以加个后置下划线,如exec_()</li></div><p class="readmore"><a href="/2017/06/09/python-magicVarFunc-2017-06-09/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/06/08/python-pandas-2017-06-08/">Python之Pandas入门</a></h1><div class="post-meta">2017-06-08</div><div class="post-content"><p>这是一个简短的为新手入门的pandas教程,更高级的用法请查看<a href="http://pandas.pydata.org/pandas-docs/stable/cookbook.html#cookbook" target="_blank" rel="external">ccokbook</a><br>这里安装numpy, mayplotlit 和 pandas省略.首先导入如下包<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"></div><div class="line">In [<span class="number">2</span>]: <span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line">In [<span class="number">3</span>]: <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2017/06/08/python-pandas-2017-06-08/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/06/08/python-numpy-2017-06-08/">Python之Numpy使用</a></h1><div class="post-meta">2017-06-08</div><div class="post-content"><h3 id="Numpy相关介绍"><a href="#Numpy相关介绍" class="headerlink" title="Numpy相关介绍"></a>Numpy相关介绍</h3><p>NumPy 是一个 Python 包。 它代表 “Numeric Python”。 它是一个由多维数组对象和用于处理数组的例程集合组成的库。<br>使用NumPy，开发人员可以执行以下操作：</p></div><p class="readmore"><a href="/2017/06/08/python-numpy-2017-06-08/">阅读更多</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/16/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">111</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/谷歌/" style="font-size: 15px;">谷歌</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/OOP/" style="font-size: 15px;">OOP</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/方法/" style="font-size: 15px;">方法</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 15px;">MongoDB</a> <a href="/tags/mongoDB/" style="font-size: 15px;">mongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 15px;">NodeJS</a> <a href="/tags/NSIS/" style="font-size: 15px;">NSIS</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/PyQt5/" style="font-size: 15px;">PyQt5</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/RegExp/" style="font-size: 15px;">RegExp</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/py-cache-2017-09-29/">Python 缓存机制与 functools.lru_cache</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/chrome-hotkey-2017-09-29/">谷歌浏览器常用快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/scrapy-notes2-2017-09-29/">爬虫笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/27/mongodb-config-2017-09-27/">MongoDB配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/20/py-timer-2017-09-20/">Python定时器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/19/linux-cmds-2017-09-19/">Linux一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-bs4-2017-09-18/">python之beautifulsoup使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/mongodb-note3-2017-09-18/">mongodb笔记(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-note1-2017-09-18/">Python笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/13/mongodb-note2-2017-09-13/">mongodb笔记(二)</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Simple &amp; Freedom.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
-if (search_path.length == 0) {
-   search_path = 'search.xml';
-}
-var path = '/' + search_path;
-searchFunc(path, 'local-search-input', 'local-search-result');
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<li>单下划线结尾：避免和python关键字冲突，可以加个后置下划线,如exec_()</li>
+<li>双下划线开头：类成员变量中的私有变量，</li>
+<li>双下划线开头，双下划线结尾：这是magic对象或属性的名字，永远不要将这样的命名方式应用于自己的变量和函数</li>
+</ul>
+<h3 id="magic变量和magic函数"><a href="#magic变量和magic函数" class="headerlink" title="magic变量和magic函数"></a>magic变量和magic函数</h3><h4 id="1-name-变量"><a href="#1-name-变量" class="headerlink" title="1. __name__ 变量"></a>1. <code>__name__</code> 变量</h4><p>   <code>__name__</code>属性是直接内置在.py文件中的, 这个属性经常用来当做一个使用模式的标识.</p>
+<pre><code>* 如果.py文件是在命令行运行的文件, 即被执行的文件，则`__name__`将被设置为`__main__`。
+* 如果.py文件是被import，`__name__`将被设置为.py文件的名字
+</code></pre><h4 id="2-file-变量"><a href="#2-file-变量" class="headerlink" title="2. __file__ 变量"></a>2. <code>__file__</code> 变量</h4><p><code>__file__</code>可以用来获取python脚本的“路径+脚本名称”，这可能是一个相对路径也可能是一个绝对路径，取决按照什么路径来执行的脚本，一般来说<code>__file__</code>变量和os.path配合，可以用来获取python脚本的绝对路径：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">5</span>]: <span class="keyword">import</span> os</div><div class="line">In [<span class="number">7</span>]: print(os.path.realpath(test1.__file__))</div><div class="line">C:\Users\aron\Desktop\test1.py</div></pre></td></tr></table></figure></p>
+<h4 id="3-import-函数"><a href="#3-import-函数" class="headerlink" title="3. __import__ 函数"></a>3. <code>__import__</code> 函数</h4><p>python导入模块时，一般使用import，而import语句其实也是调用builtin函数,即<code>__import__()</code>函数实现的导入，直接使用<code>__import__</code>比较少见，除非导入的模块是不确定的，需要在运行时才能确定导入哪些模块，可以使用<code>__import__</code>，默认接收需要导入的模块名的字符串：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">9</span>]: model = __import__(<span class="string">'test'</span>)</div><div class="line">[<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">13</span>, <span class="number">21</span>, <span class="number">34</span>, <span class="number">55</span>]</div><div class="line"></div><div class="line">In [<span class="number">11</span>]: model.Fib(<span class="number">5</span>)</div><div class="line">Out[<span class="number">11</span>]: &lt;test.Fib at <span class="number">0x49ea9b0</span>&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="4-str-函数"><a href="#4-str-函数" class="headerlink" title="4. __str__ 函数"></a>4. <code>__str__</code> 函数</h4><p><code>__str__</code>是一个比较常用的内置函数，在定义类的时候经常使用，<code>__str__</code>函数返回一个字符串，这个字符串就是此对象被print时显示的内容，如果不定义这个函数，将会显示默认的格式：<code>&lt;__main__.A object at 0x0000000001FB7C50&gt;</code>.这个函数在django的model类中如果定义的话，print一条数据库中的数据，可以指定显示任何的值.<br><strong>注意：</strong>在python3.x中<code>__str__</code>被废弃，使用<code>__repr__</code></p>
+<h4 id="5-init-函数"><a href="#5-init-函数" class="headerlink" title="5. __init__ 函数"></a>5. <code>__init__</code> 函数</h4><p><code>__init__</code>比较常见，是对象的初始化函数</p>
+<h4 id="6-new-函数"><a href="#6-new-函数" class="headerlink" title="6. __new__ 函数"></a>6. <code>__new__</code> 函数</h4><p><code>__new__()</code>函数是类创建对象时调用的内置函数，必须返回一个生成的对象，<br><code>__new__()</code>函数在<code>__init__()</code>函数之前执行。一般来说没有必要重载这个函数，除非需要更改new对象的流程,有一种场景“单例模式”要求只能存在一个class A的对象，如果重复创建，那么返回的已经创建过的对象的引用。可以这样使用<code>__new__</code>函数.<br>单例模式<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span><span class="params">(cls)</span>:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="string">"_instance"</span> <span class="keyword">in</span> vars(cls):</div><div class="line">            cls._instance=super(A,cls).__new__(cls)</div><div class="line">        <span class="keyword">return</span> cls._instance</div><div class="line">a=A()</div><div class="line">b=A()</div><div class="line"><span class="keyword">print</span> id(a)==id(b)</div><div class="line">out&gt;&gt;<span class="keyword">True</span></div></pre></td></tr></table></figure></p>
+<h4 id="7-class-变量"><a href="#7-class-变量" class="headerlink" title="7. __class__ 变量"></a>7. <code>__class__</code> 变量</h4><p><code>instance.__class__</code>表示这个对象的类对象，但在python中，类也是一个对象,例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">12</span>]: <span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    ...:     <span class="keyword">pass</span></div><div class="line">    ...:</div><div class="line"></div><div class="line">In [<span class="number">13</span>]: a = A()</div><div class="line"></div><div class="line">In [<span class="number">14</span>]: B = a.__class__</div><div class="line"></div><div class="line">In [<span class="number">15</span>]: B</div><div class="line">Out[<span class="number">15</span>]: __main__.A</div><div class="line"></div><div class="line">In [<span class="number">16</span>]: b = B()</div><div class="line"></div><div class="line">In [<span class="number">17</span>]: print(type(b))</div><div class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">__main__</span>.<span class="title">A</span>'&gt;</span></div></pre></td></tr></table></figure></p>
+<p>可以看出，a是A类的一个对象，<code>a.__class__</code>就是A类，将这个类赋值给B，使用B()又可以创建出一个对象b，这个对象b也是A类的对象，这个<code>__class__</code>有什么用呢？请看下面的例子</p>
+<h4 id="8-add-函数"><a href="#8-add-函数" class="headerlink" title="8. __add__ 函数"></a>8. <code>__add__</code> 函数</h4><p>这里其实包含一系列函数，包括<code>__sub__</code>，<code>__mul__</code>，<code>__mod__</code>，<code>__pow__</code>，<code>__xor__</code>,<br>这些函数是对加、减、乘、除、乘方、异或、等运算的重载，重写这些函数, 则我们自定义的对象可以具备运算功能.<br>下面我们就自定义了一个加法操作1+2=1+2*2=5<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,v)</span>:</span></div><div class="line">        self.v=v</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__add__</span><span class="params">(self,other)</span>:</span></div><div class="line">        <span class="comment">#创建创建一个新的对象</span></div><div class="line">        x=self.__class__(self.v + <span class="number">2</span>*other.v)</div><div class="line">        <span class="keyword">return</span> x</div><div class="line"></div><div class="line">a=A(<span class="number">1</span>)</div><div class="line">b=A(<span class="number">2</span>)</div><div class="line">c=a+b</div><div class="line"><span class="keyword">print</span> c.v</div><div class="line">ouot&gt;&gt;<span class="number">5</span></div></pre></td></tr></table></figure></p>
+<h4 id="9-doc-文档字符串变量"><a href="#9-doc-文档字符串变量" class="headerlink" title="9. __doc__ 文档字符串变量"></a>9. <code>__doc__</code> 文档字符串变量</h4><p>python建议在定义一个类、模块、函数的时候定义一段说明文字，以便提取这些变量字符串,方便做成说明文档,例子如下：<br>调用别的模块、函数时如果不清楚使用方法，也可以直接查看doc文档字符串.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#c.py</span></div><div class="line"><span class="string">"""</span></div><div class="line"><span class="string">script c's doc</span></div><div class="line"><span class="string">"""</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    class A's doc</span></div><div class="line"><span class="string">    """</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">B</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    function B's doc</span></div><div class="line"><span class="string">    """</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> __doc__</div><div class="line"><span class="keyword">print</span> A.__doc__</div><div class="line"><span class="keyword">print</span> B.__doc__</div><div class="line">out&gt;&gt;script c<span class="string">'s doc</span></div><div class="line"><span class="string">out&gt;&gt;class A'</span>s doc</div><div class="line">out&gt;&gt;function B<span class="string">'s doc</span></div></pre></td></tr></table></figure></p>
+<h4 id="10-iter-函数-和-next-函数"><a href="#10-iter-函数-和-next-函数" class="headerlink" title="10. __iter__ 函数 和 __next__ 函数"></a>10. <code>__iter__</code> 函数 和 <code>__next__</code> 函数</h4><p>凡是可以被<code>for...in</code>的循环调用的对象，我们称之为可以被迭代的对象，list，str，tuple都可以被迭代，它们都实现了内部的迭代器函数，比如说list，tuple，字符串这些数据结构的迭代器如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">b=(<span class="string">'i'</span>,<span class="number">1</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</div><div class="line"><span class="keyword">print</span> a.__iter__()</div><div class="line"><span class="keyword">print</span> b.__iter__()</div><div class="line">out&gt;&gt;&lt;listiterator object at <span class="number">0x0000000001CC7C50</span>&gt;</div><div class="line">out&gt;&gt;&lt;tupleiterator object at <span class="number">0x0000000001CC7B00</span>&gt;</div></pre></td></tr></table></figure></p>
+<p>如果我们要实现一个我们自己的迭代器对象，那么我们必须实现两个默认的方法:<code>__iter__</code>和<code>__next__</code>。<br><code>__iter__()</code>函数将会返回一个迭代器对象，<code>__next__()</code>函数每次被调用都返回一个值，如果迭代完毕，则raise一个StopIteration的错误，用来终止迭代。<br>下面的例子将实现一个可以迭代的对象，输出a~z的26个字母，该对象接收一个int参数用来表示输出字母的数量，如果该参数超过字母表的长度，则循环从‘a-z’再次进行循环输出：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,n)</span>:</span></div><div class="line">        self.stop=n</div><div class="line">        self.value=<span class="number">0</span></div><div class="line">        <span class="comment">#字母列表</span></div><div class="line">        self.alph=[chr(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">97</span>,<span class="number">123</span>)]</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment">#如果超过长度超过26则重置</span></div><div class="line">        <span class="keyword">if</span> self.value==len(self.alph):</div><div class="line">            self.value=<span class="number">0</span></div><div class="line">            self.stop=self.stop-len(self.alph)</div><div class="line">        <span class="comment">#最终，已完成n个字符的输出，则结束迭代</span></div><div class="line">        <span class="keyword">if</span> self.value&gt;self.stop:</div><div class="line">            <span class="keyword">raise</span> StopIteration    </div><div class="line">        x=self.alph[self.value]</div><div class="line">        self.value+=<span class="number">1</span></div><div class="line">        <span class="keyword">return</span> x</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> A(<span class="number">1000</span>):</div><div class="line">    <span class="keyword">print</span> i,</div><div class="line">out&gt;&gt;a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f</div><div class="line"> g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k .....</div></pre></td></tr></table></figure></p>
+<p><strong>注意:</strong> <code>__next__</code>是python3中的, python2的是next()</p>
+<h4 id="11-dict-变量-slot-变量-和-all-变量"><a href="#11-dict-变量-slot-变量-和-all-变量" class="headerlink" title="11. __dict__ 变量, __slot__ 变量 和 __all__ 变量"></a>11. <code>__dict__</code> 变量, <code>__slot__</code> 变量 和 <code>__all__</code> 变量</h4><p>这三个变量有一些关系，<code>__dict__</code>在类和对象中都存在，它是一个包含变量名和变量的字典，见以下的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#a.py</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    c=<span class="number">3</span></div><div class="line">    d=<span class="number">4</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.a=<span class="number">1</span></div><div class="line">        self.b=<span class="number">2</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> A().__dict__</div><div class="line"><span class="keyword">print</span> A.__dict__</div><div class="line"></div><div class="line">out&gt;&gt;&#123;<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>&#125;</div><div class="line">out&gt;&gt;&#123;<span class="string">'__module__'</span>: <span class="string">'__main__'</span>, <span class="string">'d'</span>: <span class="number">4</span>, <span class="string">'c'</span>: <span class="number">3</span>, <span class="string">'func'</span>: &lt;function func at <span class="number">0x00000000021F2BA8</span>&gt;, <span class="string">'__dict__'</span>: &lt;attribute <span class="string">'__dict__'</span> of <span class="string">'A'</span> objects&gt;, <span class="string">'__weakref__'</span>: &lt;attribute <span class="string">'__weakref__'</span> of <span class="string">'A'</span> objects&gt;, <span class="string">'__doc__'</span>: <span class="keyword">None</span>, <span class="string">'__init__'</span>: &lt;function __init__ at <span class="number">0x00000000021F2AC8</span>&gt;&#125;</div></pre></td></tr></table></figure></p>
+<p>一个对象的<code>__dict__</code>只包含self定义的变量，<br>一个类的<code>__dict__</code>包含了类里面的函数（func函数）、类变量，以及很多隐性的变量，包括<code>__dict__</code>变量本身也是隐性的。</p>
+<p><code>__slot__</code>变量的用法理解起来比较要难一点，正常的情况下，我们实例化一个对象，可以给这个对象增加任意的成员变量，即使不在类里面定义的变量都可以.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#a.py</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.a=<span class="number">1</span></div><div class="line">        self.b=<span class="number">2</span></div><div class="line"></div><div class="line">a=A()</div><div class="line"><span class="comment">#给a增加一个x变量</span></div><div class="line">a.x=<span class="number">1</span></div><div class="line"><span class="comment">#也可以给a增加一个匿名函数</span></div><div class="line">a.y=<span class="keyword">lambda</span> x,y:x*y</div><div class="line"><span class="keyword">print</span> a.x</div><div class="line"><span class="keyword">print</span> a.y(<span class="number">3</span>,<span class="number">5</span>)</div><div class="line">out&gt;&gt;<span class="number">1</span></div><div class="line">out&gt;&gt;<span class="number">15</span></div></pre></td></tr></table></figure></p>
+<p>但如果我们想限制一下对象绑定的变量，我们可以在类定义的时候增加一个slots变量，这个变量是一个<strong>字符串元组</strong>，例子如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    __slots__=(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'x'</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.a=<span class="number">1</span></div><div class="line">        self.b=<span class="number">2</span></div><div class="line"></div><div class="line">    <span class="comment">#__slots__=('a','b',)</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line">a=A()</div><div class="line">a.x=<span class="number">1</span></div><div class="line"><span class="comment">#执行到a.y时会报错：AttributeError: 'A' object has no attribute 'y'</span></div><div class="line">a.y=<span class="keyword">lambda</span> x,y:x*y</div><div class="line"><span class="keyword">print</span> a.y(<span class="number">3</span>,<span class="number">5</span>)</div></pre></td></tr></table></figure></p>
+<p><code>__all__</code>变量是一个字符串列表，<br>它定义了每一个模块会被<code>from module_name import *</code>这样的语句可以被import的内容（变量，类，函数）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#a.py 不定义__all__</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.a=<span class="number">1</span></div><div class="line">        self.b=<span class="number">2</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">B</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line">c=<span class="number">10</span></div><div class="line"></div><div class="line"><span class="comment">#b.py</span></div><div class="line"><span class="keyword">from</span> a <span class="keyword">import</span> *</div><div class="line"><span class="keyword">print</span> A</div><div class="line"><span class="keyword">print</span> B</div><div class="line"><span class="keyword">print</span> c</div><div class="line">out&gt;&gt;&lt;<span class="class"><span class="keyword">class</span> '<span class="title">learn_draft</span>.<span class="title">A</span>'&gt;</span></div><div class="line"><span class="class"><span class="title">out</span>&gt;&gt;&lt;<span class="title">function</span> <span class="title">B</span> <span class="title">at</span> 0<span class="title">x00000000021D1438</span>&gt;</span></div><div class="line"><span class="class"><span class="title">out</span>&gt;&gt;10</span></div></pre></td></tr></table></figure></p>
+<p>如果在a.py中定义<code>__all__=[&#39;A&#39;,&#39;c&#39;]</code>,则B函数对于b.py来说是不可见的</p>
+<h4 id="12-hash-函数"><a href="#12-hash-函数" class="headerlink" title="12. __hash__ 函数"></a>12. <code>__hash__</code> 函数</h4><p>哈希函数，在python中的对象有一个hashable（可哈希）的概念.<br>对于数字、字符串、元组来说，是不可变的，也就是可哈希的，因此这些对象也可以作为字典的key值。<br>对于列表、字典等，是可变对象，因此是不可哈希的，也就不能作为字典的key值。<br>是否可哈希，可以调用内置函数<code>hash()</code>进行计算，<code>hash()</code>函数返回计算的到的hash值。<br>完全相同的变量，调用哈希算法的到的hash值一定是相同的</p>
+<p>当然一般来说，我们不会去重新定义一个对象的<code>__hash__</code>函数，除非我们想实现一个自定义的需求，<br>在stackoverflow有人提出这样一个需求，需要判断有相同词频的字符串是相等的，也就是说“abb”和“bab”这样的字符串是相等的，这个时候我们可以继承字符串类，然后重写哈希函数，如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> collections</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">FrequencyString</span><span class="params">(str)</span>:</span></div><div class="line"><span class="meta">    @property</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">normalized</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            <span class="keyword">return</span> self._normalized</div><div class="line">        <span class="keyword">except</span> AttributeError:</div><div class="line">            self._normalized = normalized = <span class="string">''</span>.join(sorted(collections.Counter(self).elements()))</div><div class="line">            <span class="keyword">return</span> normalized</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, other)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.normalized == other.normalized</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__hash__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> hash(self.normalized)</div></pre></td></tr></table></figure></p>
+<h4 id="13-getattr-函数和-setattr-函数，-delattr-函数"><a href="#13-getattr-函数和-setattr-函数，-delattr-函数" class="headerlink" title="13. __getattr__ 函数和__setattr__ 函数，__delattr__ 函数"></a>13. <code>__getattr__</code> 函数和<code>__setattr__</code> 函数，<code>__delattr__</code> 函数</h4><p>先介绍两个内置函数，<code>getattr()</code>和<code>setattr()</code>,使用这两个函数可以获取对象的属性，或者给对象的属性赋值：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#a.py</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.a=<span class="number">1</span></div><div class="line">        self.b=<span class="number">2</span></div><div class="line">a=A()</div><div class="line">setattr(a,<span class="string">'a'</span>,<span class="number">3</span>)</div><div class="line"><span class="keyword">print</span> a.a</div><div class="line"><span class="keyword">print</span> getattr(a,<span class="string">'b'</span>)</div><div class="line">out&gt;&gt;<span class="number">3</span></div><div class="line">out&gt;&gt;<span class="number">2</span></div></pre></td></tr></table></figure></p>
+<p>其实使用这两个函数和直接访问<code>a.a</code>, <code>a.b</code>没有任何区别，但好处是setattr和getattr接受两个字符串去确定访问对象a的哪一个属性，和<code>__import__</code>一样，可以在运行时在决定去访问对象变量的名字，在实际工作中经常会使用这两个函数。</p>
+<p><code>__getattr__()</code>这个函数是在访问对象不存在的成员变量是才会访问的，见下面的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.a=<span class="number">1</span></div><div class="line">        self.b=<span class="number">2</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self,name)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'getattr'</span></div><div class="line">        <span class="keyword">return</span> self.a</div><div class="line"></div><div class="line">a=A()</div><div class="line"><span class="keyword">print</span> a.d</div><div class="line">out&gt;&gt;getattr</div><div class="line">out&gt;&gt;<span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>在调用a.d时，d不是a的成员变量，则python会去查找对象是否存在<code>__getattr__()</code>函数，如果存在，则返回<code>__getattr__()</code>函数的返回值，我们这里返回的是self.a的值1。</p>
+<p>由于<code>__getattr__()</code>的特性，我们可以将<code>__getattr__()</code>设计成一个公共的接口函数，在autotest的<code>proxy.py</code>中就看到了这样的用法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ServiceProxy</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, serviceURL, serviceName=None, headers=None)</span>:</span></div><div class="line">    self.__serviceURL = serviceURL</div><div class="line">    self.__serviceName = serviceName</div><div class="line">    self.__headers = headers <span class="keyword">or</span> &#123;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, name)</span>:</span></div><div class="line">    <span class="keyword">if</span> self.__serviceName <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">        name = <span class="string">"%s.%s"</span> % (self.__serviceName, name)</div><div class="line">    <span class="keyword">return</span> ServiceProxy(self.__serviceURL, name, self.__headers)</div><div class="line"></div><div class="line"><span class="comment">#调用的时候，op是执行的特定操作的字符串，op传入__getattr__将会把ServiceProxy对象重新的内部变量重新赋值，然后返回一个更新之后的对象</span></div><div class="line">function = getattr(self.proxy, op)</div></pre></td></tr></table></figure></p>
+<p><code>__setattr__</code>和<code>__getattr__</code>不一样，对象的所有属性赋值，都会经过<code>__setattr__()</code>函数，看下面的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.a=<span class="number">1</span></div><div class="line">        self.b=<span class="number">2</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self,name)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'getattr'</span></div><div class="line">        <span class="keyword">return</span> self.a</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, name, value)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'setattr %s'</span> % name</div><div class="line">        <span class="keyword">if</span> name == <span class="string">'f'</span>:</div><div class="line">            <span class="keyword">return</span> object.__setattr__(self,name,value+<span class="number">1000</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> object.__setattr__(self,  name, value)</div><div class="line"></div><div class="line">a=A()</div><div class="line">a.f=<span class="number">1000</span></div><div class="line"><span class="keyword">print</span> a.f</div><div class="line">out&gt;&gt;setattr a</div><div class="line">out&gt;&gt;setattr b</div><div class="line">out&gt;&gt;setattr f</div><div class="line">out&gt;&gt;<span class="number">2000</span></div></pre></td></tr></table></figure></p>
+<p>从输出可以看到init函数的self.a和self.b的赋值也经过了<code>__setattr__</code>，而且在赋值的时候我们自定义了一个if逻辑，如果name是‘f’，那么value会增加1000，最终的a.f是2000</p>
+<p><code>__delattr__</code>是删除一个对象属性用的。</p>
+<h4 id="14-call-函数"><a href="#14-call-函数" class="headerlink" title="14. __call__ 函数"></a>14. <code>__call__</code> 函数</h4><p>如果一个对象实现了<code>__call__()</code>函数，那么这个对象可以认为是一个函数对象，使用加括号的方法就可以调用，见下面例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.li=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self,n)</span>:</span></div><div class="line">        <span class="comment">#返回li列表的第n个元素</span></div><div class="line">        <span class="keyword">return</span> self.li[n]</div><div class="line"></div><div class="line">a=A()</div><div class="line"><span class="comment">#a可以当做函数一样调用</span></div><div class="line"><span class="keyword">print</span> a(<span class="number">0</span>),a(<span class="number">1</span>),a(<span class="number">2</span>)</div><div class="line">out&gt;&gt;a b c</div></pre></td></tr></table></figure></p>
+<p>在实际工作中<code>__call__</code>函数非常有用，可以把一个对象变成callable的对象.</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://www.jianshu.com/p/1112320c5784" target="_blank" rel="external">http://www.jianshu.com/p/1112320c5784</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Arvin</p>
+              <p class="site-description motion-element" itemprop="description">Learn and live.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Arvin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

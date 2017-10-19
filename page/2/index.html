@@ -1,9 +1,1330 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Learn and live."><title>Simple &amp; Freedom | Learn and live.</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Simple &amp; Freedom</h1><a id="logo" href="/.">Simple &amp; Freedom</a><p class="description">Learn and live.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/essay/"><i class="fa fa-archive"> 随笔</i></a><a href="/readnotes/"><i class="fa fa-archive"> 读书笔记</i></a><a href="/life/"><i class="fa fa-archive"> 生活</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/404.html"><i class="fa fa-heartbeat"> 公益404</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2017/09/19/linux-cmds-2017-09-19/">Linux一些常用命令</a></h1><div class="post-meta">2017-09-19</div><div class="post-content"><h2 id="scp命令"><a href="#scp命令" class="headerlink" title="scp命令"></a>scp命令</h2><p>scp是secure copy的简写，用于在Linux下进行远程拷贝文件或文件夹.scp传输是加密的。可能会稍微影响一下速度。当你服务器硬盘变为只读 read only system时，用scp可以帮你把文件移出来。另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。</p></div><p class="readmore"><a href="/2017/09/19/linux-cmds-2017-09-19/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/09/18/py-bs4-2017-09-18/">python之beautifulsoup使用</a></h1><div class="post-meta">2017-09-18</div><div class="post-content"><h3 id="find-find-all"><a href="#find-find-all" class="headerlink" title="find()/find_all()"></a>find()/find_all()</h3><p>find() 返回文档中符合条件的tag，如果没找到符合条件的tag返回Node<br>find_all()返回文档中全部符合条件的tag的列表，如果不存在返回空列表<br>注意find()函数返回的是符合条件的tag，因此可以进行链式调用，如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#先查找class属性为‘post-content’的div标签，然后查找该div标签下的所有的img标签</span></div><div class="line">soup.find(<span class="string">'div'</span>, class_=<span class="string">'post-content'</span>).find_all(<span class="string">'img'</span>)</div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2017/09/18/py-bs4-2017-09-18/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/09/18/mongodb-note3-2017-09-18/">mongodb笔记(三)</a></h1><div class="post-meta">2017-09-18</div><div class="post-content"><h3 id="mongodb突然无法打开"><a href="#mongodb突然无法打开" class="headerlink" title="mongodb突然无法打开"></a>mongodb突然无法打开</h3><p>检查mongodb数据所在的文件夹下是否有一个类似”locked file”,删掉这个文件,然后再开启mongodb</p></div><p class="readmore"><a href="/2017/09/18/mongodb-note3-2017-09-18/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/09/18/py-note1-2017-09-18/">Python笔记</a></h1><div class="post-meta">2017-09-18</div><div class="post-content"><h3 id="python路径操作"><a href="#python路径操作" class="headerlink" title="python路径操作"></a>python路径操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"><span class="comment">#创建目录</span></div><div class="line">os.mkdir(<span class="string">"D:\\python\\2"</span>)</div><div class="line"><span class="comment">#删除目录</span></div><div class="line">os.rmdir(<span class="string">"D:\\python\\2"</span>)</div><div class="line"></div><div class="line"><span class="comment">#创建多级目录</span></div><div class="line">os.makedirs(<span class="string">"D:\\python\\oo\\2\\3"</span>)</div><div class="line"><span class="comment">#删除多级目录</span></div><div class="line">os.removedirs(<span class="string">"D:\\python\\oo\\2\\3"</span>)</div><div class="line"></div><div class="line"><span class="comment">#获取目录下文件夹及文件</span></div><div class="line">paths=os.listdir(<span class="string">"D:\\python"</span>)</div><div class="line"><span class="keyword">for</span> path <span class="keyword">in</span> paths:</div><div class="line">    print(path)</div><div class="line"></div><div class="line"><span class="comment">#获取当前目录位置</span></div><div class="line">path1=os.getcwd()</div><div class="line">print(path1)</div><div class="line"></div><div class="line"><span class="comment">#切换目录</span></div><div class="line">os.chdir(<span class="string">"D:\\python\\oo\\3"</span>)</div><div class="line">path2=os.getcwd()</div><div class="line">print(path2)</div><div class="line"></div><div class="line"><span class="comment">#遍历所有子目录及文件</span></div><div class="line"><span class="keyword">for</span> p1,d,filelist <span class="keyword">in</span> os.walk(<span class="string">'D:'</span>+os.sep+<span class="string">'python'</span>):</div><div class="line">    <span class="keyword">for</span> f1 <span class="keyword">in</span> filelist:</div><div class="line">        fp=os.path.join(p1,f1)</div><div class="line">        print(fp)</div></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/09/18/py-note1-2017-09-18/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/09/13/mongodb-note2-2017-09-13/">mongodb笔记(二)</a></h1><div class="post-meta">2017-09-13</div><div class="post-content"><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
-<li>mongoDB三要素: 数据库，集合，文档，其中“集合”就是对应关系数据库中的“表”，“文档”对应“行”。</li>
-<li>mongoDB发布版本: 32bit和64bit<ul></div><p class="readmore"><a href="/2017/09/13/mongodb-note2-2017-09-13/">阅读更多</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/3/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">111</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/谷歌/" style="font-size: 15px;">谷歌</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/OOP/" style="font-size: 15px;">OOP</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/方法/" style="font-size: 15px;">方法</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 15px;">MongoDB</a> <a href="/tags/mongoDB/" style="font-size: 15px;">mongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 15px;">NodeJS</a> <a href="/tags/NSIS/" style="font-size: 15px;">NSIS</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/PyQt5/" style="font-size: 15px;">PyQt5</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/RegExp/" style="font-size: 15px;">RegExp</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/py-cache-2017-09-29/">Python 缓存机制与 functools.lru_cache</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/chrome-hotkey-2017-09-29/">谷歌浏览器常用快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/scrapy-notes2-2017-09-29/">爬虫笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/27/mongodb-config-2017-09-27/">MongoDB配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/20/py-timer-2017-09-20/">Python定时器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/19/linux-cmds-2017-09-19/">Linux一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-bs4-2017-09-18/">python之beautifulsoup使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/mongodb-note3-2017-09-18/">mongodb笔记(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-note1-2017-09-18/">Python笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/13/mongodb-note2-2017-09-13/">mongodb笔记(二)</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Simple &amp; Freedom.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
-if (search_path.length == 0) {
-   search_path = 'search.xml';
-}
-var path = '/' + search_path;
-searchFunc(path, 'local-search-input', 'local-search-result');
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Simple & Freedom" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Learn and live.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simple &amp; Freedom">
+<meta property="og:url" content="http://arvin-he.github.io/page/2/index.html">
+<meta property="og:site_name" content="Simple &amp; Freedom">
+<meta property="og:description" content="Learn and live.">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple &amp; Freedom">
+<meta name="twitter:description" content="Learn and live.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://arvin-he.github.io/page/2/"/>
+
+
+
+
+
+  <title>Simple & Freedom</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Simple & Freedom</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learn and live.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/09/27/mongodb-config-2017-09-27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/27/mongodb-config-2017-09-27/" itemprop="url">MongoDB配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-27T19:59:15+08:00">
+                2017-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb"></a>安装mongodb</h3><p>安装就免了吧,安装好mongodb,然后配置环境变量</p>
+<h3 id="创建MongoDB配置文件"><a href="#创建MongoDB配置文件" class="headerlink" title="创建MongoDB配置文件"></a>创建MongoDB配置文件</h3><p>先创建一个配置文件,名称为mongodb.cfg,配置内容为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#数据文件存放位置</div><div class="line">dbpath=F:/mongodb/data/db</div><div class="line"></div><div class="line">#日志文件存放位置</div><div class="line">logpath=F:/mongodb/data/log/mongodb.log</div><div class="line"></div><div class="line">#PID的路径</div><div class="line">pidfilepath=F:/mongodb/pid/mongodb.pid</div><div class="line"></div><div class="line">#端口号</div><div class="line">port=27017</div><div class="line"></div><div class="line">#错误日志采用追加模式，配置这个选项后mongodb的日志会追加到现有的日志文件</div><div class="line">logappend=true</div><div class="line"></div><div class="line">#启用日志文件，默认启用</div><div class="line">journal=true</div><div class="line"></div><div class="line">#这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false</div><div class="line">quiet=true</div><div class="line"></div><div class="line">#打开28017网页端口（若不开启注释掉即可）</div><div class="line">rest=true</div></pre></td></tr></table></figure></p>
+<h3 id="启动mongodb"><a href="#启动mongodb" class="headerlink" title="启动mongodb"></a>启动mongodb</h3><p>在终端执行:<code>mongod --config F:/mongodb/config/mongodb.cfg</code><br>然后在浏览器输入:127.0.0.1:27017,回车会看到网页有”It looks like you are trying to access MongoDB over HTTP on the native driver port.”,则表明启动成功</p>
+<h3 id="注册mongodb服务"><a href="#注册mongodb服务" class="headerlink" title="注册mongodb服务"></a>注册mongodb服务</h3><p>如果每次都按照步骤三那样操作，岂不是很麻烦，按照如下命令来创建并启动MongoDB服务，就可以通过windows服务来管理MongoDB的启动和关闭了.<br>安装mongodb服务,在终端输入: <code>mongod --config F:/mongodb/config/mongodb.cfg --install --serviceName MongoDB</code><br>启动mongodb服务,在终端输入: <code>net start MongoDB</code>, 回车,然后有提示出来:MongoDB服务正在启动, MongoDB服务已经启动成功</p>
+<h3 id="去除mongodb服务"><a href="#去除mongodb服务" class="headerlink" title="去除mongodb服务"></a>去除mongodb服务</h3><p>如果需要去除MongoDB服务，执行如下命令：<br><code>mongod --remove --serviceName MongoDB</code></p>
+<h3 id="如何创建用户管理员"><a href="#如何创建用户管理员" class="headerlink" title="如何创建用户管理员"></a>如何创建用户管理员</h3><p>用户管理员是第一个要创建的用户。在没有创建任何用户之前，你可以随意创建用户；但数据库中一旦有了用户，那么未登录的客户端就没有权限做任何操作了，除非使用db.auth(username, password)方法登录。</p>
+<p>用户管理员的角色名叫 userAdminAnyDatabase，这个角色只能在 admin 数据库中创建。下面是一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; use admin</div><div class="line">switched to db admin</div><div class="line">&gt; db.createUser(&#123;user:&quot;root&quot;,pwd:&quot;root&quot;,roles:[&quot;userAdminAnyDatabase&quot;]&#125;)</div><div class="line">Successfully added user: &#123; &quot;user&quot; : &quot;root&quot;, &quot;roles&quot; : [ &quot;userAdminAnyDatabase&quot; ] &#125;</div></pre></td></tr></table></figure></p>
+<p>这个例子创建了一个名为 root 的用户管理员。创建完了这个用户之后，我们应该马上以该用户的身份登录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; db.auth(&quot;root&quot;,&quot;root123&quot;)</div><div class="line">1</div><div class="line">db.auth() 方法返回 1 表示登录成功。接下来我们为指定的数据库创建访问所需的账号。</div></pre></td></tr></table></figure></p>
+<h3 id="如何创建数据库用户"><a href="#如何创建数据库用户" class="headerlink" title="如何创建数据库用户"></a>如何创建数据库用户</h3><p>首先保证你已经以用户管理员的身份登录 admin 数据库。然后用 use 命令切换到目标数据库，<br>同样用 db.createUser() 命令来创建用户，其中角色名为 “readWrite”。</p>
+<p>普通的数据库用户角色有两种，read 和 readWrite。顾名思义，前者只能读取数据不能修改，后者可以读取和修改。<br>下面是一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; use test</div><div class="line">switched to db test</div><div class="line">&gt; db.createUser(&#123;user:&quot;testuser&quot;,pwd:&quot;testpass&quot;,roles:[&quot;readWrite&quot;]&#125;)</div><div class="line">Successfully added user: &#123; &quot;user&quot; : &quot;testuser&quot;, &quot;roles&quot; : [ &quot;readWrite&quot; ] &#125;</div><div class="line">&gt; db.auth(&quot;testuser&quot;,&quot;testpass&quot;)</div><div class="line">1</div></pre></td></tr></table></figure></p>
+<p>这样 MongoDB 的数据安全性就得到保障了，没有登录的客户端将无法执行任何命令。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/09/20/py-timer-2017-09-20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/20/py-timer-2017-09-20/" itemprop="url">Python定时器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-20T20:15:37+08:00">
+                2017-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="python中定时器"><a href="#python中定时器" class="headerlink" title="python中定时器"></a>python中定时器</h3><p>python中的定时器在threading模块中,而且只执行一次, 那么如何定时循环调用呢?<br>Timer:  隔一定时间调用一个函数,如果想实现每隔一段时间就调用一个函数的话，就要在Timer调用的函数中，再次设置Timer。<br>Timer其实是Thread的一个派生类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(name)</span>:</span></div><div class="line">    print(<span class="string">"hello %s\n"</span> % name)</div><div class="line">    <span class="keyword">global</span> timer</div><div class="line">    timer = threading.Timer(<span class="number">2.0</span>, hello, [<span class="string">"world"</span>])</div><div class="line">    timer.start()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    timer = threading.Timer(<span class="number">2.0</span>, hello, [<span class="string">"world"</span>])</div><div class="line">    timer.start()</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/09/19/linux-cmds-2017-09-19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/19/linux-cmds-2017-09-19/" itemprop="url">Linux一些常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-19T21:46:02+08:00">
+                2017-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="scp命令"><a href="#scp命令" class="headerlink" title="scp命令"></a>scp命令</h2><p>scp是secure copy的简写，用于在Linux下进行远程拷贝文件或文件夹.scp传输是加密的。可能会稍微影响一下速度。当你服务器硬盘变为只读 read only system时，用scp可以帮你把文件移出来。另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，rsync就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。</p>
+<p>命令格式：<br>scp [参数] [原路径] [目标路径]</p>
+<h3 id="从本地服务器复制到远程服务器："><a href="#从本地服务器复制到远程服务器：" class="headerlink" title="从本地服务器复制到远程服务器："></a>从本地服务器复制到远程服务器：</h3><p>命令格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">scp local_file remote_username@remote_ip:remote_folder  </div><div class="line">或者  </div><div class="line">scp local_file remote_username@remote_ip:remote_file  </div><div class="line">或者  </div><div class="line">scp local_file remote_ip:remote_folder  </div><div class="line">或者  </div><div class="line">scp local_file remote_ip:remote_file</div></pre></td></tr></table></figure></p>
+<p>第1,2个指定了用户名，命令执行后需要输入用户密码，<br>第1个仅指定了远程的目录，文件名字不变，<br>第2个指定了文件名<br>第3,4个没有指定用户名，命令执行后需要输入用户名和密码，<br>第3个仅指定了远程的目录，文件名字不变，<br>第4个指定了文件名 </p>
+<h3 id="从本地拷贝文件夹到远程服务器："><a href="#从本地拷贝文件夹到远程服务器：" class="headerlink" title="从本地拷贝文件夹到远程服务器："></a>从本地拷贝文件夹到远程服务器：</h3><p>命令格式：<br><code>scp -r local_folder remote_username@remote_ip:remote_folder</code><br>或者<br><code>scp -r local_folder remote_ip:remote_folder</code><br>第1个指定了用户名，命令执行后需要输入用户密码；<br>第2个没有指定用户名，命令执行后需要输入用户名和密码；</p>
+<h3 id="从远程服务器复制到本地服务器："><a href="#从远程服务器复制到本地服务器：" class="headerlink" title="从远程服务器复制到本地服务器："></a>从远程服务器复制到本地服务器：</h3><p>从远程复制到本地的scp命令与上面的命令相似，只要将从本地复制到远程的命令后面2个参数互换顺序就行了。</p>
+<p><code>scp arvin@192.168.120.204:/opt/soft/nginx-0.5.38.tar.gz /opt/soft/</code></p>
+<h3 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h3><p> 当使用SSH 或者 telent 远程登录到 Linux 服务器,经常有一些长时间运行的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端窗口，但是他们执行的时间太长了。必须等待它执行完毕，在此期间可不能关掉终端窗口或者断开连接，也不能关机, 否则这个任务就会被杀掉，一切半途而废了。显然,这不是我们所希望的.</p>
+<p>screen命令可以远程运行服务器程序并观察程序执行,即使关闭终端或者关闭电脑也不要紧,服务器上的程序也一直在运行.<br>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> ssh登陆. 注意:需要先通过ssh登陆远程服务器才能使用screen</span></div><div class="line">ssh user@ip</div><div class="line"><span class="meta">#</span><span class="bash"> 创建一个screen会话窗口</span></div><div class="line">screen -S test</div><div class="line"><span class="meta">#</span><span class="bash"> 执行程序</span></div><div class="line">python3 test.py</div><div class="line"><span class="meta">#</span><span class="bash"> 查看正在运行的程序,会显示程序执行的pid</span></div><div class="line">screen -ls</div><div class="line"><span class="meta">#</span><span class="bash"> 查看某个程序在终端的输出, 6245是执行成的pid</span></div><div class="line">screen -r -D 6245</div><div class="line"><span class="meta">#</span><span class="bash"> 杀掉screen中的session</span></div><div class="line">kill -9 6245</div><div class="line">screen -ls</div><div class="line"><span class="meta">#</span><span class="bash"> 清除dead 会话</span></div><div class="line">screen -wipe test</div></pre></td></tr></table></figure></p>
+<p>(Detached)—-&gt;挂起状态，无终端在连接会话<br>(Attached)—-&gt;有终端在连接会话。<br><strong>注意:</strong> 如果程序在运行时,不要按下CTRL+C, 这样会中止程序的运行,直接关闭终端窗口就可以了,这样不会关闭程序的运行.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">其他常用的命令选项有：</div><div class="line">-c file	使用配置文件file，而不使用默认的$HOME/.screenrc</div><div class="line">-d|-D [pid.tty.host]	不开启新的screen会话，而是断开其他正在运行的screen会话</div><div class="line">-h num	指定历史回滚缓冲区大小为num行</div><div class="line">-list|-ls	列出现有screen会话，格式为pid.tty.host</div><div class="line">-d -m	启动一个开始就处于断开模式的会话</div><div class="line">-r sessionowner/ [pid.tty.host]	重新连接一个断开的会话。多用户模式下连接到其他用户screen会话需要指定sessionowner，需要setuid-root权限</div><div class="line">-S sessionname	创建screen会话时为会话指定一个名字</div><div class="line">-v	显示screen版本信息</div><div class="line">-wipe [match]	同-list，但删掉那些无法连接的会话</div></pre></td></tr></table></figure>
+<p>下例显示当前有两个处于detached状态的screen会话，你可以使用<code>screen -r &lt;screen_pid&gt;</code>重新连接上.<br>如果由于某种原因其中一个会话死掉了（例如人为杀掉该会话），这时screen -list会显示该会话为dead状态。使用screen -wipe命令清除该会话.</p>
+<h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h3><p>kill[参数][进程号]</p>
+<p>init进程是不可杀的,<br>init是Linux系统操作中不可缺少的程序之一。所谓的init进程，它是一个由内核启动的用户级进程。内核自行启动（已经被载入内存，开始运行，并已初始化所有的设备驱动程序和数据结构等）之后，就通过启动一个用户级程序init的方式，完成引导进程。所以,init始终是第一个进程（其进程编号始终为1）。 其它所有进程都是init进程的子孙。init进程是不可杀的！</p>
+<p>常用的信号：只有第9种信号(SIGKILL)才可以无条件终止进程，其他信号进程都有权利忽略<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">HUP    1    终端断线</div><div class="line">INT     2    中断（同 Ctrl + C）</div><div class="line">QUIT    3    退出（同 Ctrl + \）</div><div class="line">TERM   15    终止</div><div class="line">KILL    9    强制终止</div><div class="line">CONT   18    继续（与STOP相反， fg/bg命令）</div><div class="line">STOP    19    暂停（同 Ctrl + Z）</div></pre></td></tr></table></figure></p>
+<p>彻底杀死进程:<br>命令：<code>kill –9 3268</code></p>
+<p>应注意:</p>
+<ol>
+<li><p>信号使进程强行终止，这常会带来一些副作用，如数据丢失或者终端无法恢复到正常状态。发送信号时必须小心，只有在万不得已时，才用kill信号(9)，因为进程不能首先捕获它。</p>
+</li>
+<li><p>要撤销所有的后台作业，可以输入kill 0。因为有些在后台运行的命令会启动多个进程，跟踪并找到所有要杀掉的进程的PID是件很麻烦的事。这时，使用kill 0来终止所有由当前shell启动的进程，是个有效的方法。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/09/18/py-bs4-2017-09-18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/18/py-bs4-2017-09-18/" itemprop="url">python之beautifulsoup使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-18T21:20:12+08:00">
+                2017-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="find-find-all"><a href="#find-find-all" class="headerlink" title="find()/find_all()"></a>find()/find_all()</h3><p>find() 返回文档中符合条件的tag，如果没找到符合条件的tag返回Node<br>find_all()返回文档中全部符合条件的tag的列表，如果不存在返回空列表<br>注意find()函数返回的是符合条件的tag，因此可以进行链式调用，如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#先查找class属性为‘post-content’的div标签，然后查找该div标签下的所有的img标签</span></div><div class="line">soup.find(<span class="string">'div'</span>, class_=<span class="string">'post-content'</span>).find_all(<span class="string">'img'</span>)</div></pre></td></tr></table></figure></p>
+<p>而<code>find_all()</code>返回的是列表，列表是不存在find()和find_all()函数的，因此不能进行链式调用</p>
+<h3 id="孩子-child-与后代-descendant"><a href="#孩子-child-与后代-descendant" class="headerlink" title="孩子(child)与后代(descendant)"></a>孩子(child)与后代(descendant)</h3><p>子标签: 一个父标签的下一级标签<br>后代标签: 一个父标签下面所有级别的标签,包括子标签<br>所有的子标签都是后代标签,但不是所有后代标签都是子标签</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/09/18/mongodb-note3-2017-09-18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/18/mongodb-note3-2017-09-18/" itemprop="url">mongodb笔记(三)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-18T21:05:16+08:00">
+                2017-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="mongodb突然无法打开"><a href="#mongodb突然无法打开" class="headerlink" title="mongodb突然无法打开"></a>mongodb突然无法打开</h3><p>检查mongodb数据所在的文件夹下是否有一个类似”locked file”,删掉这个文件,然后再开启mongodb</p>
+<h3 id="再说插入操作"><a href="#再说插入操作" class="headerlink" title="再说插入操作"></a>再说插入操作</h3><p>单条插入<br>批量插入</p>
+<h3 id="find操作"><a href="#find操作" class="headerlink" title="find操作"></a>find操作</h3><p>查询是用的最多的操作了, 常用的有2类:</p>
+<ol>
+<li><blockquote>
+<p>, &gt;=, &lt;, &lt;=, !=, =</p>
+</blockquote>
+</li>
+<li>And，OR，In，NotIn</li>
+</ol>
+<p>这些操作在mongodb里面都有对应封装.</p>
+<ol>
+<li>“$gt”, “$gte”, “$lt”, “$lte”, “$ne”, “”<br>这些与上面 &gt;, &gt;=, &lt;, &lt;=, !=, = 这6个符号操作一一对应</li>
+<li>“”, “$or”, “$in”，”$nin”<br>与 And，OR，In，NotIn 操作一一对应</li>
+</ol>
+<p>正则表达式匹配<br>在mongodb中还有一个特殊的匹配，那就是支持正则表达式.</p>
+<p>$where操作</p>
+<h3 id="update操作"><a href="#update操作" class="headerlink" title="update操作"></a>update操作</h3><p>整体更新<br>局部更新</p>
+<p>局部更新:<br>mongodb中已经给我们提供了两个修改器： $inc 和 $set。</p>
+<p>$inc修改器<br>$inc也就是increase的缩写，自增$inc指定的值，如果“文档”中没有此key，则会创建key。</p>
+<p>$set修改器</p>
+<h3 id="upsert操作"><a href="#upsert操作" class="headerlink" title="upsert操作"></a>upsert操作</h3><p>upsert操作就是说：如果我没有查到，我就在数据库里面新增一条，其实这样也有好处，就是避免了我在数据库里面判断是update还是add操作，使用起来很简单将update的第三个参数设为true即可。</p>
+<h3 id="批量更新"><a href="#批量更新" class="headerlink" title="批量更新"></a>批量更新</h3><p>在mongodb中如果匹配多条，默认的情况下只更新第一条，那么如果我们有需求必须批量更新，那么在mongodb中实现也是很简单的，在update的第四个参数中设为true即可.</p>
+<h3 id="查询某一字段重复的记录"><a href="#查询某一字段重复的记录" class="headerlink" title="查询某一字段重复的记录"></a>查询某一字段重复的记录</h3><h3 id="查询某一字段重复的记录的数目"><a href="#查询某一字段重复的记录的数目" class="headerlink" title="查询某一字段重复的记录的数目"></a>查询某一字段重复的记录的数目</h3><h3 id="查询和删除某一字段不是数字的记录"><a href="#查询和删除某一字段不是数字的记录" class="headerlink" title="查询和删除某一字段不是数字的记录"></a>查询和删除某一字段不是数字的记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 查询某一字段不是数字的记录</div><div class="line">db.getCollection(&apos;phone&apos;).find(&#123;&quot;tel&quot;: &#123;&quot;$regex&quot;: &apos;^[^0-9]+$&apos;&#125;&#125;)</div><div class="line"># 查询某一字段不是数字的记录的数目</div><div class="line">db.getCollection(&apos;phone&apos;).find(&#123;&quot;tel&quot;: &#123;&quot;$regex&quot;: &apos;^[^0-9]+$&apos;&#125;&#125;).count()</div><div class="line"># 删除某一字段不是数字的记录</div><div class="line">db.getCollection(&apos;phone&apos;).remove(&#123;&quot;tel&quot;: &#123;&quot;$regex&quot;: &apos;^[^0-9]+$&apos;&#125;&#125;)</div></pre></td></tr></table></figure>
+<h3 id="数据库合并"><a href="#数据库合并" class="headerlink" title="数据库合并"></a>数据库合并</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-</div><div class="line">import os</div><div class="line">import sys</div><div class="line">from pymongo import MongoClient</div><div class="line">import gevent</div><div class="line">from gevent import monkey</div><div class="line">from gevent.pool import Pool</div><div class="line">import subprocess</div><div class="line">from logger import Logging</div><div class="line"></div><div class="line">monkey.patch_all()</div><div class="line"></div><div class="line"></div><div class="line">logname = os.path.splitext(os.path.basename(__file__))[0]</div><div class="line">logger = Logging(logname)</div><div class="line">log = logger.logObject</div><div class="line"></div><div class="line"># 连接mongodb数据库,并返回数据库对象</div><div class="line"></div><div class="line"></div><div class="line">def connectDB(user, passwd, host, db_name):</div><div class="line">    client = MongoClient(</div><div class="line">        &apos;mongodb://&#123;&#125;:&#123;&#125;@&#123;&#125;/&#123;&#125;&apos;.format(user, passwd, host, db_name))</div><div class="line">    return client[db_name]</div><div class="line"></div><div class="line"></div><div class="line">db1 = connectDB(&quot;xxx&quot;, &quot;xxxxxx&quot;, &quot;ip:port&quot;, &quot;xxxx&quot;)</div><div class="line">db2 = connectDB(&quot;xxxxx&quot;, &quot;******&quot;,</div><div class="line">                &quot;ip:port&quot;, &quot;qqqq&quot;)</div><div class="line">movie1 = db1[&quot;xxx1&quot;]</div><div class="line">movie2 = db2[&quot;xxx2&quot;]</div><div class="line"></div><div class="line"></div><div class="line">def get_item():</div><div class="line">    for index, item in enumerate(movie2.find(&#123;&#125;, no_cursor_timeout=True)):</div><div class="line">        log.info(&quot;获取第&#123;&#125;条数据.&quot;.format(index + 1))</div><div class="line">        item[&quot;time&quot;] = float(&quot;&#123;:.3f&#125;&quot;.format(int(item[&quot;time&quot;] * 1000)))</div><div class="line">        yield item</div><div class="line"></div><div class="line"></div><div class="line">def mergedb(item):</div><div class="line">    if movie1.find(&#123;&quot;tel&quot;: item[&quot;tel&quot;], &quot;time&quot;: item[&quot;time&quot;]&#125;).count() &lt; 1:</div><div class="line">        movie1.insert(item)</div><div class="line">    else:</div><div class="line">        log.info(&quot;该数据已经存在!&quot;)</div><div class="line"></div><div class="line"></div><div class="line">def backupdb():</div><div class="line">    log.info(&quot;开始导出testdb数据库phone集合...&quot;)</div><div class="line">    dst = os.path.join(&quot;data&quot;, &quot;&#123;&#125;.dat&quot;.format(&quot;phone&quot;))</div><div class="line">    try:</div><div class="line">        subprocess.check_call([&quot;mongoexport&quot;,</div><div class="line">                               &quot;-h&quot;, &quot;ip:port&quot;,</div><div class="line">                               &quot;-u&quot;, &quot;xxx.xx&quot;,</div><div class="line">                               &quot;-p&quot;, &quot;xxxx&quot;,</div><div class="line">                               &quot;-d&quot;, &quot;xxxxx&quot;,</div><div class="line">                               &quot;-c&quot;, &quot;xxxx&quot;,</div><div class="line">                               &quot;-o&quot;, dst])</div><div class="line">        log.info(&quot;导出&#123;&#125;数据成功&quot;.format(dst))</div><div class="line">    except Exception as e:</div><div class="line">        log.error(&quot;导出MongoDB数据出错...&quot;)</div><div class="line">        log.error(e)</div><div class="line">        log.info(&quot;数据导出中止...&quot;)</div><div class="line">        return</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &quot;__main__&quot;:</div><div class="line">    pool = Pool(100)</div><div class="line">    try:</div><div class="line">        pool.map(mergedb, get_item())</div><div class="line">    except Exception as e:</div><div class="line">        log.error(e)</div><div class="line">        sys.exit()</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Arvin</p>
+              <p class="site-description motion-element" itemprop="description">Learn and live.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Arvin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

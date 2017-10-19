@@ -1,12 +1,1360 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Learn and live."><title>Simple &amp; Freedom | Learn and live.</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Simple &amp; Freedom</h1><a id="logo" href="/.">Simple &amp; Freedom</a><p class="description">Learn and live.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/essay/"><i class="fa fa-archive"> 随笔</i></a><a href="/readnotes/"><i class="fa fa-archive"> 读书笔记</i></a><a href="/life/"><i class="fa fa-archive"> 生活</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/404.html"><i class="fa fa-heartbeat"> 公益404</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2017/09/29/py-cache-2017-09-29/">Python 缓存机制与 functools.lru_cache</a></h1><div class="post-meta">2017-09-29</div><div class="post-content"><h3 id="缓存概念"><a href="#缓存概念" class="headerlink" title="缓存概念"></a>缓存概念</h3><p>缓存是一种将定量数据加以保存以备迎合后续请求的处理方式，目的是为了加快数据的检索速度<br>下面看一个例子:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCache</span>:</span></div><div class="line">    <span class="string">""""""</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""Constructor"""</span></div><div class="line">        self.cache = &#123;&#125;</div><div class="line">        self.max_cache_size = <span class="number">10</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__contains__</span><span class="params">(self, key)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        根据该键是否存在于缓存当中返回True或者False</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> key <span class="keyword">in</span> self.cache</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self, key, value)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        更新该缓存字典，您可选择性删除最早条目</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.cache <span class="keyword">and</span> len(self.cache) &gt;= self.max_cache_size:</div><div class="line">            self.remove_oldest()</div><div class="line">        self.cache[key] = &#123;<span class="string">'date_accessed'</span>: datetime.datetime.now(),</div><div class="line">                           <span class="string">'value'</span>: value&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_oldest</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        删除具备最早访问日期的输入数据</span></div><div class="line"><span class="string">        """</span></div><div class="line">        oldest_entry = <span class="keyword">None</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> self.cache:</div><div class="line">            <span class="keyword">if</span> oldest_entry == <span class="keyword">None</span>:</div><div class="line">                oldest_entry = key</div><div class="line">            <span class="keyword">elif</span> self.cache[key][<span class="string">'date_accessed'</span>] &lt; self.cache[oldest_entry][<span class="string">'date_accessed'</span>]:</div><div class="line">                oldest_entry = key</div><div class="line"></div><div class="line">        self.cache.pop(oldest_entry)</div><div class="line"></div><div class="line"><span class="meta">    @property</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        返回缓存容量大小</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> len(self.cache)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment">#测试缓存</span></div><div class="line">    keys = [<span class="string">'test'</span>, <span class="string">'red'</span>, <span class="string">'fox'</span>, <span class="string">'fence'</span>, <span class="string">'junk'</span>, \</div><div class="line">            <span class="string">'other'</span>, <span class="string">'alpha'</span>, <span class="string">'bravo'</span>, <span class="string">'cal'</span>, <span class="string">'devo'</span>, <span class="string">'ele'</span>]</div><div class="line">    s = <span class="string">'abcdefghijklmnop'</span></div><div class="line">    cache = MyCache()</div><div class="line">    <span class="keyword">for</span> i, key <span class="keyword">in</span> enumerate(keys):</div><div class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> cache:</div><div class="line">            <span class="keyword">continue</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            value = <span class="string">''</span>.join([random.choice(s) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>)])</div><div class="line">            cache.update(key, value)</div><div class="line">        print(<span class="string">"#%s iterations, #%s cached entries"</span> % (i+<span class="number">1</span>, cache.size))</div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2017/09/29/py-cache-2017-09-29/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/09/29/chrome-hotkey-2017-09-29/">谷歌浏览器常用快捷键</a></h1><div class="post-meta">2017-09-29</div><div class="post-content"><h3 id="Chrome窗口和标签页快捷键："><a href="#Chrome窗口和标签页快捷键：" class="headerlink" title="Chrome窗口和标签页快捷键："></a>Chrome窗口和标签页快捷键：</h3><ol>
-<li>Ctrl+N    打开新窗口</li></div><p class="readmore"><a href="/2017/09/29/chrome-hotkey-2017-09-29/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/09/29/scrapy-notes2-2017-09-29/">爬虫笔记</a></h1><div class="post-meta">2017-09-29</div><div class="post-content"><h3 id="一些常识"><a href="#一些常识" class="headerlink" title="一些常识"></a>一些常识</h3><ol>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Simple & Freedom" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Learn and live.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simple &amp; Freedom">
+<meta property="og:url" content="http://arvin-he.github.io/index.html">
+<meta property="og:site_name" content="Simple &amp; Freedom">
+<meta property="og:description" content="Learn and live.">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple &amp; Freedom">
+<meta name="twitter:description" content="Learn and live.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://arvin-he.github.io/"/>
+
+
+
+
+
+  <title>Simple & Freedom</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Simple & Freedom</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learn and live.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/10/18/py-psutil-2017-10-18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/18/py-psutil-2017-10-18/" itemprop="url">Python之psutil模块使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T14:36:01+08:00">
+                2017-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="psutil模块"><a href="#psutil模块" class="headerlink" title="psutil模块"></a>psutil模块</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/10/18/linux-note1-2017-10-18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/18/linux-note1-2017-10-18/" itemprop="url">Linux笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T14:17:30+08:00">
+                2017-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="查看linux下所有的python3进程"><a href="#查看linux下所有的python3进程" class="headerlink" title="查看linux下所有的python3进程"></a>查看linux下所有的python3进程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux | grep python3</div></pre></td></tr></table></figure>
+<h3 id="linux下bash脚本执行错误"><a href="#linux下bash脚本执行错误" class="headerlink" title="linux下bash脚本执行错误"></a>linux下bash脚本执行错误</h3><p>错误: <code>-bash: ./reporteveryday.sh: /bin/bash^M: bad interpreter: No such file or directory</code><br>windows下的换行是回车符+换行符，也就是\r\n, 而unix下是换行符\n。<br>linux下不识别\r为回车符，所以导致每行多了个\r。并且因为这个是控制字符，所以在输出参数的时候不会打印出来.</p>
+<p>bash脚本不要在windows下创建,然后在拷贝到Linux下,这样容易导致bash脚本无法执行,且不报错.<br>解决办法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim file</div><div class="line"># 查看文件的format</div><div class="line">:set ff</div><div class="line"># 修改文件format为unix</div><div class="line">:set ff=unix</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/09/29/py-cache-2017-09-29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/29/py-cache-2017-09-29/" itemprop="url">Python 缓存机制与 functools.lru_cache</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-29T15:37:17+08:00">
+                2017-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="缓存概念"><a href="#缓存概念" class="headerlink" title="缓存概念"></a>缓存概念</h3><p>缓存是一种将定量数据加以保存以备迎合后续请求的处理方式，目的是为了加快数据的检索速度<br>下面看一个例子:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCache</span>:</span></div><div class="line">    <span class="string">""""""</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""Constructor"""</span></div><div class="line">        self.cache = &#123;&#125;</div><div class="line">        self.max_cache_size = <span class="number">10</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__contains__</span><span class="params">(self, key)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        根据该键是否存在于缓存当中返回True或者False</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> key <span class="keyword">in</span> self.cache</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self, key, value)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        更新该缓存字典，您可选择性删除最早条目</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.cache <span class="keyword">and</span> len(self.cache) &gt;= self.max_cache_size:</div><div class="line">            self.remove_oldest()</div><div class="line">        self.cache[key] = &#123;<span class="string">'date_accessed'</span>: datetime.datetime.now(),</div><div class="line">                           <span class="string">'value'</span>: value&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_oldest</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        删除具备最早访问日期的输入数据</span></div><div class="line"><span class="string">        """</span></div><div class="line">        oldest_entry = <span class="keyword">None</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> self.cache:</div><div class="line">            <span class="keyword">if</span> oldest_entry == <span class="keyword">None</span>:</div><div class="line">                oldest_entry = key</div><div class="line">            <span class="keyword">elif</span> self.cache[key][<span class="string">'date_accessed'</span>] &lt; self.cache[oldest_entry][<span class="string">'date_accessed'</span>]:</div><div class="line">                oldest_entry = key</div><div class="line"></div><div class="line">        self.cache.pop(oldest_entry)</div><div class="line"></div><div class="line"><span class="meta">    @property</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        返回缓存容量大小</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> len(self.cache)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment">#测试缓存</span></div><div class="line">    keys = [<span class="string">'test'</span>, <span class="string">'red'</span>, <span class="string">'fox'</span>, <span class="string">'fence'</span>, <span class="string">'junk'</span>, \</div><div class="line">            <span class="string">'other'</span>, <span class="string">'alpha'</span>, <span class="string">'bravo'</span>, <span class="string">'cal'</span>, <span class="string">'devo'</span>, <span class="string">'ele'</span>]</div><div class="line">    s = <span class="string">'abcdefghijklmnop'</span></div><div class="line">    cache = MyCache()</div><div class="line">    <span class="keyword">for</span> i, key <span class="keyword">in</span> enumerate(keys):</div><div class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> cache:</div><div class="line">            <span class="keyword">continue</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            value = <span class="string">''</span>.join([random.choice(s) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>)])</div><div class="line">            cache.update(key, value)</div><div class="line">        print(<span class="string">"#%s iterations, #%s cached entries"</span> % (i+<span class="number">1</span>, cache.size))</div></pre></td></tr></table></figure></p>
+<p>在 Python 的 3.2 版本中，引入了一个非常优雅的缓存机器，即 functool 模块中的 <code>lru_cache</code> 装饰器。如果要在 python2 中使用 <code>lru_cahce</code> 需要安装 <code>functools32</code>。lru_cache 原型如下：<code>@functools.lru_cache(maxsize=None, typed=False)</code><br>使用functools模块的lur_cache装饰器，可以缓存最多 maxsize 个此函数的调用结果，从而提高程序执行的效率，特别适合于耗时的函数。参数maxsize为最多缓存的次数，如果为None，则无限制，设置为2n时，性能最佳；<br>被 <code>lru_cache</code> 装饰的函数会有 <code>cache_clear</code> 和 <code>cache_info</code> 两个方法，分别用于清除缓存和查看缓存信息。<br>这里用一个简单的示例演示 lru_cache 效果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> lru_cache</div><div class="line"><span class="meta">@lru_cache(None)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">    print(<span class="string">"calculating: %s + %s"</span> % (x, y))</div><div class="line">    <span class="keyword">return</span> x + y</div><div class="line"></div><div class="line">print(add(<span class="number">1</span>, <span class="number">2</span>))</div><div class="line">print(add(<span class="number">1</span>, <span class="number">2</span>))</div><div class="line">print(add(<span class="number">2</span>, <span class="number">3</span>))</div><div class="line"></div><div class="line"><span class="comment">#输出结果：</span></div><div class="line">calculating: <span class="number">1</span> + <span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">3</span></div><div class="line">calculating: <span class="number">2</span> + <span class="number">3</span></div><div class="line"><span class="number">5</span></div></pre></td></tr></table></figure></p>
+<p>从结果可以看出，当第二次调用 add(1, 2) 时，并没有真正执行函数体，而是直接返回缓存的结果。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://blog.konghy.cn/2016/04/20/python-cache/" target="_blank" rel="external">http://blog.konghy.cn/2016/04/20/python-cache/</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/09/29/chrome-hotkey-2017-09-29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/29/chrome-hotkey-2017-09-29/" itemprop="url">谷歌浏览器常用快捷键</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-29T14:20:11+08:00">
+                2017-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Chrome窗口和标签页快捷键："><a href="#Chrome窗口和标签页快捷键：" class="headerlink" title="Chrome窗口和标签页快捷键："></a>Chrome窗口和标签页快捷键：</h3><ol>
+<li>Ctrl+N    打开新窗口</li>
+<li>Ctrl+T    打开新标签页</li>
+<li>Ctrl+Shift+N    在隐身模式下打开新窗口</li>
+<li>Ctrl+O，然后选择文件，在谷歌浏览器中打开计算机上的文件</li>
+<li>按住 Ctrl 键，然后点击链接，从后台在新标签页中打开链接，但您仍停留在当前标签页中</li>
+<li>按住 Ctrl+Shift 键，然后点击链接    在新标签页中打开链接，同时切换到新打开的标签页</li>
+<li>按住 Shift 键，然后点击链接    在新窗口中打开链接</li>
+<li>Alt+F4    关闭当前浏览器窗口</li>
+<li>Ctrl+Shift+T 重新打开上次关闭的标签页。谷歌浏览器可记住最近关闭的 10 个标签页。</li>
+<li>将链接拖动到标签页内    在指定标签页中打开链接</li>
+<li>将链接拖动到两个标签页之间    在标签页横条的指定位置建立一个新标签页，在该标签页中打开链接</li>
+<li>Ctrl+1 到 Ctrl+8    切换到指定位置编号的标签页。您按下的数字代表标签页横条上的相应标签位置。</li>
+<li>Ctrl+9    切换到最后一个标签页</li>
+<li>Ctrl+Tab 或 Ctrl+PgDown    切换到下一个标签页</li>
+<li>Ctrl+Shift+Tab 或 Ctrl+PgUp    切换到上一个标签页</li>
+<li>Ctrl+W 或 Ctrl+F4    关闭当前标签页或弹出式窗口</li>
+<li>Alt+Home    打开主页</li>
+</ol>
+<h3 id="Chrome地址栏快捷键-："><a href="#Chrome地址栏快捷键-：" class="headerlink" title="Chrome地址栏快捷键 ："></a>Chrome地址栏快捷键 ：</h3><h4 id="在地址栏，进行下列操作之一："><a href="#在地址栏，进行下列操作之一：" class="headerlink" title="在地址栏，进行下列操作之一："></a>在地址栏，进行下列操作之一：</h4><ol>
+<li>键入搜索字词    使用默认搜索引擎进行搜索</li>
+<li>键入网址中”www.”和”.com”之间的部分，然后按Ctrl+Enter 键    为您在地址栏中输入的内容添加”www.”和”.com”，然后打开网址</li>
+<li>键入搜索引擎关键字或网址，按 Tab键，然后键入搜索字词    使用与关键字或网址相关联的搜索引擎进行搜索。如果谷歌浏览器可以识别您要使用的搜索引擎，则会提示您按 Tab 键。</li>
+<li>F6 或 Ctrl+L 或 Alt+D    选中网址区域中的内容</li>
+<li>键入网址，然后按 Alt+Enter 键    在新标签页中打开网址</li>
+<li>打开谷歌chrome浏览器各功能的快捷键</li>
+<li>Ctrl+B    打开和关闭书签栏</li>
+<li>Ctrl+Shift+B    打开书签管理器</li>
+<li>Ctrl+H    查看”历史记录”页</li>
+<li>Ctrl+J    查看”下载”页</li>
+<li>Shift+Escape    查看任务管理器</li>
+<li>Shift+Alt+T    将焦点设置在工具栏上。使用键盘上的向右和向左箭头，可导航至工具栏上的不同按钮。</li>
+</ol>
+<h3 id="Chrome网页快捷键："><a href="#Chrome网页快捷键：" class="headerlink" title="Chrome网页快捷键："></a>Chrome网页快捷键：</h3><ol>
+<li>Ctrl+P    打印当前页</li>
+<li>Ctrl+S    保存当前页</li>
+<li>F5    重新加载当前页</li>
+<li>Esc    停止加载当前页</li>
+<li>Ctrl+F    打开”在网页上查找”框</li>
+<li>点击鼠标中键或滚轮（只在谷歌浏览器测试版（只有英文版）中可用）    激活自动滚动。当您移动鼠标时，网页会根据鼠标的移动方向自动滚动。</li>
+<li>Ctrl+F5 或 Shift+F5    重新加载当前页，但忽略缓存内容</li>
+<li>按住 Alt 键，然后点击链接    下载链接</li>
+<li>Ctrl+G 或 F3    查找与您在”在网页上查找”框中输入的内容相匹配的下一个匹配项</li>
+<li>Ctrl+Shift+G 或 Shift+F3    查找与您在”在网页上查找”框中输入的内容相匹配的上一个匹配项</li>
+<li>Ctrl+U    查看源代码</li>
+<li>将链接拖动到书签栏    将链接加入书签</li>
+<li>Ctrl+D    将当前网页加入书签</li>
+<li>Ctrl++，或者按住 Ctrl 键并向上滚动鼠标滚轮    放大网页上的所有内容</li>
+<li>Ctrl+-，或者按住 Ctrl 键并向下滚动鼠标滚轮    缩小网页上的所有内容</li>
+<li>Ctrl+0    将网页上的所有内容都恢复到正常大小</li>
+<li>空格键                             向下滚动网页。</li>
+<li>Home                               转至网页顶部。</li>
+<li>End                                转至网页底部。</li>
+<li>按住 Shift 键的同时滚动鼠标滚轮。  在网页上横向滚动。</li>
+</ol>
+<h3 id="浏览器文本快捷键："><a href="#浏览器文本快捷键：" class="headerlink" title="浏览器文本快捷键："></a>浏览器文本快捷键：</h3><ol>
+<li>Ctrl+C                             将突出显示的内容复制到剪贴板中。</li>
+<li>Ctrl+V 或 Shift+Insert             从剪贴板中粘贴内容。</li>
+<li>Ctrl+Shift+V                       从剪贴板中粘贴内容(不带格式)。</li>
+<li>Ctrl+X 或 Shift+Delete             删除突出显示的内容并将其复制到剪贴板中。</li>
+</ol>
+<h3 id="chrome命令16个非常有用的chrome-命令，操作方法与上述类似。"><a href="#chrome命令16个非常有用的chrome-命令，操作方法与上述类似。" class="headerlink" title="chrome命令16个非常有用的chrome://命令，操作方法与上述类似。"></a>chrome命令16个非常有用的chrome://命令，操作方法与上述类似。</h3><ol>
+<li>chrome://downloads 等同于从菜单中查看下载内容，其快捷键是Ctrl+J</li>
+<li>chrome://extensions 等同于菜单-工具-扩展</li>
+<li>chrome://plugins 显示已安装插件 </li>
+<li>chrome://bookmarks 等同于菜单-书签-书签管理器，快捷键Ctrl+Shift+O</li>
+<li>chrome://history 等同于从菜单-历史直接访问，快捷键 Ctrl+H</li>
+<li>chrome://restart 重启chrome浏览器</li>
+<li>chrome://apps 打开chrome网上应用商店</li>
+<li>chrome://flags 可用来启用或者关闭某些chrome的体验特性</li>
+<li>chrome://dns 显示浏览器预抓取的主机名列表，让你随时了解DNS状态</li>
+<li>chrome://memory 重定向到chrome://memory-redirect/，显示系统运行中的浏览器内存使用情况，以及浏览器中进程的详细信息。</li>
+<li>chrome://net-internals 显示网络相关信息，用来捕获浏览器生成的网络事件，可导出数据，可查看DNS主机解析缓存。</li>
+<li>chrome://quota-internals 用来显示浏览器所使用磁盘空间配额的情况。</li>
+<li>chrome://sessions 该命令用来显示当前运行的浏览器的会话信息数以及详细列表</li>
+<li>chrome://settings 该命令可通过菜单-选项直接访问，可用来控制浏览器各项设置值</li>
+<li>chrome://sync-internals 用来显示 chrome 的同步状态</li>
+<li>chrome://about/ 查看 chrome 所有的命令</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/09/29/scrapy-notes2-2017-09-29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/29/scrapy-notes2-2017-09-29/" itemprop="url">爬虫笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-29T13:40:34+08:00">
+                2017-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一些常识"><a href="#一些常识" class="headerlink" title="一些常识"></a>一些常识</h3><ol>
 <li>代理ip会被集体封禁,然后过一段时间再开放</li>
 <li>ip被封禁后,有的会过段时间解除封禁</li>
-<li>代理ip不是全部可靠的,通常有效代理大概在70%左右</li></div><p class="readmore"><a href="/2017/09/29/scrapy-notes2-2017-09-29/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/09/27/mongodb-config-2017-09-27/">MongoDB配置</a></h1><div class="post-meta">2017-09-27</div><div class="post-content"><h3 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb"></a>安装mongodb</h3><p>安装就免了吧,安装好mongodb,然后配置环境变量</p>
-<h3 id="创建MongoDB配置文件"><a href="#创建MongoDB配置文件" class="headerlink" title="创建MongoDB配置文件"></a>创建MongoDB配置文件</h3><p>先创建一个配置文件,名称为mongodb.cfg,配置内容为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#数据文件存放位置</div><div class="line">dbpath=F:/mongodb/data/db</div><div class="line"></div><div class="line">#日志文件存放位置</div><div class="line">logpath=F:/mongodb/data/log/mongodb.log</div><div class="line"></div><div class="line">#PID的路径</div><div class="line">pidfilepath=F:/mongodb/pid/mongodb.pid</div><div class="line"></div><div class="line">#端口号</div><div class="line">port=27017</div><div class="line"></div><div class="line">#错误日志采用追加模式，配置这个选项后mongodb的日志会追加到现有的日志文件</div><div class="line">logappend=true</div><div class="line"></div><div class="line">#启用日志文件，默认启用</div><div class="line">journal=true</div><div class="line"></div><div class="line">#这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false</div><div class="line">quiet=true</div><div class="line"></div><div class="line">#打开28017网页端口（若不开启注释掉即可）</div><div class="line">rest=true</div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2017/09/27/mongodb-config-2017-09-27/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/09/20/py-timer-2017-09-20/">Python定时器</a></h1><div class="post-meta">2017-09-20</div><div class="post-content"><h3 id="python中定时器"><a href="#python中定时器" class="headerlink" title="python中定时器"></a>python中定时器</h3><p>python中的定时器在threading模块中,而且只执行一次, 那么如何定时循环调用呢?<br>Timer:  隔一定时间调用一个函数,如果想实现每隔一段时间就调用一个函数的话，就要在Timer调用的函数中，再次设置Timer。<br>Timer其实是Thread的一个派生类</p></div><p class="readmore"><a href="/2017/09/20/py-timer-2017-09-20/">阅读更多</a></p></div><nav class="page-navigator"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/2/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">111</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/谷歌/" style="font-size: 15px;">谷歌</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/OOP/" style="font-size: 15px;">OOP</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/方法/" style="font-size: 15px;">方法</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 15px;">MongoDB</a> <a href="/tags/mongoDB/" style="font-size: 15px;">mongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 15px;">NodeJS</a> <a href="/tags/NSIS/" style="font-size: 15px;">NSIS</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/PyQt5/" style="font-size: 15px;">PyQt5</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/RegExp/" style="font-size: 15px;">RegExp</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/py-cache-2017-09-29/">Python 缓存机制与 functools.lru_cache</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/chrome-hotkey-2017-09-29/">谷歌浏览器常用快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/scrapy-notes2-2017-09-29/">爬虫笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/27/mongodb-config-2017-09-27/">MongoDB配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/20/py-timer-2017-09-20/">Python定时器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/19/linux-cmds-2017-09-19/">Linux一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-bs4-2017-09-18/">python之beautifulsoup使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/mongodb-note3-2017-09-18/">mongodb笔记(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-note1-2017-09-18/">Python笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/13/mongodb-note2-2017-09-13/">mongodb笔记(二)</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Simple &amp; Freedom.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
-if (search_path.length == 0) {
-   search_path = 'search.xml';
-}
-var path = '/' + search_path;
-searchFunc(path, 'local-search-input', 'local-search-result');
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<li>代理ip不是全部可靠的,通常有效代理大概在70%左右</li>
+</ol>
+<h3 id="爬虫错误处理方法"><a href="#爬虫错误处理方法" class="headerlink" title="爬虫错误处理方法"></a>爬虫错误处理方法</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Arvin</p>
+              <p class="site-description motion-element" itemprop="description">Learn and live.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Arvin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

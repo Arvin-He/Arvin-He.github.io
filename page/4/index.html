@@ -1,7 +1,1399 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Learn and live."><title>Simple &amp; Freedom | Learn and live.</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Simple &amp; Freedom</h1><a id="logo" href="/.">Simple &amp; Freedom</a><p class="description">Learn and live.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/essay/"><i class="fa fa-archive"> 随笔</i></a><a href="/readnotes/"><i class="fa fa-archive"> 读书笔记</i></a><a href="/life/"><i class="fa fa-archive"> 生活</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/404.html"><i class="fa fa-heartbeat"> 公益404</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2017/08/25/web-rest-2017-08-25/">Web之REST概念</a></h1><div class="post-meta">2017-08-25</div><div class="post-content"><h3 id="REST当中为什么要使用HTTP-PUT"><a href="#REST当中为什么要使用HTTP-PUT" class="headerlink" title="REST当中为什么要使用HTTP PUT"></a>REST当中为什么要使用HTTP PUT</h3><p>REST(Representational State Transfer)是<strong>网络服务接口</strong>的一种<strong>风格</strong>，并不是一个标准，就web service而言，REST要比SOAP（SOAP是标准，不是风格）轻量得多，容易得多。我记得我最初开始接触web service的时候，所有的材料上来就是一大堆的名词，SOAP, WSDL,看得头都要大了，后来提出来的REST就容易理解得多，虽然目前SOAP在企业级的web service中还有一席之地，但是在公共的Internet上，不是REST的服务实在不好意思和人打招呼，我们经常可以看到评价某某服务是RESTful的，但是从来没有听说某某服务是SOAPful的 :-)<br>微软对REST的支持有点晚，自.NET3.5开始，WCF也可以提供RESTful接口。当然，REST不光限于web service，网页服务也可以RESTful，微软的ASP.NET MVC框架提供了直接的REST支持。</p></div><p class="readmore"><a href="/2017/08/25/web-rest-2017-08-25/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/08/25/web-getpost-2017-08-25/">Web之Get和Post区别</a></h1><div class="post-meta">2017-08-25</div><div class="post-content"><h3 id="两种-HTTP-请求方法：GET-和-POST"><a href="#两种-HTTP-请求方法：GET-和-POST" class="headerlink" title="两种 HTTP 请求方法：GET 和 POST"></a>两种 HTTP 请求方法：GET 和 POST</h3><p>在客户机和服务器之间进行请求-响应时，两种最常被用到的方法是：GET 和 POST。</p></div><p class="readmore"><a href="/2017/08/25/web-getpost-2017-08-25/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/08/25/py-scrapy1-2017-08-25/">爬虫基础知识(一)</a></h1><div class="post-meta">2017-08-25</div><div class="post-content"><h3 id="1-URL"><a href="#1-URL" class="headerlink" title="1. URL"></a>1. URL</h3><p>URL的格式由三部分组成：<br>第一部分是协议(或称为服务方式)。<br>第二部分是存有该资源的主机IP地址(有时也包括端口号)。<br>第三部分是主机资源的具体地址，如目录和文件名等。</p></div><p class="readmore"><a href="/2017/08/25/py-scrapy1-2017-08-25/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/08/25/py-jsonrpc-2017-08-25/">Python之jsonrpc</a></h1><div class="post-meta">2017-08-25</div><div class="post-content"><h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># server</span></div><div class="line"><span class="keyword">from</span> http.server <span class="keyword">import</span> BaseHTTPRequestHandler, HTTPServer</div><div class="line"><span class="keyword">from</span> jsonrpcserver <span class="keyword">import</span> methods</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@methods.add</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">ping</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span>(<span class="string">'ping'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@methods.add</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hao</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span>(<span class="string">'hao'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@methods.add</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(name)</span>:</span></div><div class="line">    <span class="keyword">return</span>(<span class="string">'Hello, %s'</span> % name)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@methods.add</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Sum</span><span class="params">(a, b)</span>:</span></div><div class="line">    <span class="keyword">return</span>(a + b)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestHttpServer</span><span class="params">(BaseHTTPRequestHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_POST</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># Process request</span></div><div class="line">        request = self.rfile.read(int(self.headers[<span class="string">'Content-Length'</span>])).decode()</div><div class="line">        response = methods.dispatch(request)</div><div class="line">        <span class="comment"># Return response</span></div><div class="line">        self.send_response(response.http_status)</div><div class="line">        self.send_header(<span class="string">'Content-type'</span>, <span class="string">'application/json'</span>)</div><div class="line">        self.end_headers()</div><div class="line">        self.wfile.write(str(response).encode())</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    HTTPServer((<span class="string">'localhost'</span>, <span class="number">5000</span>), TestHttpServer).serve_forever()</div></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/08/25/py-jsonrpc-2017-08-25/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/08/24/web-forwardbackagent-2017-08-24/">正向代理和反向代理</a></h1><div class="post-meta">2017-08-24</div><div class="post-content"><h3 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h3><p>我们常说的代理也就是只正向代理，正向代理的过程，它隐藏了真实的请求客户端，服务端不知道真实的客户端是谁，客户端请求的服务都被代理服务器代替来请求，某些科学上网工具扮演的就是典型的正向代理角色。用浏览器访问 <a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a> 时，被残忍的block，于是你可以在国外搭建一台代理服务器，让代理帮我去请求<code>google.com</code>，代理把请求返回的相应结构再返回给我.</p></div><p class="readmore"><a href="/2017/08/24/web-forwardbackagent-2017-08-24/">阅读更多</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/5/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">111</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/谷歌/" style="font-size: 15px;">谷歌</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/OOP/" style="font-size: 15px;">OOP</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/方法/" style="font-size: 15px;">方法</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 15px;">MongoDB</a> <a href="/tags/mongoDB/" style="font-size: 15px;">mongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 15px;">NodeJS</a> <a href="/tags/NSIS/" style="font-size: 15px;">NSIS</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/PyQt5/" style="font-size: 15px;">PyQt5</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/RegExp/" style="font-size: 15px;">RegExp</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/py-cache-2017-09-29/">Python 缓存机制与 functools.lru_cache</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/chrome-hotkey-2017-09-29/">谷歌浏览器常用快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/scrapy-notes2-2017-09-29/">爬虫笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/27/mongodb-config-2017-09-27/">MongoDB配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/20/py-timer-2017-09-20/">Python定时器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/19/linux-cmds-2017-09-19/">Linux一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-bs4-2017-09-18/">python之beautifulsoup使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/mongodb-note3-2017-09-18/">mongodb笔记(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-note1-2017-09-18/">Python笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/13/mongodb-note2-2017-09-13/">mongodb笔记(二)</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Simple &amp; Freedom.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
-if (search_path.length == 0) {
-   search_path = 'search.xml';
-}
-var path = '/' + search_path;
-searchFunc(path, 'local-search-input', 'local-search-result');
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Simple & Freedom" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Learn and live.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simple &amp; Freedom">
+<meta property="og:url" content="http://arvin-he.github.io/page/4/index.html">
+<meta property="og:site_name" content="Simple &amp; Freedom">
+<meta property="og:description" content="Learn and live.">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple &amp; Freedom">
+<meta name="twitter:description" content="Learn and live.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://arvin-he.github.io/page/4/"/>
+
+
+
+
+
+  <title>Simple & Freedom</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Simple & Freedom</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learn and live.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/08/30/py-stdin-2017-08-30/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/30/py-stdin-2017-08-30/" itemprop="url">Python中关于在GUI应用程序读取stdin内容</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T10:11:08+08:00">
+                2017-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>键盘输入的字符串是保存在stdin中的,我在程序中如何将stdin中数据拿到并赋给一个变量? 之前我是通过sys.stdin.readline()来读取stdin中的数据的,但是导致界面卡死,我想问一下你有什么办法?我google一下,没有找到我想要的</p>
+<p>data = input()<br>用 sys.stdin.readline 或 input, 都只能读取整行数据. 如果没有按回车键, 调用是阻塞不返回的.</p>
+<p>这就是为什么程序界面被卡死的原因.</p>
+<p>Qt 里还有个键盘事件的钩子. 需要在终端键盘输入时, 可能需要配置一下.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">QtCore.pyqtRemoveInputHook()</div><div class="line">code.InteractiveConsole(_locals).interact()</div><div class="line">QtCore.pyqtRestoreInputHook()</div></pre></td></tr></table></figure></p>
+<p>当QtCore模块第一次导入时，它会安装一个Python输入钩子（即它设置Python的PyOS_InputHook变量的值）。这允许在应用程序运行时在解释器提示符处输入命令。然后可以动态创建新的Qt对象并调用任何现有的Qt对象的方法。输入钩子可能会导致某些类型的应用程序出现问题，特别是那些通过不同手段提供类似设备的应用程序。此功能删除PyQt安装的输入钩。</p>
+<p>对于图形界面程序, 最合理的做法还是只用输入控件, LineEdit 等, 不用控制台, 也就是不用 sys.stdin<br>Qt 处理键盘消息应该用键盘事件</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/08/28/linux-backup-2017-08-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/28/linux-backup-2017-08-28/" itemprop="url">Linux系统之镜像备份</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T13:51:53+08:00">
+                2017-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="计算文件拷贝的进度"><a href="#计算文件拷贝的进度" class="headerlink" title="计算文件拷贝的进度"></a>计算文件拷贝的进度</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># dd_process.sh</span></div><div class="line"><span class="meta">#! /bin/bash</span></div><div class="line"><span class="comment">####dd 命令反映进度####</span></div><div class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -ne 2 ];<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"需要 盘符名 镜像名"</span></div><div class="line"><span class="keyword">fi</span></div><div class="line">	dupath=`du -m --total / --exclude=proc --exclude=media |grep 总用量 |cut -f 1`</div><div class="line">	<span class="built_in">echo</span> <span class="string">"根文件大小为<span class="variable">$dupath</span> M"</span></div><div class="line">	<span class="built_in">let</span> SIZE=<span class="variable">$dupath</span>+200</div><div class="line">    <span class="keyword">while</span> <span class="literal">true</span></div><div class="line">    <span class="keyword">do</span></div><div class="line">    dusize=`du -hm /media/Lark/<span class="variable">$1</span>/<span class="variable">$2</span> |cut -f 1`</div><div class="line">    <span class="built_in">echo</span> <span class="string">"生成文件大小为 <span class="variable">$dusize</span> M"</span></div><div class="line">    <span class="keyword">if</span> [ <span class="variable">$dusize</span> == <span class="variable">$SIZE</span> ]</div><div class="line">        <span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"文件生成成功！"</span></div><div class="line">        <span class="built_in">exit</span> 0</div><div class="line">    <span class="keyword">fi</span></div><div class="line">    <span class="keyword">done</span></div></pre></td></tr></table></figure>
+<h3 id="将根文件备份到u盘"><a href="#将根文件备份到u盘" class="headerlink" title="将根文件备份到u盘"></a>将根文件备份到u盘</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#! /bin/bash</span></div><div class="line"><span class="comment">#################################</span></div><div class="line"><span class="comment">###  get img to u_disk                                 ### </span></div><div class="line"><span class="comment">### 功能：将根文件备份到u盘                      ###  </span></div><div class="line"><span class="comment">#################################</span></div><div class="line"><span class="comment">#卸载备份区，保证/media/Lark下只挂载u盘</span></div><div class="line"><span class="keyword">if</span> [ -d /media/Lark/.linuxroot ];<span class="keyword">then</span></div><div class="line">	/bin/umount /media/Lark/.linuxroot</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ <span class="variable">$UID</span> -ne 0 ];<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"请切换root权限执行"</span></div><div class="line">	<span class="built_in">exit</span> -5</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -ne 2 ]</div><div class="line">	<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"请输入 u盘名 镜像名称!"</span></div><div class="line">	<span class="built_in">exit</span> -7</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="comment">#检测出u盘个数及盘符名</span></div><div class="line"></div><div class="line">LS_MEDIA_LARK=`ls /media/Lark`</div><div class="line">SELECTED_DISK=</div><div class="line">counter=0</div><div class="line"><span class="keyword">for</span> file <span class="keyword">in</span> `ls /media/Lark`</div><div class="line"><span class="keyword">do</span></div><div class="line">counter=`expr <span class="variable">$counter</span> + 1`</div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="comment">#echo $counter</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ <span class="variable">$counter</span> == 0 ]</div><div class="line">	<span class="keyword">then</span></div><div class="line">	<span class="comment">#没有U盘插入，退出</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"没有插入u盘或者没有挂载盘符！！请检测u盘是否可正常识别!"</span></div><div class="line">	<span class="built_in">exit</span> -1</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="comment">#echo "LS_MEDIA_LARK is $LS_MEDIA_LARK "</span></div><div class="line">DISK1=`<span class="built_in">echo</span> <span class="variable">$LS_MEDIA_LARK</span>|awk -F <span class="string">' '</span> <span class="string">'&#123;print $1&#125;'</span>`</div><div class="line">DISK2=`<span class="built_in">echo</span> <span class="variable">$LS_MEDIA_LARK</span>|awk -F <span class="string">' '</span> <span class="string">'&#123;print $2&#125;'</span>`</div><div class="line"><span class="comment">#echo "DISK1 is $DISK1,DISK2 is $DISK2"</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">"检测目前根文件大小"</span></div><div class="line">	dupath=`du -m --total / --exclude=proc --exclude=media |grep 总用量 |cut -f 1`</div><div class="line">	<span class="built_in">echo</span> <span class="string">"根文件大小为<span class="variable">$dupath</span> M"</span></div><div class="line">	<span class="comment">#size=2700</span></div><div class="line">	<span class="comment">#if [ $dupath -gt $size ];then</span></div><div class="line">	<span class="comment">#echo "注意：当前系统生成镜像大于3GB，生成镜像文件不可使用Lark升级工具烧写，但可使用原厂工具烧写"</span></div><div class="line">	<span class="comment">#	exit 0</span></div><div class="line">	<span class="comment">#fi</span></div><div class="line">	<span class="comment">#TODO :校验U盘可用空间，与根文件做对比</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"####生成根文件镜像####"</span></div><div class="line">	<span class="built_in">let</span> SIZE=<span class="variable">$dupath</span>+10</div><div class="line">	<span class="built_in">echo</span> <span class="string">"生成文件大小为<span class="variable">$SIZE</span> M"</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"步骤一:选择存放镜像的U盘"</span></div><div class="line">	<span class="keyword">if</span> <span class="literal">false</span>;<span class="keyword">then</span></div><div class="line">	<span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$DISK2</span>"</span> ] ;<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"共检测出u盘 <span class="variable">$counter</span>个：请选择1.<span class="variable">$DISK1</span> 2.<span class="variable">$DISK2</span>"</span></div><div class="line">	<span class="built_in">read</span> CHOICE</div><div class="line">	</div><div class="line">	<span class="keyword">case</span> <span class="variable">$CHOICE</span> <span class="keyword">in</span></div><div class="line">		1) </div><div class="line">			<span class="built_in">echo</span> <span class="string">"你选择的u盘为<span class="variable">$DISK1</span>"</span></div><div class="line">			SELECTED_DISK=<span class="variable">$DISK1</span></div><div class="line">			;;</div><div class="line">		2)</div><div class="line">			<span class="built_in">echo</span> <span class="string">"你选择的u盘为<span class="variable">$DISK2</span>"</span></div><div class="line">			SELECTED_DISK=<span class="variable">$DISK2</span></div><div class="line">			;;</div><div class="line">		*)</div><div class="line">			<span class="built_in">echo</span> <span class="string">"选择错误"</span></div><div class="line">			<span class="built_in">exit</span> -2</div><div class="line">			;;</div><div class="line">	<span class="keyword">esac</span></div><div class="line">	<span class="keyword">else</span></div><div class="line">			SELECTED_DISK=<span class="variable">$DISK1</span></div><div class="line">	<span class="keyword">fi</span></div><div class="line">	<span class="keyword">fi</span></div><div class="line">	SELECTED_DISK=<span class="variable">$1</span></div><div class="line">	<span class="comment">#检测所选u盘是剩余空间</span></div><div class="line">	</div><div class="line">	DISK_SPACE=`df -hm /media/Lark/<span class="variable">$SELECTED_DISK</span> | sed -n <span class="string">"2p"</span> | awk <span class="string">'&#123;print $4&#125;'</span>`</div><div class="line">	<span class="built_in">echo</span> <span class="string">"剩余空间为 <span class="variable">$DISK_SPACE</span> M"</span></div><div class="line">	</div><div class="line">	<span class="keyword">if</span> [ <span class="variable">$SIZE</span> -gt <span class="variable">$DISK_SPACE</span> ];<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"根文件大小大于备份区最大空间，请删减可删减的文件进行备份"</span></div><div class="line">	<span class="built_in">exit</span> -3</div><div class="line">	<span class="keyword">fi</span></div><div class="line">	</div><div class="line">	<span class="built_in">echo</span> <span class="string">"步骤二:切换到U盘目录，且创建镜像文件，请耐心等待"</span></div><div class="line">	<span class="built_in">cd</span>  /media/Lark/<span class="variable">$SELECTED_DISK</span></div><div class="line"></div><div class="line">	<span class="keyword">if</span> <span class="literal">false</span>;<span class="keyword">then</span></div><div class="line">	<span class="comment">#后台检测，一旦U盘断开，或者卸载，则退出此次操作</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">while</span> <span class="literal">true</span></div><div class="line">		<span class="keyword">do</span></div><div class="line">		CHECK_DISK=/media/Lark/<span class="variable">$SELECTED_DISK</span></div><div class="line">		<span class="keyword">if</span> [ ! -d <span class="variable">$CHECK_DISK</span> ];<span class="keyword">then</span></div><div class="line">			<span class="built_in">echo</span> <span class="string">"u盘已断开，请检测其连接性并重新执行"</span></div><div class="line">			<span class="built_in">echo</span></div><div class="line">			<span class="built_in">exit</span> -4</div><div class="line">		<span class="keyword">fi</span></div><div class="line">		<span class="keyword">if</span> [ <span class="variable">$FLAGS</span> == 1 ];<span class="keyword">then</span></div><div class="line">			<span class="built_in">exit</span> 0</div><div class="line">		<span class="keyword">fi</span></div><div class="line">		<span class="keyword">done</span></div><div class="line">	&#125;&amp;</div><div class="line">	<span class="keyword">fi</span></div><div class="line">	</div><div class="line">	IMAGE_NAME=<span class="variable">$2</span><span class="string">".tmp"</span></div><div class="line">	</div><div class="line">	<span class="built_in">echo</span>  <span class="string">"步骤三:生成镜像名:<span class="variable">$IMAGE_NAME</span>"</span></div><div class="line">		touch <span class="variable">$IMAGE_NAME</span></div><div class="line">	<span class="built_in">echo</span>  <span class="string">"步骤四：生成指定大小空文件"</span></div><div class="line">	dd <span class="keyword">if</span>=/dev/zero of=<span class="variable">$IMAGE_NAME</span> bs=1M count=<span class="variable">$SIZE</span></div><div class="line">	</div><div class="line">	<span class="keyword">if</span> [ $? == 0 ]</div><div class="line">		<span class="keyword">then</span></div><div class="line">		<span class="built_in">echo</span>  <span class="string">"步骤五：格式化镜像文件"</span></div><div class="line">		mkfs.ext4 -F -L .linuxroot <span class="variable">$IMAGE_NAME</span></div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="built_in">echo</span> <span class="string">"dd 操作失误"</span></div><div class="line">		<span class="built_in">exit</span> -1;</div><div class="line">	<span class="keyword">fi</span></div><div class="line">	</div><div class="line">	<span class="keyword">if</span> [ $? == 0 ]</div><div class="line">		<span class="keyword">then</span></div><div class="line">		<span class="built_in">echo</span> <span class="string">"步骤六：挂载镜像文件到mnt目录"</span></div><div class="line">	        mount -o loop <span class="variable">$IMAGE_NAME</span> /mnt</div><div class="line">			</div><div class="line">	    <span class="keyword">if</span> [ $? == 0 ]</div><div class="line">			<span class="keyword">then</span></div><div class="line">			<span class="built_in">echo</span> <span class="string">"步骤七：同步根分区到mnt"</span></div><div class="line">			rsync -axv / /mnt</div><div class="line">		<span class="keyword">fi</span> </div><div class="line">	<span class="keyword">fi</span>	</div><div class="line">	</div><div class="line"><span class="keyword">if</span> [ $? == 0 ];<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"同步完成"</span></div><div class="line">	<span class="keyword">else</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"同步失败，请重新执行"</span></div><div class="line"><span class="keyword">fi</span>	</div><div class="line"></div><div class="line">	<span class="keyword">if</span> [ $? == 0 ]</div><div class="line">		<span class="keyword">then</span></div><div class="line">	<span class="comment">#echo "请卸载U盘"</span></div><div class="line">	<span class="built_in">cd</span> /tmp</div><div class="line">	umount /mnt</div><div class="line">	<span class="keyword">if</span> [ $? == 0 ]</div><div class="line">		<span class="keyword">then</span></div><div class="line">		 <span class="built_in">echo</span> <span class="string">"挂载点已卸载"</span></div><div class="line">	<span class="keyword">fi</span></div><div class="line">	<span class="keyword">fi</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">" 镜像已生成！"</span></div><div class="line">	sleep 3</div><div class="line">	<span class="comment">#fuser -km /media/Lark/$SELECTED_DISK</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"镜像修正以便烧写"</span></div><div class="line">	mv /media/Lark/<span class="variable">$SELECTED_DISK</span>/<span class="variable">$IMAGE_NAME</span> /media/Lark/<span class="variable">$SELECTED_DISK</span>/<span class="variable">$2</span><span class="string">".img"</span></div><div class="line">	umount /media/Lark/<span class="variable">$SELECTED_DISK</span></div><div class="line">	<span class="keyword">if</span> [ $? == 0 ];<span class="keyword">then</span></div><div class="line">		<span class="built_in">echo</span> <span class="string">"<span class="variable">$SELECTED_DISK</span> 已卸载成功"</span> </div><div class="line">		<span class="built_in">exit</span> 0</div><div class="line">		<span class="keyword">else</span></div><div class="line">		<span class="built_in">echo</span> <span class="string">"请卸载并拔除U盘"</span></div><div class="line">	<span class="keyword">fi</span></div></pre></td></tr></table></figure>
+<h3 id="系统备份"><a href="#系统备份" class="headerlink" title="系统备份"></a>系统备份</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#! /bin/bash</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ -d /media/Lark/.linuxroot ];<span class="keyword">then</span></div><div class="line">	/bin/umount /media/Lark/.linuxroot</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">"检测目前根文件大小"</span></div><div class="line">	dupath=`du -m --total / --exclude=proc --exclude=media |grep 总用量 |cut -f 1`</div><div class="line">    fssize=<span class="variable">$dupath</span></div><div class="line">	size=2500</div><div class="line">	<span class="keyword">if</span> [ <span class="variable">$fssize</span> -gt <span class="variable">$size</span> ];<span class="keyword">then</span></div><div class="line">		<span class="built_in">echo</span> <span class="string">"根文件大小大于备份区最大空间，请删减可删减的文件进行备份"</span></div><div class="line">		<span class="built_in">exit</span> 0</div><div class="line">	<span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">"检测系统一致性"</span></div><div class="line">	/sbin/e2fsck -f -y  /dev/mmcblk0p6</div><div class="line"></div><div class="line"><span class="keyword">if</span> [ $? -ne 0 ];<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"一致性检测失败，请检测重试"</span></div><div class="line">	<span class="built_in">exit</span> 0</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">"扩展备份区到最大限额2.8G"</span></div><div class="line">	/sbin/resize2fs /dev/mmcblk0p6 2600M</div><div class="line"><span class="keyword">if</span> [ $? -ne 0 ];<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"扩大分区失败，请重试"</span></div><div class="line">	<span class="built_in">exit</span> 0</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">"挂载系统备份区"</span></div><div class="line"></div><div class="line">/bin/mount -o loop /dev/block/mtd/by-name/linuxfsbk /mnt</div><div class="line"></div><div class="line"><span class="keyword">if</span> [ $? -ne 0 ];<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"挂载系统备份区失败，请重试"</span></div><div class="line">	<span class="built_in">exit</span> 0</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">"同步当前系统"</span></div><div class="line"></div><div class="line">/usr/bin/rsync -axv --delete / /mnt </div><div class="line"></div><div class="line"><span class="keyword">if</span> [ $? -ne 0 ];<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"同步当前系统失败，请重试"</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"卸载系统备份区"</span></div><div class="line">	/bin/umount /mnt</div><div class="line"></div><div class="line">	<span class="keyword">if</span> [ $? -ne 0 ];<span class="keyword">then</span></div><div class="line">		<span class="built_in">echo</span> <span class="string">"卸载系统备份区失败，请重试"</span></div><div class="line">		<span class="built_in">exit</span> 0</div><div class="line">	<span class="keyword">fi</span></div><div class="line">	<span class="built_in">exit</span> 0</div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"同步完成"</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"卸载系统备份区"</span></div><div class="line">/bin/umount /mnt</div><div class="line"></div><div class="line"><span class="keyword">if</span> [ $? -ne 0 ];<span class="keyword">then</span></div><div class="line">	<span class="built_in">echo</span> <span class="string">"卸载系统备份区失败，请重试"</span></div><div class="line">	<span class="built_in">exit</span> 0</div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"系统备份成功 "</span></div><div class="line"></div><div class="line">sleep 2</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/08/25/web-rest-2017-08-25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/25/web-rest-2017-08-25/" itemprop="url">Web之REST概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T16:52:13+08:00">
+                2017-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="REST当中为什么要使用HTTP-PUT"><a href="#REST当中为什么要使用HTTP-PUT" class="headerlink" title="REST当中为什么要使用HTTP PUT"></a>REST当中为什么要使用HTTP PUT</h3><p>REST(Representational State Transfer)是<strong>网络服务接口</strong>的一种<strong>风格</strong>，并不是一个标准，就web service而言，REST要比SOAP（SOAP是标准，不是风格）轻量得多，容易得多。我记得我最初开始接触web service的时候，所有的材料上来就是一大堆的名词，SOAP, WSDL,看得头都要大了，后来提出来的REST就容易理解得多，虽然目前SOAP在企业级的web service中还有一席之地，但是在公共的Internet上，不是REST的服务实在不好意思和人打招呼，我们经常可以看到评价某某服务是RESTful的，但是从来没有听说某某服务是SOAPful的 :-)<br>微软对REST的支持有点晚，自.NET3.5开始，WCF也可以提供RESTful接口。当然，REST不光限于web service，网页服务也可以RESTful，微软的ASP.NET MVC框架提供了直接的REST支持。</p>
+<p>因为REST只是风格，不是标准，所以有的方面容易有误解，比如说创建和更新某个URI代表的资源的时候，是用HTTP的PUT还是POST命令。REST常用的四种HTTP命令，GET、DELETE、PUT和POST，对于GET和DELETE，一个是获取资源，一个是删除资源，没什么异议，问题是PUT和POST，两者都有更改指定URI的语义，那么，究竟是用哪一个呢？</p>
+<p>有的观点认为，应该用POST来创建一个资源，用PUT来更新一个资源；有的观点认为，应该用PUT来创建一个资源，用POST来更新一个资源；还有的观点认为可以用PUT和POST中任何一个来做创建或者更新一个资源。这些观点都只看到了风格，争论起来也只是争论哪种风格更好，其实，用PUT还是POST，不是看这是创建还是更新资源的动作，这不是风格的问题，而是语义的问题。</p>
+<p>REST是一种风格，但是还是依赖于HTTP协议，在HTTP中，PUT被定义为idempotent(幂等)的方法，POST则不是，这是一个很重要的区别。</p>
+<p>“Methods can also have the property of “idempotence” in that (aside from error or expiration issues) the side-effects of N &gt; 0 identical requests is the same as for a single request.”</p>
+<p>上面的话就是说，如果一个方法重复执行多次，产生的效果是一样的，那就是idempotent的。</p>
+<p>举一个简单的例子，加入由一个博客系统提供一个Web API，模式是这样<a href="http://superblogging/blogs/post/{blog-name}，很简单，将{blog-name}替换为我们的blog名字，往这个URI发送一个HTTP" target="_blank" rel="external">http://superblogging/blogs/post/{blog-name}，很简单，将{blog-name}替换为我们的blog名字，往这个URI发送一个HTTP</a> PUT或者POST请求，HTTP的body部分就是博文，这是一个很简单的REST API例子。我们应该用PUT方法还是POST方法？取决于这个REST服务的行为是否是idempotent的，假如我们发送两个<a href="http://superblogging/blogs/post/Sample请求，服务器端是什么样的行为？如果产生了两个博客帖子，那就说明这个服务不是idempotent的，因为多次使用产生了副作用了嘛；如果后一个请求把第一个请求覆盖掉了，那这个服务就是idempotent的。前一种情况，应该使用POST方法，后一种情况，应该使用PUT方法。" target="_blank" rel="external">http://superblogging/blogs/post/Sample请求，服务器端是什么样的行为？如果产生了两个博客帖子，那就说明这个服务不是idempotent的，因为多次使用产生了副作用了嘛；如果后一个请求把第一个请求覆盖掉了，那这个服务就是idempotent的。前一种情况，应该使用POST方法，后一种情况，应该使用PUT方法。</a></p>
+<p>也许你会觉得这个两个方法的差别没什么大不了的，用错了也不会有什么问题，但是你的服务一放到internet上，如果不遵从HTTP协议的规范，就可能给自己带来麻烦。比如，没准Google Crawler也会访问你的服务，如果让一个不是indempotent的服务可以用indempotent的方法访问，那么你服务器的状态可能就会被Crawler修改，这是不应该发生的。</p>
+<h3 id="关于幂等的概念"><a href="#关于幂等的概念" class="headerlink" title="关于幂等的概念"></a>关于幂等的概念</h3><p>根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的。</p>
+<p>　　(1).所谓安全的意味着该操作用于获取信息而非修改信息。换句话说，GET 请求一般不应产生副作用。就是说，它仅仅是获取资源信息，就像数据库查询一样，不会修改，增加数据，不会影响资源的状态。</p>
+<p>　　* 注意：这里安全的含义仅仅是指是非修改信息。</p>
+<p>　　(2).幂等的意味着对同一URL的多个请求应该返回同样的结果。这里我再解释一下幂等这个概念：</p>
+<p>幂等（idempotent、idempotence）是一个数学或计算机学概念，常见于抽象代数中。<br>幂等有一下几种定义：<br>对于单目运算，如果一个运算对于在范围内的所有的一个数多次进行该运算所得的结果和进行一次该运算所得的结果是一样的，那么我们就称该运算是幂等的。比如绝对值运算就是一个例子，在实数集中，有abs(a)=abs(abs(a))。</p>
+<p>对于双目运算，则要求当参与运算的两个值是等值的情况下，如果满足运算结果与参与运算的两个值相等，则称该运算幂等，如求两个数的最大值的函数，有在在实数集中幂等，即max(x,x) = x。<br>看完上述解释后，应该可以理解GET幂等的含义了。</p>
+<p>但在实际应用中，以上2条规定并没有这么严格。引用别人文章的例子：比如，新闻站点的头版不断更新。虽然第二次请求会返回不同的一批新闻，该操作仍然被认为是安全的和幂等的，因为它总是返回当前的新闻。从根本上说，如果目标是当用户打开一个链接时，他可以确信从自身的角度来看没有改变资源即可。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://www.cnblogs.com/shanyou/archive/2011/10/17/2215930.html" target="_blank" rel="external">REST当中为什么要使用HTTP PUT</a></li>
+<li><a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="external">浅谈HTTP中Get与Post的区别</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/08/25/web-getpost-2017-08-25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/25/web-getpost-2017-08-25/" itemprop="url">Web之Get和Post区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T15:22:07+08:00">
+                2017-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="两种-HTTP-请求方法：GET-和-POST"><a href="#两种-HTTP-请求方法：GET-和-POST" class="headerlink" title="两种 HTTP 请求方法：GET 和 POST"></a>两种 HTTP 请求方法：GET 和 POST</h3><p>在客户机和服务器之间进行请求-响应时，两种最常被用到的方法是：GET 和 POST。</p>
+<p>GET - 从指定的资源请求数据。</p>
+<p>POST - 向指定的资源提交要被处理的数据</p>
+<h3 id="GET-方法"><a href="#GET-方法" class="headerlink" title="GET 方法"></a>GET 方法</h3><p>请注意，查询字符串（名称/值对）是在 GET 请求的 URL 中发送的：<br><code>/test/demo_form.asp?name1=value1&amp;name2=value2</code></p>
+<p>有关 GET 请求的其他一些注释：</p>
+<ul>
+<li>GET 请求可被缓存</li>
+<li>GET 请求保留在浏览器历史记录中</li>
+<li>GET 请求可被收藏为书签</li>
+<li>GET 请求不应在处理敏感数据时使用</li>
+<li>GET 请求有长度限制</li>
+<li>GET 请求只应当用于取回数据</li>
+</ul>
+<h3 id="POST-方法"><a href="#POST-方法" class="headerlink" title="POST 方法"></a>POST 方法</h3><p>请注意，查询字符串（名称/值对）是在 POST 请求的 HTTP 消息主体中发送的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">POST /test/demo_form.asp HTTP/1.1</div><div class="line">Host: w3schools.com</div><div class="line">name1=value1&amp;name2=value2</div></pre></td></tr></table></figure></p>
+<p>有关 POST 请求的其他一些注释：</p>
+<ul>
+<li>OST 请求不会被缓存</li>
+<li>POST 请求不会保留在浏览器历史记录中</li>
+<li>POST 不能被收藏为书签</li>
+<li>POST 请求对数据长度没有要求</li>
+</ul>
+<h3 id="GET-与-POST区别"><a href="#GET-与-POST区别" class="headerlink" title="GET 与 POST区别"></a>GET 与 POST区别</h3><ol>
+<li><p>GET提交的数据会放在URL之后，以?分割URL和传输数据，参数之间以&amp;相连，如EditPosts.aspx?name=test1&amp;id=123456.  POST方法是把提交的数据放在HTTP包的Body中.</p>
+</li>
+<li><p>GET提交的数据大小有限制（因为浏览器对URL的长度有限制），而POST方法提交的数据没有限制.</p>
+</li>
+<li><p>GET方式需要使用Request.QueryString来取得变量的值，而POST方式通过Request.Form来获取变量的值。</p>
+</li>
+<li><p>GET方式提交数据，会带来安全问题，比如一个登录页面，通过GET方式提交数据时，用户名和密码将出现在URL上，如果页面可以被缓存或者其他人可以访问这台机器，就可以从历史记录获得该用户的账号和密码.</p>
+</li>
+</ol>
+<h3 id="一些误区"><a href="#一些误区" class="headerlink" title="一些误区"></a>一些误区</h3><p>误区一：POST可以比GET提交更多更长的数据？<br>由于使用GET方法提交数据时，以?分割URL和传输数据，参数之间以&amp;相连，在URL后面添加需要提交的参数，有人就会说了，浏览器地址栏输入的参数是有限的，而POST不用再地址栏输入，所以POST就比GET可以提交更多的数据。难道真的是这样的么？<br>而实际上，URL不存在参数上限的问题，HTTP协议规范<strong>没有</strong>对URL长度进行限制。这个限制是特定的浏览器及服务器对它的限制。IE对URL长度的限制是2083字节(2K+35)。对于其他浏览器，如Netscape、FireFox等，理论上没有长度限制，其限制取决于操作系统的支持。<br>同时，POST是没有大小限制的，HTTP协议规范也没有进行大小限制。POST数据是没有限制的，<strong>起限制作用的是服务器的处理程序的处理能力。</strong><br>总归一句话，这个限制是针对所有HTTP请求的，与GET、POST没有多少关系。</p>
+<p>误区二：POST比GET安全？<br>首先，我们要承认安全的概念有很多种，要是从最基本的肉眼看到就不安全，肉眼看不到那就是安全的概念说呢，GET确实没有POST安全，毕竟小白用户确实可以看到在URL中带有的数据信息，这个你无法狡辩。那么要是往严谨了说呢，POST是不是要比GET安全呢？其实不是的。<br>上面也说了，GET将提交到服务器的数据添加到URL中了，可见；虽然POST的数据，你肉眼看不到，你抓个包看看，在HTTP包的包体中，我们提交的数据时仍然可见的.</p>
+<h3 id="比较GET-与-POST"><a href="#比较GET-与-POST" class="headerlink" title="比较GET 与 POST"></a>比较GET 与 POST</h3><p>下面的表格比较了两种 HTTP 方法：GET 和 POST。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GET</th>
+<th>POST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>后退按钮/刷新</td>
+<td>无害</td>
+<td>数据会被重新提交（浏览器应该告知用户数据会被重新提交）。</td>
+</tr>
+<tr>
+<td>书签</td>
+<td>可收藏为书签</td>
+<td>不可收藏为书签</td>
+</tr>
+<tr>
+<td>缓存</td>
+<td>能被缓存</td>
+<td>不能缓存</td>
+</tr>
+<tr>
+<td>编码类型</td>
+<td>application/x-www-form-urlencoded</td>
+<td>application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。</td>
+</tr>
+<tr>
+<td>历史</td>
+<td>参数保留在浏览器历史中。</td>
+<td>参数不会保存在浏览器历史中。</td>
+</tr>
+<tr>
+<td>对数据长度的限制</td>
+<td>是的。当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。</td>
+<td>无限制。</td>
+</tr>
+<tr>
+<td>对数据类型的限制</td>
+<td>只允许 ASCII 字符。</td>
+<td>没有限制。也允许二进制数据。</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！</td>
+<td>POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</td>
+</tr>
+<tr>
+<td>可见性</td>
+<td>数据在 URL 中对所有人都是可见的。</td>
+<td>数据不会显示在 URL 中。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>很多时候，大家都觉的使用GET很方便，毕竟使用POST要用到Form，但是，你要知道，你使用GET方法时，浏览器可能会缓存你的地址等信息，还会留下历史记录，而对于POST方法呢，则不会进行缓存。在开发中，一定要分清楚GET和POST的使用场合，什么时候要使用GET，什么时候要使用POST，自己做到心中有数。</p>
+<p>可能，你在Google类似的文章的时候，可能会看到分析POST和PUT区别的文章，这又是一类纠结的东西，更多的时候，我们分析这种东西都是分实际情景，结合设计者的语义去使用.</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp" target="_blank" rel="external">w3cschool</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/08/25/py-scrapy1-2017-08-25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/25/py-scrapy1-2017-08-25/" itemprop="url">爬虫基础知识(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T14:12:06+08:00">
+                2017-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-URL"><a href="#1-URL" class="headerlink" title="1. URL"></a>1. URL</h3><p>URL的格式由三部分组成：<br>第一部分是协议(或称为服务方式)。<br>第二部分是存有该资源的主机IP地址(有时也包括端口号)。<br>第三部分是主机资源的具体地址，如目录和文件名等。</p>
+<p>爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助。</p>
+<h3 id="关于urllib2包"><a href="#关于urllib2包" class="headerlink" title="关于urllib2包"></a>关于urllib2包</h3><p>python 3.X版本是不需要安装urllib2包，urllib和urllib2包集合成在一个包为urllib了.<br>在python3.x版本中，如何使用：urllib2.urlopen()？<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib</div><div class="line"><span class="keyword">import</span> urllib.request</div><div class="line"></div><div class="line">response = urllib.request.urlopen(<span class="string">"http://www.baidu.com"</span>)</div><div class="line">print(response.read())</div><div class="line"></div><div class="line">URL = <span class="string">"http://www.baidu.com"</span></div><div class="line">request = urllib.request.Request(URL)</div><div class="line">response = urllib.request.urlopen(request)</div><div class="line">print(response.read())</div></pre></td></tr></table></figure></p>
+<h3 id="POST和GET数据传送"><a href="#POST和GET数据传送" class="headerlink" title="POST和GET数据传送"></a>POST和GET数据传送</h3><p>大多数网站都是动态网页，需要你动态地传递参数给它，它做出对应的响应。所以，在访问时，我们需要传递数据给它。</p>
+<p>urlopen一般接受三个参数，它的参数如下：<code>urlopen(url, data, timeout)</code><br>第一个参数url即为URL，第二个参数data是访问URL时要传送的数据，第三个timeout是设置超时时间。<br>第二,三个参数是可以不传送的，data默认为空None，timeout默认为 <code>socket._GLOBAL_DEFAULT_TIMEOUT</code></p>
+<h4 id="POST方式："><a href="#POST方式：" class="headerlink" title="POST方式："></a>POST方式：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib</div><div class="line"> </div><div class="line">values = &#123;<span class="string">"username"</span>:<span class="string">"xxxx@qq.com"</span>,<span class="string">"password"</span>:<span class="string">"XXXX"</span>&#125;</div><div class="line">data = urllib.urlencode(values) </div><div class="line">url = <span class="string">"https://passport.csdn.net/account/login?from=http://my.csdn.net/my/mycsdn"</span></div><div class="line">request = urllib.request.Request(url, data)</div><div class="line">response = urllib.request.urlopen(request)</div><div class="line">print(response.read())</div></pre></td></tr></table></figure>
+<h4 id="GET方式："><a href="#GET方式：" class="headerlink" title="GET方式："></a>GET方式：</h4><p>至于GET方式我们可以直接把参数写到网址上面，直接<strong>构建一个带参数的URL</strong>出来即可。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib</div><div class="line"> </div><div class="line">values=&#123;&#125;</div><div class="line">values[<span class="string">'username'</span>] = <span class="string">"xxxx@qq.com"</span></div><div class="line">values[<span class="string">'password'</span>]=<span class="string">"XXXX"</span></div><div class="line">data = urllib.urlencode(values) </div><div class="line">url = <span class="string">"http://passport.csdn.net/account/login"</span></div><div class="line">geturl = url + <span class="string">"?"</span> + data</div><div class="line">request = urllib.request.Request(geturl)</div><div class="line">response = urllib.request.urlopen(request)</div><div class="line">print(response.read())</div></pre></td></tr></table></figure></p>
+<h3 id="python3中urllib的模块分4个子模块"><a href="#python3中urllib的模块分4个子模块" class="headerlink" title="python3中urllib的模块分4个子模块"></a>python3中urllib的模块分4个子模块</h3><p>urllib.request for opening and reading URLs<br>urllib.error containing the exceptions raised by urllib.request<br>urllib.parse for parsing URLs<br>urllib.robotparser for parsing robots.txt files</p>
+<h3 id="python3中urllib报错"><a href="#python3中urllib报错" class="headerlink" title="python3中urllib报错"></a>python3中urllib报错</h3><p> 爬虫过程报错：http.client.RemoteDisconnected: Remote end closed connection without response<br> 利用 urllib 发起的请求，UA 默认是 Python-urllib/3.5 而在 chrome 中访问则 user_agent = ‘Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36’，因为服务器根据 UA 来判断拒绝了 python 爬虫。</p>
+<p> 在浏览器中可以查看自己浏览器的UA</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Arvin</p>
+              <p class="site-description motion-element" itemprop="description">Learn and live.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Arvin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

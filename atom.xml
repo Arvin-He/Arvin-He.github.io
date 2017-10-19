@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arvin-he.github.io/"/>
-  <updated>2017-09-29T07:47:43.927Z</updated>
+  <updated>2017-10-18T06:37:03.330Z</updated>
   <id>http://arvin-he.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python之psutil模块使用</title>
+    <link href="http://arvin-he.github.io/2017/10/18/py-psutil-2017-10-18/"/>
+    <id>http://arvin-he.github.io/2017/10/18/py-psutil-2017-10-18/</id>
+    <published>2017-10-18T06:36:01.000Z</published>
+    <updated>2017-10-18T06:37:03.330Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="psutil模块"><a href="#psutil模块" class="headerlink" title="psutil模块"></a>psutil模块</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;psutil模块&quot;&gt;&lt;a href=&quot;#psutil模块&quot; class=&quot;headerlink&quot; title=&quot;psutil模块&quot;&gt;&lt;/a&gt;psutil模块&lt;/h3&gt;
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="http://arvin-he.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Python" scheme="http://arvin-he.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux笔记</title>
+    <link href="http://arvin-he.github.io/2017/10/18/linux-note1-2017-10-18/"/>
+    <id>http://arvin-he.github.io/2017/10/18/linux-note1-2017-10-18/</id>
+    <published>2017-10-18T06:17:30.000Z</published>
+    <updated>2017-10-18T06:30:49.753Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="查看linux下所有的python3进程"><a href="#查看linux下所有的python3进程" class="headerlink" title="查看linux下所有的python3进程"></a>查看linux下所有的python3进程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux | grep python3</div></pre></td></tr></table></figure><h3 id="linux下bash脚本执行错误"><a href="#linux下bash脚本执行错误" class="headerlink" title="linux下bash脚本执行错误"></a>linux下bash脚本执行错误</h3><p>错误: <code>-bash: ./reporteveryday.sh: /bin/bash^M: bad interpreter: No such file or directory</code><br>windows下的换行是回车符+换行符，也就是\r\n, 而unix下是换行符\n。<br>linux下不识别\r为回车符，所以导致每行多了个\r。并且因为这个是控制字符，所以在输出参数的时候不会打印出来.</p><p>bash脚本不要在windows下创建,然后在拷贝到Linux下,这样容易导致bash脚本无法执行,且不报错.<br>解决办法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim file</div><div class="line"># 查看文件的format</div><div class="line">:set ff</div><div class="line"># 修改文件format为unix</div><div class="line">:set ff=unix</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;查看linux下所有的python3进程&quot;&gt;&lt;a href=&quot;#查看linux下所有的python3进程&quot; class=&quot;headerlink&quot; title=&quot;查看linux下所有的python3进程&quot;&gt;&lt;/a&gt;查看linux下所有的python3进程&lt;/h3&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="编程" scheme="http://arvin-he.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Linux" scheme="http://arvin-he.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Python 缓存机制与 functools.lru_cache</title>
@@ -472,56 +522,6 @@
     
     
       <category term="爬虫" scheme="http://arvin-he.github.io/tags/%E7%88%AC%E8%99%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python之jsonrpc</title>
-    <link href="http://arvin-he.github.io/2017/08/25/py-jsonrpc-2017-08-25/"/>
-    <id>http://arvin-he.github.io/2017/08/25/py-jsonrpc-2017-08-25/</id>
-    <published>2017-08-25T03:38:39.000Z</published>
-    <updated>2017-09-08T03:51:39.871Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># server</span></div><div class="line"><span class="keyword">from</span> http.server <span class="keyword">import</span> BaseHTTPRequestHandler, HTTPServer</div><div class="line"><span class="keyword">from</span> jsonrpcserver <span class="keyword">import</span> methods</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@methods.add</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">ping</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span>(<span class="string">'ping'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@methods.add</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hao</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span>(<span class="string">'hao'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@methods.add</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(name)</span>:</span></div><div class="line">    <span class="keyword">return</span>(<span class="string">'Hello, %s'</span> % name)</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@methods.add</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Sum</span><span class="params">(a, b)</span>:</span></div><div class="line">    <span class="keyword">return</span>(a + b)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestHttpServer</span><span class="params">(BaseHTTPRequestHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_POST</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># Process request</span></div><div class="line">        request = self.rfile.read(int(self.headers[<span class="string">'Content-Length'</span>])).decode()</div><div class="line">        response = methods.dispatch(request)</div><div class="line">        <span class="comment"># Return response</span></div><div class="line">        self.send_response(response.http_status)</div><div class="line">        self.send_header(<span class="string">'Content-type'</span>, <span class="string">'application/json'</span>)</div><div class="line">        self.end_headers()</div><div class="line">        self.wfile.write(str(response).encode())</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    HTTPServer((<span class="string">'localhost'</span>, <span class="number">5000</span>), TestHttpServer).serve_forever()</div></pre></td></tr></table></figure><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> jsonrpcclient.http_client <span class="keyword">import</span> HTTPClient</div><div class="line"></div><div class="line">HTTPClient(<span class="string">'http://localhost:5000'</span>).request(<span class="string">'ping'</span>)</div><div class="line">HTTPClient(<span class="string">'http://localhost:5000'</span>).request(<span class="string">'hao'</span>)</div><div class="line">HTTPClient(<span class="string">'http://localhost:5000'</span>).request(<span class="string">'hello'</span>, <span class="string">'Nancy'</span>)</div><div class="line">HTTPClient(<span class="string">'http://localhost:5000'</span>).request(<span class="string">'Sum'</span>, <span class="number">5</span>, <span class="number">7</span>)</div><div class="line">HTTPClient(<span class="string">'http://localhost:5000'</span>).request(<span class="string">'lid'</span>)</div></pre></td></tr></table></figure><p>先运行服务端,再运行客户端代码</p><h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">--&gt; &#123;&quot;id&quot;: 1, &quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;ping&quot;&#125;</div><div class="line">&lt;-- &#123;&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: &quot;ping&quot;, &quot;id&quot;: 1&#125; (200 OK)</div><div class="line">--&gt; &#123;&quot;id&quot;: 2, &quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;hao&quot;&#125;</div><div class="line">&lt;-- &#123;&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: &quot;hao&quot;, &quot;id&quot;: 2&#125; (200 OK)</div><div class="line">--&gt; &#123;&quot;params&quot;: [&quot;Nancy&quot;], &quot;id&quot;: 3, &quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;hello&quot;&#125;</div><div class="line">&lt;-- &#123;&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: &quot;Hello, Nancy&quot;, &quot;id&quot;: 3&#125; (200 OK)</div><div class="line">--&gt; &#123;&quot;params&quot;: [5, 7], &quot;id&quot;: 4, &quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;Sum&quot;&#125;</div><div class="line">&lt;-- &#123;&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: 12, &quot;id&quot;: 4&#125; (200 OK)</div><div class="line">--&gt; &#123;&quot;id&quot;: 5, &quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;lid&quot;&#125;</div><div class="line">&lt;-- &#123;&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;error&quot;: &#123;&quot;code&quot;: -32601, &quot;message&quot;: &quot;Method not found&quot;&#125;, &quot;id&quot;: 5&#125; (404 Not Found)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;js_client.py&quot;, line 7, in &lt;module&gt;</div><div class="line">    HTTPClient(&apos;http://localhost:5000&apos;).request(&apos;lid&apos;)</div><div class="line">  File &quot;C:\Python34\lib\site-packages\jsonrpcclient\client.py&quot;, line 200, in request</div><div class="line">    return self.send(Request(method_name, *args, **kwargs))</div><div class="line">  File &quot;C:\Python34\lib\site-packages\jsonrpcclient\client.py&quot;, line 171, in send</div><div class="line">    return self._send_message(request, **kwargs)</div><div class="line">  File &quot;C:\Python34\lib\site-packages\jsonrpcclient\http_client.py&quot;, line 82, in _send_message</div><div class="line">    log_format=&apos;&lt;-- %(message)s (%(http_code)s %(http_reason)s)&apos;)</div><div class="line">  File &quot;C:\Python34\lib\site-packages\jsonrpcclient\client.py&quot;, line 114, in _process_response</div><div class="line">    response[&apos;error&apos;].get(&apos;data&apos;))</div><div class="line">jsonrpcclient.exceptions.ReceivedErrorResponse: Method not found</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;服务端&quot;&gt;&lt;a href=&quot;#服务端&quot; class=&quot;headerlink&quot; title=&quot;服务端&quot;&gt;&lt;/a&gt;服务端&lt;/h3&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="编程" scheme="http://arvin-he.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Python" scheme="http://arvin-he.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>正向代理和反向代理</title>
-    <link href="http://arvin-he.github.io/2017/08/24/web-forwardbackagent-2017-08-24/"/>
-    <id>http://arvin-he.github.io/2017/08/24/web-forwardbackagent-2017-08-24/</id>
-    <published>2017-08-24T06:56:13.000Z</published>
-    <updated>2017-09-08T03:51:40.194Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h3><p>我们常说的代理也就是只正向代理，正向代理的过程，它隐藏了真实的请求客户端，服务端不知道真实的客户端是谁，客户端请求的服务都被代理服务器代替来请求，某些科学上网工具扮演的就是典型的正向代理角色。用浏览器访问 <a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a> 时，被残忍的block，于是你可以在国外搭建一台代理服务器，让代理帮我去请求<code>google.com</code>，代理把请求返回的相应结构再返回给我.</p><p><img src="/2017/08/24/web-forwardbackagent-2017-08-24/1.png" alt=""></p><h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>反向代理隐藏了真实的服务端，当我们请求 www.baidu.com 的时候，就像拨打10086一样，背后可能有成千上万台服务器为我们服务，但具体是哪一台，你不知道，也不需要知道，你只需要知道反向代理服务器是谁就好了，www.baidu.com 就是我们的反向代理服务器，反向代理服务器会帮我们把请求转发到真实的服务器那里去。Nginx就是性能非常好的反向代理服务器，用来做负载均衡.</p><p><img src="/2017/08/24/web-forwardbackagent-2017-08-24/2.png" alt=""></p><p>两者的区别在于代理的对象不一样：正向代理代理的对象是客户端，反向代理代理的对象是服务端</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul><li><a href="https://www.zhihu.com/question/24723688" target="_blank" rel="external">知乎</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;正向代理&quot;&gt;&lt;a href=&quot;#正向代理&quot; class=&quot;headerlink&quot; title=&quot;正向代理&quot;&gt;&lt;/a&gt;正向代理&lt;/h3&gt;&lt;p&gt;我们常说的代理也就是只正向代理，正向代理的过程，它隐藏了真实的请求客户端，服务端不知道真实的客户端是谁，客户端请求的服务都被
-      
-    
-    </summary>
-    
-      <category term="编程" scheme="http://arvin-he.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="web" scheme="http://arvin-he.github.io/tags/web/"/>
     
   </entry>
   

@@ -1,9 +1,1536 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Learn and live."><title>Simple &amp; Freedom | Learn and live.</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Simple &amp; Freedom</h1><a id="logo" href="/.">Simple &amp; Freedom</a><p class="description">Learn and live.</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/essay/"><i class="fa fa-archive"> 随笔</i></a><a href="/readnotes/"><i class="fa fa-archive"> 读书笔记</i></a><a href="/life/"><i class="fa fa-archive"> 生活</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/404.html"><i class="fa fa-heartbeat"> 公益404</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2017/03/29/cpp-const-keyword-2017-03-29/">C/C++之const关键字</a></h1><div class="post-meta">2017-03-29</div><div class="post-content"><h3 id="1-C中的const关键字"><a href="#1-C中的const关键字" class="headerlink" title="1. C中的const关键字"></a>1. C中的const关键字</h3><p>const是C语言中保留的一个关键字，它用来限定一个变量是只读的.<br>注意:在C语言中，用const修饰的变量必须在声明时进行初始化(用来修饰函数的形参除外).<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> n;   <span class="comment">//这种声明方式是错误的</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> n=<span class="number">5</span>; <span class="comment">//正确</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n)</span></span>; <span class="comment">//正确</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> a;  <span class="comment">//错误</span></div><div class="line"><span class="keyword">char</span> * <span class="keyword">const</span> p;  <span class="comment">//错误</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *p;  <span class="comment">//正确(注意这种为什么是正确的),因为这里const是修饰p指向的变量,而不是指针变量p本身</span></div></pre></td></tr></table></figure></p></div><p class="readmore"><a href="/2017/03/29/cpp-const-keyword-2017-03-29/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/03/28/cpp-keywords-2017-03-28/">C++知识积累</a></h1><div class="post-meta">2017-03-28</div><div class="post-content"><h3 id="1-宏函数"><a href="#1-宏函数" class="headerlink" title="1. 宏函数"></a>1. 宏函数</h3><p>在Ｃ/C++语言中允许用一个标识符来表示一个字符串，称为宏，该字符串可以是常数、表达式、格式串等。<br>在编译预处理时，对程序中所有出现的“宏名”，都用宏定义中的字符串去替换，这称为“宏替换”或“宏展开”。<br>宏定义是由源程序中的宏定义命令完成的。宏替换是由预处理程序自动完成的。若字符串是表达式，则称之为函数式宏定义.<br>普通函数式宏定义：<code>MAX(a,b) { return a&gt;b?a:b;}</code></p></div><p class="readmore"><a href="/2017/03/28/cpp-keywords-2017-03-28/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/03/27/cpp-keywords-2017-03-27/">C++之static关键字</a></h1><div class="post-meta">2017-03-27</div><div class="post-content"><h2 id="1-static关键字"><a href="#1-static关键字" class="headerlink" title="1. static关键字"></a>1. static关键字</h2><p>C语言代码是以文件为单位来组织的，在一个源程序的所有源文件中，一个外部变量（注意不是局部变量）或者函数只能在一个源程序中定义一次，<br>如果有重复定义的话编译器就会报错。伴随着不同源文件变量和函数之间的相互引用以及相互独立的关系，产生了extern和static关键字。</p></div><p class="readmore"><a href="/2017/03/27/cpp-keywords-2017-03-27/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/03/25/tool-skill-2017-03-25/">Windows下工具使用和技巧</a></h1><div class="post-meta">2017-03-25</div><div class="post-content"><h2 id="1-cmder简介"><a href="#1-cmder简介" class="headerlink" title="1. cmder简介"></a>1. cmder简介</h2><p>cmder是windows下一款很好用的命令行工具,支持绝大部分linux命令,自带git和vim.</p></div><p class="readmore"><a href="/2017/03/25/tool-skill-2017-03-25/">阅读更多</a></p></div><div class="post"><h1 class="post-title"><a href="/2017/03/24/markdown-tutorial-2017-03-24/">Markdown使用</a></h1><div class="post-meta">2017-03-24</div><div class="post-content"><h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. 标题</h3><ol>
-<li>使用 # 表示标题，一级标题使用一个 # ，二级标题使用两个 ## ，以此类推，共有六级标题。</li>
-<li>使用 ===== 表示高阶标题，使用 ——- 表示次阶标题。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 这是一级标题</div><div class="line">========</div><div class="line">## 这是二级标题</div><div class="line">--------------</div></pre></td></tr></table></figure></div><p class="readmore"><a href="/2017/03/24/markdown-tutorial-2017-03-24/">阅读更多</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/26/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/28/">下一页</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">111</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/计算机基础/" style="font-size: 15px;">计算机基础</a> <a href="/tags/谷歌/" style="font-size: 15px;">谷歌</a> <a href="/tags/C-C/" style="font-size: 15px;">C/C++</a> <a href="/tags/OOP/" style="font-size: 15px;">OOP</a> <a href="/tags/设计模式/" style="font-size: 15px;">设计模式</a> <a href="/tags/Flask/" style="font-size: 15px;">Flask</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/思想/" style="font-size: 15px;">思想</a> <a href="/tags/方法/" style="font-size: 15px;">方法</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 15px;">MongoDB</a> <a href="/tags/mongoDB/" style="font-size: 15px;">mongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/NodeJS/" style="font-size: 15px;">NodeJS</a> <a href="/tags/NSIS/" style="font-size: 15px;">NSIS</a> <a href="/tags/爬虫/" style="font-size: 15px;">爬虫</a> <a href="/tags/PyQt5/" style="font-size: 15px;">PyQt5</a> <a href="/tags/Scrapy/" style="font-size: 15px;">Scrapy</a> <a href="/tags/RegExp/" style="font-size: 15px;">RegExp</a> <a href="/tags/Tools/" style="font-size: 15px;">Tools</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/Web/" style="font-size: 15px;">Web</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/py-cache-2017-09-29/">Python 缓存机制与 functools.lru_cache</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/chrome-hotkey-2017-09-29/">谷歌浏览器常用快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/29/scrapy-notes2-2017-09-29/">爬虫笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/27/mongodb-config-2017-09-27/">MongoDB配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/20/py-timer-2017-09-20/">Python定时器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/19/linux-cmds-2017-09-19/">Linux一些常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-bs4-2017-09-18/">python之beautifulsoup使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/mongodb-note3-2017-09-18/">mongodb笔记(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/18/py-note1-2017-09-18/">Python笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/13/mongodb-note2-2017-09-13/">mongodb笔记(二)</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Simple &amp; Freedom.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
-if (search_path.length == 0) {
-   search_path = 'search.xml';
-}
-var path = '/' + search_path;
-searchFunc(path, 'local-search-input', 'local-search-result');
-</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Simple & Freedom" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Learn and live.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simple &amp; Freedom">
+<meta property="og:url" content="http://arvin-he.github.io/page/27/index.html">
+<meta property="og:site_name" content="Simple &amp; Freedom">
+<meta property="og:description" content="Learn and live.">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple &amp; Freedom">
+<meta name="twitter:description" content="Learn and live.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://arvin-he.github.io/page/27/"/>
+
+
+
+
+
+  <title>Simple & Freedom</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Simple & Freedom</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learn and live.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/03/31/gitcmd-2017-03-31/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/31/gitcmd-2017-03-31/" itemprop="url">Git命令使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-31T09:47:37+08:00">
+                2017-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>版本管理基本上是多人协作开发中必不可少的工具，常用的版本管理工具有：svn和git。虽然都有可视化的工具帮助我们使用这些工具，然而当你用上命令行之后，我想你会选择抛弃这些可视化工具。下面是我整理的一些常用的Git命令。</p>
+<p>一个比较全面很好的Git书: <a href="https://git-scm.com/book/zh/v2" target="_blank" rel="external">Git Pro 第二版</a></p>
+<p>一些概念:</p>
+<ol>
+<li>工作区与暂存区<br>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。<br>工作区就是你在电脑里能看到的目录，比如我的testgit文件夹就是一个工作区,但不包括.git这个隐藏目录.<br>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的<strong>暂存区</strong>，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</li>
+</ol>
+<p>我们把文件往 Git 版本库里添加的时候，是分两步执行的：<br>第一步是用git add把文件添加进去，实际上就是把文件修改添加到<strong>暂存区</strong>；<br>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。<br>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以现在git commit就是往master分支上提交更改。<br>可以简单理解为，git add命令实际上就是把要提交的所有修改放到暂存区（Stage），然后执行git commit就可以一次性把暂存区的所有修改提交到分支。<br>一旦提交后，如果你又没有对工作区做任何修改，那么工作区就是“干净”的。</p>
+<ol>
+<li>global选项<br>配置Git的时候，加上–global是针对当前用户起作用的，如果不加，那只针对当前的仓库起作用</li>
+</ol>
+<h3 id="1-配置Git邮箱和用户名-因为每一次提交都需要这些信息"><a href="#1-配置Git邮箱和用户名-因为每一次提交都需要这些信息" class="headerlink" title="1. 配置Git邮箱和用户名, 因为每一次提交都需要这些信息"></a>1. 配置Git邮箱和用户名, 因为每一次提交都需要这些信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;John Doe&quot;</div><div class="line">$ git config --global user.email johndoe@example.com</div></pre></td></tr></table></figure>
+<p><strong>注意:</strong><br>如果用了 –global 选项，那么更改的配置文件就是位于你用户主目录下的那个，以后你所有的项目都会默认使用这里配置的用户信息。<br>如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 –global 选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。</p>
+<h3 id="2-查看git配置信息"><a href="#2-查看git配置信息" class="headerlink" title="2. 查看git配置信息"></a>2. 查看git配置信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git config --list #检查已有的配置信息</div><div class="line">git config user.name #查看git用户名</div><div class="line">git config user.email #查看git邮箱</div></pre></td></tr></table></figure>
+<h3 id="3-在本地保存github帐号的用户名和密码-不用每次输入用户名和密码"><a href="#3-在本地保存github帐号的用户名和密码-不用每次输入用户名和密码" class="headerlink" title="3. 在本地保存github帐号的用户名和密码,不用每次输入用户名和密码"></a>3. 在本地保存github帐号的用户名和密码,不用每次输入用户名和密码</h3><p>使用https协议时,在向远程仓库push提交内容时,总是每次要求输入你的github用户名和密码<br>解决办法:</p>
+<ol>
+<li><p>设置记住密码（默认15分钟）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global credential.helper cache</div></pre></td></tr></table></figure>
+</li>
+<li><p>自己设置记住密码时间,比如一小时</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config credential.helper ‘cache --timeout=3600’</div></pre></td></tr></table></figure>
+</li>
+<li><p>长期存储密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global credential.helper store</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>配置好后在 .gitconfig 文件中可以看到.</p>
+<h3 id="4-配置github上ssh密匙-不用每次输入用户名和密码"><a href="#4-配置github上ssh密匙-不用每次输入用户名和密码" class="headerlink" title="4. 配置github上ssh密匙,不用每次输入用户名和密码"></a>4. 配置github上ssh密匙,不用每次输入用户名和密码</h3><p>使用ssh协议时,也要输入用户名和密码,要想不用每次输入用户名和密码,则在你的本地机器生成ssh的私匙和公匙,<br>私匙保存在本地机器,公匙保存在你的github网站上的帐号设置上.</p>
+<ol>
+<li><p>创建SSH Key<br>在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，<br>如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>登陆GitHub，打开“Settings”，“SSH and GPG Keys”页面</p>
+</li>
+<li>点击“New SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容</li>
+</ol>
+<h3 id="5-移除跟踪但不删除文件，以便稍后在-gitignore-文件中补上，用-–cached-选项即可"><a href="#5-移除跟踪但不删除文件，以便稍后在-gitignore-文件中补上，用-–cached-选项即可" class="headerlink" title="5. 移除跟踪但不删除文件，以便稍后在 .gitignore 文件中补上，用 –cached 选项即可"></a>5. 移除跟踪但不删除文件，以便稍后在 .gitignore 文件中补上，用 –cached 选项即可</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rm --cached readme.txt</div></pre></td></tr></table></figure>
+<h3 id="6-修改-gitignore并更新本地和远程仓库"><a href="#6-修改-gitignore并更新本地和远程仓库" class="headerlink" title="6. 修改.gitignore并更新本地和远程仓库"></a>6. 修改.gitignore并更新本地和远程仓库</h3><ol>
+<li>在.gitignore修改过滤规则,并保存.</li>
+<li>更新本地和远程仓库<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 注意有个点“.”</div><div class="line">git rm -r --cached .</div><div class="line">git add -A</div><div class="line">git commit -m &quot;update .gitignore&quot;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>配置.gitignore<br>所有配置文件可以直接在线浏览：<a href="https://github.com/github/gitignore" target="_blank" rel="external">https://github.com/github/gitignore</a><br>当然也可以配置全局忽略的文件，这样就不用每个项目都加gitignore了：<code>git config --global core.excludesfile &#39;~/.gitignore&#39;</code></p>
+<h3 id="7-丢弃本地修改-使用远程仓库的内容"><a href="#7-丢弃本地修改-使用远程仓库的内容" class="headerlink" title="7. 丢弃本地修改,使用远程仓库的内容"></a>7. 丢弃本地修改,使用远程仓库的内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git fetch --all</div><div class="line">git reset --hard origin/master</div><div class="line">git fetch 只是下载远程的库的内容，不做任何的合并,</div><div class="line">git reset 把HEAD指向刚刚下载的最新的版本</div></pre></td></tr></table></figure>
+<h3 id="8-本地仓库首次推送到github远程仓库"><a href="#8-本地仓库首次推送到github远程仓库" class="headerlink" title="8. 本地仓库首次推送到github远程仓库"></a>8. 本地仓库首次推送到github远程仓库</h3><ol>
+<li>在github上建立一个和本地同名的仓库名称</li>
+<li>在本地命令行输入:<code>git remote add origin 远程仓库地址</code></li>
+<li>将本地仓库同步到github远程仓库:<code>git push -u origin master</code></li>
+</ol>
+<h3 id="9-恢复本地删除的文件"><a href="#9-恢复本地删除的文件" class="headerlink" title="9. 恢复本地删除的文件"></a>9. 恢复本地删除的文件</h3><p>恢复已commit的文件:<code>Git checkout commit_id -- file_name</code><br>恢复未commit的文件:<code>git checkout -- file_name</code></p>
+<h3 id="10-打标签"><a href="#10-打标签" class="headerlink" title="10. 打标签"></a>10. 打标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">git tag    #显示已有标签</div><div class="line">git tag -l &apos;v1.4.2.*&apos;   #用特定的搜索模式列出符合条件的标签</div><div class="line">#创建一个含附注类型的标签,-a （译注：取 annotated 的首字母）指定标签名字,-m 选项则指定了对应的标签说明</div><div class="line">git tag -a v1.4 -m &apos;my version 1.4&apos;  </div><div class="line">git show v1.4    #查看相应标签的版本信息，并连同显示打标签时的提交对象</div><div class="line">git tag v1.4   #创建轻量级标签,一个 -a，-s 或 -m 选项都不用，直接给出标签名字即可</div><div class="line">git push origin v1.5 #默认情况下，git push 并不会把标签传送到远端服务器上，只有通过显式命令才能分享标签到远端仓库</div><div class="line">git push origin --tags  # 一次推送所有本地新增的标签，可以使用 --tags 选项</div><div class="line"></div><div class="line"># 删除标签</div><div class="line">git tag -d v0.1 </div><div class="line"></div><div class="line"># 删除远程仓库标签,先从本地删除,再从远程删除</div><div class="line">git tag -d v0.9</div><div class="line">git push origin :refs/tags/v0.9</div></pre></td></tr></table></figure>
+<h3 id="11-git将本地仓库上传到远程仓库"><a href="#11-git将本地仓库上传到远程仓库" class="headerlink" title="11. git将本地仓库上传到远程仓库"></a>11. git将本地仓库上传到远程仓库</h3><p>本地新建了一个文件夹,并执行了git init,初始化为一个git仓库了, 然后add,再commit后,想要把本地仓库内容上传到github上去,但此时github上没有这个仓库.<br>因此先到github上创建与你本地仓库同名的仓库,此时还是一个空仓库,需要把本地的内容上传到github上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git remote add origin https://github.com/yourname/yourrepo.git</div><div class="line">git push -u origin master  # 第一次推送master分支时，加上了-u参数</div><div class="line">git push origin master</div></pre></td></tr></table></figure></p>
+<h3 id="12-版本回退"><a href="#12-版本回退" class="headerlink" title="12. 版本回退"></a>12. 版本回退</h3><p>在 Git中，用HEAD表示当前版本，也就是最新的提交commit id，<br>上一个版本就是HEAD^，上上一个版本就是HEAD^^，<br>往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 查看日志</div><div class="line">git log</div><div class="line"># 简化日志信息</div><div class="line">git log  --pretty=oneline</div><div class="line"></div><div class="line"># 当前版本回退到上一个版本，就可以使用git reset命令:</div><div class="line">git reset --hard HEAD^</div><div class="line"></div><div class="line"># 当前版本是过去的某个版本,想回到当前版本的之后的版本</div><div class="line">git reset --hard 2e70fdf(commit id)</div></pre></td></tr></table></figure></p>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 把readme.md文件在工作区的修改全部撤销，即让这个文件回到最近一次git commit或git add时的状态,也可使用reset</div><div class="line">git checkout -- readme.md</div></pre></td></tr></table></figure>
+<h3 id="Git显示颜色，会让命令输出看起来更醒目"><a href="#Git显示颜色，会让命令输出看起来更醒目" class="headerlink" title="Git显示颜色，会让命令输出看起来更醒目"></a>Git显示颜色，会让命令输出看起来更醒目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config --global color.ui true</div></pre></td></tr></table></figure>
+<h3 id="fatal-remote-origin-already-exists"><a href="#fatal-remote-origin-already-exists" class="headerlink" title="fatal: remote origin already exists"></a>fatal: remote origin already exists</h3><p> 如果输入$ Git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git<br>提示出错信息：fatal: remote origin already exists.</p>
+<p>解决办法如下：<br>1.先输入$ git remote rm origin</p>
+<p>2.再输入$ git remote add origin git@github.com:djqiang/gitdemo.git 就不会报错了！</p>
+<p>3.如果输入$ git remote rm origin 还是报错的话，error: Could not remove config section ‘remote.origin’. 我们需要修改gitconfig文件的内容</p>
+<p>4.找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc</p>
+<p>5.找到一个名为gitconfig的文件，打开它把里面的[remote “origin”]那一行删掉就好了！</p>
+<h3 id="使用git在本地创建一个项目的过程"><a href="#使用git在本地创建一个项目的过程" class="headerlink" title="使用git在本地创建一个项目的过程"></a>使用git在本地创建一个项目的过程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># 创建一个项目hello-world</div><div class="line">$ makdir ~/hello-world    </div><div class="line"># 打开这个项目</div><div class="line">$ cd ~/hello-world        </div><div class="line"># 初始化 </div><div class="line">$ git init                </div><div class="line">$ touch README</div><div class="line"># 更新README文件</div><div class="line">$ git add README          </div><div class="line"># 提交更新，并注释信息“first commit” </div><div class="line">$ git commit -m &apos;first commit&apos;</div><div class="line"># 连接远程github项目  </div><div class="line">$ git remote add origin git@github.com:defnngj/hello-world.git     </div><div class="line"># 将本地项目更新到github项目上去</div><div class="line">$ git push -u origin master</div></pre></td></tr></table></figure>
+<h3 id="如果输入-git-push-origin-master"><a href="#如果输入-git-push-origin-master" class="headerlink" title="如果输入$ git push origin master"></a>如果输入$ git push origin master</h3><p>提示出错信息：error:failed to push som refs to …<br>解决办法如下：</p>
+<ol>
+<li>先输入$ git pull origin master //先把远程服务器github上面的文件拉下来</li>
+<li>再输入$ git push origin master</li>
+<li>如果出现报错 fatal: Couldn’t find remote ref master或者fatal: ‘origin’ does not appear to be a git repository以及fatal: Could not read from remote repository.</li>
+<li>则需要重新输入$ git remote add origin git@github.com:djqiang/gitdemo.git</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/03/30/reg-tutorial-2017-03-30/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/30/reg-tutorial-2017-03-30/" itemprop="url">正则表达式使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-30T13:58:36+08:00">
+                2017-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="1-常用元字符"><a href="#1-常用元字符" class="headerlink" title="1. 常用元字符"></a>1. 常用元字符</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">元字符</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">.</td>
+<td style="text-align:left">匹配除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td style="text-align:left">\w</td>
+<td style="text-align:left">匹配字母或数字或下划线或汉字</td>
+</tr>
+<tr>
+<td style="text-align:left">\s</td>
+<td style="text-align:left">匹配任意的空白符</td>
+</tr>
+<tr>
+<td style="text-align:left">\d</td>
+<td style="text-align:left">匹配数字</td>
+</tr>
+<tr>
+<td style="text-align:left">\b</td>
+<td style="text-align:left">匹配单词的开始或结束</td>
+</tr>
+<tr>
+<td style="text-align:left">^</td>
+<td style="text-align:left">匹配字符串的开始</td>
+</tr>
+<tr>
+<td style="text-align:left">$</td>
+<td style="text-align:left">匹配字符串的结束</td>
+</tr>
+</tbody>
+</table>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/30/reg-tutorial-2017-03-30/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/03/29/cpp-const-keyword-2017-03-29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/29/cpp-const-keyword-2017-03-29/" itemprop="url">C/C++之const关键字</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-29T14:34:05+08:00">
+                2017-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-C中的const关键字"><a href="#1-C中的const关键字" class="headerlink" title="1. C中的const关键字"></a>1. C中的const关键字</h3><p>const是C语言中保留的一个关键字，它用来限定一个变量是只读的.<br>注意:在C语言中，用const修饰的变量必须在声明时进行初始化(用来修饰函数的形参除外).<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> n;   <span class="comment">//这种声明方式是错误的</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> n=<span class="number">5</span>; <span class="comment">//正确</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n)</span></span>; <span class="comment">//正确</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> a;  <span class="comment">//错误</span></div><div class="line"><span class="keyword">char</span> * <span class="keyword">const</span> p;  <span class="comment">//错误</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *p;  <span class="comment">//正确(注意这种为什么是正确的),因为这里const是修饰p指向的变量,而不是指针变量p本身</span></div></pre></td></tr></table></figure></p>
+<p>注意: 一旦一个变量被const修饰后，在程序中除初始化外对这个变量进行的赋值都是错误的。<br>总结:</p>
+<ul>
+<li>在C语言中用const去修饰一个变量，表示这个变量是只读的，不可通过显式的调用a去修改a的值，并且此时a仍然是一个变 量，不能等同于常量;</li>
+<li>要注意const在声明变量时所处的位置，位置不同，在意义上可能会有很大的不同。如果const在’<em>‘左边，则表示指针指向的变量的值不可变;如果const在’</em>‘右边，则表示指针的值是不可变的;</li>
+</ul>
+<h3 id="2-C-中的关键字"><a href="#2-C-中的关键字" class="headerlink" title="2. C++中的关键字"></a>2. C++中的关键字</h3><p>const修饰符把对象转变成常数对象，即用const进行修饰的变量的值在程序的任意位置将不能再被修改，就如同常数一样使用！任何修改该变量的尝试都会导致编译错误.<br><strong>注意：</strong>常量在定以后就不能被修改，所以定义时必须初始化.<br>对于类中的const成员变量则必须通过初始化列表进行初始化<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    A(<span class="keyword">int</span> i);</div><div class="line">    </div><div class="line">    <span class="keyword">const</span> <span class="keyword">int</span> &amp;r;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="keyword">const</span> <span class="keyword">int</span> a;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> b;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> A::b=<span class="number">10</span>;</div><div class="line">A::A(<span class="keyword">int</span> i):a(i), r(a)</div><div class="line">&#123;&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="const对象作用域"><a href="#const对象作用域" class="headerlink" title="const对象作用域"></a>const对象作用域</h4><p>在全局作用域里定义非const变量时，它在整个程序中都可以访问，我们可以把一个非const变量定义在一个文件中，假设已经做了合适的声明，就可以在另外的文件中使用这个变量：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// file1.cpp</span></div><div class="line"><span class="keyword">int</span> count;</div><div class="line"></div><div class="line"><span class="comment">// file2.cpp</span></div><div class="line"><span class="keyword">extern</span> <span class="keyword">int</span> count;</div><div class="line">++count;</div></pre></td></tr></table></figure></p>
+<p>在全局作用域声明的const变量是定义该const变量的文件的局部变量。此const变量只存在于那个文件中，不能被其他文件访问。通过指定const变量为extern，就可以在整个程序中访问const对象。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//file1.cpp</span></div><div class="line"><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">int</span> count = <span class="number">10</span>;  <span class="comment">//定义的时候就要指定extern,假如在整个程序中访问的话</span></div><div class="line"></div><div class="line"><span class="comment">//file2.cpp</span></div><div class="line"><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">int</span> count;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> index=<span class="number">0</span>; index!=count; ++index)</div><div class="line">&#123;...&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>注意:</strong>非const变量默认为extern。要使const变量能够在其他文件中访问，必须在文件中<strong>显式指定</strong>它为extern。</p>
+<h4 id="const引用"><a href="#const引用" class="headerlink" title="const引用"></a>const引用</h4><p>const引用是指向const对象的引用<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> count = <span class="number">1024</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;refCount = count; <span class="comment">//两者均为const对象</span></div><div class="line"><span class="keyword">int</span> &amp;ref2 = count;       <span class="comment">//错误!不能用非const引用指向const对象</span></div></pre></td></tr></table></figure></p>
+<p>const 引用可以初始化为不同类型的对象或者初始化为右值。如字面值常量：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</div><div class="line"><span class="comment">//仅对const引用合法</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;j = <span class="number">10</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;k = j + i;</div></pre></td></tr></table></figure></p>
+<p>同样的初始化对于非const引用却是不合法的，而且会导致编译时错误。其原因非常微妙，值得解释一下。观察将引用绑定到不同的类型时所发生的事情，最容易理解上述行为<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">5</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;b = a; <span class="comment">//不合法</span></div><div class="line">编译器会做如下转换:</div><div class="line"><span class="keyword">int</span> temp = a;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;b = temp;</div></pre></td></tr></table></figure></p>
+<p>注意：引用在内部存放的是一个对象的地址，它是该对象的别名。对于不可寻址的值，如文字常量，以及不同类型的对象，编译器为了实现引用，必须生成一个临时对象，引用实际上指向该对象，但用户不能访问它.<br>如果b不是const,修改b的同时也修改了temp,但不是a,而期望修改b的同时修改了a的程序员会发现a没有被修改,这会造成bug.所以仅允许const引用绑定到需要临时使用的值完全避免了这个问题，直接告诉程序员不能修改，因为const引用是只读的.(其实就是避免程序员心理预期产生反差)<br>注意：非const引用只能绑定到与该引用相同类型的对象。 const引用则可以绑定到不同但相关的类型的对象或绑定到右值。</p>
+<h4 id="const对象的动态数组"><a href="#const对象的动态数组" class="headerlink" title="const对象的动态数组"></a>const对象的动态数组</h4><p>如果在自由存储区中创建的数组存储了内置类型的const对象，则必须为这个数组提供初始化： 因为数组元素都是const对象，无法赋值。实现这个要求的唯一方法是对数组做值初始化.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> *pci = <span class="keyword">new</span> <span class="keyword">const</span> <span class="keyword">int</span>[<span class="number">100</span>];  <span class="comment">// error</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> *pci_ok = <span class="keyword">new</span> <span class="keyword">const</span> <span class="keyword">int</span>[<span class="number">100</span>]();  <span class="comment">//OK</span></div></pre></td></tr></table></figure></p>
+<p>C++允许定义类类型的const数组，但该类类型必须提供默认构造函数：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这里便会调用string类的默认构造函数初始化数组元素</span></div><div class="line"><span class="keyword">const</span> <span class="built_in">string</span> *pcs = <span class="keyword">new</span> <span class="built_in">string</span>[<span class="number">100</span>]</div></pre></td></tr></table></figure></p>
+<h4 id="指针和const限定符的关系"><a href="#指针和const限定符的关系" class="headerlink" title="指针和const限定符的关系"></a>指针和const限定符的关系</h4><p>指针常量:即指针本身的值是不可改变的，而指针指向的变量的值是可以改变的;</p>
+<p>常量指针:即指针指向的变量的值是不可改变的，而指针本身的值是可以改变的;</p>
+<p>可以这样理解:因为指针本身也是一个变量，只不过指针存放的是地址而已，而一旦指针变成了常量，即指针本身的值是不可变的，此时指针只能指向固定的存储单元;指针一般会指向一个变量，如果该变量成为一个常量，那么该变量的值就不能被修改，即常量指针，指针指向的是一个不可变的变量。</p>
+<h4 id="函数和const限定符的关系"><a href="#函数和const限定符的关系" class="headerlink" title="函数和const限定符的关系"></a>函数和const限定符的关系</h4><ol>
+<li>类中的const成员函数（常量成员函数）<br>在一个类中，任何不会修改数据成员的函数都应该声明为const类型。如果在编写const成员函数时，不慎修改了数据成员，或者调用了其它非const成员函数，编译器将指出错误，这无疑会提高程序的健壮性。使用const关键字进行说明的成员函数，称为常成员函数。只有常成员函数才有资格操作常量或常对象，没有使用const关键字说明的成员函数不能用来操作常对象。常成员函数说明格式如下：　&lt;类型说明符&gt; &lt;函数名&gt; (&lt;参数表&gt;) const;<br>其中，const是加在函数生明后面的类型修饰符，它是函数类型的一个组成部分，因此，在函数实现部分也要带const关键字。下面举一例子说明常成员函数的特征。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">  <span class="keyword">int</span> m_num;</div><div class="line">  <span class="keyword">int</span> m_date[<span class="number">100</span>];</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(<span class="keyword">int</span> elem)</span></span>;</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">Pop</span><span class="params">(<span class="keyword">void</span>)</span></span>;</div><div class="line">  <span class="function"><span class="keyword">int</span> <span class="title">GetCount</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">//定义为const函数</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">int</span> Stack::GetCount() <span class="keyword">const</span></div><div class="line">&#123;</div><div class="line">  ++m_num;  <span class="comment">// error 编译错误,企图修改数据成员m_num</span></div><div class="line">  Pop();    <span class="comment">// error 编译错误,企图调用非const函数</span></div><div class="line">  <span class="keyword">return</span> m_num;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>既然const是定义为const函数的组成部分，那么就可以通过添加const实现函数重载.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">R</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  R(<span class="keyword">int</span> r1, <span class="keyword">int</span> r2)</div><div class="line">  &#123;</div><div class="line">    R1 = r1;</div><div class="line">    R2 = r2;</div><div class="line">  &#125;  </div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">  <span class="keyword">int</span> R1, R2;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">void</span> R::print()</div><div class="line">&#123;</div><div class="line">  <span class="built_in">cout</span>&lt;&lt;R1;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> R::print() <span class="keyword">const</span></div><div class="line">&#123;</div><div class="line">  <span class="built_in">cout</span>&lt;&lt;R2;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  <span class="function">R <span class="title">a</span><span class="params">(<span class="number">5</span>, <span class="number">4</span>)</span></span>;</div><div class="line">  a.print();</div><div class="line">  <span class="function"><span class="keyword">const</span> R <span class="title">b</span><span class="params">(<span class="number">20</span>, <span class="number">52</span>)</span></span>;</div><div class="line">  b.print(); <span class="comment">//const对象默认调用const成员函数</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="number">5</span></div><div class="line"><span class="number">52</span></div></pre></td></tr></table></figure></p>
+<p>const 修饰函数返回值<br>const修饰函数返回值其实用的并不是很多，它的含义和const修饰普通变量以及指针的含义基本相同.<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span> <span class="title">func1</span><span class="params">()</span></span>; <span class="comment">//这个其实无意义,函数返回本身就是作为右值赋值.</span></div><div class="line"><span class="comment">// 调用时 const int *pValue = func2();</span></div><div class="line"><span class="comment">//func2可以看作一个变量,即指针内容不可变</span></div><div class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span> *<span class="title">func2</span><span class="params">()</span></span>; </div><div class="line"><span class="comment">// 调用时 const int *pValue = func3();</span></div><div class="line"><span class="comment">//func3可以看作一个变量,即指针本身不可变</span></div><div class="line"><span class="function"><span class="keyword">int</span>* <span class="keyword">const</span> <span class="title">func3</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure></p>
+<p>一般情况下，函数的返回值为某个<strong>对象</strong>时，如果将其声明为const时，多用于操作符的重载。<br>通常不建议用const修饰函数的返回值类型为某个对象或对某个对象引用的情况。<br>原因如下：如果返回值为某个对象为const（const A test = A 实例）或某个对象的引用为const（const A&amp; test = A实例） ，则返回值具有const属性，则返回实例只能访问类A中的公有（保护）数据成员和const成员函数，并且不允许对其进行赋值操作，这在一般情况下很少用到。  </p>
+<p>const修饰函数参数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//传递过来的参数在函数内不可以改变(无意义，因为Var本身就是形参)</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> var)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//参数指针所指内容为常量不可变</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func2</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* var)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">// 参数指针本身为常量不可变(也无意义，因为char* Var也是形参)</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func3</span><span class="params">(<span class="keyword">char</span>* <span class="keyword">const</span> var)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//参数为引用，为了增加效率同时防止修改。修饰引用参数时：</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func4</span><span class="params">(<span class="keyword">const</span> Class&amp; var)</span></span>; <span class="comment">//引用参数在函数内不可以改变</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">func5</span><span class="params">(<span class="keyword">const</span> TYPE&amp; Var)</span></span>;  <span class="comment">//引用参数在函数内为常量不可变</span></div></pre></td></tr></table></figure>
+<p>这样的一个const引用传递和最普通的函数按值传递的效果是一模一样的,他禁止对引用的对象的一切修改,唯一不同的是按值传递会先建立一个类对象的副本, 然后传递过去,而它直接传递地址,所以这种传递比按值传递更有效.另外只有引用的const传递可以传递一个临时对象,因为临时对象都是const属性, 且是不可见的,他短时间存在一个局部域中,所以不能使用指针,只有引用的const传递能够捕捉到这个家伙.</p>
+<h3 id="const限定符和static的区别"><a href="#const限定符和static的区别" class="headerlink" title="const限定符和static的区别"></a>const限定符和static的区别</h3><ol>
+<li>const定义的常量在超出其作用域之后其空间会被释放，而static定义的静态常量在函数执行后不会释放其存储空间。</li>
+<li>static表示的是静态的。类的静态成员函数、静态成员变量是和类相关的，而不是和类的具体对象相关的。即使没有具体对象，也能调用类的静态成员函数和成员变量。一般类的静态函数几乎就是一个全局函数，只不过它的作用域限于包含它的文件中。</li>
+<li>在C++中，static静态成员变量不能在类的内部初始化。在类的内部只是声明，定义必须在类定义体的外部，通常在类的实现文件中初始化，如：double Account::Rate=2.25; static关键字只能用于类定义体内部的声明中，定义时不能标示为static</li>
+<li>在C++中，const成员变量也不能在类定义处初始化，只能通过构造函数初始化列表进行，并且必须有构造函数。</li>
+<li>const数据成员,只在某个对象生存期内是常量，而对于整个类而言却是可变的。因为类可以创建多个对象，不同的对象其const数据成员的值可以不同。所以不能在类的声明中初始化const数据成员，因为类的对象没被创建时，编译器不知道const数据成员的值是什么。</li>
+<li>const数据成员的初始化只能在类的构造函数的初始化列表中进行。要想建立在整个类中都恒定的常量，应该用类中的枚举常量来实现，或者static const。</li>
+<li>const成员函数主要目的是防止成员函数修改对象的内容。即const成员函数不能修改成员变量的值，但可以访问成员变量。当方法成员函数时，该函数只能是const成员函数。</li>
+<li>static成员函数主要目的是作为类作用域的全局函数。不能访问类的非静态数据成员。类的静态成员函数没有this指针，这导致：1、不能直接存取类的非静态成员变量，调用非静态成员函数2、不能被声明为virtual </li>
+</ol>
+<h4 id="关于static、const、static-cosnt、const-static成员的初始化问题"><a href="#关于static、const、static-cosnt、const-static成员的初始化问题" class="headerlink" title="关于static、const、static cosnt、const static成员的初始化问题"></a>关于static、const、static cosnt、const static成员的初始化问题</h4><ol>
+<li><p>类里的const成员初始化<br>在一个类里建立一个const时，不能给他初值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  foo():i(<span class="number">100</span>)&#123;&#125;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">  <span class="keyword">const</span> <span class="keyword">int</span> i=<span class="number">100</span>;  <span class="comment">//error!!! 不能在类中初始化</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">//或者通过这样的方式初始化</span></div><div class="line">foo::foo():i(<span class="number">100</span>)</div><div class="line">&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>类里的static成员初始化：<br>类中的static变量是属于类的，不属于某个对象，它在整个程序的运行过程中只有一个副本，因此不能在定义对象时 对变量进行初始化，就是不能用构造函数进行初始化，其正确的初始化方法是：<br>数据类型 类名::静态数据成员名=值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  foo():i(<span class="number">100</span>)&#123;&#125;</div><div class="line"><span class="keyword">private</span>:</div><div class="line">  <span class="keyword">static</span> <span class="keyword">int</span> i;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">int</span> foo::i=<span class="number">20</span>;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>初始化在类体外进行,且前面不佳static,以免与一般静态变量或对象混淆</li>
+<li>初始化时不加该成员的访问权限控制符</li>
+<li>初始化时使用作用域操作符表明所属的类</li>
+</ul>
+<ol>
+<li>类里的static cosnt 和 const static成员初始化（这两种写法是一致的！！）</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> mask1;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">int</span> mask2;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> Test::mask1 = <span class="number">0xffff</span>;</div><div class="line"><span class="keyword">const</span> Test::mask2 = <span class="number">0xffff</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>它们初始化没有区别,虽然一个是静态常量一个是常量静态</li>
+<li>静态都将存储在全局变量区域,其实最后结果都一样</li>
+<li>可能不同编译器处理不同,但最后结果都一样</li>
+</ul>
+<p>例子:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">  A(<span class="keyword">int</span> a);</div><div class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>;  <span class="comment">//静态成员函数</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">  <span class="keyword">static</span> <span class="keyword">int</span> aa;  <span class="comment">//静态数据成员的声明</span></div><div class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> count;  <span class="comment">//常量静态数据成员(可以在构造函数中初始化)</span></div><div class="line">  <span class="keyword">const</span> <span class="keyword">int</span> bb;  <span class="comment">//常量数据成员</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">int</span> A::aa=<span class="number">0</span>; <span class="comment">//静态成员定义+初始化</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> A::count=<span class="number">25</span>; <span class="comment">//静态常量成员定义+初始化</span></div><div class="line">A::A(<span class="keyword">int</span> a):bb(a)   <span class="comment">//常量成员的初始化</span></div><div class="line">&#123;</div><div class="line">  aa+=<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> A::print()</div><div class="line">&#123;</div><div class="line">  <span class="built_in">cout</span>&lt;&lt;<span class="string">"count="</span>&lt;&lt;count&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">  <span class="built_in">cout</span>&lt;&lt;<span class="string">"aa="</span>&lt;&lt;aa&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  <span class="function">A <span class="title">a</span><span class="params">(<span class="number">10</span>)</span></span>;</div><div class="line">  A::print();  <span class="comment">//通过类访问静态成员函数</span></div><div class="line">  a.print();   <span class="comment">//通过对象访问静态成员函数</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="const的难点"><a href="#const的难点" class="headerlink" title="const的难点"></a>const的难点</h4><p>如果函数需要传入一个指针，面试官可能会问是否需要为该指针加上const，把const加在指针不同的位置有什么区别；如果写的函数需要传入的参数是一个复杂类型的实例，面试官可能会问传入值参数或者引用参数有什么区别，什么时候需要为传入的引用参数加上const。 const是用来声明一个常量的，当你不想让一个值被改变时就用const，const int max和int const max 是没有区别的，都可以。不涉及到指针const很好理解。一旦涉及到指针，则比较容易出问题。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> b = <span class="number">100</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> *a = &amp;b;   <span class="comment">//[1]</span></div><div class="line"><span class="keyword">int</span> <span class="keyword">const</span> *a = &amp;b;  <span class="comment">//[2]</span></div><div class="line"><span class="keyword">int</span>* <span class="keyword">const</span> a = &amp;b;  <span class="comment">//[3]</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span>* <span class="keyword">const</span> a = &amp;b;  <span class="comment">//[4]</span></div></pre></td></tr></table></figure></p>
+<p>如果const位于星号的左侧，则const就是用来修饰指针所指向的变量，即指针指向的对象为常量；如果const位于星号的右侧，const就是修饰指针本身，即指针本身是常量。</p>
+<p>因此，[1]和[2]的情况相同，都是指针所指向的内容为常量（const放在变量声明符的位置无关），这种情况下不允许对内容进行更改操作，如不能*a = 3 ；[3]为指针本身是常量，而指针所指向的内容不是常量，这种情况下不能对指针本身进行更改操作，如a++是错误的；[4]为指针本身和指向的内容均为常量。</p>
+<p>参考:</p>
+<ul>
+<li><a href="http://www.cnblogs.com/jiabei521/p/3335676.html" target="_blank" rel="external">C++中的const关键字</a></li>
+<li><a href="http://www.cnblogs.com/dolphin0520/archive/2011/04/18/2020248.html" target="_blank" rel="external">浅谈C和C++中的const关键字</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/03/28/cpp-keywords-2017-03-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/28/cpp-keywords-2017-03-28/" itemprop="url">C++知识积累</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-28T16:17:26+08:00">
+                2017-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-宏函数"><a href="#1-宏函数" class="headerlink" title="1. 宏函数"></a>1. 宏函数</h3><p>在Ｃ/C++语言中允许用一个标识符来表示一个字符串，称为宏，该字符串可以是常数、表达式、格式串等。<br>在编译预处理时，对程序中所有出现的“宏名”，都用宏定义中的字符串去替换，这称为“宏替换”或“宏展开”。<br>宏定义是由源程序中的宏定义命令完成的。宏替换是由预处理程序自动完成的。若字符串是表达式，则称之为函数式宏定义.<br>普通函数式宏定义：<code>MAX(a,b) { return a&gt;b?a:b;}</code></p>
+<p>几个比较经典的宏函数<br>1.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#define TO_PROG_LEN(mm) ((mm) / (settings.prog_length_units == CANON_UNITS_INCHES ? 25.4 : 1.0))</div><div class="line">    </div><div class="line">#define TO_PROG_ANG(deg) (Rad2Deg(deg))</div><div class="line">    </div><div class="line">#define CHK(bad, error_code)            \</div><div class="line">do&#123;                                        \</div><div class="line">    if (bad) &#123; return error_code; &#125;        \</div><div class="line">&#125; while(0)</div></pre></td></tr></table></figure></p>
+<h3 id="2-C-禁止对象拷贝复制"><a href="#2-C-禁止对象拷贝复制" class="headerlink" title="2. C++禁止对象拷贝复制"></a>2. C++禁止对象拷贝复制</h3><p>为什么有的时候需要禁止对象的拷贝复制?<br>在类的设计里，不去实现拷贝构造和赋值操作不就完了吗？<br>其实不行！C++会在背后偷偷的帮你现实一个默认的拷贝构造的版本，必须注意这个后门。</p>
+<p>如何禁止对象的拷贝复制<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CPeople</span>  </span></div><div class="line"><span class="class">&#123;</span>  </div><div class="line">    <span class="comment">// ...  </span></div><div class="line"><span class="keyword">private</span>:  </div><div class="line">    <span class="comment">// 将复制相关的操作定义为私有  </span></div><div class="line">     CPeople()&#123;...&#125;;  </div><div class="line">    <span class="keyword">const</span> CPeople&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> CPeople&amp; rhis)&#123;...&#125;  </div><div class="line">&#125;; </div><div class="line">``` </div><div class="line"></div><div class="line">这样的设计，可以部分的禁止的类的复制，但是对于友元函数和类成员函数来说，还是可以调用其相关的复制操作的。</div><div class="line"></div><div class="line">```cpp</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CPeople</span>  </span></div><div class="line"><span class="class">&#123;</span>  </div><div class="line">    <span class="comment">// ...  </span></div><div class="line"><span class="keyword">private</span>:  </div><div class="line">    <span class="comment">// 将复制相关的操作定义为私有  </span></div><div class="line">     CPeople(); <span class="comment">// 只声明不实现  </span></div><div class="line">    <span class="keyword">const</span> CPeople&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> CPeople&amp; rhis); <span class="comment">// 只声明不实现  </span></div><div class="line">&#125;; </div><div class="line">``` </div><div class="line"></div><div class="line">将拷贝构造函数与赋值函数，声明为<span class="keyword">private</span>，并且不给出实现。这样就实现了类复制的完全禁止</div><div class="line">用户代码中的复制尝试将在编译时标记为错误，而成员函数与友元函数中的复制尝试将在链接时出现错误。</div><div class="line">上面介绍的这种技术在你熟悉的<span class="built_in">std</span>::iostream类中已经得到了很好的应用，诸如ios_base、basic_ios和sentry，都采用这样的方式不允许复制操作。</div><div class="line">Boost为我们提供了另一种解决方式，这种方式更加完美，因为它可以将链接错误提前到编译时，毕竟早一点发现错误比晚发现要好。特意声明一个不可复制的类</div><div class="line"></div><div class="line">```cpp</div><div class="line">boost::noncopyable</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> BOOST_NONCOPYABLE_HPP_INCLUDED    </span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> BOOST_NONCOPYABLE_HPP_INCLUDED        </span></div><div class="line"><span class="keyword">namespace</span> boost &#123;    </div><div class="line"><span class="comment">//  Private copy constructor and copy assignment ensure classes derived from    </span></div><div class="line"><span class="comment">//  class noncopyable cannot be copied.    </span></div><div class="line"><span class="comment">//  Contributed by Dave Abrahams    </span></div><div class="line">    <span class="keyword">namespace</span> noncopyable_  <span class="comment">// protection from unintended ADL    </span></div><div class="line">    &#123;    </div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">noncopyable</span>    </span></div><div class="line"><span class="class">    &#123;</span>    </div><div class="line">    <span class="keyword">protected</span>:    </div><div class="line">        noncopyable() &#123;&#125;    </div><div class="line">        ~noncopyable() &#123;&#125;    </div><div class="line">    <span class="keyword">private</span>:  <span class="comment">// emphasize the following members are private    </span></div><div class="line">        noncopyable( <span class="keyword">const</span> noncopyable&amp; );    </div><div class="line">        <span class="keyword">const</span> noncopyable&amp; <span class="keyword">operator</span>=( <span class="keyword">const</span> noncopyable&amp; );    </div><div class="line">    &#125;;    </div><div class="line">    &#125;    </div><div class="line">    <span class="keyword">typedef</span> noncopyable_::noncopyable noncopyable;      </div><div class="line">&#125; <span class="comment">// namespace boost    </span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>  <span class="comment">// BOOST_NONCOPYABLE_HPP_INCLUDED</span></span></div></pre></td></tr></table></figure></p>
+<p>为了禁止拷贝对象，我们只需要让其私有继承自boost::noncopyable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class student:private boost::noncopyable</div><div class="line">&#123;</div><div class="line">......</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当调用到派生类的拷贝构造函数或赋值函数进行复制时，不可避免的要调用基类对应的函数，因为这些操作是private，这样的操作会被编译器拒绝。<br>需要注意，多重继承有时会使空基类noncopyable优化失效，所以这不适合用于多重继承的情形。</p>
+<p>另外，如果只是不想要使用默认的拷贝构造函数或赋值函数，可以使用C++11提供的delete，<br>C++11则使用delete关键字显式指示编译器不生成函数的默认版本。比如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line"></div><div class="line">MyClass()=<span class="keyword">default</span>;</div><div class="line">MyClass(<span class="keyword">const</span> MyClass&amp; )=<span class="keyword">delete</span>;</div><div class="line">......</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，一旦函数被delete过了，那么重载该函数也是非法的，该函数我们习惯上称为删除函数。</p>
+<h3 id="3-C-虚析构函数"><a href="#3-C-虚析构函数" class="headerlink" title="3. C++虚析构函数"></a>3. C++虚析构函数</h3><p>什么情况下声明为虚析构函数<br>并不是要把所有类的析构函数都写成虚函数。因为当类里面有虚函数的时候，编译器会给类添加一个虚函数表，里面来存放虚函数指针，这样就会增加类的存储空间。所以，只有当一个类被用来作为基类的时候，才把析构函数写成虚函数。</p>
+<p>为什么基类的析构函数要声明成虚析构函数<br>在实现多态时，当用基类操作派生类，在析构时防止只析构基类而不析构派生类的状况发生。<br>直接的讲，C++中基类采用virtual虚析构函数是为了防止内存泄漏。具体地说，如果派生类中申请了内存空间，<br>并在其析构函数中对这些内存空间进行释放。假设基类中采用的是非虚析构函数，当删除基类指针指向的派生类对象时就不会触发动态绑定，<br>因而只会调用基类的析构函数，而不会调用派生类的析构函数。那么在这种情况下，派生类中申请的空间就得不到释放从而产生内存泄漏。<br>所以，为了防止这种情况的发生，C++中基类的析构函数应采用virtual虚析构函数。</p>
+<p>为什么派生类中定义了析构函数来释放其申请的资源，但是并没有得到调用。<br>原因是基类指针指向了派生类对象，而基类中的析构函数却是非virtual的，而虚函数是动态绑定的基础。<br>现在析构函数不是virtual的，因此不会发生动态绑定，而是静态绑定，指针的静态类型为基类指针，因此在delete时候只会调用基类的析构函数，而不会调用派生类的析构函数。<br>这样，在派生类中申请的资源就不会得到释放，就会造成内存泄漏，这是相当危险的：如果系统中有大量的派生类对象被这样创建和销毁，就会有内存不断的泄漏，久而久之，系统就会因为缺少内存而崩溃。<br>也就是说，在基类的析构函数为非虚析构函数的时候，并不一定会造成内存泄漏；当派生类对象的析构函数中有内存需要收回，并且在编程过程中采用了基类指针指向派生类对象，<br>如为了实现多态，并且通过基类指针将该对象销毁，这时，就会因为基类的析构函数为非虚析构函数而不触发动态绑定，从而没有调用派生类的析构函数而导致内存泄漏。<br>因此，为了防止这种情况下内存泄漏的发生，最好将基类的析构函数写成virtual虚析构函数。</p>
+<h3 id="4-C-C-中的-if-defined-和-ifdef的区别"><a href="#4-C-C-中的-if-defined-和-ifdef的区别" class="headerlink" title="4. C/C++中的#if defined() 和 #ifdef的区别"></a>4. C/C++中的#if defined() 和 #ifdef的区别</h3><ol>
+<li>使用#ifdef<br>如果使用#ifdef,则后面的内容不能加括号.If you use #ifdef syntax, remove the brackets.</li>
+<li>#if defined() 和 #ifdef的区别<ul>
+<li>#ifdef只能使用单个条件,</li>
+<li>#if defined(NAME)则可以组合多个条件<br>The difference between the two is that #ifdef can only use a single condition,while #if defined(NAME) can do compound conditionals.</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __EXPORT_H__</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> __EXPORT_H__</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> (defined WIN32 || defined _WIN32 || defined WINCE) &amp;&amp; defined INTERPRETER_LIBRARY</span></div><div class="line"><span class="meta">#  <span class="meta-keyword">define</span> INTERP_API __declspec(dllexport)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta">#  <span class="meta-keyword">define</span> INTERP_API</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// __EXPORT_H__</span></span></div></pre></td></tr></table></figure>
+<h3 id="5-C-之throw"><a href="#5-C-之throw" class="headerlink" title="5. C++之throw"></a>5. C++之throw</h3><p>void myfunc(void)throw();<br>这样的函数声明只是告诉此函数的使用者说，我不会抛出异常，方便调用者捕捉异常。<br>而至于实现不实现异常捕获是你自己的事。函数是给别人用的，不是给自己用的。</p>
+<h3 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">9. 指针</div><div class="line">10. 函数指针</div><div class="line">11. 回调函数</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://arvin-he.github.io/2017/03/27/cpp-keywords-2017-03-27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Arvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple & Freedom">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/27/cpp-keywords-2017-03-27/" itemprop="url">C++之static关键字</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T19:32:11+08:00">
+                2017-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-static关键字"><a href="#1-static关键字" class="headerlink" title="1. static关键字"></a>1. static关键字</h2><p>C语言代码是以文件为单位来组织的，在一个源程序的所有源文件中，一个外部变量（注意不是局部变量）或者函数只能在一个源程序中定义一次，<br>如果有重复定义的话编译器就会报错。伴随着不同源文件变量和函数之间的相互引用以及相互独立的关系，产生了extern和static关键字。</p>
+<h3 id="1-1-C中的static"><a href="#1-1-C中的static" class="headerlink" title="1.1 C中的static"></a>1.1 C中的static</h3><p>一个进程在内存中的布局如下表所示:</p>
+<p>|栈区      |<br>|堆栈增长区|<br>|堆区      |<br>|其他段    |<br>|.bss段    |<br>|.data段   |<br>|.text段   |</p>
+<p>其中<br>.text段保存进程所执行的程序二进制文件，<br>.data段保存进程所有的已初始化的全局变量，<br>.bss段保存进程未初始化的全局变量。<br>在进程的整个生命周期中，.data段和.bss段内的数据时跟整个进程同生共死的，也就是在进程结束之后这些数据内存才会被释放。</p>
+<p>当一个进程的全局变量被声明为static之后，它的中文名叫静态全局变量。静态全局变量和其他的全局变量的存储地点并没有区别，都是在.data段（已初始化）或者.bss段（未初始化）内，但是它只在定义它的源文件内有效，其他源文件无法访问它。所以，普通全局变量加上static关键字修饰后,就只能被定义它的源文件中的变量或函数访问。</p>
+<p>static局部变量</p>
+<p>普通的局部变量在栈空间上分配，这个局部变量所在的函数被多次调用时，每次调用这个局部变量在栈上的位置都不一定相同。局部变量也可以在堆上动态分配，但是记得使用完这个堆空间后要释放之。</p>
+<p>static局部变量中文名叫静态局部变量。它与普通的局部变量比起来有如下几个区别：</p>
+<ol>
+<li><p>位置：静态局部变量被编译器放在全局存储区.data（注意：不在.bss段内，原因见3）），所以它虽然是局部的，但是在程序的整个生命周期中存在。</p>
+</li>
+<li><p>访问权限：静态局部变量只能被其作用域内的变量或函数访问。也就是说虽然它会在程序的整个生命周期中存在，由于它是static的，它不能被其他的函数和源文件访问。</p>
+</li>
+<li><p>值：静态局部变量如果没有被用户初始化，则会被编译器自动赋值为0，以后每次调用静态局部变量的时候都用上次调用后的值。这个比较好理解，每次函数调用静态局部变量的时候都修改它然后离开，下次读的时候从全局存储区读出的静态局部变量就是上次修改后的值。</p>
+</li>
+</ol>
+<p>static函数<br>相信大家还记得C++面向对象编程中的private函数，私有函数只有该类的成员变量或成员函数可以访问。在C语言中，也有“private函数”，它就是接下来要说的static函数，完成面向对象编程中private函数的功能。</p>
+<p>当你的程序中有很多个源文件的时候，你肯定会让某个源文件只提供一些外界需要的接口，其他的函数可能是为了实现这些接口而编写，这些其他的函数你可能并不希望被外界（非本源文件）所看到，这时候就可以用static修饰这些“其他的函数”.所以static函数的作用域是本源文件，把它想象为面向对象中的private函数就可以了。</p>
+<h3 id="1-2-类中的static关键字"><a href="#1-2-类中的static关键字" class="headerlink" title="1.2 类中的static关键字"></a>1.2 类中的static关键字</h3><p>面向对象的static关键字</p>
+<h4 id="1-2-1-静态数据成员"><a href="#1-2-1-静态数据成员" class="headerlink" title="1.2.1 静态数据成员"></a>1.2.1 静态数据成员</h4><p>在类内数据成员的声明前加上关键字static，该数据成员就是类内的静态数据成员。先举一个静态数据成员的例子。 </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//头文件</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream.h&gt;</span></span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Myclass</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line"> 　　Myclass(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c);</div><div class="line"> 　　<span class="function"><span class="keyword">void</span> <span class="title">GetSum</span><span class="params">()</span></span>;</div><div class="line"><span class="keyword">private</span>:</div><div class="line"> 　　<span class="keyword">int</span> a,b,c;</div><div class="line"> 　　<span class="keyword">static</span> <span class="keyword">int</span> Sum;<span class="comment">//声明静态数据成员</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">int</span> Myclass::Sum=<span class="number">0</span>;<span class="comment">//定义并初始化静态数据成员</span></div><div class="line"></div><div class="line"><span class="comment">//源文件</span></div><div class="line">Myclass::Myclass(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</div><div class="line">&#123;</div><div class="line"> 　　<span class="keyword">this</span>-&gt;a=a;</div><div class="line"> 　　<span class="keyword">this</span>-&gt;b=b;</div><div class="line"> 　　<span class="keyword">this</span>-&gt;c=c;</div><div class="line"> 　　Sum+=a+b+c;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> Myclass::GetSum()</div><div class="line">&#123;</div><div class="line"> 　　<span class="built_in">cout</span>&lt;&lt;<span class="string">"Sum="</span>&lt;&lt;Sum&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"> 　　<span class="function">Myclass <span class="title">M</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span>;</div><div class="line"> 　　M.GetSum();</div><div class="line">　　 <span class="function">Myclass <span class="title">N</span><span class="params">(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span></span>;</div><div class="line"> 　　N.GetSum();</div><div class="line"> 　　M.GetSum();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看出，静态数据成员有以下特点： </p>
+<ol>
+<li>对于非静态数据成员，每个类对象都有自己的拷贝。而静态数据成员被当作是类的成员,是类本身的一部分。无论这个类的对象被定义了多少个，静态数据成员在程序中也只有一份拷贝，被该类型的所有对象共享访问。也就是说，静态数据成员是该类的所有对象所共有的。对该类的多个对象来说，静态数据成员只分配一次内存，供所有对象共用。所以，静态数据成员的值对每个对象都是一样的，它的值可以更新.</li>
+<li>静态数据成员存储在全局数据区。静态数据成员定义时要分配空间，所以不能在类的声明中定义。上例语句int Myclass::Sum=0;是定义静态数据成员,<br><strong>注意:</strong>这条语句是在整个类声明之外的,即static数据成员是类内声明，类外定义,static成员不通过类构造函数初始化，而是在定义时进行初始化.<br>一个例外：初始化式为常量表达式，整型static const 数据成员（static const int） 可以在类的定义体内进行初始化.</li>
+<li>静态数据成员和普通数据成员一样遵从public,protected,private访问规则.</li>
+<li>因为静态数据成员在全局数据区分配内存，属于本类的所有对象共享，所以，它不属于特定的类对象，在没有产生类对象时其作用域就可见，即在没有产生类的实例时，我们就可以操作访问它. </li>
+<li>静态数据成员初始化与一般数据成员初始化不同。静态数据成员初始化的格式为：<br>＜数据类型＞＜类名＞::＜静态数据成员名＞=＜值＞ </li>
+<li>类的<strong>静态数据成员</strong>有两种访问形式：<br>＜类对象名＞.＜静态数据成员名＞ 或 ＜类类型名＞::＜静态数据成员名＞<br>如果静态数据成员的访问权限允许的话（即public的成员），可在程序中，按上述格式来引用静态数据成员 ； </li>
+<li>静态数据成员主要应用在各个对象都有相同的某项属性的时候.<br>比如对于一个存款类，每个实例的利息都是相同的。所以，应该把利息设为存款类的静态数据成员。这有两个好处:<br>第一，不管定义多少个存款类对象，利息数据成员都共享分配在全局数据区的内存，所以节省存储空间。<br>第二，一旦利息需要改变时，只要改变一次，则所有存款类对象的利息全改变过来了； </li>
+<li>同全局变量相比，使用静态数据成员有两个优势： <ul>
+<li>静态数据成员没有进入程序的全局名字空间，因此不存在与程序中其它全局名字冲突的可能性</li>
+<li>可以实现信息隐藏。静态数据成员可以是private成员，而全局变量不能,不破坏类的封装</li>
+</ul>
+</li>
+</ol>
+<h4 id="1-2-2-静态成员函数"><a href="#1-2-2-静态成员函数" class="headerlink" title="1.2.2 静态成员函数"></a>1.2.2 静态成员函数</h4><p>与静态数据成员一样，我们也可以创建一个<strong>静态成员函数</strong>，它为类的全部服务而不是为某一个类的具体对象服务。<br>静态成员函数与静态数据成员一样，都是类的内部实现，属于类定义的一部分。<br>普通的成员函数一般都隐含了一个this指针，this指针指向类的对象本身，因为普通成员函数总是具体的属于某个类的具体对象的。<br>通常情况下，this是缺省的。如函数fn()实际上是this-&gt;fn()。但是与普通函数相比，静态成员函数由于不是与任何的对象相联系，<br>因此它不具有this指针。从这个意义上讲，它无法访问属于类对象的非静态数据成员，也无法访问非静态成员函数，它只能调用其余的静态成员函数。<br>下面举个静态成员函数的例子。 </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//头文件</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream.h&gt;</span></span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Myclass</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line"> 　　Myclass(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c);</div><div class="line"> 　　<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">GetSum</span><span class="params">()</span></span>;    <span class="comment">//声明静态成员函数</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line"> 　　<span class="keyword">int</span> a,b,c;</div><div class="line">　　 <span class="keyword">static</span> <span class="keyword">int</span> Sum;      <span class="comment">//声明静态数据成员</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">int</span> Myclass::Sum=<span class="number">0</span>;     <span class="comment">//定义并初始化静态数据成员</span></div><div class="line"></div><div class="line"><span class="comment">//源文件</span></div><div class="line">Myclass::Myclass(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</div><div class="line">&#123;</div><div class="line"> 　　<span class="keyword">this</span>-&gt;a=a;</div><div class="line"> 　　<span class="keyword">this</span>-&gt;b=b;</div><div class="line"> 　　<span class="keyword">this</span>-&gt;c=c;</div><div class="line"> 　　Sum+=a+b+c; <span class="comment">//非静态成员函数可以访问静态数据成员</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> Myclass::GetSum() <span class="comment">//静态成员函数的实现</span></div><div class="line">&#123;</div><div class="line">　　<span class="comment">// cout&lt;&lt;a&lt;&lt;endl; //错误代码，a是非静态数据成员</span></div><div class="line"> 　　<span class="built_in">cout</span>&lt;&lt;<span class="string">"Sum="</span>&lt;&lt;Sum&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"> 　　<span class="function">Myclass <span class="title">M</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span>;</div><div class="line"> 　　M.GetSum();</div><div class="line"> 　　<span class="function">Myclass <span class="title">N</span><span class="params">(<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span></span>;</div><div class="line"> 　　N.GetSum();</div><div class="line"> 　　Myclass::GetSum();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>关于类的静态成员函数，可以总结为以下几点： </p>
+<ol>
+<li>出现在类体外的函数定义不能指定关键字static； </li>
+<li>静态成员之间可以相互访问，包括静态成员函数访问静态数据成员和访问静态成员函数； </li>
+<li>非静态成员函数可以任意地访问静态成员函数和静态数据成员； </li>
+<li>静态成员函数不能访问非静态成员函数和非静态数据成员； </li>
+<li>由于没有this指针的额外开销，因此静态成员函数与类的全局函数相比速度上会有少许的增长； </li>
+<li>调用静态成员函数，可以用成员访问操作符(.)和(-&gt;)为一个类的对象或指向类对象的指针调用静态成员函数，也可以直接使用如下格式：<br>＜类名＞::＜静态成员函数名＞（＜参数表＞）调用类的静态成员函数。</li>
+</ol>
+<p>成员函数声明为const说明该成员函数不会修改该成员函数所属的对象，所以static成员函数不能声明为const。<br>static成员通过作用域操作符（直接调用）、对象、引用、指向该类类型对象的指针（间接调用）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></div><div class="line"><span class="class">&#123;</span> </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">double</span> <span class="title">getHeight</span><span class="params">()</span></span>;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">const</span> age = <span class="number">30</span>;</div><div class="line">    <span class="built_in">string</span> school;</div><div class="line">&#125;;</div><div class="line">Person xiaoming;</div><div class="line">Person *someone = &amp;xiaoming;</div><div class="line"><span class="keyword">double</span> height;</div><div class="line"></div><div class="line">height = Person::getHeight();       <span class="comment">//static成员通过作用域操作符（直接调用）</span></div><div class="line">height = xiaoming.getHeight();　　　<span class="comment">//static成员通过对象（间接调用）</span></div><div class="line">height = someone-&gt;getHeight();　　　<span class="comment">//static成员通过指向该类类型对象的指针（间接调用）</span></div></pre></td></tr></table></figure>
+<p>static数据成员定义：</p>
+<ol>
+<li>一般情况下，static数据成员是类内声明，类外定义;</li>
+<li>static成员不通过类构造函数初始化，而是在定义时进行初始化；</li>
+<li>一个例外：初始化式为常量表达式，整型static const 数据成员（static const int） 可以在类的定义体内进行初始化：<br>值得注意的是：const static数据成员在类的定义体中出始化时，该数据成员仍必须在类的定义体外定义，只是不再指定初始值：const int Person::age;<br>常实型 static const数据成员不可在类内初始化。一个好的解决方法是使用宏定义： #define age 30<br>常整型静态数据成员可以在类中直接初始化，而常实型静态数据成员不可以</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">circle</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">int</span> a; 　　　　　　　　　　　　　　　　　　　　   <span class="comment">// 普通变量，不能在类中初始化</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">int</span> b; 　　　　　　　　　　　　　　　　　　<span class="comment">// 静态变量，不能在类中初始化</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> c=<span class="number">2</span>; 　　　　　　　　　　　　　　<span class="comment">// 静态常整型变量，可以在类中初始化</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">double</span> PI=<span class="number">3.1416</span>;<span class="comment">//error C2864: //只有静态常量整型数据成员才可以在类中初始化</span></div><div class="line">&#125; ;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> cicle::c ; <span class="comment">//const static数据成员在类的定义体中出始化时，该数据成员仍必须在类的定义体外定义，只是不再指定初始值</span></div></pre></td></tr></table></figure>
+<p>b可以在类外进行初始化，且所有对象共享一个b的值：<br>int circle::b = 2;<br>double circle::PI = 3.1416;</p>
+<p>知乎问答:static函数在头文件中定义有什么好处么？</p>
+<ol>
+<li>没有好处，不要这么做。除非该头文件只会被一个翻译单元（translation unit）所使用，那么static是可用作表示内部链接（internal linkage）。不过这种头文件和一般所指的头文件不同，通常会使用.inc文件后缀.</li>
+<li>为了内联. 一般定义成static inline.<br>隐患: 头文件中的 static 函数会在每个文件中生成一份代码，这造成代码冗余倒不是最大的问题，最大的问题是可能带来库文件与工程文件同一函数的代码的不一致性，这有风险。</li>
+</ol>
+<ul>
+<li><a href="http://blog.csdn.net/keyeagle/article/details/6708077" target="_blank" rel="external">参考文章</a></li>
+<li><a href="http://www.cnblogs.com/BeyondAnyTime/archive/2012/06/08/2542315.html" target="_blank" rel="external">参考文章</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/26/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/28/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Arvin</p>
+              <p class="site-description motion-element" itemprop="description">Learn and live.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Arvin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

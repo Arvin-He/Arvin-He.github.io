@@ -2,12 +2,13 @@
 title: MongoDB配置
 date: 2017-09-27 19:59:15
 tags: MongoDB
-categories: 编程
+categories: 数据库
 ---
 ### 安装mongodb
 安装就免了吧,安装好mongodb,然后配置环境变量
 
 ### 创建MongoDB配置文件
+**注意:** 配置文件中的所有路径必须要存在, mongodb不会自动给你创建文件夹,所以像data,log,pid等文件夹按照配置文件指定路径手动创建好,否则会报错.
 先创建一个配置文件,名称为mongodb.cfg,配置内容为:
 ```
 #数据文件存放位置
@@ -44,6 +45,11 @@ rest=true
 安装mongodb服务,在终端输入: `mongod --config F:/mongodb/config/mongodb.cfg --install --serviceName MongoDB`
 启动mongodb服务,在终端输入: `net start MongoDB`, 回车,然后有提示出来:MongoDB服务正在启动, MongoDB服务已经启动成功
 
+错误: 服务名无效
+一般由两个原因造成,第一: 可能是你的服务名称拼写错误,第二: 就是没有用管理员权限运行命令.
+查看mongodb日志发现: Error connecting to the Service Control Manager: 拒绝访问, 这说明没有用管理员权限运行命令.
+使用管理员权限打开cmd, 然后再输入命令并运行, 然后服务就启动成功了.
+
 ### 去除mongodb服务
 如果需要去除MongoDB服务，执行如下命令：
 `mongod --remove --serviceName MongoDB`
@@ -52,6 +58,7 @@ rest=true
 用户管理员是第一个要创建的用户。在没有创建任何用户之前，你可以随意创建用户；但数据库中一旦有了用户，那么未登录的客户端就没有权限做任何操作了，除非使用db.auth(username, password)方法登录。
 
 用户管理员的角色名叫 userAdminAnyDatabase，这个角色只能在 admin 数据库中创建。下面是一个例子：
+首先,在终端输入:mongo,回车,进入mongo shell, 然后输入命令.
 ```
 > use admin
 switched to db admin

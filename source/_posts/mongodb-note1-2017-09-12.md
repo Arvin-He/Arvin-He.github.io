@@ -1,7 +1,7 @@
 ---
-title: mongoDB笔记
+title: MongoDB笔记
 date: 2017-09-12 09:36:54
-tags: mongoDB
+tags: MongoDB
 categories: 数据库
 ---
 ## 常见的关系型数据库

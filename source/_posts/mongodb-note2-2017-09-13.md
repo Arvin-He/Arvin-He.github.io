@@ -1,7 +1,7 @@
 ---
-title: mongodb笔记(二)
+title: Mongodb笔记(二)
 date: 2017-09-13 21:15:25
-tags: mongoDB
+tags: MongoDB
 categories: 数据库
 ---
 

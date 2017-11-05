@@ -128,9 +128,7 @@ def backupdb():
                                "-o", dst])
         log.info("导出{}数据成功".format(dst))
     except Exception as e:
-        log.error("导出MongoDB数据出错...")
-        log.error(e)
-        log.info("数据导出中止...")
+        log.error("导出MongoDB数据出错:{}".format(e))
         return
 
 

@@ -1,7 +1,8 @@
 ---
 title: 怎样避免陷入无止境地看教程的陷阱
-tags: [思想,方法]
-categories: life
+date: 2017-06-19 15:23:53
+tags: [思想, 方法]
+categories: 随笔
 ---
 
 ![](learn-minds-2017-06-19/1.jpeg)

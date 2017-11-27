@@ -1,9 +1,10 @@
 ---
-title: 一些概念
+title: Linux IO模式及 select、poll、epoll详解
 date: 2017-11-06 20:49:40
-tags: [io, 异步, 阻塞] 
-categories: 随笔
+tags: [Linux] 
+categories: Linux
 ---
+
 ##  epoll, kqueue, select, iocp的概念
 epoll
 

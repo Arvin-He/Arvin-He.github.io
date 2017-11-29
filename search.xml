@@ -4,6 +4,91 @@
   
     
     <entry>
+      <title><![CDATA[proxy一些知识]]></title>
+      <url>http://arvin-he.github.io/2017/11/28/proxy-2017-11-28/</url>
+      <content type="html"><![CDATA[<h3 id="代理有什么用处"><a href="#代理有什么用处" class="headerlink" title="代理有什么用处"></a>代理有什么用处</h3><ul>
+<li>对游戏，通过第三方代理，可以提高游戏流畅速度</li>
+<li>对师生，通过代理访问国外论文，获取最新研究成果</li>
+<li>对开发者，通过代理爬取采集大数据，防止被屏蔽</li>
+<li>对极客，通过代理(高匿)隐藏访问痕迹，防止被跟踪</li>
+<li>对个人，通过代理自由上网保护隐私，了解外面的世界</li>
+</ul>
+<h3 id="代理应具有哪些信息"><a href="#代理应具有哪些信息" class="headerlink" title="代理应具有哪些信息"></a>代理应具有哪些信息</h3><ul>
+<li>IP：Port（IP和端口号，默认必选）</li>
+<li>类型（协议类型，HTTP/HTTPS/Socks4/Socks5，默认必选）</li>
+<li>国家（例如：中国/美国/日本等）</li>
+<li>响应时间（ping代理服务器的时间，单位秒）</li>
+<li>传输速度（数据请求和返回的时间，单位秒）</li>
+<li>验证日期（验证代理可用的时间）</li>
+<li>检测成功率（成功率 = 代理检测的可用次数 / 检测总数，衡量代理的可靠性）</li>
+</ul>
+<h3 id="什么是代理的类型"><a href="#什么是代理的类型" class="headerlink" title="什么是代理的类型"></a>什么是代理的类型</h3><p>代理的类型，具体是指代理协议类型，常见的有HTTP、HTTPS、Socks4、Socks5等四种协议类型</p>
+<ul>
+<li>HTTP，全称超文本传输协议（HyperText Transfer Protocol)，是互联网数据传输的一种协议；</li>
+<li>HTTPS，是在HTTP协议基础上加入了SSL加密协议，以https开头，确保传输过程的数据安全；</li>
+<li>Socks4，是全能代理，支持HTTP，FTP等多种协议请求，传输层只支持UDP协议，数据可能会丢失；</li>
+<li>Socks5，类似于Socks4，差别是传输层同时支持UDP和TCP协议，支持可靠的身份验证等机制。<br>Socks4和Socks5，都是通过代理IP:Port利用底层传输协议进行网络通信，因此都可视为匿名代理。</li>
+</ul>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><ul>
+<li>HTTP：适合一般的网页浏览，例如：浏览新闻，观看视频等；</li>
+<li>HTTPS：适合一些需要安全验证的场合，例如：网银登录，购物付款等；</li>
+<li>Socks4：适合一些对数据完整性不高的场合，例如：网络电话，视频聊天等；</li>
+<li>Socks5：适合对数据完整性较高的场合，例如：网络游戏，微信接入，移动支付等。</li>
+</ul>
+<h3 id="HTTP和Socks代理有何区别？"><a href="#HTTP和Socks代理有何区别？" class="headerlink" title="HTTP和Socks代理有何区别？"></a>HTTP和Socks代理有何区别？</h3><p>HTTP和HTTPS，都是基于可靠的TCP/IP协议，对传输数据都有校验，保障数据不丢失。<br>Socks4和Socks5，分别是基于UDP，UDP和TCP传输协议，通过代理IP:Port请求转发数据。<br>HTTP和HTTPS是在Socks基础上，进行了数据封装，只专注业务，不必考虑底层的数据传输。<br>Socks是基于IP:Port套接字进行底层的数据传输，支持多种HTTP、FTP、ICMP等上层协议。<br>适用场景：对于普通用户，一般使用HTTP/HTTPS即可；对于开发者用户，推荐Socks，如微信开发。</p>
+<h3 id="什么是代理的匿名度"><a href="#什么是代理的匿名度" class="headerlink" title="什么是代理的匿名度"></a>什么是代理的匿名度</h3><p>代理的匿名度，一般分为透明，匿名，高匿，其中匿名又分为普通匿名和欺骗匿名。</p>
+<ul>
+<li>透明，代理服务器只是转发请求，并把你的真实IP地址传给服务器，不会隐藏或改变你的IP；</li>
+<li>普通匿名，代理服务器转发请求，并把代理服务器的IP地址传给服务器，隐藏了你的真实IP；</li>
+<li>欺骗匿名，代理服务器转发请求，并编造了一个假的IP地址传给服务器，隐藏了你的真实IP；</li>
+<li>高匿，代理服务器转发请求，并完全隐藏了你的真实IP和其它信息，就像另外一个人在访问。</li>
+</ul>
+<p>代理匿名度优先级： 高匿 &gt; 欺骗代理 &gt; 普通匿名 &gt; 透明 &gt; 不使用代理</p>
+<p>如果不使用代理，你的请求数据，真实IP地址，以及其它信息（如浏览器参数，cookie等），都会毫无保留的暴露给了远程服务器，<br>他人可以利用这些访问痕迹，跟踪你的位置（如城市/地区/街道），以及盗取你请求数据中的敏感信息（如银行卡帐号和密码，QQ号和密码等），以及你的访问喜好和习惯等个人隐私。</p>
+<p>使用代理(高匿)和加密协议(HTTPS)，可以大大提高您访问网络的安全性，有效保护您的个人隐私等敏感信息</p>
+<h3 id="高匿、匿名和透明有何区别？"><a href="#高匿、匿名和透明有何区别？" class="headerlink" title="高匿、匿名和透明有何区别？"></a>高匿、匿名和透明有何区别？</h3><p>高匿，匿名和透明，是针对隐藏用户请求数据而言，例如：隐藏IP地址，隐藏浏览器参数，Cookie等<br>对于一般的访问网络，一共有五种方式：无代理、透明、普通匿名、欺骗匿名、高匿（Elite）<br>五种方式及判断原理如下：</p>
+<ol>
+<li><p>无代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">REMOTE_ADDR = 您的真实IP	</div><div class="line">HTTP_VIA = 没数值或不显示	</div><div class="line">HTTP_X_FORWARDED_FOR = 没数值或不显示</div></pre></td></tr></table></figure>
+</li>
+<li><p>透明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">REMOTE_ADDR = 最后一个代理服务器IP	</div><div class="line">HTTP_VIA = 代理服务器IP	</div><div class="line">HTTP_X_FORWARDED_FOR = 您的真实IP，经过多个代理服务器时，这个值类似：123.57.78.101, 120.24.177.48, 47.88.76.11</div></pre></td></tr></table></figure>
+</li>
+<li><p>普通匿名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">REMOTE_ADDR = 最后一个代理服务器IP	</div><div class="line">HTTP_VIA = 代理服务器IP	</div><div class="line">HTTP_X_FORWARDED_FOR = 代理服务器IP，经过多个代理服务器时，这个值类似：123.57.78.101, 120.24.177.48, 47.88.76.11</div></pre></td></tr></table></figure>
+</li>
+<li><p>欺骗匿名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">REMOTE_ADDR = 最后一个代理服务器IP	</div><div class="line">HTTP_VIA = 代理服务器IP	</div><div class="line">HTTP_X_FORWARDED_FOR = 随机的IP，经过多个代理服务器时，这个值类似：123.57.78.101, 120.24.177.48, 47.88.76.11</div></pre></td></tr></table></figure>
+</li>
+<li><p>高匿(Elite)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">REMOTE_ADDR = 代理服务器IP	</div><div class="line">HTTP_VIA = 没数值或不显示	</div><div class="line">HTTP_X_FORWARDED_FOR = 没数值或不显示</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="代理的国家-地区"><a href="#代理的国家-地区" class="headerlink" title="代理的国家/地区"></a>代理的国家/地区</h3><p>代理的国家，具体是指代理IP所属的国家，例如：中国，美国，英国，日本，韩国，俄罗斯等<br>代理的地区，具体是指代理IP所属国家的地区，只支持中国34个省市(含港澳台)，例如：中国北京，中国香港</p>
+<h3 id="代理的运营商"><a href="#代理的运营商" class="headerlink" title="代理的运营商"></a>代理的运营商</h3><p>代理的运营商，具体是指提供代理服务器的运营商，因为大部分的的代理IP，是由电信运营商搭建提供。<br>代理的运营商，主要有移动、铁通、联通、网通、电信，以及其它（主要是一些大公司和港澳台电信运营商，例如：阿里巴巴、中华电信、腾讯集团、鹏博士、教育网等）</p>
+<h3 id="代理的响应时间"><a href="#代理的响应时间" class="headerlink" title="代理的响应时间"></a>代理的响应时间</h3><p>代理的响应时间，具体是指代理检测服务器Ping通代理服务器的时间。<br>Ping命令的原理，是发送一个ICMP(因特网控制报文协议)给远程服务器，并回声收到目标ICMP的应答时间。<br>如: 米扑代理的响应时间，分为五个等级，从低到高依次为： 0 ~ 0.1 ~ 0.3 ~ 1 ~ 5 ~ 9，单位秒</p>
+<h3 id="代理的传输速度"><a href="#代理的传输速度" class="headerlink" title="代理的传输速度"></a>代理的传输速度</h3><p>代理的传输速度，具体是指代理检测服务器发送请求到目标服务器并返回数据到本地的总时间。<br>总时间，包括本地发送请求 -&gt; 代理服务器 -&gt; 目标服务器 -&gt; 返回数据到代理服务器 -&gt; 本地的全部时间。<br>如: 米扑代理的传输速度，分为五个等级，从低到高依次为： 0 ~ 0.3 ~ 1 ~ 5 ~ 10 ~ 30，单位秒。</p>
+<h3 id="代理的验证日期"><a href="#代理的验证日期" class="headerlink" title="代理的验证日期"></a>代理的验证日期</h3><p>代理的验证日期，具体是指检测代理可用的最后时间，<br>必须满足:<br>1）代理可用；<br>2）检测为可用的最后时间。<br>例如：代理 100.12.25.10:8080 可用，最后一次检测日期为 2015-05-20 10:12:56，即为验证日期。</p>
+<h3 id="提取的代理都可以用吗？"><a href="#提取的代理都可以用吗？" class="headerlink" title="提取的代理都可以用吗？"></a>提取的代理都可以用吗？</h3><p>代理的实效性很强，当时提取的可用代理可能一会儿就失效了，因此检测代理的最后验证日期，非常重要！</p>
+<h3 id="如何获取高可靠的代理？"><a href="#如何获取高可靠的代理？" class="headerlink" title="如何获取高可靠的代理？"></a>如何获取高可靠的代理？</h3><p>高可靠代理，计算公式：代理的检测可用次数 / 总检测次数 = 可靠率，如:米扑代理独创的检测技术。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> web </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[redis笔记]]></title>
       <url>http://arvin-he.github.io/2017/11/25/redis-note1-2017-11-25/</url>
       <content type="html"><![CDATA[<h3 id="redis下载与安装"><a href="#redis下载与安装" class="headerlink" title="redis下载与安装"></a>redis下载与安装</h3><ol>
@@ -8235,34 +8320,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://arvin-he.github.io/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[关于Arvin]]></title>
-      <url>http://arvin-he.github.io/about/index.html</url>
-      <content type="html"><![CDATA[<hr>
-<p>其实关于我没有什么想说的,只是想好好生活,做好自己喜欢的事.<br>喜欢简单舒适的格调.<br>Motto: To be a better man.</p>
-<h1 id="喜欢做的事"><a href="#喜欢做的事" class="headerlink" title="喜欢做的事"></a>喜欢做的事</h1><hr>
-<p>喜欢读书<br>喜欢健身<br>喜欢写写文章<br>…</p>
-<h1 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h1><p>以技术学习与分享为主，主要关注：</p>
-<ul>
-<li>Python3</li>
-<li>Web全栈</li>
-<li>Node.js</li>
-<li>JavaScript</li>
-<li>Linux</li>
-<li>BigData</li>
-<li>AI</li>
-</ul>
-<h1 id="联系Arvin"><a href="#联系Arvin" class="headerlink" title="联系Arvin"></a>联系Arvin</h1><hr>
-<p>微信: JUNHE_1218<br>E-mail: junhe3209@gmail.com<br>GitHub: <a href="https://github.com/Arvin-He" target="_blank" rel="external">https://github.com/Arvin-He</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[404 Not Found：该页无法显示]]></title>
       <url>http://arvin-he.github.io/404/index.html</url>
       <content type="html"><![CDATA[<style type="text/css">
@@ -8325,20 +8382,48 @@
     </entry>
     
     <entry>
+      <title><![CDATA[关于Arvin]]></title>
+      <url>http://arvin-he.github.io/about/index.html</url>
+      <content type="html"><![CDATA[<hr>
+<p>其实关于我没有什么想说的,只是想好好生活,做好自己喜欢的事.<br>喜欢简单舒适的格调.<br>Motto: To be a better man.</p>
+<h1 id="喜欢做的事"><a href="#喜欢做的事" class="headerlink" title="喜欢做的事"></a>喜欢做的事</h1><hr>
+<p>喜欢读书<br>喜欢健身<br>喜欢写写文章<br>…</p>
+<h1 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h1><p>以技术学习与分享为主，主要关注：</p>
+<ul>
+<li>Python3</li>
+<li>Web全栈</li>
+<li>Node.js</li>
+<li>JavaScript</li>
+<li>Linux</li>
+<li>BigData</li>
+<li>AI</li>
+</ul>
+<h1 id="联系Arvin"><a href="#联系Arvin" class="headerlink" title="联系Arvin"></a>联系Arvin</h1><hr>
+<p>微信: JUNHE_1218<br>E-mail: junhe3209@gmail.com<br>GitHub: <a href="https://github.com/Arvin-He" target="_blank" rel="external">https://github.com/Arvin-He</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://arvin-he.github.io/categories/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[readnotes]]></title>
       <url>http://arvin-he.github.io/readnotes/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[essay]]></title>
-      <url>http://arvin-he.github.io/essay/index.html</url>
+      <title><![CDATA[life]]></title>
+      <url>http://arvin-he.github.io/life/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[life]]></title>
-      <url>http://arvin-he.github.io/life/index.html</url>
+      <title><![CDATA[essay]]></title>
+      <url>http://arvin-he.github.io/essay/index.html</url>
       <content type="html"></content>
     </entry>
     

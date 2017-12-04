@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arvin-he.github.io/"/>
-  <updated>2017-11-29T01:09:30.919Z</updated>
+  <updated>2017-12-04T01:40:40.581Z</updated>
   <id>http://arvin-he.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javascript笔记(二)</title>
+    <link href="http://arvin-he.github.io/2017/12/04/js-notes2-2017-12-04/"/>
+    <id>http://arvin-he.github.io/2017/12/04/js-notes2-2017-12-04/</id>
+    <published>2017-12-04T01:34:52.000Z</published>
+    <updated>2017-12-04T01:40:40.581Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h3><ol><li><p>var 声明局部变量,生命周期再函数内部</p></li><li><p>全局作用域<br>不在任何函数内定义的变量就具有全局作用域。<br>JavaScript默认有一个全局对象window，全局作用域的变量实际上被绑定到window的course属性.<br>以变量方式<code>var foo = function () {}</code>定义的函数实际上也是一个全局变量，<br>因此，顶层函数的定义也被视为一个全局变量，并绑定到window对象.<br>JavaScript实际上只有一个全局作用域。任何变量（函数也视为变量），如果没有在当前函数作用域中找到，就会继续往上查找，最后如果在全局作用域中也没有找到，则报ReferenceError错误。</p></li></ol><h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;变量作用域&quot;&gt;&lt;a href=&quot;#变量作用域&quot; class=&quot;headerlink&quot; title=&quot;变量作用域&quot;&gt;&lt;/a&gt;变量作用域&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;var 声明局部变量,生命周期再函数内部&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;全局作用域&lt;br&gt;不在
+      
+    
+    </summary>
+    
+      <category term="js" scheme="http://arvin-he.github.io/categories/js/"/>
+    
+    
+      <category term="js" scheme="http://arvin-he.github.io/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>proxy一些知识</title>
@@ -495,31 +523,6 @@
     
     
       <category term="MongoDB" scheme="http://arvin-he.github.io/tags/MongoDB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python笔记</title>
-    <link href="http://arvin-he.github.io/2017/09/18/py-note1-2017-09-18/"/>
-    <id>http://arvin-he.github.io/2017/09/18/py-note1-2017-09-18/</id>
-    <published>2017-09-18T12:57:31.000Z</published>
-    <updated>2017-11-07T01:17:17.723Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="python路径操作"><a href="#python路径操作" class="headerlink" title="python路径操作"></a>python路径操作</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="comment">#创建目录</span></div><div class="line">os.mkdir(<span class="string">"D:\\python\\2"</span>)</div><div class="line"><span class="comment">#删除目录</span></div><div class="line">os.rmdir(<span class="string">"D:\\python\\2"</span>)</div><div class="line"><span class="comment">#创建多级目录</span></div><div class="line">os.makedirs(<span class="string">"D:\\python\\oo\\2\\3"</span>)</div><div class="line"><span class="comment">#删除多级目录</span></div><div class="line">os.removedirs(<span class="string">"D:\\python\\oo\\2\\3"</span>)</div><div class="line"><span class="comment">#获取目录下文件夹及文件</span></div><div class="line">os.listdir(<span class="string">"D:\\python"</span>)</div><div class="line"><span class="comment">#获取当前目录位置</span></div><div class="line">os.getcwd()</div><div class="line"><span class="comment">#切换目录</span></div><div class="line">os.chdir(<span class="string">"D:\\python\\oo\\3"</span>)</div><div class="line"><span class="comment">#遍历所有子目录及文件</span></div><div class="line"><span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(<span class="string">'D:'</span>+os.sep+<span class="string">'python'</span>):</div><div class="line">    <span class="comment"># 遍历出所有的文件</span></div><div class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</div><div class="line">        fp=os.path.join(root, f)</div><div class="line">    <span class="comment"># 遍历出所有的目录,包括空目录</span></div><div class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</div><div class="line">        dp = os.path.join(root, d)</div><div class="line"></div><div class="line"><span class="comment"># 返回path规范化的绝对路径。 </span></div><div class="line">os.path.abspath(path) </div><div class="line"><span class="comment">#将path分割成目录和文件名二元组返回。 </span></div><div class="line">os.path.split(path) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.split(<span class="string">'c:\\csv\\test.csv'</span>) </div><div class="line">(<span class="string">'c:\\csv'</span>, <span class="string">'test.csv'</span>) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.split(<span class="string">'c:\\csv\\'</span>) </div><div class="line">(<span class="string">'c:\\csv'</span>, <span class="string">''</span>) </div><div class="line"> </div><div class="line"><span class="comment">#返回path的目录。其实就是os.path.split(path)的第一个元素。 </span></div><div class="line">os.path.dirname(path) </div><div class="line"> </div><div class="line"><span class="comment"># 返回path最后的文件名。如果path以／或\结尾，那么就会返回空值。即os.path.split(path)的第二个元素。 </span></div><div class="line">os.path.basename(path) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.basename(<span class="string">'c:\\test.csv'</span>) </div><div class="line"><span class="string">'test.csv'</span> </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.basename(<span class="string">'c:\\csv'</span>) </div><div class="line"><span class="string">'csv'</span> （这里csv被当作文件名处理了） </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.basename(<span class="string">'c:\\csv\\'</span>) </div><div class="line"><span class="string">''</span> </div><div class="line"></div><div class="line"><span class="comment"># 返回list中，所有path共有的最长的路径。  </span></div><div class="line">os.path.commonprefix(list) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.commonprefix([<span class="string">'/home/td'</span>,<span class="string">'/home/td/ff'</span>,<span class="string">'/home/td/fff'</span>]) </div><div class="line"><span class="string">'/home/td'</span> </div><div class="line"> </div><div class="line"><span class="comment"># 如果path存在，返回True；如果path不存在，返回False。 </span></div><div class="line">os.path.exists(path) </div><div class="line"> </div><div class="line"><span class="comment"># 如果path是绝对路径，返回True。 </span></div><div class="line">os.path.isabs(path) </div><div class="line"> </div><div class="line"><span class="comment"># 如果path是一个存在的文件，返回True。否则返回False。 </span></div><div class="line">os.path.isfile(path) </div><div class="line"> </div><div class="line"><span class="comment"># 如果path是一个存在的目录，则返回True。否则返回False。 </span></div><div class="line">os.path.isdir(path) </div><div class="line"> </div><div class="line"><span class="comment"># 将多个路径组合后返回，第一个绝对路径之前的参数将被忽略。 </span></div><div class="line">os.path.join(path1[, path2[, ...]]) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.join(<span class="string">'c:\\'</span>, <span class="string">'csv'</span>, <span class="string">'test.csv'</span>) </div><div class="line"><span class="string">'c:\\csv\\test.csv'</span> </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.join(<span class="string">'windows\temp'</span>, <span class="string">'c:\\'</span>, <span class="string">'csv'</span>, <span class="string">'test.csv'</span>) </div><div class="line"><span class="string">'c:\\csv\\test.csv'</span> </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.join(<span class="string">'/home/aa'</span>,<span class="string">'/home/aa/bb'</span>,<span class="string">'/home/aa/bb/c'</span>) </div><div class="line"><span class="string">'/home/aa/bb/c'</span> </div><div class="line"></div><div class="line"><span class="comment"># 在Linux和Mac平台上，该函数会原样返回path，在windows平台上会将路径中所有字符转换为小写，并将所有斜杠转换为反斜杠。  </span></div><div class="line">os.path.normcase(path) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.normcase(<span class="string">'c:/windows\\system32\\'</span>) </div><div class="line"><span class="string">'c:\\windows\\system32\\'</span> </div><div class="line"> </div><div class="line"><span class="comment"># 规范化路径。 </span></div><div class="line">os.path.normpath(path) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.normpath(<span class="string">'c://windows\\System32\\../Temp/'</span>) </div><div class="line"><span class="string">'c:\\windows\\Temp'</span> </div><div class="line"> </div><div class="line"><span class="comment"># 返回（drivername，fpath）元组 </span></div><div class="line">os.path.splitdrive(path)  </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitdrive(<span class="string">'c:\\windows'</span>) </div><div class="line">(<span class="string">'c:'</span>, <span class="string">'\\windows'</span>) </div><div class="line"> </div><div class="line"><span class="comment"># 分离文件名与扩展名；默认返回(fname,fextension)元组，可做分片操作 </span></div><div class="line">os.path.splitext(path)  </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.splitext(<span class="string">'c:\\csv\\test.csv'</span>) </div><div class="line">(<span class="string">'c:\\csv\\test'</span>, <span class="string">'.csv'</span>) </div><div class="line"> </div><div class="line"><span class="comment"># 返回path的文件的大小（字节）</span></div><div class="line">os.path.getsize(path)  </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.path.getsize(<span class="string">'c:\\boot.ini'</span>) </div><div class="line"><span class="number">299L</span> </div><div class="line"> </div><div class="line"><span class="comment"># 返回path所指向的文件或者目录的最后存取时间。 </span></div><div class="line">os.path.getatime(path) </div><div class="line"> </div><div class="line"><span class="comment"># 返回path所指向的文件或者目录的最后修改时间 </span></div><div class="line">os.path.getmtime(path)</div></pre></td></tr></table></figure><h3 id="python文件压缩操作"><a href="#python文件压缩操作" class="headerlink" title="python文件压缩操作"></a>python文件压缩操作</h3><h3 id="python数据库连接操作"><a href="#python数据库连接操作" class="headerlink" title="python数据库连接操作"></a>python数据库连接操作</h3><h3 id="python字符串操作"><a href="#python字符串操作" class="headerlink" title="python字符串操作"></a>python字符串操作</h3><h3 id="python异常处理"><a href="#python异常处理" class="headerlink" title="python异常处理"></a>python异常处理</h3><h3 id="python日志操作"><a href="#python日志操作" class="headerlink" title="python日志操作"></a>python日志操作</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;python路径操作&quot;&gt;&lt;a href=&quot;#python路径操作&quot; class=&quot;headerlink&quot; title=&quot;python路径操作&quot;&gt;&lt;/a&gt;python路径操作&lt;/h3&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="编程" scheme="http://arvin-he.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Python" scheme="http://arvin-he.github.io/tags/Python/"/>
     
   </entry>
   

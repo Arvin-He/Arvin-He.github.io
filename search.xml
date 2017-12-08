@@ -4,6 +4,133 @@
   
     
     <entry>
+      <title><![CDATA[jQuery笔记]]></title>
+      <url>http://arvin-he.github.io/2017/12/08/jQuery-notes1-2017-12-08/</url>
+      <content type="html"><![CDATA[<h3 id="jQuery介绍"><a href="#jQuery介绍" class="headerlink" title="jQuery介绍"></a>jQuery介绍</h3><p>jQuery是JavaScript世界中使用最广泛的一个库。<br>jQuery能帮我们干这些事情：</p>
+<ul>
+<li>消除浏览器差异：你不需要自己写冗长的代码来针对不同的浏览器来绑定事件，编写AJAX等代码；</li>
+<li>简洁的操作DOM的方法：写$(‘#test’)肯定比document.getElementById(‘test’)来得简洁；</li>
+<li>轻松实现动画、修改CSS等各种操作。<br>jQuery的理念“Write Less, Do More“，让你写更少的代码，完成更多的工作！</li>
+</ul>
+<p>目前jQuery有1.x和2.x两个主要版本，区别在于2.x移除了对古老的IE 6、7、8的支持，<br>因此2.x的代码更精简。选择哪个版本主要取决于你是否想支持IE 6~8。<br>jQuery只是一个jquery-xxx.js文件，但你会看到有compressed（已压缩）和uncompressed（未压缩）两种版本，使用时完全一样，<br>但如果你想深入研究jQuery源码，那就用uncompressed版本。</p>
+<h3 id="jQuery使用"><a href="#jQuery使用" class="headerlink" title="jQuery使用"></a>jQuery使用</h3><p>$是著名的jQuery符号。jQuery把所有功能全部封装在一个全局变量jQuery中，而$也是一个合法的变量名，它是变量jQuery的别名：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.jQuery; <span class="comment">// jQuery(selector, context)</span></div><div class="line"><span class="built_in">window</span>.$; <span class="comment">// jQuery(selector, context)</span></div><div class="line">$ === jQuery; <span class="comment">// true</span></div><div class="line"><span class="keyword">typeof</span>($); <span class="comment">// 'function'</span></div></pre></td></tr></table></figure></p>
+<p>$本质上就是一个函数，但是函数也是对象，于是$除了可以直接调用外，也可以有很多其他属性。</p>
+<p><strong>注意:</strong> 你看到的$函数名可能不是jQuery(selector, context)，因为很多JavaScript压缩工具可以对函数名和参数改名，<br>压缩过的jQuery源码$函数可能变成a(b, c)。这也被叫做代码混淆,也起到一定的安全作用.</p>
+<p>绝大多数时候，直接用$,但是，如果$这个变量被占用了，而且还不能改，那我们就只能让jQuery把$变量交出来，然后就只能使用jQuery这个变量.</p>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>选择器是jQuery的核心。一个选择器写出来类似$(‘#dom-id’)。<br>Query的选择器就是帮助我们快速定位到一个或多个DOM节点。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 按ID查找,注意: #abc以#开头。返回的对象是jQuery对象。</span></div><div class="line"><span class="comment">// 查找&lt;div id="abc"&gt;:</span></div><div class="line"><span class="keyword">var</span> div = $(<span class="string">'#abc'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 按tag查找</span></div><div class="line"><span class="keyword">var</span> ps = $(<span class="string">'p'</span>); <span class="comment">// 返回所有&lt;p&gt;节点</span></div><div class="line">ps.length; <span class="comment">// 数一数页面有多少个&lt;p&gt;节点</span></div><div class="line"></div><div class="line"><span class="comment">// 按class查找, 按class查找注意在class名称前加一个.</span></div><div class="line"><span class="keyword">var</span> a = $(<span class="string">'.red'</span>); <span class="comment">// 所有节点包含`class="red"`都将返回</span></div><div class="line"><span class="comment">// 例如:</span></div><div class="line"><span class="comment">// &lt;div class="red"&gt;...&lt;/div&gt;</span></div><div class="line"><span class="comment">// &lt;p class="green red"&gt;...&lt;/p&gt;</span></div><div class="line"><span class="comment">// 节点有多个class，我们可以查找同时包含red和green的节点：</span></div><div class="line"><span class="keyword">var</span> a = $(<span class="string">'.red.green'</span>); <span class="comment">// 注意没有空格！</span></div><div class="line"><span class="comment">// 符合条件的节点：</span></div><div class="line"><span class="comment">// &lt;div class="red green"&gt;...&lt;/div&gt;</span></div><div class="line"><span class="comment">// &lt;div class="blue green red"&gt;...&lt;/div&gt;</span></div><div class="line"></div><div class="line"><span class="comment">// 按属性查找</span></div><div class="line"><span class="keyword">var</span> email = $(<span class="string">'[name=email]'</span>); <span class="comment">// 找出&lt;??? name="email"&gt;</span></div><div class="line"><span class="keyword">var</span> icons = $(<span class="string">'[name^=icon]'</span>); <span class="comment">// 找出所有name属性值以icon开头的DOM</span></div><div class="line"><span class="keyword">var</span> names = $(<span class="string">'[name$=with]'</span>); <span class="comment">// 找出所有name属性值以with结尾的DOM</span></div><div class="line"><span class="keyword">var</span> icons = $(<span class="string">'[class^="icon-"]'</span>); <span class="comment">// 找出所有class包含至少一个以`icon-`开头的DOM</span></div></pre></td></tr></table></figure></p>
+<p>组合查找<br><code>var emailInput = $(&#39;input[name=email]&#39;); // 不会找出&lt;div name=&quot;email&quot;&gt;</code><br><code>var tr = $(&#39;tr.red&#39;); // 找出&lt;tr class=&quot;red ...&quot;&gt;...&lt;/tr&gt;</code></p>
+<p>多项选择器<br>多项选择器就是把多个选择器用,组合起来一块选：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'p,div'</span>); <span class="comment">// 把&lt;p&gt;和&lt;div&gt;都选出来</span></div><div class="line">$(<span class="string">'p.red,p.green'</span>); <span class="comment">// 把&lt;p class="red"&gt;和&lt;p class="green"&gt;都选出来</span></div></pre></td></tr></table></figure></p>
+<p>总之jQuery的选择器不会返回undefined或者null，这样的好处是你不必在下一行判断if (div === undefined)。<br>jQuery对象和DOM对象之间可以互相转化：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = $(<span class="string">'#abc'</span>); <span class="comment">// jQuery对象</span></div><div class="line"><span class="keyword">var</span> divDom = div.get(<span class="number">0</span>); <span class="comment">// 假设存在div，获取第1个DOM元素</span></div><div class="line"><span class="keyword">var</span> another = $(divDom); <span class="comment">// 重新把DOM包装为jQuery对象</span></div></pre></td></tr></table></figure></p>
+<p>通常情况下你不需要获取DOM对象，直接使用jQuery对象更加方便。<br>如果你拿到了一个DOM对象，那可以简单地调用$(aDomObject)把它变成jQuery对象，这样就可以方便地使用jQuery的API了。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[javascript之DOM操作]]></title>
+      <url>http://arvin-he.github.io/2017/12/08/js-dom-2017-12-08/</url>
+      <content type="html"><![CDATA[<h3 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h3><p>DOM是一个树形结构, 常用操作有:更新, 遍历, 添加, 删除</p>
+<p>获取dom节点的方法:<br>document.getElementById()<br>document.getElementsByTagName()<br>document.getElementsByClassName() //CSS选择器<br>可以连续调用: <code>var trs = document.getElementById(&#39;test-table&#39;).getElementsByTagName(&#39;tr&#39;);</code></p>
+<p>使用selector语法:<br>querySelector()<br>querySelectorAll()<br><strong>注意:</strong> 低版本的IE&lt;8不支持querySelector和querySelectorAll。IE8仅有限支持。</p>
+<p>根节点Document已经自动绑定为全局变量document。<br>严格地讲，我们这里的DOM节点是指Element，但是DOM节点实际上是Node，<br>在HTML中，Node包括Element、Comment、CDATA_SECTION等很多种，以及根节点Document类型，但是，绝大多数时候我们只关心Element.</p>
+<h3 id="更新DOM"><a href="#更新DOM" class="headerlink" title="更新DOM"></a>更新DOM</h3><p>直接修改节点的文本，方法有两种:</p>
+<ol>
+<li><p>修改innerHTML属性，这个方式非常强大，不但可以修改一个DOM节点的文本内容，还可以直接通过HTML片段修改DOM节点内部的子树.<br><strong>注意:</strong> 在写入HTML。如果写入的字符串是通过网络拿到了，要注意对字符编码来避免XSS攻击。</p>
+</li>
+<li><p>修改innerText或textContent属性，这样可以自动对字符串进行HTML编码，保证无法设置任何HTML标签.<br>innerText不返回隐藏元素的文本，而textContent返回所有文本。另外注意IE&lt;9不支持textContent。</p>
+</li>
+</ol>
+<p>DOM节点的style属性对应所有的CSS，可以直接获取或设置。<br><strong>注意:</strong>CSS允许font-size这样的名称，但它并非JavaScript有效的属性名，需要在JavaScript中改写为驼峰式命名fontSize.</p>
+<h3 id="插入DOM"><a href="#插入DOM" class="headerlink" title="插入DOM"></a>插入DOM</h3><p>两个办法可以插入新的节点</p>
+<ol>
+<li>使用appendChild，把一个子节点添加到父节点的最后一个子节点</li>
+<li>使用insertBefore, 使用parentElement.insertBefore(newElement, referenceElement);，子节点会插入到referenceElement之前。</li>
+</ol>
+<h3 id="删除DOM"><a href="#删除DOM" class="headerlink" title="删除DOM"></a>删除DOM</h3><ol>
+<li>调用父节点的removeChild把当前节点删掉<br><strong>注意:</strong>删除后的节点虽然不在文档树中了，但其实它还在内存中，可以随时再次被添加到别的位置</li>
+</ol>
+<p>当遍历一个父节点的子节点并进行删除操作时，要注意，children属性是一个<strong>只读</strong>属性，并且它在子节点变化时会实时更新<br>删除多个节点时，要注意children属性时刻都在变化, 容易造成index溢出.</p>
+<h3 id="表单操作"><a href="#表单操作" class="headerlink" title="表单操作"></a>表单操作</h3><p>HTML表单的输入控件主要有以下几种：</p>
+<ul>
+<li>文本框，对应的<input type="text">，用于输入文本；</li>
+<li>口令框，对应的<input type="password">，用于输入口令；</li>
+<li>单选框，对应的<input type="radio">，用于选择一项；</li>
+<li>复选框，对应的<input type="checkbox">，用于选择多项；</li>
+<li>下拉框，对应的<select>，用于选择一项；</select></li>
+<li>隐藏文本，对应的<input type="hidden">，用户不可见，但表单提交时会把隐藏文本发送到服务器。</li>
+</ul>
+<p>直接调用value获得对应的用户输入值, <code>input.value; // &#39;用户输入的值&#39;</code><br>对于单选框和复选框，value属性返回的永远是HTML预设的值，要获得的实际是用户是否“勾上了”选项，应该用checked判断.</p>
+<h3 id="HTML5控件"><a href="#HTML5控件" class="headerlink" title="HTML5控件"></a>HTML5控件</h3><p>HTML5新增了大量标准控件，常用的包括date、datetime、datetime-local、color等，它们都使用<code>&lt;input&gt;</code>标签.<br>不支持HTML5的浏览器无法识别新的控件，会把它们当做type=”text”来显示。支持HTML5的浏览器将获得格式化的字符串</p>
+<h3 id="提交表单"><a href="#提交表单" class="headerlink" title="提交表单"></a>提交表单</h3><p>第一种方式:通过<code>&lt;form&gt;</code>元素的submit()方法提交一个表单, 这种方式的缺点是扰乱了浏览器对form的正常提交。<br>浏览器默认点击<code>&lt;button type=&quot;submit&quot;&gt;</code>或用户在最后一个输入框按回车键时提交表单。</p>
+<p>第二种方式:响应<code>&lt;form&gt;</code>本身的onsubmit事件，在提交form时作修改.<br>出于安全考虑，提交表单时不传输明文口令，而是口令的MD5, 口令框的显示会突然从几个<code>*</code>变成32个<code>*</code>,(MD5有32个字符)<br>要想不改变用户的输入，可以利用<code>&lt;input type=&quot;hidden&quot;&gt;</code>实现.</p>
+<p>注意到id为md5-password的<code>&lt;input&gt;</code>标记了name=”password”，而用户输入的id为input-password的<code>&lt;input&gt;</code>没有name属性。<br>没有name属性的<code>&lt;input&gt;</code>的数据不会被提交。</p>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>在HTML表单中，可以上传文件的唯一控件就是<code>&lt;input type=&quot;file&quot;&gt;</code><br><strong>注意：</strong> 当一个表单包含<code>&lt;input type=&quot;file&quot;&gt;</code>时，表单的enctype必须指定为multipart/form-data，method必须指定为post，<br>这样浏览器才能正确编码并以multipart/form-data格式发送表单的数据。<br>出于安全考虑，浏览器只允许用户点击<code>&lt;input type=&quot;file&quot;&gt;</code>来选择本地文件，用JavaScript对<code>&lt;input type=&quot;file&quot;&gt;</code>的value赋值是没有任何效果的。当用户选择了上传某个文件后，JavaScript也无法获得该文件的真实路径</p>
+<p>File API<br>随着HTML5的普及，新增的File API允许JavaScript读取文件内容，获得更多的文件信息。<br>HTML5的File API提供了File和FileReader两个主要对象，可以获得文件信息并读取文件。</p>
+<h3 id="回调"><a href="#回调" class="headerlink" title="回调"></a>回调</h3><p>浏览器的JavaScript执行引擎在执行JavaScript代码时，总是以单线程模式执行，<br>也就是说，任何时候，JavaScript代码都不可能同时有多于1个线程在执行.<br>在JavaScript中，执行多任务实际上都是异步调用.</p>
+<h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>Asynchronous JavaScript and XML，意思就是用JavaScript执行异步网络请求。<br>通过检测window对象是否有XMLHttpRequest属性来确定浏览器是否支持标准的XMLHttpRequest,<br>不要根据浏览器的navigator.userAgent来检测浏览器是否支持某个JavaScript特性.</p>
+<h3 id="安全限制"><a href="#安全限制" class="headerlink" title="安全限制"></a>安全限制</h3><p>由于浏览器的同源策略,默认情况下，JavaScript在发送AJAX请求时，URL的域名必须和当前页面完全一致,<br>即域名,协议和端口号要一致.有的浏览器可能允许端口不同.<br>那是不是用JavaScript无法请求外域（就是其他网站）的URL了呢？方法还是有的，大概有这么几种：<br>一是: 通过Flash插件发送HTTP请求，这种方式可以绕过浏览器的安全限制，但必须安装Flash，并且跟Flash交互。不过Flash用起来麻烦，而且现在用得也越来越少了。<br>二是:通过在同源域名下架设一个代理服务器来转发，JavaScript负责把请求发送到代理服务器,代理服务器再把结果返回，这样就遵守了浏览器的同源策略。这种方式麻烦之处在于需要服务器端额外做开发。<br>第三种方式称为JSONP，它有个限制，只能用GET请求，并且要求返回JavaScript。这种方式跨域实际上是利用了浏览器允许跨域引用JavaScript资源.JSONP通常以函数调用的形式返回</p>
+<p>CORS(Cross-Origin Resource Sharing): 是HTML5规范定义的如何跨域访问资源<br>Origin表示本域，也就是浏览器当前页面的域。当JavaScript向外域（如sina.com）发起请求后，浏览器收到响应后，首先检查Access-Control-Allow-Origin是否包含本域，如果是，则此次跨域请求成功，如果不是，则请求失败，JavaScript将无法获取到响应的任何数据。<br>假设本域是my.com，外域是sina.com，只要响应头Access-Control-Allow-Origin为<code>http://my.com</code>，或者是<code>*</code>，本次请求就可以成功。<br>可见，跨域能否成功，取决于对方服务器是否愿意给你设置一个正确的Access-Control-Allow-Origin，决定权始终在对方手中。</p>
+<h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><p>Promise最大的好处是在异步执行的流程中，把执行代码和处理结果的代码清晰地分离了.<br>Promise还可以做更多的事情，比如，有若干个异步任务，需要先做任务1，如果成功后再做任务2，任何任务失败则不再继续并执行错误处理函数。<br><code>job1.then(job2).then(job3).catch(handleError);</code> ,其中，job1、job2和job3都是Promise对象。</p>
+<h3 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h3><p>Canvas是HTML5新增的组件，它就像一块幕布，可以用JavaScript在上面绘制各种图表、动画等。<br>没有Canvas的年代，绘图只能借助Flash插件实现，页面不得不用JavaScript和Flash进行交互。<br>有了Canvas，我们就再也不需要Flash了，直接使用JavaScript完成绘制。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Appium笔记]]></title>
+      <url>http://arvin-he.github.io/2017/12/08/appium-notes1-2017-12-08/</url>
+      <content type="html"><![CDATA[<h3 id="关于appium"><a href="#关于appium" class="headerlink" title="关于appium"></a>关于appium</h3><p>手机app自动化测试，现有支持的app的手机平台（Andriod和IOS）, 选择Appium工具。因为Andriod和IOS，Appium都支持。</p>
+<p>web自动化测试的路线是这样的：<br>编程语言基础—&gt;测试框架—&gt;webdriver API（selenium2）—&gt;开发自动化测试项目。</p>
+<p>移动自动化的测试的路线则是这样的：<br>编程语言基础—&gt;测试框架—&gt;android/IOS开发测试基础—&gt;appium API —&gt;开发移动自动化项目。</p>
+<p>appium就是node的其中一个开源项目，appiun server端是用node实现，遵循了REST架构，所以appium可以用node的包管理工具npm来进行安装。</p>
+<h3 id="安装appium"><a href="#安装appium" class="headerlink" title="安装appium"></a>安装appium</h3><ol>
+<li>使用淘宝镜像安装, 输入”cnpm install -g appium” 即可在线安装.</li>
+<li>安装appium的客户端，基于python的开发环境，可以用pip安装appium客户端, 输入”pip install Appium-Python-Client”，</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> node.js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> node.js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[javascript 标准对象]]></title>
       <url>http://arvin-he.github.io/2017/12/08/js-object-2017-12-08/</url>
       <content type="html"><![CDATA[<h3 id="javascript标准对象"><a href="#javascript标准对象" class="headerlink" title="javascript标准对象"></a>javascript标准对象</h3><ol>
@@ -40,6 +167,7 @@
       <title><![CDATA[selenium笔记]]></title>
       <url>http://arvin-he.github.io/2017/12/07/selenium-notes1-2017-12-07/</url>
       <content type="html"><![CDATA[<h3 id="selenium使用"><a href="#selenium使用" class="headerlink" title="selenium使用"></a>selenium使用</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line">driver = webdriver.Firefox()</div><div class="line">driver.get(<span class="string">"http://www.python.org"</span>)</div><div class="line"><span class="keyword">assert</span> <span class="string">"Python"</span> <span class="keyword">in</span> driver.title</div><div class="line">elem = driver.find_element_by_name(<span class="string">"q"</span>)</div><div class="line">elem.send_keys(<span class="string">"pycon"</span>)</div><div class="line">elem.send_keys(Keys.RETURN)</div><div class="line"><span class="keyword">assert</span> <span class="string">"No results found."</span> <span class="keyword">not</span> <span class="keyword">in</span> driver.page_source</div><div class="line">driver.close()</div></pre></td></tr></table></figure>
+<h3 id="使用selenium登陆淘宝"><a href="#使用selenium登陆淘宝" class="headerlink" title="使用selenium登陆淘宝"></a>使用selenium登陆淘宝</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</div><div class="line"></div><div class="line">driver = webdriver.Firefox()</div><div class="line">driver.get(<span class="string">'https://www.taobao.com/'</span>)</div><div class="line"><span class="keyword">assert</span> <span class="string">"淘宝"</span> <span class="keyword">in</span> driver.title</div><div class="line">elem = driver.find_element_by_class_name(<span class="string">'member-ft'</span>)</div><div class="line">tags = elem.find_elements_by_tag_name(<span class="string">'a'</span>)</div><div class="line">login_url = <span class="string">''</span></div><div class="line"><span class="keyword">for</span> tag <span class="keyword">in</span> tags:</div><div class="line">    <span class="keyword">if</span> <span class="string">'login'</span> <span class="keyword">in</span> tag.get_attribute(<span class="string">'href'</span>):</div><div class="line">        login_url = tag.get_attribute(<span class="string">'href'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> login_url:</div><div class="line">    driver.get(login_url)</div><div class="line">    driver.find_element_by_id(<span class="string">'J_Quick2Static'</span>).click()</div><div class="line">    elem = driver.find_element_by_id(<span class="string">'TPL_username_1'</span>)</div><div class="line">    elem.send_keys(<span class="string">'淘宝账号'</span>)</div><div class="line">    elem2 = driver.find_element_by_id(<span class="string">'TPL_password_1'</span>)</div><div class="line">    elem2.send_keys(<span class="string">'淘宝账号密码'</span>)</div><div class="line">    driver.find_element_by_id(<span class="string">'J_SubmitStatic'</span>).click()</div><div class="line">    <span class="keyword">assert</span> <span class="string">"No results found."</span> <span class="keyword">not</span> <span class="keyword">in</span> driver.page_source</div><div class="line">    cookies = driver.get_cookies()</div><div class="line">    pprint(cookies)</div><div class="line"><span class="comment"># driver.close()</span></div></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
@@ -85,6 +213,23 @@
 <p>另一个解决办法:apply<br>指定函数的this指向哪个对象，可以用函数本身的apply方法，它接收两个参数:<br>第一个参数就是需要绑定的this变量，<br>第二个参数是Array，表示函数本身的参数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAge</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> y = <span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear();</div><div class="line">    <span class="keyword">return</span> y - <span class="keyword">this</span>.birth;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> xiaoming = &#123;</div><div class="line">    name: <span class="string">'小明'</span>,</div><div class="line">    birth: <span class="number">1990</span>,</div><div class="line">    age: getAge</div><div class="line">&#125;;</div><div class="line"></div><div class="line">xiaoming.age(); <span class="comment">// 25</span></div><div class="line">getAge.apply(xiaoming, []); <span class="comment">// 25, this指向xiaoming, 参数为空</span></div></pre></td></tr></table></figure></p>
 <p>另一个与apply()类似的方法是call()，唯一区别是：<br>apply()把参数打包成Array再传入；<br>call()把参数按顺序传入。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, [<span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>]); <span class="comment">// 5</span></div><div class="line"><span class="built_in">Math</span>.max.call(<span class="literal">null</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>); <span class="comment">// 5</span></div></pre></td></tr></table></figure></p>
 <p>对普通函数调用，我们通常把this绑定为null。</p>
+<h3 id="原型链继承方式"><a href="#原型链继承方式" class="headerlink" title="原型链继承方式"></a>原型链继承方式</h3><p>JavaScript的原型继承实现方式就是：</p>
+<ol>
+<li>定义新的构造函数，并在内部用call()调用希望“继承”的构造函数，并绑定this；</li>
+<li>借助中间函数F实现原型链继承，最好通过封装的inherits函数完成；</li>
+<li>继续在新的构造函数的原型上定义新方法。</li>
+</ol>
+<h3 id="类class"><a href="#类class" class="headerlink" title="类class"></a>类class</h3><p>从ES6开始新的关键字class正式被引入到JavaScript中,class的目的就是让定义类更简单。<br>类的继承使用通过extends来实现.</p>
+<h3 id="浏览器对象"><a href="#浏览器对象" class="headerlink" title="浏览器对象"></a>浏览器对象</h3><p>JavaScript可以获取浏览器提供的很多对象，并进行操作。<br>常用的浏览器对象有: window, navigator, screen, location, document, history</p>
+<p>window对象充当全局作用域，且表示浏览器窗口. 兼容性：IE&lt;=8不支持。<br>有innerWidth和innerHeight属性，可以获取浏览器窗口的内部宽度和高度。<br>内部宽高是指除去菜单栏、工具栏、边框等占位元素后，用于显示网页的净宽高。<br>outerWidth和outerHeight属性，可以获取浏览器窗口的整个宽高。</p>
+<p>navigator对象表示浏览器的信息，最常用的属性包括：<br>navigator.appName：浏览器名称；<br>navigator.appVersion：浏览器版本；<br>navigator.language：浏览器设置的语言；<br>navigator.platform：操作系统类型；<br>navigator.userAgent：浏览器设定的User-Agent字符串。<br><strong>注意:</strong> navigator的信息可以很容易地被用户修改，所以JavaScript读取的值不一定是正确的.</p>
+<p>screen对象表示屏幕的信息，常用的属性有：<br>screen.width：屏幕宽度，以像素为单位；<br>screen.height：屏幕高度，以像素为单位；<br>screen.colorDepth：返回颜色位数，如8、16、24。</p>
+<p>location对象表示当前页面的URL信息<br>location.protocol; // ‘http’<br>location.host; // ‘www.example.com’<br>location.port; // ‘8080’<br>location.pathname; // ‘/path/index.html’<br>location.search; // ‘?a=1&amp;b=2’<br>location.hash; // ‘TOP’<br>要加载一个新页面，可以调用location.assign()。如果要重新加载当前页面，则调用location.reload()方法.</p>
+<p>document对象表示当前页面。由于HTML在浏览器中以DOM形式表示为树形结构，document对象就是整个DOM树的根节点。<br>document的title属性是从HTML文档中的<code>&lt;title&gt;xxx&lt;/title&gt;</code>读取的，但是可以动态改变.<br>document对象提供的getElementById()和getElementsByTagName()可以按ID获得一个DOM节点和按Tag名称获得一组DOM节点.<br>document对象还有一个cookie属性，通过document.cookie读取到当前页面的Cookie.<br>由于JavaScript能读取到页面的Cookie，而用户的登录信息通常也存在Cookie中，这就造成了巨大的安全隐患，<br>因为在HTML页面中引入第三方的JavaScript代码是允许的,为了解决这个问题，服务器在设置Cookie时可以使用httpOnly，<br>设定了httpOnly的Cookie将不能被JavaScript读取。这个行为由浏览器实现，主流浏览器均支持httpOnly选项，IE从IE6 SP1开始支持。<br>为确保安全，服务器端在设置Cookie时，应该始终坚持使用httpOnly。</p>
+<p>history对象保存了浏览器的历史记录，JavaScript可以调用history对象的back()或forward ()，相当于用户点击了浏览器的“后退”或“前进”按钮。<br>新手开始设计Web页面时喜欢在登录页登录成功时调用history.back()，试图回到登录前的页面。这是一种错误的方法。<br>任何情况，你都不应该使用history这个对象了。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><img src="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499832124d97d77b00706461f9daf1a390b75ade1000" alt="廖雪峰官方网站"></li>
+</ul>
 ]]></content>
       
         <categories>
@@ -8473,6 +8618,12 @@
     </entry>
     
     <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://arvin-he.github.io/categories/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于Arvin]]></title>
       <url>http://arvin-he.github.io/about/index.html</url>
       <content type="html"><![CDATA[<hr>
@@ -8495,8 +8646,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://arvin-he.github.io/categories/index.html</url>
+      <title><![CDATA[essay]]></title>
+      <url>http://arvin-he.github.io/essay/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -8507,20 +8658,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://arvin-he.github.io/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[essay]]></title>
-      <url>http://arvin-he.github.io/essay/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[readnotes]]></title>
       <url>http://arvin-he.github.io/readnotes/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>http://arvin-he.github.io/tags/index.html</url>
       <content type="html"></content>
     </entry>
     

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arvin-he.github.io/"/>
-  <updated>2017-12-05T00:58:41.578Z</updated>
+  <updated>2017-12-08T01:08:46.319Z</updated>
   <id>http://arvin-he.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javascript 标准对象</title>
+    <link href="http://arvin-he.github.io/2017/12/08/js-object-2017-12-08/"/>
+    <id>http://arvin-he.github.io/2017/12/08/js-object-2017-12-08/</id>
+    <published>2017-12-08T01:04:29.000Z</published>
+    <updated>2017-12-08T01:08:46.319Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="javascript标准对象"><a href="#javascript标准对象" class="headerlink" title="javascript标准对象"></a>javascript标准对象</h3><ol><li>不要使用new Number()、new Boolean()、new String()创建包装对象；</li><li>用parseInt()或parseFloat()来转换任意类型到number；</li><li>用String()来转换任意类型到string，或者直接调用某个对象的toString()方法；</li><li>通常不必把任意类型转换为boolean再判断，因为可以直接写if (myVar) {…}；</li><li>typeof操作符可以判断出number、boolean、string、function和undefined；</li><li>判断Array要使用Array.isArray(arr)；</li><li>判断null请使用myVar === null；</li><li>判断某个全局变量是否存在用typeof window.myVar === ‘undefined’；</li><li>函数内部判断某个变量是否存在用typeof myVar === ‘undefined’。</li><li>不是任何对象都有toString()方法, null和undefined就没有！这两个特殊值要除外，虽然null还伪装成了object类型。</li><li>number对象调用toString()需要特殊处理,<code>123..toString(); // &#39;123&#39;, 注意是两个点！</code> 或 <code>(123).toString(); // &#39;123&#39;</code></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;javascript标准对象&quot;&gt;&lt;a href=&quot;#javascript标准对象&quot; class=&quot;headerlink&quot; title=&quot;javascript标准对象&quot;&gt;&lt;/a&gt;javascript标准对象&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;不要使用new Number()
+      
+    
+    </summary>
+    
+      <category term="js" scheme="http://arvin-he.github.io/categories/js/"/>
+    
+    
+      <category term="js" scheme="http://arvin-he.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>selenium笔记</title>
+    <link href="http://arvin-he.github.io/2017/12/07/selenium-notes1-2017-12-07/"/>
+    <id>http://arvin-he.github.io/2017/12/07/selenium-notes1-2017-12-07/</id>
+    <published>2017-12-07T13:39:06.000Z</published>
+    <updated>2017-12-08T01:03:55.173Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="selenium使用"><a href="#selenium使用" class="headerlink" title="selenium使用"></a>selenium使用</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line">driver = webdriver.Firefox()</div><div class="line">driver.get(<span class="string">"http://www.python.org"</span>)</div><div class="line"><span class="keyword">assert</span> <span class="string">"Python"</span> <span class="keyword">in</span> driver.title</div><div class="line">elem = driver.find_element_by_name(<span class="string">"q"</span>)</div><div class="line">elem.send_keys(<span class="string">"pycon"</span>)</div><div class="line">elem.send_keys(Keys.RETURN)</div><div class="line"><span class="keyword">assert</span> <span class="string">"No results found."</span> <span class="keyword">not</span> <span class="keyword">in</span> driver.page_source</div><div class="line">driver.close()</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;selenium使用&quot;&gt;&lt;a href=&quot;#selenium使用&quot; class=&quot;headerlink&quot; title=&quot;selenium使用&quot;&gt;&lt;/a&gt;selenium使用&lt;/h3&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://arvin-he.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://arvin-he.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>javascript笔记(二)</title>
@@ -471,56 +522,6 @@
     
     
       <category term="Linux" scheme="http://arvin-he.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python之beautifulsoup使用</title>
-    <link href="http://arvin-he.github.io/2017/09/18/py-bs4-2017-09-18/"/>
-    <id>http://arvin-he.github.io/2017/09/18/py-bs4-2017-09-18/</id>
-    <published>2017-09-18T13:20:12.000Z</published>
-    <updated>2017-10-10T03:07:42.434Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="find-find-all"><a href="#find-find-all" class="headerlink" title="find()/find_all()"></a>find()/find_all()</h3><p>find() 返回文档中符合条件的tag，如果没找到符合条件的tag返回Node<br>find_all()返回文档中全部符合条件的tag的列表，如果不存在返回空列表<br>注意find()函数返回的是符合条件的tag，因此可以进行链式调用，如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#先查找class属性为‘post-content’的div标签，然后查找该div标签下的所有的img标签</span></div><div class="line">soup.find(<span class="string">'div'</span>, class_=<span class="string">'post-content'</span>).find_all(<span class="string">'img'</span>)</div></pre></td></tr></table></figure></p><p>而<code>find_all()</code>返回的是列表，列表是不存在find()和find_all()函数的，因此不能进行链式调用</p><h3 id="孩子-child-与后代-descendant"><a href="#孩子-child-与后代-descendant" class="headerlink" title="孩子(child)与后代(descendant)"></a>孩子(child)与后代(descendant)</h3><p>子标签: 一个父标签的下一级标签<br>后代标签: 一个父标签下面所有级别的标签,包括子标签<br>所有的子标签都是后代标签,但不是所有后代标签都是子标签</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;find-find-all&quot;&gt;&lt;a href=&quot;#find-find-all&quot; class=&quot;headerlink&quot; title=&quot;find()/find_all()&quot;&gt;&lt;/a&gt;find()/find_all()&lt;/h3&gt;&lt;p&gt;find() 返回文档中符合条件的t
-      
-    
-    </summary>
-    
-      <category term="编程" scheme="http://arvin-he.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Python" scheme="http://arvin-he.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mongodb笔记(三)</title>
-    <link href="http://arvin-he.github.io/2017/09/18/mongodb-note3-2017-09-18/"/>
-    <id>http://arvin-he.github.io/2017/09/18/mongodb-note3-2017-09-18/</id>
-    <published>2017-09-18T13:05:16.000Z</published>
-    <updated>2017-11-07T01:17:17.721Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="mongodb突然无法打开"><a href="#mongodb突然无法打开" class="headerlink" title="mongodb突然无法打开"></a>mongodb突然无法打开</h3><p>检查mongodb数据所在的文件夹下是否有一个类似”locked file”,删掉这个文件,然后再开启mongodb</p><h3 id="再说插入操作"><a href="#再说插入操作" class="headerlink" title="再说插入操作"></a>再说插入操作</h3><p>单条插入<br>批量插入</p><h3 id="find操作"><a href="#find操作" class="headerlink" title="find操作"></a>find操作</h3><p>查询是用的最多的操作了, 常用的有2类:</p><ol><li><blockquote><p>, &gt;=, &lt;, &lt;=, !=, =</p></blockquote></li><li>And，OR，In，NotIn</li></ol><p>这些操作在mongodb里面都有对应封装.</p><ol><li>“$gt”, “$gte”, “$lt”, “$lte”, “$ne”, “”<br>这些与上面 &gt;, &gt;=, &lt;, &lt;=, !=, = 这6个符号操作一一对应</li><li>“”, “$or”, “$in”，”$nin”<br>与 And，OR，In，NotIn 操作一一对应</li></ol><p>正则表达式匹配<br>在mongodb中还有一个特殊的匹配，那就是支持正则表达式.</p><p>$where操作</p><h3 id="update操作"><a href="#update操作" class="headerlink" title="update操作"></a>update操作</h3><p>整体更新<br>局部更新</p><p>局部更新:<br>mongodb中已经给我们提供了两个修改器： $inc 和 $set。</p><p>$inc修改器<br>$inc也就是increase的缩写，自增$inc指定的值，如果“文档”中没有此key，则会创建key。</p><p>$set修改器</p><h3 id="upsert操作"><a href="#upsert操作" class="headerlink" title="upsert操作"></a>upsert操作</h3><p>upsert操作就是说：如果我没有查到，我就在数据库里面新增一条，其实这样也有好处，就是避免了我在数据库里面判断是update还是add操作，使用起来很简单将update的第三个参数设为true即可。</p><h3 id="批量更新"><a href="#批量更新" class="headerlink" title="批量更新"></a>批量更新</h3><p>在mongodb中如果匹配多条，默认的情况下只更新第一条，那么如果我们有需求必须批量更新，那么在mongodb中实现也是很简单的，在update的第四个参数中设为true即可.</p><h3 id="查询某一字段重复的记录"><a href="#查询某一字段重复的记录" class="headerlink" title="查询某一字段重复的记录"></a>查询某一字段重复的记录</h3><h3 id="查询某一字段重复的记录的数目"><a href="#查询某一字段重复的记录的数目" class="headerlink" title="查询某一字段重复的记录的数目"></a>查询某一字段重复的记录的数目</h3><h3 id="查询和删除某一字段不是数字的记录"><a href="#查询和删除某一字段不是数字的记录" class="headerlink" title="查询和删除某一字段不是数字的记录"></a>查询和删除某一字段不是数字的记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 查询某一字段不是数字的记录</div><div class="line">db.getCollection(&apos;phone&apos;).find(&#123;&quot;tel&quot;: &#123;&quot;$regex&quot;: &apos;^[^0-9]+$&apos;&#125;&#125;)</div><div class="line"># 查询某一字段不是数字的记录的数目</div><div class="line">db.getCollection(&apos;phone&apos;).find(&#123;&quot;tel&quot;: &#123;&quot;$regex&quot;: &apos;^[^0-9]+$&apos;&#125;&#125;).count()</div><div class="line"># 删除某一字段不是数字的记录</div><div class="line">db.getCollection(&apos;phone&apos;).remove(&#123;&quot;tel&quot;: &#123;&quot;$regex&quot;: &apos;^[^0-9]+$&apos;&#125;&#125;)</div></pre></td></tr></table></figure><h3 id="数据库合并"><a href="#数据库合并" class="headerlink" title="数据库合并"></a>数据库合并</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8 -*-</div><div class="line">import os</div><div class="line">import sys</div><div class="line">from pymongo import MongoClient</div><div class="line">import gevent</div><div class="line">from gevent import monkey</div><div class="line">from gevent.pool import Pool</div><div class="line">import subprocess</div><div class="line">from logger import Logging</div><div class="line"></div><div class="line">monkey.patch_all()</div><div class="line"></div><div class="line"></div><div class="line">logname = os.path.splitext(os.path.basename(__file__))[0]</div><div class="line">logger = Logging(logname)</div><div class="line">log = logger.logObject</div><div class="line"></div><div class="line"># 连接mongodb数据库,并返回数据库对象</div><div class="line"></div><div class="line"></div><div class="line">def connectDB(user, passwd, host, db_name):</div><div class="line">    client = MongoClient(</div><div class="line">        &apos;mongodb://&#123;&#125;:&#123;&#125;@&#123;&#125;/&#123;&#125;&apos;.format(user, passwd, host, db_name))</div><div class="line">    return client[db_name]</div><div class="line"></div><div class="line"></div><div class="line">db1 = connectDB(&quot;xxx&quot;, &quot;xxxxxx&quot;, &quot;ip:port&quot;, &quot;xxxx&quot;)</div><div class="line">db2 = connectDB(&quot;xxxxx&quot;, &quot;******&quot;,</div><div class="line">                &quot;ip:port&quot;, &quot;qqqq&quot;)</div><div class="line">movie1 = db1[&quot;xxx1&quot;]</div><div class="line">movie2 = db2[&quot;xxx2&quot;]</div><div class="line"></div><div class="line"></div><div class="line">def get_item():</div><div class="line">    for index, item in enumerate(movie2.find(&#123;&#125;, no_cursor_timeout=True)):</div><div class="line">        log.info(&quot;获取第&#123;&#125;条数据.&quot;.format(index + 1))</div><div class="line">        item[&quot;time&quot;] = float(&quot;&#123;:.3f&#125;&quot;.format(int(item[&quot;time&quot;] * 1000)))</div><div class="line">        yield item</div><div class="line"></div><div class="line"></div><div class="line">def mergedb(item):</div><div class="line">    if movie1.find(&#123;&quot;tel&quot;: item[&quot;tel&quot;], &quot;time&quot;: item[&quot;time&quot;]&#125;).count() &lt; 1:</div><div class="line">        movie1.insert(item)</div><div class="line">    else:</div><div class="line">        log.info(&quot;该数据已经存在!&quot;)</div><div class="line"></div><div class="line"></div><div class="line">def backupdb():</div><div class="line">    log.info(&quot;开始导出testdb数据库phone集合...&quot;)</div><div class="line">    dst = os.path.join(&quot;data&quot;, &quot;&#123;&#125;.dat&quot;.format(&quot;phone&quot;))</div><div class="line">    try:</div><div class="line">        subprocess.check_call([&quot;mongoexport&quot;,</div><div class="line">                               &quot;-h&quot;, &quot;ip:port&quot;,</div><div class="line">                               &quot;-u&quot;, &quot;xxx.xx&quot;,</div><div class="line">                               &quot;-p&quot;, &quot;xxxx&quot;,</div><div class="line">                               &quot;-d&quot;, &quot;xxxxx&quot;,</div><div class="line">                               &quot;-c&quot;, &quot;xxxx&quot;,</div><div class="line">                               &quot;-o&quot;, dst])</div><div class="line">        log.info(&quot;导出&#123;&#125;数据成功&quot;.format(dst))</div><div class="line">    except Exception as e:</div><div class="line">        log.error(&quot;导出MongoDB数据出错:&#123;&#125;&quot;.format(e))</div><div class="line">        return</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &quot;__main__&quot;:</div><div class="line">    pool = Pool(100)</div><div class="line">    try:</div><div class="line">        pool.map(mergedb, get_item())</div><div class="line">    except Exception as e:</div><div class="line">        log.error(e)</div><div class="line">        sys.exit()</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;mongodb突然无法打开&quot;&gt;&lt;a href=&quot;#mongodb突然无法打开&quot; class=&quot;headerlink&quot; title=&quot;mongodb突然无法打开&quot;&gt;&lt;/a&gt;mongodb突然无法打开&lt;/h3&gt;&lt;p&gt;检查mongodb数据所在的文件夹下是否有一个类似”
-      
-    
-    </summary>
-    
-      <category term="数据库" scheme="http://arvin-he.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="MongoDB" scheme="http://arvin-he.github.io/tags/MongoDB/"/>
     
   </entry>
   

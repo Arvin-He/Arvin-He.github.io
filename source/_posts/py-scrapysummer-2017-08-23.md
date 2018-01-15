@@ -1,8 +1,8 @@
 ---
 title: Python爬虫总结
 date: 2017-08-23 11:38:57
-tags: [Python,爬虫]
-categories: 编程
+tags: scrapy
+categories: python
 ---
 
 ### 爬虫需要用到的工具

@@ -1,8 +1,8 @@
 ---
 title: Python之Scrapy初识
 date: 2017-06-15 13:09:52
-tags: [Python,Scrapy]
-categories: 编程
+tags: scrapy
+categories: python
 ---
 ### Scrapy简介
 Scrapy是用Python开发的一个快速,高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。Scrapy吸引人的地方在于它是一个框架，任何人都可以根据需求方便的修改。它也提供了多种类型爬虫的基类，如BaseSpider、sitemap爬虫等，最新版本又提供了web2.0爬虫的支持。Scratch，是抓取的意思，Scrapy大概是源于Scratch吧.Scrapy 使用了 Twisted异步网络库来处理网络通讯。整体架构大致如下:

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arvin-he.github.io/"/>
-  <updated>2018-01-15T09:15:40.156Z</updated>
+  <updated>2018-01-15T09:43:04.319Z</updated>
   <id>http://arvin-he.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>scrapy安装</title>
+    <link href="http://arvin-he.github.io/2018/01/15/py-scrapy2-2018-01-15/"/>
+    <id>http://arvin-he.github.io/2018/01/15/py-scrapy2-2018-01-15/</id>
+    <published>2018-01-15T09:32:19.000Z</published>
+    <updated>2018-01-15T09:43:04.319Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="windows下scrapy安装"><a href="#windows下scrapy安装" class="headerlink" title="windows下scrapy安装"></a>windows下scrapy安装</h2><h3 id="下载依赖的第三方离线包"><a href="#下载依赖的第三方离线包" class="headerlink" title="下载依赖的第三方离线包"></a>下载依赖的第三方离线包</h3><p>到 <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted" target="_blank" rel="external">这个地址</a>下载一些在windows平台编译的第三方库.</p><ol><li>pywin32</li><li>twisted<br><strong>注意:</strong> 根据python的版本下载对应的离线包.</li></ol><h3 id="安装或更新依赖的第三方离线包"><a href="#安装或更新依赖的第三方离线包" class="headerlink" title="安装或更新依赖的第三方离线包"></a>安装或更新依赖的第三方离线包</h3><p>下载好后就安装</p><ol><li>在控制台切换目录到离线包所在的目录</li><li>安装离线包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install pywin32</div><div class="line">pip install twisted</div></pre></td></tr></table></figure></li></ol><p>如果是更新包则:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install pywin32 -U</div><div class="line">pip install twisted -U</div></pre></td></tr></table></figure></p><h3 id="安装或更新scrapy"><a href="#安装或更新scrapy" class="headerlink" title="安装或更新scrapy"></a>安装或更新scrapy</h3><p>下载安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy</div></pre></td></tr></table></figure></p><p>下载更新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy -U</div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;windows下scrapy安装&quot;&gt;&lt;a href=&quot;#windows下scrapy安装&quot; class=&quot;headerlink&quot; title=&quot;windows下scrapy安装&quot;&gt;&lt;/a&gt;windows下scrapy安装&lt;/h2&gt;&lt;h3 id=&quot;下载依赖的第三方离
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://arvin-he.github.io/categories/python/"/>
+    
+    
+      <category term="scrapy" scheme="http://arvin-he.github.io/tags/scrapy/"/>
+    
+  </entry>
   
   <entry>
     <title>python之pip常用命令</title>
@@ -493,32 +518,6 @@
     
     
       <category term="Python" scheme="http://arvin-he.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>谷歌浏览器常用快捷键</title>
-    <link href="http://arvin-he.github.io/2017/09/29/chrome-hotkey-2017-09-29/"/>
-    <id>http://arvin-he.github.io/2017/09/29/chrome-hotkey-2017-09-29/</id>
-    <published>2017-09-29T06:20:11.000Z</published>
-    <updated>2017-09-29T06:33:46.434Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Chrome窗口和标签页快捷键："><a href="#Chrome窗口和标签页快捷键：" class="headerlink" title="Chrome窗口和标签页快捷键："></a>Chrome窗口和标签页快捷键：</h3><ol><li>Ctrl+N    打开新窗口</li><li>Ctrl+T    打开新标签页</li><li>Ctrl+Shift+N    在隐身模式下打开新窗口</li><li>Ctrl+O，然后选择文件，在谷歌浏览器中打开计算机上的文件</li><li>按住 Ctrl 键，然后点击链接，从后台在新标签页中打开链接，但您仍停留在当前标签页中</li><li>按住 Ctrl+Shift 键，然后点击链接    在新标签页中打开链接，同时切换到新打开的标签页</li><li>按住 Shift 键，然后点击链接    在新窗口中打开链接</li><li>Alt+F4    关闭当前浏览器窗口</li><li>Ctrl+Shift+T 重新打开上次关闭的标签页。谷歌浏览器可记住最近关闭的 10 个标签页。</li><li>将链接拖动到标签页内    在指定标签页中打开链接</li><li>将链接拖动到两个标签页之间    在标签页横条的指定位置建立一个新标签页，在该标签页中打开链接</li><li>Ctrl+1 到 Ctrl+8    切换到指定位置编号的标签页。您按下的数字代表标签页横条上的相应标签位置。</li><li>Ctrl+9    切换到最后一个标签页</li><li>Ctrl+Tab 或 Ctrl+PgDown    切换到下一个标签页</li><li>Ctrl+Shift+Tab 或 Ctrl+PgUp    切换到上一个标签页</li><li>Ctrl+W 或 Ctrl+F4    关闭当前标签页或弹出式窗口</li><li>Alt+Home    打开主页</li></ol><h3 id="Chrome地址栏快捷键-："><a href="#Chrome地址栏快捷键-：" class="headerlink" title="Chrome地址栏快捷键 ："></a>Chrome地址栏快捷键 ：</h3><h4 id="在地址栏，进行下列操作之一："><a href="#在地址栏，进行下列操作之一：" class="headerlink" title="在地址栏，进行下列操作之一："></a>在地址栏，进行下列操作之一：</h4><ol><li>键入搜索字词    使用默认搜索引擎进行搜索</li><li>键入网址中”www.”和”.com”之间的部分，然后按Ctrl+Enter 键    为您在地址栏中输入的内容添加”www.”和”.com”，然后打开网址</li><li>键入搜索引擎关键字或网址，按 Tab键，然后键入搜索字词    使用与关键字或网址相关联的搜索引擎进行搜索。如果谷歌浏览器可以识别您要使用的搜索引擎，则会提示您按 Tab 键。</li><li>F6 或 Ctrl+L 或 Alt+D    选中网址区域中的内容</li><li>键入网址，然后按 Alt+Enter 键    在新标签页中打开网址</li><li>打开谷歌chrome浏览器各功能的快捷键</li><li>Ctrl+B    打开和关闭书签栏</li><li>Ctrl+Shift+B    打开书签管理器</li><li>Ctrl+H    查看”历史记录”页</li><li>Ctrl+J    查看”下载”页</li><li>Shift+Escape    查看任务管理器</li><li>Shift+Alt+T    将焦点设置在工具栏上。使用键盘上的向右和向左箭头，可导航至工具栏上的不同按钮。</li></ol><h3 id="Chrome网页快捷键："><a href="#Chrome网页快捷键：" class="headerlink" title="Chrome网页快捷键："></a>Chrome网页快捷键：</h3><ol><li>Ctrl+P    打印当前页</li><li>Ctrl+S    保存当前页</li><li>F5    重新加载当前页</li><li>Esc    停止加载当前页</li><li>Ctrl+F    打开”在网页上查找”框</li><li>点击鼠标中键或滚轮（只在谷歌浏览器测试版（只有英文版）中可用）    激活自动滚动。当您移动鼠标时，网页会根据鼠标的移动方向自动滚动。</li><li>Ctrl+F5 或 Shift+F5    重新加载当前页，但忽略缓存内容</li><li>按住 Alt 键，然后点击链接    下载链接</li><li>Ctrl+G 或 F3    查找与您在”在网页上查找”框中输入的内容相匹配的下一个匹配项</li><li>Ctrl+Shift+G 或 Shift+F3    查找与您在”在网页上查找”框中输入的内容相匹配的上一个匹配项</li><li>Ctrl+U    查看源代码</li><li>将链接拖动到书签栏    将链接加入书签</li><li>Ctrl+D    将当前网页加入书签</li><li>Ctrl++，或者按住 Ctrl 键并向上滚动鼠标滚轮    放大网页上的所有内容</li><li>Ctrl+-，或者按住 Ctrl 键并向下滚动鼠标滚轮    缩小网页上的所有内容</li><li>Ctrl+0    将网页上的所有内容都恢复到正常大小</li><li>空格键                             向下滚动网页。</li><li>Home                               转至网页顶部。</li><li>End                                转至网页底部。</li><li>按住 Shift 键的同时滚动鼠标滚轮。  在网页上横向滚动。</li></ol><h3 id="浏览器文本快捷键："><a href="#浏览器文本快捷键：" class="headerlink" title="浏览器文本快捷键："></a>浏览器文本快捷键：</h3><ol><li>Ctrl+C                             将突出显示的内容复制到剪贴板中。</li><li>Ctrl+V 或 Shift+Insert             从剪贴板中粘贴内容。</li><li>Ctrl+Shift+V                       从剪贴板中粘贴内容(不带格式)。</li><li>Ctrl+X 或 Shift+Delete             删除突出显示的内容并将其复制到剪贴板中。</li></ol><h3 id="chrome命令16个非常有用的chrome-命令，操作方法与上述类似。"><a href="#chrome命令16个非常有用的chrome-命令，操作方法与上述类似。" class="headerlink" title="chrome命令16个非常有用的chrome://命令，操作方法与上述类似。"></a>chrome命令16个非常有用的chrome://命令，操作方法与上述类似。</h3><ol><li>chrome://downloads 等同于从菜单中查看下载内容，其快捷键是Ctrl+J</li><li>chrome://extensions 等同于菜单-工具-扩展</li><li>chrome://plugins 显示已安装插件 </li><li>chrome://bookmarks 等同于菜单-书签-书签管理器，快捷键Ctrl+Shift+O</li><li>chrome://history 等同于从菜单-历史直接访问，快捷键 Ctrl+H</li><li>chrome://restart 重启chrome浏览器</li><li>chrome://apps 打开chrome网上应用商店</li><li>chrome://flags 可用来启用或者关闭某些chrome的体验特性</li><li>chrome://dns 显示浏览器预抓取的主机名列表，让你随时了解DNS状态</li><li>chrome://memory 重定向到chrome://memory-redirect/，显示系统运行中的浏览器内存使用情况，以及浏览器中进程的详细信息。</li><li>chrome://net-internals 显示网络相关信息，用来捕获浏览器生成的网络事件，可导出数据，可查看DNS主机解析缓存。</li><li>chrome://quota-internals 用来显示浏览器所使用磁盘空间配额的情况。</li><li>chrome://sessions 该命令用来显示当前运行的浏览器的会话信息数以及详细列表</li><li>chrome://settings 该命令可通过菜单-选项直接访问，可用来控制浏览器各项设置值</li><li>chrome://sync-internals 用来显示 chrome 的同步状态</li><li>chrome://about/ 查看 chrome 所有的命令</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Chrome窗口和标签页快捷键：&quot;&gt;&lt;a href=&quot;#Chrome窗口和标签页快捷键：&quot; class=&quot;headerlink&quot; title=&quot;Chrome窗口和标签页快捷键：&quot;&gt;&lt;/a&gt;Chrome窗口和标签页快捷键：&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;Ctrl+N  
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="http://arvin-he.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="谷歌" scheme="http://arvin-he.github.io/tags/%E8%B0%B7%E6%AD%8C/"/>
     
   </entry>
   

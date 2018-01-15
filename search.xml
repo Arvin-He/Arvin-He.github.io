@@ -4,6 +4,40 @@
   
     
     <entry>
+      <title><![CDATA[scrapy安装]]></title>
+      <url>http://arvin-he.github.io/2018/01/15/py-scrapy2-2018-01-15/</url>
+      <content type="html"><![CDATA[<h2 id="windows下scrapy安装"><a href="#windows下scrapy安装" class="headerlink" title="windows下scrapy安装"></a>windows下scrapy安装</h2><h3 id="下载依赖的第三方离线包"><a href="#下载依赖的第三方离线包" class="headerlink" title="下载依赖的第三方离线包"></a>下载依赖的第三方离线包</h3><p>到 <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted" target="_blank" rel="external">这个地址</a>下载一些在windows平台编译的第三方库.</p>
+<ol>
+<li>pywin32</li>
+<li>twisted<br><strong>注意:</strong> 根据python的版本下载对应的离线包.</li>
+</ol>
+<h3 id="安装或更新依赖的第三方离线包"><a href="#安装或更新依赖的第三方离线包" class="headerlink" title="安装或更新依赖的第三方离线包"></a>安装或更新依赖的第三方离线包</h3><p>下载好后就安装</p>
+<ol>
+<li>在控制台切换目录到离线包所在的目录</li>
+<li>安装离线包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install pywin32</div><div class="line">pip install twisted</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果是更新包则:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install pywin32 -U</div><div class="line">pip install twisted -U</div></pre></td></tr></table></figure></p>
+<h3 id="安装或更新scrapy"><a href="#安装或更新scrapy" class="headerlink" title="安装或更新scrapy"></a>安装或更新scrapy</h3><p>下载安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy</div></pre></td></tr></table></figure></p>
+<p>下载更新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy -U</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> scrapy </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[python之pip常用命令]]></title>
       <url>http://arvin-he.github.io/2018/01/15/py-pipcmds-2018-01-15/</url>
       <content type="html"><![CDATA[<h2 id="pip常用命令"><a href="#pip常用命令" class="headerlink" title="pip常用命令"></a>pip常用命令</h2><h3 id="1-安装第三方库"><a href="#1-安装第三方库" class="headerlink" title="1. 安装第三方库"></a>1. 安装第三方库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install scrapy</div><div class="line">python -m pip install scrapy</div></pre></td></tr></table></figure>
@@ -868,7 +902,7 @@
 <h3 id="从远程服务器复制到本地服务器："><a href="#从远程服务器复制到本地服务器：" class="headerlink" title="从远程服务器复制到本地服务器："></a>从远程服务器复制到本地服务器：</h3><p>从远程复制到本地的scp命令与上面的命令相似，只要将从本地复制到远程的命令后面2个参数互换顺序就行了。</p>
 <p><code>scp arvin@192.168.120.204:/opt/soft/nginx-0.5.38.tar.gz /opt/soft/</code></p>
 <h3 id="screen命令"><a href="#screen命令" class="headerlink" title="screen命令"></a>screen命令</h3><p> 当使用SSH 或者 telent 远程登录到 Linux 服务器,经常有一些长时间运行的任务，比如系统备份、ftp 传输等等。通常情况下我们都是为每一个这样的任务开一个远程终端窗口，但是他们执行的时间太长了。必须等待它执行完毕，在此期间可不能关掉终端窗口或者断开连接，也不能关机, 否则这个任务就会被杀掉，一切半途而废了。显然,这不是我们所希望的.</p>
-<p>screen命令可以远程运行服务器程序并观察程序执行,即使关闭终端或者关闭电脑也不要紧,服务器上的程序也一直在运行.<br>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> ssh登陆. 注意:需要先通过ssh登陆远程服务器才能使用screen</div><div class="line">ssh user@ip</div><div class="line"><span class="meta">#</span> 创建一个screen会话窗口</div><div class="line">screen -S test</div><div class="line"><span class="meta">#</span> 执行程序</div><div class="line">python3 test.py</div><div class="line"><span class="meta">#</span> 查看正在运行的程序,会显示程序执行的pid</div><div class="line">screen -ls</div><div class="line"><span class="meta">#</span> 查看某个程序在终端的输出, 6245是执行成的pid</div><div class="line">screen -r -D 6245</div><div class="line"><span class="meta">#</span> 杀掉screen中的session</div><div class="line">kill -9 6245</div><div class="line">screen -ls</div><div class="line"><span class="meta">#</span> 清除dead 会话</div><div class="line">screen -wipe test</div></pre></td></tr></table></figure></p>
+<p>screen命令可以远程运行服务器程序并观察程序执行,即使关闭终端或者关闭电脑也不要紧,服务器上的程序也一直在运行.<br>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> ssh登陆. 注意:需要先通过ssh登陆远程服务器才能使用screen</span></div><div class="line">ssh user@ip</div><div class="line"><span class="meta">#</span><span class="bash"> 创建一个screen会话窗口</span></div><div class="line">screen -S test</div><div class="line"><span class="meta">#</span><span class="bash"> 执行程序</span></div><div class="line">python3 test.py</div><div class="line"><span class="meta">#</span><span class="bash"> 查看正在运行的程序,会显示程序执行的pid</span></div><div class="line">screen -ls</div><div class="line"><span class="meta">#</span><span class="bash"> 查看某个程序在终端的输出, 6245是执行成的pid</span></div><div class="line">screen -r -D 6245</div><div class="line"><span class="meta">#</span><span class="bash"> 杀掉screen中的session</span></div><div class="line">kill -9 6245</div><div class="line">screen -ls</div><div class="line"><span class="meta">#</span><span class="bash"> 清除dead 会话</span></div><div class="line">screen -wipe test</div></pre></td></tr></table></figure></p>
 <p>(Detached)—-&gt;挂起状态，无终端在连接会话<br>(Attached)—-&gt;有终端在连接会话。<br><strong>注意:</strong> 如果程序在运行时,不要按下CTRL+C, 这样会中止程序的运行,直接关闭终端窗口就可以了,这样不会关闭程序的运行.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">其他常用的命令选项有：</div><div class="line">-c file	使用配置文件file，而不使用默认的$HOME/.screenrc</div><div class="line">-d|-D [pid.tty.host]	不开启新的screen会话，而是断开其他正在运行的screen会话</div><div class="line">-h num	指定历史回滚缓冲区大小为num行</div><div class="line">-list|-ls	列出现有screen会话，格式为pid.tty.host</div><div class="line">-d -m	启动一个开始就处于断开模式的会话</div><div class="line">-r sessionowner/ [pid.tty.host]	重新连接一个断开的会话。多用户模式下连接到其他用户screen会话需要指定sessionowner，需要setuid-root权限</div><div class="line">-S sessionname	创建screen会话时为会话指定一个名字</div><div class="line">-v	显示screen版本信息</div><div class="line">-wipe [match]	同-list，但删掉那些无法连接的会话</div></pre></td></tr></table></figure>
 <p>下例显示当前有两个处于detached状态的screen会话，你可以使用<code>screen -r &lt;screen_pid&gt;</code>重新连接上.<br>如果由于某种原因其中一个会话死掉了（例如人为杀掉该会话），这时screen -list会显示该会话为dead状态。使用screen -wipe命令清除该会话.</p>
@@ -1329,14 +1363,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> 爬虫 </tag>
+            <tag> scrapy </tag>
             
         </tags>
         
@@ -1416,16 +1450,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
-            
-            <tag> 爬虫 </tag>
+            <tag> scrapy </tag>
             
         </tags>
         
@@ -3822,16 +3854,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
-            
-            <tag> Scrapy </tag>
+            <tag> scrapy </tag>
             
         </tags>
         
@@ -8641,6 +8671,12 @@
     </entry>
     
     <entry>
+      <title><![CDATA[categories]]></title>
+      <url>http://arvin-he.github.io/categories/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[essay]]></title>
       <url>http://arvin-he.github.io/essay/index.html</url>
       <content type="html"></content>
@@ -8669,8 +8705,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://arvin-he.github.io/categories/index.html</url>
+      <title><![CDATA[readnotes]]></title>
+      <url>http://arvin-he.github.io/readnotes/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -8683,12 +8719,6 @@
     <entry>
       <title><![CDATA[tags]]></title>
       <url>http://arvin-he.github.io/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[readnotes]]></title>
-      <url>http://arvin-he.github.io/readnotes/index.html</url>
       <content type="html"></content>
     </entry>
     

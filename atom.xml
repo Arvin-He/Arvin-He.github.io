@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arvin-he.github.io/"/>
-  <updated>2017-12-08T09:59:27.496Z</updated>
+  <updated>2018-01-15T09:15:40.156Z</updated>
   <id>http://arvin-he.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python之pip常用命令</title>
+    <link href="http://arvin-he.github.io/2018/01/15/py-pipcmds-2018-01-15/"/>
+    <id>http://arvin-he.github.io/2018/01/15/py-pipcmds-2018-01-15/</id>
+    <published>2018-01-15T09:08:06.000Z</published>
+    <updated>2018-01-15T09:15:40.156Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="pip常用命令"><a href="#pip常用命令" class="headerlink" title="pip常用命令"></a>pip常用命令</h2><h3 id="1-安装第三方库"><a href="#1-安装第三方库" class="headerlink" title="1. 安装第三方库"></a>1. 安装第三方库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install scrapy</div><div class="line">python -m pip install scrapy</div></pre></td></tr></table></figure><h3 id="2-更新第三方库"><a href="#2-更新第三方库" class="headerlink" title="2. 更新第三方库"></a>2. 更新第三方库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy -U</div></pre></td></tr></table></figure><h3 id="3-制作本地-whl安装离线包"><a href="#3-制作本地-whl安装离线包" class="headerlink" title="3. 制作本地*.whl安装离线包"></a>3. 制作本地*.whl安装离线包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip wheel pycrpyo</div></pre></td></tr></table></figure><h3 id="4-导出pip-list列表到requirements-txt"><a href="#4-导出pip-list列表到requirements-txt" class="headerlink" title="4. 导出pip list列表到requirements.txt"></a>4. 导出pip list列表到requirements.txt</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip freeze &gt; requirements.txt</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;pip常用命令&quot;&gt;&lt;a href=&quot;#pip常用命令&quot; class=&quot;headerlink&quot; title=&quot;pip常用命令&quot;&gt;&lt;/a&gt;pip常用命令&lt;/h2&gt;&lt;h3 id=&quot;1-安装第三方库&quot;&gt;&lt;a href=&quot;#1-安装第三方库&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://arvin-he.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://arvin-he.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>jQuery笔记</title>
@@ -494,34 +519,6 @@
     
     
       <category term="谷歌" scheme="http://arvin-he.github.io/tags/%E8%B0%B7%E6%AD%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>爬虫笔记</title>
-    <link href="http://arvin-he.github.io/2017/09/29/scrapy-notes2-2017-09-29/"/>
-    <id>http://arvin-he.github.io/2017/09/29/scrapy-notes2-2017-09-29/</id>
-    <published>2017-09-29T05:40:34.000Z</published>
-    <updated>2017-09-29T06:57:19.072Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="一些常识"><a href="#一些常识" class="headerlink" title="一些常识"></a>一些常识</h3><ol><li>代理ip会被集体封禁,然后过一段时间再开放</li><li>ip被封禁后,有的会过段时间解除封禁</li><li>代理ip不是全部可靠的,通常有效代理大概在70%左右</li></ol><h3 id="爬虫错误处理方法"><a href="#爬虫错误处理方法" class="headerlink" title="爬虫错误处理方法"></a>爬虫错误处理方法</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;一些常识&quot;&gt;&lt;a href=&quot;#一些常识&quot; class=&quot;headerlink&quot; title=&quot;一些常识&quot;&gt;&lt;/a&gt;一些常识&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;代理ip会被集体封禁,然后过一段时间再开放&lt;/li&gt;
-&lt;li&gt;ip被封禁后,有的会过段时间解除封禁&lt;/li&gt;
-&lt;
-      
-    
-    </summary>
-    
-      <category term="编程" scheme="http://arvin-he.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="爬虫" scheme="http://arvin-he.github.io/tags/%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   

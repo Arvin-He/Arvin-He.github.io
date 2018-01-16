@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arvin-he.github.io/"/>
-  <updated>2018-01-15T09:43:04.319Z</updated>
+  <updated>2018-01-16T02:09:51.916Z</updated>
   <id>http://arvin-he.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://arvin-he.github.io/2018/01/15/py-scrapy2-2018-01-15/"/>
     <id>http://arvin-he.github.io/2018/01/15/py-scrapy2-2018-01-15/</id>
     <published>2018-01-15T09:32:19.000Z</published>
-    <updated>2018-01-15T09:43:04.319Z</updated>
+    <updated>2018-01-16T02:09:51.916Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="windows下scrapy安装"><a href="#windows下scrapy安装" class="headerlink" title="windows下scrapy安装"></a>windows下scrapy安装</h2><h3 id="下载依赖的第三方离线包"><a href="#下载依赖的第三方离线包" class="headerlink" title="下载依赖的第三方离线包"></a>下载依赖的第三方离线包</h3><p>到 <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted" target="_blank" rel="external">这个地址</a>下载一些在windows平台编译的第三方库.</p><ol><li>pywin32</li><li>twisted<br><strong>注意:</strong> 根据python的版本下载对应的离线包.</li></ol><h3 id="安装或更新依赖的第三方离线包"><a href="#安装或更新依赖的第三方离线包" class="headerlink" title="安装或更新依赖的第三方离线包"></a>安装或更新依赖的第三方离线包</h3><p>下载好后就安装</p><ol><li>在控制台切换目录到离线包所在的目录</li><li>安装离线包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install pywin32</div><div class="line">pip install twisted</div></pre></td></tr></table></figure></li></ol><p>如果是更新包则:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install pywin32 -U</div><div class="line">pip install twisted -U</div></pre></td></tr></table></figure></p><h3 id="安装或更新scrapy"><a href="#安装或更新scrapy" class="headerlink" title="安装或更新scrapy"></a>安装或更新scrapy</h3><p>下载安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy</div></pre></td></tr></table></figure></p><p>下载更新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy -U</div></pre></td></tr></table></figure></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="windows下scrapy安装"><a href="#windows下scrapy安装" class="headerlink" title="windows下scrapy安装"></a>windows下scrapy安装</h2><h3 id="下载依赖的第三方离线包"><a href="#下载依赖的第三方离线包" class="headerlink" title="下载依赖的第三方离线包"></a>下载依赖的第三方离线包</h3><p>到 <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted" target="_blank" rel="external">这个地址</a>下载一些在windows平台编译的第三方库.</p><ol><li>pywin32</li><li>twisted<br><strong>注意:</strong> 根据python的版本下载对应的离线包.</li></ol><h3 id="安装或更新依赖的第三方离线包"><a href="#安装或更新依赖的第三方离线包" class="headerlink" title="安装或更新依赖的第三方离线包"></a>安装或更新依赖的第三方离线包</h3><p>下载好后就安装</p><ol><li>在控制台切换目录到离线包所在的目录</li><li>安装离线包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install pywin32</div><div class="line">pip install twisted</div></pre></td></tr></table></figure></li></ol><p>如果是更新包则:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install pywin32 -U</div><div class="line">pip install twisted -U</div></pre></td></tr></table></figure></p><h3 id="安装或更新scrapy"><a href="#安装或更新scrapy" class="headerlink" title="安装或更新scrapy"></a>安装或更新scrapy</h3><p>下载安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy</div></pre></td></tr></table></figure></p><p>下载更新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy -U</div></pre></td></tr></table></figure></p><h3 id="import-win32api-出现ImportError-DLL-load-failed-错误的解决方法"><a href="#import-win32api-出现ImportError-DLL-load-failed-错误的解决方法" class="headerlink" title="import win32api 出现ImportError: DLL load failed 错误的解决方法"></a>import win32api 出现ImportError: DLL load failed 错误的解决方法</h3><p>windows下使用scrapy,出现出现ImportError: DLL load failed 错误,网上解决方法大多是安装pywin32,可是安装后还是会出错.<br>之后又试了一下网上的方法:将\Lib\site-packages\pywin32_system32*拷贝至C:\Windows\System32目录下,仍然出错.<br>最后,找到一个好方法:安装pypiwin32<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pypiwin32</div></pre></td></tr></table></figure></p><p>然后再开始执行scrapy就顺利运行了.</p>]]></content>
     
     <summary type="html">
     
@@ -55,6 +55,56 @@
       
       
         &lt;h2 id=&quot;pip常用命令&quot;&gt;&lt;a href=&quot;#pip常用命令&quot; class=&quot;headerlink&quot; title=&quot;pip常用命令&quot;&gt;&lt;/a&gt;pip常用命令&lt;/h2&gt;&lt;h3 id=&quot;1-安装第三方库&quot;&gt;&lt;a href=&quot;#1-安装第三方库&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://arvin-he.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://arvin-he.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css笔记1</title>
+    <link href="http://arvin-he.github.io/2018/01/11/css-note1-2018-01-11/"/>
+    <id>http://arvin-he.github.io/2018/01/11/css-note1-2018-01-11/</id>
+    <published>2018-01-11T13:19:50.000Z</published>
+    <updated>2018-01-15T09:47:58.272Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="CSS样式优先级"><a href="#CSS样式优先级" class="headerlink" title="CSS样式优先级"></a>CSS样式优先级</h3><p>*(通配符) &lt; tag(标签) &lt; class &lt; 行间<br>style与class<br>元素.style.属性 = xxx 是修改行间样式<br>之后再修改className不会有效果</p><p>建议:<br>要么统一用style,要么统一用className,混用则容易产生错乱,也很难排查问题.</p><p>行为,样式,结构三者分离</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;CSS样式优先级&quot;&gt;&lt;a href=&quot;#CSS样式优先级&quot; class=&quot;headerlink&quot; title=&quot;CSS样式优先级&quot;&gt;&lt;/a&gt;CSS样式优先级&lt;/h3&gt;&lt;p&gt;*(通配符) &amp;lt; tag(标签) &amp;lt; class &amp;lt; 行间&lt;br&gt;styl
+      
+    
+    </summary>
+    
+      <category term="web" scheme="http://arvin-he.github.io/categories/web/"/>
+    
+    
+      <category term="css" scheme="http://arvin-he.github.io/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>selenium-phatomjs使用</title>
+    <link href="http://arvin-he.github.io/2017/12/11/selenium-phatomjs-2017-12-11/"/>
+    <id>http://arvin-he.github.io/2017/12/11/selenium-phatomjs-2017-12-11/</id>
+    <published>2017-12-11T12:42:16.000Z</published>
+    <updated>2018-01-15T09:47:58.285Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="使用selenium和phantomjs爬取动态网页"><a href="#使用selenium和phantomjs爬取动态网页" class="headerlink" title="使用selenium和phantomjs爬取动态网页"></a>使用selenium和phantomjs爬取动态网页</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line">url = <span class="string">"http://www.dangniao.com/mh/22996/392953.html"</span></div><div class="line">browser = webdriver.PhantomJS(<span class="string">"/usr/local/mysoft/phantomjs-2.1.1/bin/phantomjs"</span>)</div><div class="line">browser.get(url)</div><div class="line"><span class="comment"># 模拟用户点击</span></div><div class="line">browser.find_element_by_class_name(<span class="string">"zsxiaye"</span>).click()</div><div class="line">src = browser.find_element_by_css_selector(<span class="string">"#wdwailian img"</span>).get_attribute(<span class="string">"src"</span>)</div></pre></td></tr></table></figure><h3 id="常用的phantomJS配置选项"><a href="#常用的phantomJS配置选项" class="headerlink" title="常用的phantomJS配置选项"></a>常用的phantomJS配置选项</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="comment"># 引入配置对象DesiredCapabilities</span></div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.desired_capabilities <span class="keyword">import</span> DesiredCapabilities</div><div class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</div><div class="line"><span class="comment">#从USER_AGENTS列表中随机选一个浏览器头，伪装浏览器</span></div><div class="line">dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (random.choice(USER_AGENTS))</div><div class="line"><span class="comment"># 不载入图片，爬页面速度会快很多</span></div><div class="line">dcap[<span class="string">"phantomjs.page.settings.loadImages"</span>] = <span class="keyword">False</span></div><div class="line"><span class="comment"># 设置代理</span></div><div class="line">service_args = [<span class="string">'--proxy=127.0.0.1:9999'</span>,<span class="string">'--proxy-type=socks5'</span>]</div><div class="line"><span class="comment">#打开带配置信息的phantomJS浏览器</span></div><div class="line">driver = webdriver.PhantomJS(phantomjs_driver_path, desired_capabilities=dcap,service_args=service_args)                </div><div class="line"><span class="comment"># 隐式等待5秒，可以自己调节</span></div><div class="line">driver.implicitly_wait(<span class="number">5</span>)</div><div class="line"><span class="comment"># 设置10秒页面超时返回，类似于requests.get()的timeout选项，driver.get()没有timeout选项</span></div><div class="line"><span class="comment"># 以前遇到过driver.get(url)一直不返回，但也不报错的问题，这时程序会卡住，设置超时选项能解决这个问题。</span></div><div class="line">driver.set_page_load_timeout(<span class="number">10</span>)</div><div class="line"><span class="comment"># 设置10秒脚本超时时间</span></div><div class="line">driver.set_script_timeout(<span class="number">10</span>)</div></pre></td></tr></table></figure><h3 id="phantomJS的并发问题"><a href="#phantomJS的并发问题" class="headerlink" title="phantomJS的并发问题"></a>phantomJS的并发问题</h3><p>phantomJS本身在多线程方面还有很多bug，建议使用多进程,关于多进程，推荐使用multiprocessing库，简洁、高效.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</div><div class="line">pool = Pool(<span class="number">8</span>)</div><div class="line">data_list = pool.map(get, url_list)</div><div class="line">pool.close()</div><div class="line">pool.join()</div></pre></td></tr></table></figure></p><h3 id="phantomJS进程不自动退出问题"><a href="#phantomJS进程不自动退出问题" class="headerlink" title="phantomJS进程不自动退出问题"></a>phantomJS进程不自动退出问题</h3><p>主程序退出后，selenium不保证phantomJS也成功退出，最好手动关闭phantomJS进程。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    self.driver.get(url)</div><div class="line">    self.wait_()</div><div class="line">    <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">    <span class="comment"># 手动关闭phantomjs进程</span></div><div class="line">    self.driver.quit()</div><div class="line">    <span class="keyword">return</span> <span class="keyword">False</span></div></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;使用selenium和phantomjs爬取动态网页&quot;&gt;&lt;a href=&quot;#使用selenium和phantomjs爬取动态网页&quot; class=&quot;headerlink&quot; title=&quot;使用selenium和phantomjs爬取动态网页&quot;&gt;&lt;/a&gt;使用seleni
       
     
     </summary>
@@ -460,56 +510,6 @@
       
       
         &lt;h3 id=&quot;psutil模块&quot;&gt;&lt;a href=&quot;#psutil模块&quot; class=&quot;headerlink&quot; title=&quot;psutil模块&quot;&gt;&lt;/a&gt;psutil模块&lt;/h3&gt;
-      
-    
-    </summary>
-    
-      <category term="编程" scheme="http://arvin-he.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Python" scheme="http://arvin-he.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux笔记</title>
-    <link href="http://arvin-he.github.io/2017/10/18/linux-note1-2017-10-18/"/>
-    <id>http://arvin-he.github.io/2017/10/18/linux-note1-2017-10-18/</id>
-    <published>2017-10-18T06:17:30.000Z</published>
-    <updated>2017-10-18T06:30:49.753Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="查看linux下所有的python3进程"><a href="#查看linux下所有的python3进程" class="headerlink" title="查看linux下所有的python3进程"></a>查看linux下所有的python3进程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps aux | grep python3</div></pre></td></tr></table></figure><h3 id="linux下bash脚本执行错误"><a href="#linux下bash脚本执行错误" class="headerlink" title="linux下bash脚本执行错误"></a>linux下bash脚本执行错误</h3><p>错误: <code>-bash: ./reporteveryday.sh: /bin/bash^M: bad interpreter: No such file or directory</code><br>windows下的换行是回车符+换行符，也就是\r\n, 而unix下是换行符\n。<br>linux下不识别\r为回车符，所以导致每行多了个\r。并且因为这个是控制字符，所以在输出参数的时候不会打印出来.</p><p>bash脚本不要在windows下创建,然后在拷贝到Linux下,这样容易导致bash脚本无法执行,且不报错.<br>解决办法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vim file</div><div class="line"># 查看文件的format</div><div class="line">:set ff</div><div class="line"># 修改文件format为unix</div><div class="line">:set ff=unix</div></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;查看linux下所有的python3进程&quot;&gt;&lt;a href=&quot;#查看linux下所有的python3进程&quot; class=&quot;headerlink&quot; title=&quot;查看linux下所有的python3进程&quot;&gt;&lt;/a&gt;查看linux下所有的python3进程&lt;/h3&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="编程" scheme="http://arvin-he.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Linux" scheme="http://arvin-he.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 缓存机制与 functools.lru_cache</title>
-    <link href="http://arvin-he.github.io/2017/09/29/py-cache-2017-09-29/"/>
-    <id>http://arvin-he.github.io/2017/09/29/py-cache-2017-09-29/</id>
-    <published>2017-09-29T07:37:17.000Z</published>
-    <updated>2017-09-29T07:47:43.927Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="缓存概念"><a href="#缓存概念" class="headerlink" title="缓存概念"></a>缓存概念</h3><p>缓存是一种将定量数据加以保存以备迎合后续请求的处理方式，目的是为了加快数据的检索速度<br>下面看一个例子:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyCache</span>:</span></div><div class="line">    <span class="string">""""""</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""Constructor"""</span></div><div class="line">        self.cache = &#123;&#125;</div><div class="line">        self.max_cache_size = <span class="number">10</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__contains__</span><span class="params">(self, key)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        根据该键是否存在于缓存当中返回True或者False</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> key <span class="keyword">in</span> self.cache</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self, key, value)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        更新该缓存字典，您可选择性删除最早条目</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.cache <span class="keyword">and</span> len(self.cache) &gt;= self.max_cache_size:</div><div class="line">            self.remove_oldest()</div><div class="line">        self.cache[key] = &#123;<span class="string">'date_accessed'</span>: datetime.datetime.now(),</div><div class="line">                           <span class="string">'value'</span>: value&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_oldest</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        删除具备最早访问日期的输入数据</span></div><div class="line"><span class="string">        """</span></div><div class="line">        oldest_entry = <span class="keyword">None</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> self.cache:</div><div class="line">            <span class="keyword">if</span> oldest_entry == <span class="keyword">None</span>:</div><div class="line">                oldest_entry = key</div><div class="line">            <span class="keyword">elif</span> self.cache[key][<span class="string">'date_accessed'</span>] &lt; self.cache[oldest_entry][<span class="string">'date_accessed'</span>]:</div><div class="line">                oldest_entry = key</div><div class="line"></div><div class="line">        self.cache.pop(oldest_entry)</div><div class="line"></div><div class="line"><span class="meta">    @property</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        返回缓存容量大小</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> len(self.cache)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment">#测试缓存</span></div><div class="line">    keys = [<span class="string">'test'</span>, <span class="string">'red'</span>, <span class="string">'fox'</span>, <span class="string">'fence'</span>, <span class="string">'junk'</span>, \</div><div class="line">            <span class="string">'other'</span>, <span class="string">'alpha'</span>, <span class="string">'bravo'</span>, <span class="string">'cal'</span>, <span class="string">'devo'</span>, <span class="string">'ele'</span>]</div><div class="line">    s = <span class="string">'abcdefghijklmnop'</span></div><div class="line">    cache = MyCache()</div><div class="line">    <span class="keyword">for</span> i, key <span class="keyword">in</span> enumerate(keys):</div><div class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> cache:</div><div class="line">            <span class="keyword">continue</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            value = <span class="string">''</span>.join([random.choice(s) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>)])</div><div class="line">            cache.update(key, value)</div><div class="line">        print(<span class="string">"#%s iterations, #%s cached entries"</span> % (i+<span class="number">1</span>, cache.size))</div></pre></td></tr></table></figure></p><p>在 Python 的 3.2 版本中，引入了一个非常优雅的缓存机器，即 functool 模块中的 <code>lru_cache</code> 装饰器。如果要在 python2 中使用 <code>lru_cahce</code> 需要安装 <code>functools32</code>。lru_cache 原型如下：<code>@functools.lru_cache(maxsize=None, typed=False)</code><br>使用functools模块的lur_cache装饰器，可以缓存最多 maxsize 个此函数的调用结果，从而提高程序执行的效率，特别适合于耗时的函数。参数maxsize为最多缓存的次数，如果为None，则无限制，设置为2n时，性能最佳；<br>被 <code>lru_cache</code> 装饰的函数会有 <code>cache_clear</code> 和 <code>cache_info</code> 两个方法，分别用于清除缓存和查看缓存信息。<br>这里用一个简单的示例演示 lru_cache 效果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> lru_cache</div><div class="line"><span class="meta">@lru_cache(None)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">    print(<span class="string">"calculating: %s + %s"</span> % (x, y))</div><div class="line">    <span class="keyword">return</span> x + y</div><div class="line"></div><div class="line">print(add(<span class="number">1</span>, <span class="number">2</span>))</div><div class="line">print(add(<span class="number">1</span>, <span class="number">2</span>))</div><div class="line">print(add(<span class="number">2</span>, <span class="number">3</span>))</div><div class="line"></div><div class="line"><span class="comment">#输出结果：</span></div><div class="line">calculating: <span class="number">1</span> + <span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">3</span></div><div class="line">calculating: <span class="number">2</span> + <span class="number">3</span></div><div class="line"><span class="number">5</span></div></pre></td></tr></table></figure></p><p>从结果可以看出，当第二次调用 add(1, 2) 时，并没有真正执行函数体，而是直接返回缓存的结果。</p><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul><li><a href="http://blog.konghy.cn/2016/04/20/python-cache/" target="_blank" rel="external">http://blog.konghy.cn/2016/04/20/python-cache/</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;缓存概念&quot;&gt;&lt;a href=&quot;#缓存概念&quot; class=&quot;headerlink&quot; title=&quot;缓存概念&quot;&gt;&lt;/a&gt;缓存概念&lt;/h3&gt;&lt;p&gt;缓存是一种将定量数据加以保存以备迎合后续请求的处理方式，目的是为了加快数据的检索速度&lt;br&gt;下面看一个例子:&lt;br&gt;&lt;fig
       
     
     </summary>

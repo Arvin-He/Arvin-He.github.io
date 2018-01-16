@@ -20,6 +20,8 @@
 <p>如果是更新包则:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install pywin32 -U</div><div class="line">pip install twisted -U</div></pre></td></tr></table></figure></p>
 <h3 id="安装或更新scrapy"><a href="#安装或更新scrapy" class="headerlink" title="安装或更新scrapy"></a>安装或更新scrapy</h3><p>下载安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy</div></pre></td></tr></table></figure></p>
 <p>下载更新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy -U</div></pre></td></tr></table></figure></p>
+<h3 id="import-win32api-出现ImportError-DLL-load-failed-错误的解决方法"><a href="#import-win32api-出现ImportError-DLL-load-failed-错误的解决方法" class="headerlink" title="import win32api 出现ImportError: DLL load failed 错误的解决方法"></a>import win32api 出现ImportError: DLL load failed 错误的解决方法</h3><p>windows下使用scrapy,出现出现ImportError: DLL load failed 错误,网上解决方法大多是安装pywin32,可是安装后还是会出错.<br>之后又试了一下网上的方法:将\Lib\site-packages\pywin32_system32*拷贝至C:\Windows\System32目录下,仍然出错.<br>最后,找到一个好方法:安装pypiwin32<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pypiwin32</div></pre></td></tr></table></figure></p>
+<p>然后再开始执行scrapy就顺利运行了.</p>
 ]]></content>
       
         <categories>
@@ -44,6 +46,53 @@
 <h3 id="2-更新第三方库"><a href="#2-更新第三方库" class="headerlink" title="2. 更新第三方库"></a>2. 更新第三方库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install scrapy -U</div></pre></td></tr></table></figure>
 <h3 id="3-制作本地-whl安装离线包"><a href="#3-制作本地-whl安装离线包" class="headerlink" title="3. 制作本地*.whl安装离线包"></a>3. 制作本地*.whl安装离线包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip wheel pycrpyo</div></pre></td></tr></table></figure>
 <h3 id="4-导出pip-list列表到requirements-txt"><a href="#4-导出pip-list列表到requirements-txt" class="headerlink" title="4. 导出pip list列表到requirements.txt"></a>4. 导出pip list列表到requirements.txt</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip freeze &gt; requirements.txt</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[css笔记1]]></title>
+      <url>http://arvin-he.github.io/2018/01/11/css-note1-2018-01-11/</url>
+      <content type="html"><![CDATA[<h3 id="CSS样式优先级"><a href="#CSS样式优先级" class="headerlink" title="CSS样式优先级"></a>CSS样式优先级</h3><p>*(通配符) &lt; tag(标签) &lt; class &lt; 行间<br>style与class<br>元素.style.属性 = xxx 是修改行间样式<br>之后再修改className不会有效果</p>
+<p>建议:<br>要么统一用style,要么统一用className,混用则容易产生错乱,也很难排查问题.</p>
+<p>行为,样式,结构三者分离</p>
+]]></content>
+      
+        <categories>
+            
+            <category> web </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[selenium-phatomjs使用]]></title>
+      <url>http://arvin-he.github.io/2017/12/11/selenium-phatomjs-2017-12-11/</url>
+      <content type="html"><![CDATA[<h3 id="使用selenium和phantomjs爬取动态网页"><a href="#使用selenium和phantomjs爬取动态网页" class="headerlink" title="使用selenium和phantomjs爬取动态网页"></a>使用selenium和phantomjs爬取动态网页</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line">url = <span class="string">"http://www.dangniao.com/mh/22996/392953.html"</span></div><div class="line">browser = webdriver.PhantomJS(<span class="string">"/usr/local/mysoft/phantomjs-2.1.1/bin/phantomjs"</span>)</div><div class="line">browser.get(url)</div><div class="line"><span class="comment"># 模拟用户点击</span></div><div class="line">browser.find_element_by_class_name(<span class="string">"zsxiaye"</span>).click()</div><div class="line">src = browser.find_element_by_css_selector(<span class="string">"#wdwailian img"</span>).get_attribute(<span class="string">"src"</span>)</div></pre></td></tr></table></figure>
+<h3 id="常用的phantomJS配置选项"><a href="#常用的phantomJS配置选项" class="headerlink" title="常用的phantomJS配置选项"></a>常用的phantomJS配置选项</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="comment"># 引入配置对象DesiredCapabilities</span></div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.desired_capabilities <span class="keyword">import</span> DesiredCapabilities</div><div class="line">dcap = dict(DesiredCapabilities.PHANTOMJS)</div><div class="line"><span class="comment">#从USER_AGENTS列表中随机选一个浏览器头，伪装浏览器</span></div><div class="line">dcap[<span class="string">"phantomjs.page.settings.userAgent"</span>] = (random.choice(USER_AGENTS))</div><div class="line"><span class="comment"># 不载入图片，爬页面速度会快很多</span></div><div class="line">dcap[<span class="string">"phantomjs.page.settings.loadImages"</span>] = <span class="keyword">False</span></div><div class="line"><span class="comment"># 设置代理</span></div><div class="line">service_args = [<span class="string">'--proxy=127.0.0.1:9999'</span>,<span class="string">'--proxy-type=socks5'</span>]</div><div class="line"><span class="comment">#打开带配置信息的phantomJS浏览器</span></div><div class="line">driver = webdriver.PhantomJS(phantomjs_driver_path, desired_capabilities=dcap,service_args=service_args)                </div><div class="line"><span class="comment"># 隐式等待5秒，可以自己调节</span></div><div class="line">driver.implicitly_wait(<span class="number">5</span>)</div><div class="line"><span class="comment"># 设置10秒页面超时返回，类似于requests.get()的timeout选项，driver.get()没有timeout选项</span></div><div class="line"><span class="comment"># 以前遇到过driver.get(url)一直不返回，但也不报错的问题，这时程序会卡住，设置超时选项能解决这个问题。</span></div><div class="line">driver.set_page_load_timeout(<span class="number">10</span>)</div><div class="line"><span class="comment"># 设置10秒脚本超时时间</span></div><div class="line">driver.set_script_timeout(<span class="number">10</span>)</div></pre></td></tr></table></figure>
+<h3 id="phantomJS的并发问题"><a href="#phantomJS的并发问题" class="headerlink" title="phantomJS的并发问题"></a>phantomJS的并发问题</h3><p>phantomJS本身在多线程方面还有很多bug，建议使用多进程,关于多进程，推荐使用multiprocessing库，简洁、高效.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</div><div class="line">pool = Pool(<span class="number">8</span>)</div><div class="line">data_list = pool.map(get, url_list)</div><div class="line">pool.close()</div><div class="line">pool.join()</div></pre></td></tr></table></figure></p>
+<h3 id="phantomJS进程不自动退出问题"><a href="#phantomJS进程不自动退出问题" class="headerlink" title="phantomJS进程不自动退出问题"></a>phantomJS进程不自动退出问题</h3><p>主程序退出后，selenium不保证phantomJS也成功退出，最好手动关闭phantomJS进程。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    self.driver.get(url)</div><div class="line">    self.wait_()</div><div class="line">    <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">    <span class="comment"># 手动关闭phantomjs进程</span></div><div class="line">    self.driver.quit()</div><div class="line">    <span class="keyword">return</span> <span class="keyword">False</span></div></pre></td></tr></table></figure></p>
+]]></content>
       
         <categories>
             
@@ -940,6 +989,7 @@
       <content type="html"><![CDATA[<h3 id="find-find-all"><a href="#find-find-all" class="headerlink" title="find()/find_all()"></a>find()/find_all()</h3><p>find() 返回文档中符合条件的tag，如果没找到符合条件的tag返回Node<br>find_all()返回文档中全部符合条件的tag的列表，如果不存在返回空列表<br>注意find()函数返回的是符合条件的tag，因此可以进行链式调用，如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#先查找class属性为‘post-content’的div标签，然后查找该div标签下的所有的img标签</span></div><div class="line">soup.find(<span class="string">'div'</span>, class_=<span class="string">'post-content'</span>).find_all(<span class="string">'img'</span>)</div></pre></td></tr></table></figure></p>
 <p>而<code>find_all()</code>返回的是列表，列表是不存在find()和find_all()函数的，因此不能进行链式调用</p>
 <h3 id="孩子-child-与后代-descendant"><a href="#孩子-child-与后代-descendant" class="headerlink" title="孩子(child)与后代(descendant)"></a>孩子(child)与后代(descendant)</h3><p>子标签: 一个父标签的下一级标签<br>后代标签: 一个父标签下面所有级别的标签,包括子标签<br>所有的子标签都是后代标签,但不是所有后代标签都是子标签</p>
+<h3 id="用BeautifulSoup查找属性值未知的标签"><a href="#用BeautifulSoup查找属性值未知的标签" class="headerlink" title="用BeautifulSoup查找属性值未知的标签"></a>用BeautifulSoup查找属性值未知的标签</h3><p><code>soup.findAll(&quot;div&quot;, attrs={&quot;aria-lable&quot;: True})</code><br>特殊值True和None, True匹配给定属性为任意值的标签，None匹配那些给定的属性值为空的标签<br>对于属性值之类的东西，是任意值，不确定的值的话，则都是用True.</p>
 ]]></content>
       
         <categories>
@@ -1055,6 +1105,7 @@
 </ol>
 <p>update方法的第一个参数为“查找的条件”，第二个参数为“更新的值”。</p>
 <p><img src="/2017/09/13/mongodb-note2-2017-09-13/3.png" alt=""></p>
+<p>movie.update({‘_id’: xxx}, {‘$set’: {}}, upsert=True)</p>
 <ol>
 <li>remove操作</li>
 </ol>
@@ -5108,9 +5159,9 @@
         
         <tags>
             
-            <tag> Vue </tag>
-            
             <tag> NodeJS </tag>
+            
+            <tag> Vue </tag>
             
         </tags>
         
@@ -8671,18 +8722,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://arvin-he.github.io/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[essay]]></title>
-      <url>http://arvin-he.github.io/essay/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[关于Arvin]]></title>
       <url>http://arvin-he.github.io/about/index.html</url>
       <content type="html"><![CDATA[<hr>
@@ -8705,14 +8744,26 @@
     </entry>
     
     <entry>
-      <title><![CDATA[readnotes]]></title>
-      <url>http://arvin-he.github.io/readnotes/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://arvin-he.github.io/categories/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[essay]]></title>
+      <url>http://arvin-he.github.io/essay/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
       <title><![CDATA[life]]></title>
       <url>http://arvin-he.github.io/life/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[readnotes]]></title>
+      <url>http://arvin-he.github.io/readnotes/index.html</url>
       <content type="html"></content>
     </entry>
     

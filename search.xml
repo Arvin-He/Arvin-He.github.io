@@ -827,14 +827,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> linux </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Linux </tag>
+            <tag> linux </tag>
             
         </tags>
         
@@ -1073,14 +1073,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> linux </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Linux </tag>
+            <tag> linux </tag>
             
         </tags>
         
@@ -1333,14 +1333,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> linux </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Linux </tag>
+            <tag> linux </tag>
             
         </tags>
         
@@ -1626,14 +1626,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> linux </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Linux </tag>
+            <tag> linux </tag>
             
         </tags>
         
@@ -2378,14 +2378,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> linux </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Linux </tag>
+            <tag> linux </tag>
             
         </tags>
         
@@ -2866,14 +2866,14 @@
       
         <categories>
             
-            <category> 工具 </category>
+            <category> linux </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Linux </tag>
+            <tag> linux </tag>
             
         </tags>
         
@@ -3036,14 +3036,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> linux </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Linux </tag>
+            <tag> linux </tag>
             
         </tags>
         
@@ -3606,7 +3606,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Unix/Linux命令参考]]></title>
+      <title><![CDATA[Linux命令参考]]></title>
       <url>http://arvin-he.github.io/2017/06/19/linux-cheatsheet-2017-06-19/</url>
       <content type="html"><![CDATA[<h2 id="文件命令"><a href="#文件命令" class="headerlink" title="文件命令"></a>文件命令</h2><p>ls – 列出目录<br>ls -al – 使用格式化列出隐藏文件<br>cd dir - 更改目录到 dir<br>cd – 更改到 home 目录<br>pwd – 显示当前目录<br>mkdir dir – 创建目录 dir<br>rm file – 删除 file<br>rm -r dir – 删除目录 dir<br>rm -f file – 强制删除 file<br>rm -rf dir – 强制删除目录 dir *<br>cp file1 file2 – 将 file1 复制到 file2<br>cp -r dir1 dir2 – 将 dir1 复制到 dir2; 如果 dir2 不存在则创建它<br>mv file1 file2 – 将 file1 重命名或移动到 file2; 如果file2 是一个存在的目录则将 file1 移动到目录 file2 中<br>ln -s file link – 创建 file 的符号连接 link<br>touch file – 创建 file<br>cat &gt; file – 将标准输入添加到 file<br>more file – 查看 file 的内容<br>head file – 查看 file 的前 10 行<br>tail file – 查看 file 的后 10 行<br>tail -f file – 从后 10 行开始查看 file 的内容</p>
 <h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><p>ps – 显示当前的活动进程<br>top – 显示所有正在运行的进程<br>kill pid – 杀掉进程 id pid<br>killall proc – 杀掉所有名为 proc 的进程 *<br>bg – 列出已停止或后台的作业<br>fg – 将最近的作业带到前台<br>fg n – 将作业 n 带到前台</p>
@@ -3625,14 +3625,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> linux </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Linux </tag>
+            <tag> linux </tag>
             
         </tags>
         
@@ -8825,6 +8825,12 @@
     </entry>
     
     <entry>
+      <title><![CDATA[essay]]></title>
+      <url>http://arvin-he.github.io/essay/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于Arvin]]></title>
       <url>http://arvin-he.github.io/about/index.html</url>
       <content type="html"><![CDATA[<hr>
@@ -8849,12 +8855,6 @@
     <entry>
       <title><![CDATA[categories]]></title>
       <url>http://arvin-he.github.io/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[essay]]></title>
-      <url>http://arvin-he.github.io/essay/index.html</url>
       <content type="html"></content>
     </entry>
     

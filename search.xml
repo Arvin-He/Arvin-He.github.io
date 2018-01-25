@@ -326,14 +326,14 @@
       
         <categories>
             
-            <category> node.js </category>
+            <category> node </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> node.js </tag>
+            <tag> node </tag>
             
         </tags>
         
@@ -689,28 +689,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Linux IO模式及 select、poll、epoll详解]]></title>
-      <url>http://arvin-he.github.io/2017/11/06/someconcept-2017-11-06/</url>
-      <content type="html"><![CDATA[<h2 id="epoll-kqueue-select-iocp的概念"><a href="#epoll-kqueue-select-iocp的概念" class="headerlink" title="epoll, kqueue, select, iocp的概念"></a>epoll, kqueue, select, iocp的概念</h2><p>epoll</p>
-<h2 id="阻塞-非阻塞忙轮询"><a href="#阻塞-非阻塞忙轮询" class="headerlink" title="阻塞, 非阻塞忙轮询"></a>阻塞, 非阻塞忙轮询</h2><h2 id="缓冲区-内核缓冲区"><a href="#缓冲区-内核缓冲区" class="headerlink" title="缓冲区,内核缓冲区"></a>缓冲区,内核缓冲区</h2><p>缓冲区的引入是为了减少频繁I/O操作而引起频繁的系统调用，当你操作一个流时，更多的是以缓冲区为单位进行操作，这是相对于用户空间而言。对于内核来说，也需要缓冲区。</p>
-<h2 id="用户态-内核态"><a href="#用户态-内核态" class="headerlink" title="用户态, 内核态"></a>用户态, 内核态</h2>]]></content>
-      
-        <categories>
-            
-            <category> Linux </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Linux </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[MongoDB之aggregate, pipeline及map_reduce]]></title>
       <url>http://arvin-he.github.io/2017/11/05/mongodb-aggregate-pipeline/</url>
       <content type="html"><![CDATA[<h3 id="MongoDB聚合"><a href="#MongoDB聚合" class="headerlink" title="MongoDB聚合"></a>MongoDB聚合</h3><p>聚合操作处理数据记录并返回计算结果。 聚合操作将多个文档中的值组合在一起，并可对分组数据执行各种操作，以返回单个结果。<br>在SQL中的 count(*)与group by组合相当于mongodb 中的聚合功能。</p>
@@ -761,20 +739,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[libuv与libev,epoll与select]]></title>
-      <url>http://arvin-he.github.io/2017/10/31/libuv-libev-epoll-select-2017-10-31/</url>
-      <content type="html"><![CDATA[<h3 id="libuv与libev"><a href="#libuv与libev" class="headerlink" title="libuv与libev"></a>libuv与libev</h3><h3 id="epoll与select机制"><a href="#epoll与select机制" class="headerlink" title="epoll与select机制"></a>epoll与select机制</h3>]]></content>
-      
-        <categories>
-            
-            <category> 编程 </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[python中的一些errors]]></title>
       <url>http://arvin-he.github.io/2017/10/29/py-errors-2017-10-29/</url>
       <content type="html"><![CDATA[<ol>
@@ -784,14 +748,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -804,14 +768,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -853,14 +817,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -966,31 +930,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[爬虫笔记]]></title>
-      <url>http://arvin-he.github.io/2017/09/29/scrapy-notes2-2017-09-29/</url>
-      <content type="html"><![CDATA[<h3 id="一些常识"><a href="#一些常识" class="headerlink" title="一些常识"></a>一些常识</h3><ol>
-<li>代理ip会被集体封禁,然后过一段时间再开放</li>
-<li>ip被封禁后,有的会过段时间解除封禁</li>
-<li>代理ip不是全部可靠的,通常有效代理大概在70%左右</li>
-</ol>
-<h3 id="爬虫错误处理方法"><a href="#爬虫错误处理方法" class="headerlink" title="爬虫错误处理方法"></a>爬虫错误处理方法</h3>]]></content>
-      
-        <categories>
-            
-            <category> 编程 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 爬虫 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[MongoDB配置]]></title>
       <url>http://arvin-he.github.io/2017/09/27/mongodb-config-2017-09-27/</url>
       <content type="html"><![CDATA[<h3 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb"></a>安装mongodb</h3><p>安装就免了吧,安装好mongodb,然后配置环境变量</p>
@@ -1030,14 +969,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -1097,14 +1036,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -1163,14 +1102,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -1285,14 +1224,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -1311,14 +1250,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> PyQt5 </tag>
             
         </tags>
         
@@ -1372,14 +1311,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> web </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Web </tag>
+            <tag> web </tag>
             
         </tags>
         
@@ -1487,14 +1426,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> web </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Web </tag>
+            <tag> web </tag>
             
         </tags>
         
@@ -1540,14 +1479,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -1568,7 +1507,7 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> web </category>
             
         </categories>
         
@@ -1660,14 +1599,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -1706,7 +1645,7 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
@@ -1825,14 +1764,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -1912,14 +1851,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -1935,7 +1874,7 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
@@ -1957,7 +1896,7 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
@@ -1978,7 +1917,7 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
@@ -2000,14 +1939,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -2054,14 +1993,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -2081,7 +2020,7 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
@@ -2109,7 +2048,7 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
@@ -2215,14 +2154,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -2369,7 +2308,9 @@
 </li>
 </ul>
 <p>select和poll都只提供了一个函数。而epoll提供了三个函数: <code>epoll_create</code>是创建一个epoll句柄, <code>epoll_ctl</code>是注册要监听的事件类型, <code>epoll_wait</code>则是等待事件的产生。与select相比，epoll几乎没有描述符限制(cat /proc/sys/fs/file-max可查看)。它采用一个文件描述符管理多个描述符，将用户的文件描述符的事件存放到kernel的一个事件表中，这样在程序空间和内核空间的只要做一次拷贝。它去掉了遍历文件描述符这一步骤，采用更加先进的回调(callback)机制，算法复杂度降到了O(1)。p.s: 虽然表面看起来epoll非常好，但是对于连接数少并且连接都十分活跃的情况下，select和poll的性能可能比epoll好，因为epoll是建立在大量的函数回调的基础之上。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<h2 id="epoll-kqueue-select-iocp的概念"><a href="#epoll-kqueue-select-iocp的概念" class="headerlink" title="epoll, kqueue, select, iocp的概念"></a>epoll, kqueue, select, iocp的概念</h2><p>epoll</p>
+<h2 id="阻塞-非阻塞忙轮询"><a href="#阻塞-非阻塞忙轮询" class="headerlink" title="阻塞, 非阻塞忙轮询"></a>阻塞, 非阻塞忙轮询</h2><h2 id="缓冲区-内核缓冲区"><a href="#缓冲区-内核缓冲区" class="headerlink" title="缓冲区,内核缓冲区"></a>缓冲区,内核缓冲区</h2><p>缓冲区的引入是为了减少频繁I/O操作而引起频繁的系统调用，当你操作一个流时，更多的是以缓冲区为单位进行操作，这是相对于用户空间而言。对于内核来说，也需要缓冲区。</p>
+<h2 id="用户态-内核态"><a href="#用户态-内核态" class="headerlink" title="用户态, 内核态"></a>用户态, 内核态</h2><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><a href="http://noican.blog.51cto.com/4081966/1354950" target="_blank" rel="external">linux中的“5种网络 IO 模型”</a></li>
 <li><a href="https://www.ziwenxie.site/2017/01/02/unix-network-programming-asynchronous/" target="_blank" rel="external">https://www.ziwenxie.site/2017/01/02/unix-network-programming-asynchronous/</a></li>
 <li><a href="http://blog.leanote.com/post/joesay/Concurrency-Model-Part-1-IO-Concurrency" target="_blank" rel="external">http://blog.leanote.com/post/joesay/Concurrency-Model-Part-1-IO-Concurrency</a></li>
@@ -2467,14 +2408,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -2649,14 +2590,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> web </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> HTML </tag>
+            <tag> http </tag>
             
         </tags>
         
@@ -2824,14 +2765,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> web </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> HTML </tag>
+            <tag> http </tag>
             
         </tags>
         
@@ -3082,14 +3023,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -3138,14 +3079,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -3188,14 +3129,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -3232,14 +3173,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -3592,14 +3533,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -3846,14 +3787,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -3877,14 +3818,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4066,14 +4007,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4133,14 +4074,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4195,14 +4136,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4292,14 +4233,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4380,14 +4321,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4423,14 +4364,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4465,14 +4406,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4528,14 +4469,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> node </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> NodeJS </tag>
+            <tag> node </tag>
             
         </tags>
         
@@ -4599,14 +4540,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> node </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> NodeJS </tag>
+            <tag> node </tag>
             
         </tags>
         
@@ -4660,14 +4601,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4736,14 +4677,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> node </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> NodeJS </tag>
+            <tag> node </tag>
             
         </tags>
         
@@ -4779,14 +4720,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> node </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> NodeJS </tag>
+            <tag> node </tag>
             
         </tags>
         
@@ -4827,14 +4768,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4863,14 +4804,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4911,14 +4852,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4941,14 +4882,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -4968,16 +4909,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
-            
-            <tag> Flask </tag>
+            <tag> flask </tag>
             
         </tags>
         
@@ -5003,14 +4942,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -5104,16 +5043,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
-            
-            <tag> Flask </tag>
+            <tag> flask </tag>
             
         </tags>
         
@@ -5189,16 +5126,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
-            
-            <tag> Flask </tag>
+            <tag> flask </tag>
             
         </tags>
         
@@ -5236,7 +5171,7 @@
     
     <entry>
       <title><![CDATA[NodeJS/Vue安装]]></title>
-      <url>http://arvin-he.github.io/2017/05/25/node-vue-setup-2017-05-25/</url>
+      <url>http://arvin-he.github.io/2017/05/25/vue-setup-2017-05-25/</url>
       <content type="html"><![CDATA[<h3 id="node简介"><a href="#node简介" class="headerlink" title="node简介"></a>node简介</h3><p>简单的说 Node.js 就是运行在服务端的 JavaScript。<br>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。<br>Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。<br>Node.js 的包管理器 npm，是全球最大的开源库生态系统。</p>
 <h3 id="node安装"><a href="#node安装" class="headerlink" title="node安装"></a>node安装</h3><p>windows下的NodeJS安装是比较方便的（v0.6.0版本之后，支持windows native），<br>只需要登陆官网 <a href="http://nodejs.org/" target="_blank" rel="external">node官网</a>，便可以看到首页的“INSTALL”按钮，直接点击就会自动下载安装了。</p>
 <p>安装完成后可以使用cmd（win+r然后输入cmd进入）测试下是否安装成功。<br>方法：在cmd下输入node -v，出现版本提示就是完成了NodeJS的安装。</p>
@@ -5247,7 +5182,7 @@
 <h3 id="用vue-cli构建项目"><a href="#用vue-cli构建项目" class="headerlink" title="用vue-cli构建项目"></a>用vue-cli构建项目</h3><p>要创建项目，首先我们要选定目录，然后再命令行中把目录转到选定的目录.<br>下面创建一个vueflask项目,在命令行输入命令:<code>vue init webpack vueflask</code>,回车.<br>这个命令是初始化一个项目，其中webpack是构建工具，也就是整个项目是基于webpack的。其中vueflask是整个项目文件夹的名称，这个文件夹会自动生成在你指定的目录中.<br>运行初始化命令的时候回让用户输入几个基本的选项，如项目名称，描述，作者等信息，如果不想填直接回车默认就好.<br>整个项目的目录结构，我们主要在src目录中做修改。这个项目现在还只是一个结构框架，整个项目需要的依赖资源都还没有安装</p>
 <h3 id="安装项目所需的依赖"><a href="#安装项目所需的依赖" class="headerlink" title="安装项目所需的依赖"></a>安装项目所需的依赖</h3><p>要安装依赖包，首先cd到项目文件夹(vueflask文件夹)，然后运行命令<code>cnpm install</code> ，等待安装。<br>安装完成之后，会在我们的项目目录vueflask文件夹中多出一个node_modules文件夹，这里边就是我们项目需要的依赖包资源。<br>安装完依赖包之后，就可以运行整个项目了。</p>
 <h3 id="运行vue项目"><a href="#运行vue项目" class="headerlink" title="运行vue项目"></a>运行vue项目</h3><p>在项目目录中，运行命令<code>npm run dev</code>或<code>cnpm run dev</code> ，会用热加载的方式运行我们的应用，热加载可以在修改完代码后不用手动刷新浏览器就能实时看到修改后的效果。<br>关于<code>npm run dev</code>命令，其中的“run”对应的是package.json文件中，scripts字段中的dev，也就是<code>node build/dev-server.js</code>命令的一个快捷方式。<br> 项目运行成功后，浏览器会自动打开localhost:8080（如果浏览器没有自动打开，可以手动输入）。运行成功后，会看到如下所示的界面。</p>
-<p> <img src="/2017/05/25/node-vue-setup-2017-05-25/1.png" alt=""></p>
+<p> <img src="/2017/05/25/vue-setup-2017-05-25/1.png" alt=""></p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><a href="http://www.cnblogs.com/qdrw/articles/6380091.html" target="_blank" rel="external">http://www.cnblogs.com/qdrw/articles/6380091.html</a></li>
 </ul>
@@ -5255,16 +5190,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> vue </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Vue </tag>
-            
-            <tag> NodeJS </tag>
+            <tag> vue </tag>
             
         </tags>
         
@@ -5308,14 +5241,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -5352,14 +5285,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -5393,14 +5326,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -5458,14 +5391,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -5598,14 +5531,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -5702,7 +5635,7 @@
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -6311,14 +6244,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -6334,14 +6267,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -6539,16 +6472,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
-            
-            <tag> Flask </tag>
+            <tag> flask </tag>
             
         </tags>
         
@@ -6601,7 +6532,7 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
@@ -6670,16 +6601,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
-            
-            <tag> Flask </tag>
+            <tag> flask </tag>
             
         </tags>
         
@@ -6704,16 +6633,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
-            
-            <tag> Flask </tag>
+            <tag> flask </tag>
             
         </tags>
         
@@ -6923,16 +6850,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
-            
-            <tag> Flask </tag>
+            <tag> flask </tag>
             
         </tags>
         
@@ -6956,16 +6881,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
-            
-            <tag> Flask </tag>
+            <tag> flask </tag>
             
         </tags>
         
@@ -7085,14 +7008,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -7121,14 +7044,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -7161,14 +7084,14 @@
       
         <categories>
             
-            <category> 编程 </category>
+            <category> python </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> python </tag>
             
         </tags>
         
@@ -8825,8 +8748,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[essay]]></title>
-      <url>http://arvin-he.github.io/essay/index.html</url>
+      <title><![CDATA[categories]]></title>
+      <url>http://arvin-he.github.io/categories/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -8853,20 +8776,20 @@
     </entry>
     
     <entry>
-      <title><![CDATA[categories]]></title>
-      <url>http://arvin-he.github.io/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[life]]></title>
-      <url>http://arvin-he.github.io/life/index.html</url>
+      <title><![CDATA[essay]]></title>
+      <url>http://arvin-he.github.io/essay/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
       <title><![CDATA[readnotes]]></title>
       <url>http://arvin-he.github.io/readnotes/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[life]]></title>
+      <url>http://arvin-he.github.io/life/index.html</url>
       <content type="html"></content>
     </entry>
     

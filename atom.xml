@@ -222,7 +222,7 @@
     <link href="http://arvin-he.github.io/2017/12/08/appium-notes1-2017-12-08/"/>
     <id>http://arvin-he.github.io/2017/12/08/appium-notes1-2017-12-08/</id>
     <published>2017-12-08T06:22:04.000Z</published>
-    <updated>2017-12-08T06:33:48.014Z</updated>
+    <updated>2018-01-25T08:15:52.335Z</updated>
     
     <content type="html"><![CDATA[<h3 id="关于appium"><a href="#关于appium" class="headerlink" title="关于appium"></a>关于appium</h3><p>手机app自动化测试，现有支持的app的手机平台（Andriod和IOS）, 选择Appium工具。因为Andriod和IOS，Appium都支持。</p><p>web自动化测试的路线是这样的：<br>编程语言基础—&gt;测试框架—&gt;webdriver API（selenium2）—&gt;开发自动化测试项目。</p><p>移动自动化的测试的路线则是这样的：<br>编程语言基础—&gt;测试框架—&gt;android/IOS开发测试基础—&gt;appium API —&gt;开发移动自动化项目。</p><p>appium就是node的其中一个开源项目，appiun server端是用node实现，遵循了REST架构，所以appium可以用node的包管理工具npm来进行安装。</p><h3 id="安装appium"><a href="#安装appium" class="headerlink" title="安装appium"></a>安装appium</h3><ol><li>使用淘宝镜像安装, 输入”cnpm install -g appium” 即可在线安装.</li><li>安装appium的客户端，基于python的开发环境，可以用pip安装appium客户端, 输入”pip install Appium-Python-Client”，</li></ol>]]></content>
     
@@ -235,10 +235,10 @@
     
     </summary>
     
-      <category term="node.js" scheme="http://arvin-he.github.io/categories/node-js/"/>
+      <category term="node" scheme="http://arvin-he.github.io/categories/node/"/>
     
     
-      <category term="node.js" scheme="http://arvin-he.github.io/tags/node-js/"/>
+      <category term="node" scheme="http://arvin-he.github.io/tags/node/"/>
     
   </entry>
   
@@ -448,31 +448,6 @@
   </entry>
   
   <entry>
-    <title>Linux IO模式及 select、poll、epoll详解</title>
-    <link href="http://arvin-he.github.io/2017/11/06/someconcept-2017-11-06/"/>
-    <id>http://arvin-he.github.io/2017/11/06/someconcept-2017-11-06/</id>
-    <published>2017-11-06T12:49:40.000Z</published>
-    <updated>2017-11-07T01:18:37.888Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="epoll-kqueue-select-iocp的概念"><a href="#epoll-kqueue-select-iocp的概念" class="headerlink" title="epoll, kqueue, select, iocp的概念"></a>epoll, kqueue, select, iocp的概念</h2><p>epoll</p><h2 id="阻塞-非阻塞忙轮询"><a href="#阻塞-非阻塞忙轮询" class="headerlink" title="阻塞, 非阻塞忙轮询"></a>阻塞, 非阻塞忙轮询</h2><h2 id="缓冲区-内核缓冲区"><a href="#缓冲区-内核缓冲区" class="headerlink" title="缓冲区,内核缓冲区"></a>缓冲区,内核缓冲区</h2><p>缓冲区的引入是为了减少频繁I/O操作而引起频繁的系统调用，当你操作一个流时，更多的是以缓冲区为单位进行操作，这是相对于用户空间而言。对于内核来说，也需要缓冲区。</p><h2 id="用户态-内核态"><a href="#用户态-内核态" class="headerlink" title="用户态, 内核态"></a>用户态, 内核态</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;epoll-kqueue-select-iocp的概念&quot;&gt;&lt;a href=&quot;#epoll-kqueue-select-iocp的概念&quot; class=&quot;headerlink&quot; title=&quot;epoll, kqueue, select, iocp的概念&quot;&gt;&lt;/a&gt;ep
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://arvin-he.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://arvin-he.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>MongoDB之aggregate, pipeline及map_reduce</title>
     <link href="http://arvin-he.github.io/2017/11/05/mongodb-aggregate-pipeline/"/>
     <id>http://arvin-he.github.io/2017/11/05/mongodb-aggregate-pipeline/</id>
@@ -498,25 +473,53 @@
   </entry>
   
   <entry>
-    <title>libuv与libev,epoll与select</title>
-    <link href="http://arvin-he.github.io/2017/10/31/libuv-libev-epoll-select-2017-10-31/"/>
-    <id>http://arvin-he.github.io/2017/10/31/libuv-libev-epoll-select-2017-10-31/</id>
-    <published>2017-10-31T14:08:37.000Z</published>
-    <updated>2017-11-07T01:17:17.709Z</updated>
+    <title>python中的一些errors</title>
+    <link href="http://arvin-he.github.io/2017/10/29/py-errors-2017-10-29/"/>
+    <id>http://arvin-he.github.io/2017/10/29/py-errors-2017-10-29/</id>
+    <published>2017-10-29T09:22:42.000Z</published>
+    <updated>2018-01-25T08:26:46.780Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="libuv与libev"><a href="#libuv与libev" class="headerlink" title="libuv与libev"></a>libuv与libev</h3><h3 id="epoll与select机制"><a href="#epoll与select机制" class="headerlink" title="epoll与select机制"></a>epoll与select机制</h3>]]></content>
+    <content type="html"><![CDATA[<ol><li>builtins.ImportError: cannot import name ‘Empty’<br>当运行python脚本程序后,python解析器会自动将当前脚本的路径加到syspath中,<br>如果当前脚本的路径中含有与标准库同名的脚本queue.py,则报上面的错.所以不要有与标准库同名的脚本.</li></ol>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;libuv与libev&quot;&gt;&lt;a href=&quot;#libuv与libev&quot; class=&quot;headerlink&quot; title=&quot;libuv与libev&quot;&gt;&lt;/a&gt;libuv与libev&lt;/h3&gt;&lt;h3 id=&quot;epoll与select机制&quot;&gt;&lt;a href=&quot;#epo
+        &lt;ol&gt;
+&lt;li&gt;builtins.ImportError: cannot import name ‘Empty’&lt;br&gt;当运行python脚本程序后,python解析器会自动将当前脚本的路径加到syspath中,&lt;br&gt;如果当前脚本的路径中含有与标准库同名的脚本queue.py
       
     
     </summary>
     
-      <category term="编程" scheme="http://arvin-he.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+      <category term="python" scheme="http://arvin-he.github.io/categories/python/"/>
     
+    
+      <category term="python" scheme="http://arvin-he.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python之psutil模块使用</title>
+    <link href="http://arvin-he.github.io/2017/10/18/py-psutil-2017-10-18/"/>
+    <id>http://arvin-he.github.io/2017/10/18/py-psutil-2017-10-18/</id>
+    <published>2017-10-18T06:36:01.000Z</published>
+    <updated>2018-01-25T08:26:03.742Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="psutil模块"><a href="#psutil模块" class="headerlink" title="psutil模块"></a>psutil模块</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;psutil模块&quot;&gt;&lt;a href=&quot;#psutil模块&quot; class=&quot;headerlink&quot; title=&quot;psutil模块&quot;&gt;&lt;/a&gt;psutil模块&lt;/h3&gt;
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://arvin-he.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://arvin-he.github.io/tags/python/"/>
     
   </entry>
   

@@ -1,8 +1,8 @@
 ---
 title: Linux之gcc命令
 date: 2017-07-06 09:29:44
-tags: Linux
-categories: 编程
+tags: linux
+categories: linux
 ---
 ### 在linux 下生成.so共享库
 要生成共享库，您需要先使用-fPIC（position independent code 位置无关代码）标志来编译C代码, 

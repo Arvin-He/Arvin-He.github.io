@@ -1,8 +1,8 @@
 ---
 title: Linux之IO网络模型
 date: 2017-07-20 16:26:21
-tags: Linux
-categories: 编程
+tags: linux
+categories: linux
 ---
 ### 前言
 IO有内存IO、网络IO和磁盘IO三种，通常我们说的IO指的是后两者.

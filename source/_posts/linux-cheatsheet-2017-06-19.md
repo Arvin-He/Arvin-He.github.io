@@ -1,8 +1,8 @@
 ---
-title: Unix/Linux命令参考
+title: Linux命令参考
 date: 2017-06-19 16:22:46
-tags: Linux
-categories: 编程
+tags: linux
+categories: linux
 ---
 ## 文件命令
 ls – 列出目录

@@ -1,8 +1,8 @@
 ---
 title: Linux系统之镜像备份
 date: 2017-08-28 13:51:53
-tags: Linux
-categories: 编程
+tags: linux
+categories: linux
 ---
 ### 计算文件拷贝的进度
 ```bash

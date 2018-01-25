@@ -1,8 +1,8 @@
 ---
 title: Linux环境搭建指南(debian9)
 date: 2017-07-08 10:15:18
-tags: Linux
-categories: 工具
+tags: linux
+categories: linux
 layout: single-column
 ---
 ## 关于virtualbox

@@ -1,8 +1,8 @@
 ---
 title: Linux一些常用命令
 date: 2017-09-19 21:46:02
-tags: Linux
-categories: 编程
+tags: linux
+categories: linux
 ---
 
 ## scp命令

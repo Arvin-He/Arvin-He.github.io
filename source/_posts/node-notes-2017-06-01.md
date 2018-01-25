@@ -1,8 +1,8 @@
 ---
 title: Node笔记1
 date: 2017-06-01 15:45:03
-tags: NodeJS
-categories: 编程  
+tags: node
+categories: node
 ---
 ### 创建一个http服务器
 ```javascript

@@ -1,8 +1,8 @@
 ---
 title: Python之jsonrpc
 date: 2017-08-25 11:38:39
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 服务端
 ```python

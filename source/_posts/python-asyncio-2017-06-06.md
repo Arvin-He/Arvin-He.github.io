@@ -1,8 +1,8 @@
 ---
 title: Python之asyncio使用
 date: 2017-06-06 16:00:58
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### asyncio简介
 asyncio是Python 3.4版本引入的标准库，直接内置了对异步IO的支持。

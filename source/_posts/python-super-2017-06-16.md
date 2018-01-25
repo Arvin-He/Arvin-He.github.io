@@ -1,8 +1,8 @@
 ---
 title: Python之super理解
 date: 2017-06-16 15:29:08
-tags: [Python]
-categories: 编程
+tags: python
+categories: python
 ---
 ### super使用场景
 在类的继承中，如果重写某个方法，该方法会覆盖父类的同名方法，但有时，我们希望能调用子类的方法的同时也能调用父类的同名方法，这时，可通过使用 super 来实现，比如：

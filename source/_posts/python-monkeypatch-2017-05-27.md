@@ -1,8 +1,8 @@
 ---
 title: Python之Monkeypatch
 date: 2017-05-27 14:21:16
-tags: [Python]
-categories: 编程
+tags: python
+categories: python
 ---
 ### 猴子补丁的由来
 所谓的猴子补丁的含义是指在动态语言中，不去改变源码而对功能进行追加和变更。

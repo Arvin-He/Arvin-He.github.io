@@ -1,8 +1,8 @@
 ---
 title: cookbook之C 语言扩展
 date: 2017-07-06 08:28:17
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 使用C扩展
 开发者有三种方法可以在自己的Python代码中来调用C编写的函数: ctypes，SWIG，Python/C API。每种方式也都有各自的利弊。

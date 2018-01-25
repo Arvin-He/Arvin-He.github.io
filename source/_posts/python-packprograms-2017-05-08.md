@@ -1,8 +1,8 @@
 ---
 title: Python之应用程序打包发布
 date: 2017-05-08 11:20:24
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 
 ### Windows上Python程序打包发布方式

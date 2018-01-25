@@ -1,8 +1,8 @@
 ---
 title: Python使用cx_freeze打包应用程序
 date: 2017-08-04 13:20:52
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 
 ### python应用程序打包

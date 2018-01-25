@@ -1,8 +1,8 @@
 ---
 title: Python之pyenv与virtualenv使用
 date: 2017-05-09 09:45:02
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### pyenv 与 virtualenv
 多个python版本共存有2种方式:

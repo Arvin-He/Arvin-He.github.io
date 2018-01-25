@@ -1,8 +1,8 @@
 ---
 title: Python Coroutine(协程)浅析
 date: 2017-04-03 10:28:07
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 
 ### 1. 协程简介

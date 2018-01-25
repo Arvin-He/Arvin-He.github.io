@@ -1,8 +1,8 @@
 ---
 title: Python代码结构
 date: 2017-08-11 17:00:33
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 
 ###  构造项目层次结构文件夹的最佳方式是什么？

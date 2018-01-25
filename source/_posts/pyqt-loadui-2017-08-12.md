@@ -2,7 +2,7 @@
 title: PyQt5加载ui的几种方式
 date: 2017-08-12 10:52:06
 tags: PyQt5
-categories: 编程
+categories: python
 ---
 
 ### 前言

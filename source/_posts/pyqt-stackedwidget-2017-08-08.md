@@ -2,7 +2,7 @@
 title: PyQt5使用QStackedwidget
 date: 2017-08-08 17:14:14
 tags: PyQt5
-categories: 编程
+categories: python
 ---
 QListWidget和QStackedWidget在ui文件中.
 

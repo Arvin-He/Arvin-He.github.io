@@ -1,8 +1,8 @@
 ---
 title: Python之一些杂记
 date: 2017-04-22 09:45:05
-tags: [Python]
-categories: 编程
+tags: python
+categories: python
 ---
 ### 1. 取指定文件所在目录的父目录
 ```

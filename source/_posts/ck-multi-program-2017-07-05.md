@@ -1,8 +1,8 @@
 ---
 title: cookbook之并发编程
 date: 2017-07-05 10:44:40
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 启动与停止线程
 ```python

@@ -1,8 +1,8 @@
 ---
 title: python之Sip使用
 date: 2017-05-13 08:54:15
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### Sip使用步骤
 第一步: 编写个C文件，功能是将两个数字相加并输出，命名为add.c，这个将成为在Python中的模块名，如下：

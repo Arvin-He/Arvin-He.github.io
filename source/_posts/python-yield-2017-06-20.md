@@ -1,8 +1,8 @@
 ---
 title: Python之yield与yield from理解
 date: 2017-06-20 15:24:39
-tags: [Python]
-categories: 编程
+tags: python
+categories: python
 ---
 ### yield
 为了理解什么是 yield, 你必须理解什么是生成器(generator)。

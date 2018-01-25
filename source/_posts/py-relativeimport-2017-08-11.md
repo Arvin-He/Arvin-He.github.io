@@ -1,8 +1,8 @@
 ---
 title: Python模块和包导入机制
 date: 2017-08-11 15:53:58
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 将代码封装成包
 在文件系统上组织你的代码，并确保每个目录都定义了一个`__init__.py`文件,

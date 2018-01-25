@@ -1,8 +1,8 @@
 ---
 title: pyautogui使用
 date: 2017-07-27 09:24:02
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### PyAutoGUI——让所有GUI都自动化
 本教程译自大神Al Sweigart的PyAutoGUI项目，Python自动化工具，更适合处理GUI任务，网页任务推荐：

@@ -1,8 +1,8 @@
 ---
 title: Python之装饰器
 date: 2017-05-24 13:31:32
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 装饰器概念
 谈装饰器前，还要先要明白一件事，Python 中的函数和 Java、C++不太一样，Python 中的函数可以像普通变量一样当做参数传递给另外一个函数.

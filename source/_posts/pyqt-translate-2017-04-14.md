@@ -2,7 +2,7 @@
 title: PyQt5的翻译机制分析
 date: 2017-04-14 14:17:42
 tags: [PyQt5]
-categories: 编程
+categories: python
 ---
 ### 1. PyQt中的翻译流程
 1. 遍历要翻译的文件,如\*.py和\*.ui,以及其他需要翻译的文件等,并创建\*.pro文件,(如translations.pro),将扫描到的要翻译的文件按照指定格式写入到*.pro文件中,其格式如下所示:

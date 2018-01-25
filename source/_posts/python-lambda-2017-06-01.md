@@ -1,8 +1,8 @@
 ---
 title: Python之Lambda使用
 date: 2017-06-01 10:21:48
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### Lambda 函数
 Python 中定义函数有两种方法，一种是用常规方式 def 定义，函数要指定名字，第二种是用 lambda 定义，不需要指定名字，称为 Lambda 函数。

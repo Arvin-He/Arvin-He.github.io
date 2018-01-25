@@ -1,8 +1,8 @@
 ---
 title: Python的sys.path, PYTHONPATH, os.environ的作用
 date: 2017-08-13 19:06:37
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 
 ### Python搜索模块的路径：

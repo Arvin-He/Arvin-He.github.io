@@ -2,7 +2,7 @@
 title: PyQt5长按按钮循环执行命令
 date: 2017-08-07 17:39:12
 tags: PyQt5
-categories: 编程
+categories: python
 ---
 
 ```python

@@ -1,7 +1,7 @@
 ---
 title: Python之logging模块探究
 date: 2017-05-07 15:46:55
-tags: Python
+tags: python
 categories: python
 ---
 ### python日志等级

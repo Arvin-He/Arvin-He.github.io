@@ -1,8 +1,8 @@
 ---
 title: Flask笔记
 date: 2017-05-28 08:43:19
-tags: [Python,Flask]
-categories: 编程
+tags: flask
+categories: python
 ---
 ### Flask路由中使用正则表达式
 ```python

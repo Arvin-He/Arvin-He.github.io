@@ -2,7 +2,7 @@
 title: PyQt5添加动态属性及访问
 date: 2017-08-04 09:48:18
 tags: PyQt5
-categories: 编程
+categories: python
 ---
 
 ### 在ui文件中添加动态属性

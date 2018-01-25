@@ -1,8 +1,8 @@
 ---
 title: Python之闭包
 date: 2017-06-01 08:31:07
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 前言
 谈到闭包,先要了解两个概念:作用域和嵌套函数

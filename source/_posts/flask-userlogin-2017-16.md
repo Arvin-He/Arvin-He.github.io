@@ -1,8 +1,8 @@
 ---
 title: Flask用户登录
 date: 2017-04-16 17:19:00
-tags: [Python,Flask]
-categories: 编程
+tags: flask
+categories: python
 ---
 Flask用户登录是建立 web 表单和数据库的联系，并且编写登录系统。
 

@@ -1,8 +1,8 @@
 ---
 title: Python之Pandas入门
 date: 2017-06-08 14:41:30
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 这是一个简短的为新手入门的pandas教程,更高级的用法请查看[ccokbook](http://pandas.pydata.org/pandas-docs/stable/cookbook.html#cookbook)
 这里安装numpy, mayplotlit 和 pandas省略.首先导入如下包

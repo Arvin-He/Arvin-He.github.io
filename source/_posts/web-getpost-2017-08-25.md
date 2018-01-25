@@ -1,8 +1,8 @@
 ---
 title: Web之Get和Post区别
 date: 2017-08-25 15:22:07
-tags: Web
-categories: 编程
+tags: web
+categories: web
 ---
 
 ### 两种 HTTP 请求方法：GET 和 POST

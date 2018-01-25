@@ -1,8 +1,8 @@
 ---
 title: Python删除windows下的目录
 date: 2017-08-07 09:40:36
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 windows启动目录:`C:\Users\aron\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 在windows下启动目录下添加一个`killkingsoft.py`脚本,然后每次开机自动执行该脚本.

@@ -1,8 +1,8 @@
 ---
 title: Python之_magic变量和函数
 date: 2017-06-09 17:34:35
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 关于下划线(_)的说明
 * 单下划线开头：弱内部使用标识，无法被from M import *所引用

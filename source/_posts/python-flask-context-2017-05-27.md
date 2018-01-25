@@ -1,8 +1,8 @@
 ---
 title: Flask之上下文机制
 date: 2017-05-27 11:29:30
-tags: [Python,Flask]
-categories: 编程
+tags: flask
+categories: python
 ---
 ### 上下文（application context 和 request context）
 上下文是一个难理解的概念，在知乎的一个问题下面有个很通俗易懂的回答：

@@ -1,8 +1,8 @@
 ---
 title: Python程序打包问题
 date: 2017-09-01 14:33:39
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### ImportError: DLL load failed: The specified module could not be found.
 win7-64bit或win10-64bit打包python32位程序在win7-32bit系统上运行报错:ImportError: DLL load failed: The specified module could not be found.

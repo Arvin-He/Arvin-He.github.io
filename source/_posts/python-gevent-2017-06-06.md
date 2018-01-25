@@ -1,8 +1,8 @@
 ---
 title: Python之gevent使用
 date: 2017-06-06 13:08:03
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### Greenlets
 在gevent中用到的主要模式是Greenlet, 它是以C扩展模块形式接入Python的轻量级协程。 Greenlet全部运行在主程序操作系统进程的内部，但它们被协作式地调度。**在任何时刻，只有一个协程在运行。** 在gevent里面，上下文切换是通过yielding来完成的. 当我们在受限于网络或IO的函数中使用gevent，这些函数会被协作式的调度， gevent的真正能力会得到发挥。Gevent处理了所有的细节， 来保证你的网络库会在可能的时候，隐式交出greenlet上下文的执行权。 

@@ -1,8 +1,8 @@
 ---
 title: Python之coroutine
 date: 2017-06-02 13:57:23
-tags: Python
-categories: 编程  
+tags: python
+categories: python
 ---
 ### Coroutine概念
 Coroutine，又称作协程。即协同运行的例程，它是比是线程（thread）更细量级的用户态线程.特点是允许用户的主动调用和主动退出，挂起当前的例程然后返回值或去执行其他任务，接着返回原来停下的点继续执行。

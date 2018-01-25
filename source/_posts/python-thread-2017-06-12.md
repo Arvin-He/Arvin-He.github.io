@@ -1,8 +1,8 @@
 ---
 title: Python之线程
 date: 2017-06-12 10:25:11
-tags: [Python]
-categories: 编程
+tags: python
+categories: python
 ---
 ### 关于GIL
 Python（特指CPython）的多线程不能利用多核的优势，这是因为全局解释锁（GIL）的限制。如果是cpu密集型(计算型)的任务，使用多线程GIL就会让多线程变慢。

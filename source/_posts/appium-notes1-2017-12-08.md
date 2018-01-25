@@ -1,8 +1,8 @@
 ---
 title: Appium笔记
 date: 2017-12-08 14:22:04
-tags: node.js
-categories: node.js
+tags: node
+categories: node
 ---
 
 

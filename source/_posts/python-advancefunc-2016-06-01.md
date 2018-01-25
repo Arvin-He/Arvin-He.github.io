@@ -1,8 +1,8 @@
 ---
 title: Python之高阶函数
 date: 2017-06-01 11:39:39
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 高阶函数定义
 高阶函数英文叫 Higher-order function, 一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。

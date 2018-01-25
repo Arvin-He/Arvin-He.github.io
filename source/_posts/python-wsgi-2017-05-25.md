@@ -1,8 +1,8 @@
 ---
 title: Python之WSGI
 date: 2017-05-25 13:17:45
-tags: [Python,Flask]
-categories: 编程
+tags: flask
+categories: python
 ---
 ### WSGI概念
 我们先看一下面向 http 的 python 程序需要关心哪些内容：

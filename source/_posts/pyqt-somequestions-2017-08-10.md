@@ -2,7 +2,7 @@
 title: PyQt5遇到的一些问题
 date: 2017-08-10 13:09:10
 tags: PyQt5
-categories: 编程
+categories: python
 ---
 ### 关于QButtonGroup的问题
 在循环中对按钮做属性修改,比如setchecked属性.

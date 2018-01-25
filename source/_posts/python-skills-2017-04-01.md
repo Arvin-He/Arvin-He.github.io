@@ -1,8 +1,8 @@
 ---
 title: Python使用
 date: 2017-04-01 15:41:13
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 1. windows下Python2与Python3共存的使用方法
 windows下同时安装了Python2.7.13与Python3.6后,默认的使用python2.

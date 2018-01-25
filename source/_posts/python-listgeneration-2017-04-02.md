@@ -1,8 +1,8 @@
 ---
 title: Python之列表解析式
 date: 2017-04-02 20:06:51
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 列表解析式概念
 列表解析式是将一个列表（实际上适用于任何可迭代对象（iterable））转换成另一个列表的工具。

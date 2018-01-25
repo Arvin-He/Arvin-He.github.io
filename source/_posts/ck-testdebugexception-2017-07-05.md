@@ -1,8 +1,8 @@
 ---
 title: cookbook之测试,调试和异常
 date: 2017-07-05 16:47:21
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 在单元测试中给对象打补丁
 写的单元测试中需要给指定的对象打补丁，用来断言它们在测试中的期望行为（比如，断言被调用时的参数个数，访问指定的属性等）

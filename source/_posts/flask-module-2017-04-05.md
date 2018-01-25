@@ -1,8 +1,8 @@
 ---
 title: Flask模板
 date: 2017-04-05 11:07:17
-tags: [Python,Flask]
-categories: 编程
+tags: flask
+categories: python
 ---
 
 ![](flask-module-2017-04-03/5.jpg)

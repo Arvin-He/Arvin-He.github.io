@@ -2,7 +2,7 @@
 title: PyQt5控件提升和插件
 date: 2017-08-02 19:56:13
 tags: [PyQt5]
-categories: 编程
+categories: python
 ---
 
 

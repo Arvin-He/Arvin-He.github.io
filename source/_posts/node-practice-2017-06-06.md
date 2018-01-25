@@ -1,8 +1,8 @@
 ---
 title: Node最佳实践1
 date: 2017-06-06 08:36:55
-tags: NodeJS
-categories: 编程 
+tags: node
+categories: node
 ---
 ## 编码规范
 

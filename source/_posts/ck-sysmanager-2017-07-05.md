@@ -1,8 +1,8 @@
 ---
 title: cookbook之脚本编程与系统管理
 date: 2017-07-05 14:33:20
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 通过重定向/管道/文件接受输入
 命令行的输出通过管道传递给该脚本、重定向文件到该脚本，在命令行中传递一个文件名或文件名列表给该脚本。

@@ -120,6 +120,19 @@ int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout
 select和poll都只提供了一个函数。而epoll提供了三个函数: `epoll_create`是创建一个epoll句柄, `epoll_ctl`是注册要监听的事件类型, `epoll_wait`则是等待事件的产生。与select相比，epoll几乎没有描述符限制(cat /proc/sys/fs/file-max可查看)。它采用一个文件描述符管理多个描述符，将用户的文件描述符的事件存放到kernel的一个事件表中，这样在程序空间和内核空间的只要做一次拷贝。它去掉了遍历文件描述符这一步骤，采用更加先进的回调(callback)机制，算法复杂度降到了O(1)。p.s: 虽然表面看起来epoll非常好，但是对于连接数少并且连接都十分活跃的情况下，select和poll的性能可能比epoll好，因为epoll是建立在大量的函数回调的基础之上。
 
 
+##  epoll, kqueue, select, iocp的概念
+epoll
+
+
+## 阻塞, 非阻塞忙轮询
+
+
+## 缓冲区,内核缓冲区
+缓冲区的引入是为了减少频繁I/O操作而引起频繁的系统调用，当你操作一个流时，更多的是以缓冲区为单位进行操作，这是相对于用户空间而言。对于内核来说，也需要缓冲区。
+
+
+## 用户态, 内核态
+
 ### 参考
 * [linux中的“5种网络 IO 模型”](http://noican.blog.51cto.com/4081966/1354950)
 * [https://www.ziwenxie.site/2017/01/02/unix-network-programming-asynchronous/](https://www.ziwenxie.site/2017/01/02/unix-network-programming-asynchronous/)

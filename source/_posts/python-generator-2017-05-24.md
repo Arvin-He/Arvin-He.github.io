@@ -1,8 +1,8 @@
 ---
 title: Python之生成器
 date: 2017-05-24 15:15:24
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### 容器(container)
 容器是一种把多个元素组织在一起的数据结构，容器中的元素可以逐个地迭代获取，可以用 in, not in关键字判断元素是否包含在容器中。

@@ -1,8 +1,8 @@
 ---
 title: Python之Matplotlib绘图
 date: 2017-06-16 10:17:22
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### Matplotlib简介
 Matplotlib 可能是 Python 2D-绘图领域使用最广泛的包了。它能让使用者轻松地将数据图形化，并提供多样化的输出格式。这里将会探索 matplotlib 的常见用法。

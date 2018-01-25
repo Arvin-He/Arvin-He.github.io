@@ -1,8 +1,8 @@
 ---
 title: Python之进程
 date: 2017-06-12 16:17:27
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 
 ### 多进程模块(multiprocessing)简介

@@ -1,8 +1,8 @@
 ---
 title: Python之Numpy使用
 date: 2017-06-08 09:34:41
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### Numpy相关介绍
 NumPy 是一个 Python 包。 它代表 “Numeric Python”。 它是一个由多维数组对象和用于处理数组的例程集合组成的库。

@@ -1,8 +1,8 @@
 ---
 title: Python之subprocess模块
 date: 2017-04-22 10:44:12
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### subprocess模块
 subprocess模块,即子进程模块,允许您生成新进程，并连接到输入/输出/错误管道，并获取其返回代码。

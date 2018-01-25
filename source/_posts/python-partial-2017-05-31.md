@@ -1,8 +1,8 @@
 ---
 title: Python之functools
 date: 2017-05-31 16:57:57
-tags: Python
-categories: 编程
+tags: python
+categories: python
 ---
 ### functools.partial
 functools.partial 通过包装手法，允许我们 "重新定义" 函数签名, 用一些默认参数包装一个可调用对象, 返回结果是可调用对象，并且可以像原始对象一样对待冻结部分函数位置函数或关键字参数，简化函数, 更少更灵活的函数参数调用. 总之,通过设定参数的默认值，可以降低函数调用的难度.

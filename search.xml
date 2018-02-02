@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title><![CDATA[关于coroutine]]></title>
+      <url>http://arvin-he.github.io/2018/02/01/py-asyncio-coroutine-2018-02-01/</url>
+      <content type="html"><![CDATA[<h2 id="关于协程"><a href="#关于协程" class="headerlink" title="关于协程"></a>关于协程</h2><p>协程，又称微线程，纤程。英文名Coroutine。<br>python中的协程发展有3个阶段:</p>
+<ol>
+<li>最初的生成器变形yield/send</li>
+<li>python3.4引入@asyncio.coroutine和yield from</li>
+<li>python3.5引入async/await关键字</li>
+</ol>
+<h2 id="协程库"><a href="#协程库" class="headerlink" title="协程库"></a>协程库</h2><p>常用的协程有gevent和asyncio</p>
+<p>asyncio是一个基于事件循环的实现异步I/O的模块。</p>
+<h2 id="从yield说起"><a href="#从yield说起" class="headerlink" title="从yield说起"></a>从yield说起</h2><p>当一个函数func中包含yield语句时，python会自动将其识别为一个生成器,<br>当调用该函数func()时,并<strong>不会真正调用函数体,而是以函数体生成一个生成器对象实例.</strong><br>yield在这里保留func函数的计算现场,暂停func的计算并将返回值返回。<br>而将func放入for…in循环中时，每次循环都会调用next(func())，唤醒生成器，<br>执行到下一个yield语句处，直到抛出StopIteration异常。此异常会被for循环捕获，导致跳出循环。</p>
+<h2 id="然后是send"><a href="#然后是send" class="headerlink" title="然后是send"></a>然后是send</h2><p>yield实现数据的流出,即产生返回,但是不能接收数据,但如果可以send数据给生成器函数不就相当于实现了协程了嘛.<br>这时send就起这个发送数据生成器的作用了,这样生成器就能接收数据,再产生数据,形成一个连续的流程了.<br>于是在python中的生成器有send函数.当一个函数被标记为生成器,那么这个函数就有了send函数了.这是生成器的特性决定的.<br>Python的生成器不但通过yield可以返回一个值，它还可以接收调用者发出的参数。</p>
+<h2 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymongo</div><div class="line"><span class="keyword">from</span> gevent.pool <span class="keyword">import</span> Pool</div><div class="line"><span class="keyword">from</span> gevent <span class="keyword">import</span> monkey</div><div class="line">monkey.patch_all()</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TMonitor</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, domain)</span>:</span></div><div class="line">        db = ConnectMongo().db</div><div class="line">        self.movie = db[<span class="string">'xxxxx'</span>]</div><div class="line">        self.domain = domain</div><div class="line">        self.results = []</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self, first, second)</span>:</span></div><div class="line">        pool = Pool(<span class="number">10</span>)</div><div class="line">        pool.map(self.run_task, self.get_items(first, second))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_item</span><span class="params">(self, start_end)</span>:</span></div><div class="line">        print(<span class="string">"~~~~~~~~~~~~~~~~~~~~~"</span>)</div><div class="line">        select_dict = &#123;<span class="string">'$and'</span>: [&#123;<span class="string">'insert_time'</span>: &#123;<span class="string">'$gte'</span>: start_end[<span class="number">0</span>], <span class="string">'$lte'</span>: start_end[<span class="number">1</span>]&#125;&#125;, &#123;<span class="string">'domain'</span>: &#123;<span class="string">'$eq'</span>: self.domain&#125;&#125;]&#125;</div><div class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> self.movie.find(select_dict, no_cursor_timeout=<span class="keyword">True</span>).sort(<span class="string">'insert_time'</span>, pymongo.ASCENDING):</div><div class="line">            insert_time = item[<span class="string">'insert_time'</span>]</div><div class="line">            url = item[<span class="string">'request'</span>][<span class="string">'url'</span>]</div><div class="line">            content = item[<span class="string">'response'</span>][<span class="string">'content'</span>]</div><div class="line">            task_dict = &#123;<span class="string">'url'</span>: url, <span class="string">'content'</span>: content, <span class="string">'insert_time'</span>: insert_time&#125;</div><div class="line">            print(<span class="string">"ooooooooooooo"</span>)</div><div class="line">            <span class="keyword">yield</span> task_dict</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_items</span><span class="params">(self, first, second)</span>:</span></div><div class="line">        generator1 = self.get_item(first)</div><div class="line">        generator2 = self.get_item(second)</div><div class="line">        <span class="comment"># 进入生成器</span></div><div class="line">        <span class="comment"># next(item1)</span></div><div class="line">        <span class="comment"># next(item2)</span></div><div class="line">        generator1.send(<span class="keyword">None</span>)</div><div class="line">        generator2.send(<span class="keyword">None</span>)</div><div class="line">        print(<span class="string">'KKKKKKKKKKKKKKKKK'</span>)</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">try</span>:</div><div class="line">                item1_res = generator1.send(first)</div><div class="line">                item2_res = generator2.send(second)</div><div class="line">                <span class="keyword">yield</span> (item1_res, item2_res)</div><div class="line">            <span class="keyword">except</span> StopIteration:</div><div class="line">                <span class="keyword">break</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run_task</span><span class="params">(self, items)</span>:</span></div><div class="line">        print(<span class="string">'xxxxxxxxxxx'</span>)</div><div class="line">        pprint(items[<span class="number">0</span>].get(<span class="string">'url'</span>, <span class="string">'None'</span>))</div><div class="line">        <span class="comment"># pprint(items[0].get('insert_time'))</span></div><div class="line">        pprint(items[<span class="number">1</span>].get(<span class="string">'url'</span>, <span class="string">'None'</span>))</div><div class="line">        <span class="comment"># pprint(items[1].get('insert_time'))</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    domain = <span class="string">'www.xxxx.com'</span></div><div class="line">    tamp = TMonitor(domain)</div><div class="line">    first = (<span class="string">'1517463871757'</span>, <span class="string">'1517463967738'</span>)</div><div class="line">    second = (<span class="string">'1517464006277'</span>, <span class="string">'1517464088805'</span>)</div><div class="line">    tamp.run(first, second)</div></pre></td></tr></table></figure>
+<h2 id="yield-from来了"><a href="#yield-from来了" class="headerlink" title="yield from来了"></a>yield from来了</h2><p>yield from用于重构生成器,yield from的作用还体现可以像一个管道一样将send信息传递给内层协程，并且处理好了各种异常情况.</p>
+<h2 id="asyncio-coroutine和yield-from"><a href="#asyncio-coroutine和yield-from" class="headerlink" title="asyncio.coroutine和yield from"></a>asyncio.coroutine和yield from</h2><p>asyncio是一个基于事件循环的实现异步I/O的模块。通过yield from，可以将协程asyncio.sleep(或其他协程)的控制权交给事件循环，<br>然后挂起当前协程；之后，由事件循环决定何时唤醒asyncio.sleep,接着向后执行代码。</p>
+<h2 id="关于async和await"><a href="#关于async和await" class="headerlink" title="关于async和await"></a>关于async和await</h2><h2 id="asyncio使用"><a href="#asyncio使用" class="headerlink" title="asyncio使用"></a>asyncio使用</h2><h2 id="队列的使用"><a href="#队列的使用" class="headerlink" title="队列的使用"></a>队列的使用</h2><h3 id="关于task-done-join"><a href="#关于task-done-join" class="headerlink" title="关于task_done, join"></a>关于task_done, join</h3><h2 id="gevent使用"><a href="#gevent使用" class="headerlink" title="gevent使用"></a>gevent使用</h2>]]></content>
+      
+        <categories>
+            
+            <category> python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[全站爬虫]]></title>
       <url>http://arvin-he.github.io/2018/02/01/spiderallsite-2018-02-01/</url>
       <content type="html"><![CDATA[<h2 id="全站爬虫简介"><a href="#全站爬虫简介" class="headerlink" title="全站爬虫简介"></a>全站爬虫简介</h2><p>python version: 3.6, 爬取全站url,并保存html到mongodb.</p>
@@ -8785,6 +8818,18 @@
     </entry>
     
     <entry>
+      <title><![CDATA[essay]]></title>
+      <url>http://arvin-he.github.io/essay/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[life]]></title>
+      <url>http://arvin-he.github.io/life/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于Arvin]]></title>
       <url>http://arvin-he.github.io/about/index.html</url>
       <content type="html"><![CDATA[<hr>
@@ -8804,18 +8849,6 @@
 <h1 id="联系Arvin"><a href="#联系Arvin" class="headerlink" title="联系Arvin"></a>联系Arvin</h1><hr>
 <p>微信: JUNHE_1218<br>E-mail: junhe3209@gmail.com<br>GitHub: <a href="https://github.com/Arvin-He" target="_blank" rel="external">https://github.com/Arvin-He</a></p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[essay]]></title>
-      <url>http://arvin-he.github.io/essay/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[life]]></title>
-      <url>http://arvin-he.github.io/life/index.html</url>
-      <content type="html"></content>
     </entry>
     
     <entry>

@@ -4,13 +4,17 @@ date: 2017-06-06 13:08:03
 tags: python
 categories: python
 ---
+
 ### Greenlets
+
 在gevent中用到的主要模式是Greenlet, 它是以C扩展模块形式接入Python的轻量级协程。 Greenlet全部运行在主程序操作系统进程的内部，但它们被协作式地调度。**在任何时刻，只有一个协程在运行。** 在gevent里面，上下文切换是通过yielding来完成的. 当我们在受限于网络或IO的函数中使用gevent，这些函数会被协作式的调度， gevent的真正能力会得到发挥。Gevent处理了所有的细节， 来保证你的网络库会在可能的时候，隐式交出greenlet上下文的执行权。 
 greenlet具有确定性。在相同配置相同输入的情况下，它们总是 会产生相同的输出。
 即使gevent通常带有确定性，当开始与如socket或文件等外部服务交互时， 不确定性也可能溜进你的程序中。因此尽管gevent线程是一种“确定的并发”形式， 使用它仍然可能会遇到像使用POSIX线程或进程时遇到的那些问题。涉及并发长期存在的问题就是竞争条件(race condition)。简单来说， 当两个并发线程/进程都依赖于某个共享资源同时都尝试去修改它的时候， 就会出现竞争条件。这会导致资源修改的结果状态依赖于时间和执行顺序。 这是个问题，我们一般会做很多努力尝试避免竞争条件， 因为它会导致整个程序行为变得不确定。最好的办法是始终避免所有全局的状态。全局状态和导入时(import-time)副作用总是会 反咬你一口！
 
 ### 创建Greenlets
+
 gevent对Greenlet初始化提供了一些封装，最常用的使用模板之一有
+
 ```python
 import gevent
 from gevent import Greenlet
@@ -69,6 +73,7 @@ Hi there!
 ```
 
 ### Greenlet状态
+
 就像任何其他成段代码，Greenlet也可能以不同的方式运行失败。 Greenlet可能未能成功抛出异常，不能停止运行，或消耗了太多的系统资源。
 
 一个greenlet的状态通常是一个依赖于时间的参数。在greenlet中有一些标志， 让你可以监视它的线程内部状态：
@@ -80,6 +85,7 @@ value -- 任意值, 此Greenlet代码返回的值
 exception -- 异常, 此Greenlet内抛出的未捕获异常
 
 ### 程序停止
+
 当主程序(main program)收到一个SIGQUIT信号时，不能成功做yield操作的 Greenlet可能会令意外地挂起程序的执行。这导致了所谓的僵尸进程， 它需要在Python解释器之外被kill掉。对此，一个通用的处理模式就是在主程序中监听SIGQUIT信号，在程序退出 调用gevent.shutdown。
 ```python
 import gevent
@@ -226,7 +232,9 @@ Switched to Client for 8
 Switched to Server for 9
 Switched to Client for 9
 ```
-
+### 关于gevent猴子补丁的问题
+有时候程序能够正常运行,但在另一个环境就出错,而且错误莫名其妙,我曾遇到的错误是:`RecursionError: maximum recursion depth exceeded while calling a Python object`,后来排查是gevent的monkey.patch_all()导致的.后来查了资料发现gevnet的monkey_patch要求越早导入越好,
+最好在进程启动程序前,第一个导入.
 
 ### 参考
 * [Gevent指南](http://xlambda.com/gevent-tutorial/)

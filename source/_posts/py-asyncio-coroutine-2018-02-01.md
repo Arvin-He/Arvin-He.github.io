@@ -92,20 +92,25 @@ if __name__ == "__main__":
 ```
 
 ## yield from来了
+
 yield from用于重构生成器,yield from的作用还体现可以像一个管道一样将send信息传递给内层协程，并且处理好了各种异常情况.
 
 ## asyncio.coroutine和yield from
+
 asyncio是一个基于事件循环的实现异步I/O的模块。通过yield from，可以将协程asyncio.sleep(或其他协程)的控制权交给事件循环，
 然后挂起当前协程；之后，由事件循环决定何时唤醒asyncio.sleep,接着向后执行代码。
 
 ## 关于async和await
+
 async和await两个关键字是python3.5引入的,可以完美替换掉python3.4引入的asyncio.coroutine和yield from.
 从Python设计的角度来看，async/await让协程表面上独立于生成器，将细节都隐藏于asyncio模块之下，语法更清晰明了。
 
 ## async with 和async for
+
 async with是一个异步上下文管理器,异步上下文管理器指的是在enter和exit方法处能够暂停执行的上下文管理器。
 为了实现这样的功能，需要加入两个新的方法：`__aenter__` 和`__aexit__`。这两个方法**都要返回一个 awaitable类型的值**。
 异步上下文管理器的一种使用方法是:
+
 ```python
 class AsyncContextManager:
     async def __aenter__(self):
@@ -114,22 +119,27 @@ class AsyncContextManager:
     async def __aexit__(self, exc_type, exc, tb):
         await log('exiting context')
 ```
+
 和常规的with表达式一样，可以在一个async with表达式中指定多个上下文管理器。
 如果向async with表达式传入的上下文管理器中没有`__aenter__` 和`__aexit__`方法，这将引起一个错误 。
 如果在async def函数外面使用async with，将引起一个SyntaxError（语法错误）。
+
 ```python
 
 async with async_open('1.txt') as f:
     content = await f.read()
 ```
+
 相应的，async_open 函数返回的 f 对象需要实现 `__aenter__` 和 `__aexit__` 这 2 个异步方法。
 
 async for是一个异步迭代器,一个异步可迭代对象（asynchronous iterable）能够在迭代过程中调用异步代码，而异步迭代器就是能够在next方法中调用异步代码。为了支持异步迭代：
 
-1. 一个对象必须实现`__aiter__`方法，该方法返回一个异步迭代器（asynchronous iterator）对象。 
-2. 一个异步迭代器对象必须实现`__anext__`方法，该方法返回一个awaitable类型的值。 
+1. 一个对象必须实现`__aiter__`方法，该方法返回一个异步迭代器（asynchronous iterator）对象。
+2. 一个异步迭代器对象必须实现`__anext__`方法，该方法返回一个awaitable类型的值。
 3. 为了停止迭代，`__anext__`必须抛出一个StopAsyncIteration异常。
+
 异步迭代器的一个例子如下:
+
 ```python
 class AsyncIterable:
     def __aiter__(self):
@@ -145,11 +155,13 @@ class AsyncIterable:
     async def fetch_data(self):
         ...
 ```
+
 ```python
 f = open('1.txt')
 async for line in f:
     print(line)
 ```
+
 async for 实现了 `__aiter__` 和 `__anext__`方法.
 PEP 525 引入的异步生成器（asynchronous generator）就实现了这两个方法。在异步方法中使用 yield 表达式，
 会将它变成异步生成器函数（Python 3.6 以后可用，3.5 之前是语法错误）。
@@ -158,8 +170,10 @@ PEP 525 引入的异步生成器（asynchronous generator）就实现了这两�
 和常规的for表达式一样， async for也有一个可选的else 分句。
 
 ## asyncio使用
+
 协程不能直接运行,需要将协程加入到事件循环(loop)中, `asyncio.get_event_loop`方法可以创建一个事件循环，
 然后调用`run_until_complete`将协程注册到事件循环，并启动事件循环。
+
 * event_loop 事件循环：程序开启一个无限的循环，程序员会把一些函数注册到事件循环上。当满足事件发生的时候，调用相应的协程函数。
 * coroutine 协程：协程对象，指一个使用async关键字定义的函数，它的调用不会立即执行函数，而是会**返回一个协程对象**。协程对象需要注册到事件循环，由事件循环调用。
 * task 任务：一个协程对象就是一个原生可以挂起的函数，任务则是对协程进一步封装，其中包含任务的各种状态。
@@ -167,21 +181,23 @@ PEP 525 引入的异步生成器（asynchronous generator）就实现了这两�
 * async/await 关键字：python3.5 用于定义协程的关键字，async定义一个协程，await用于挂起阻塞的异步调用接口。
 
 ### 关于task
+
 在注册协程的事件循环的时候，实际上`run_until_complete`方法将协程包装成为了一个任务（task）对象。
 而task对象是Future类的子类,保存了协程运行后的状态，用于未来获取协程的结果。
 创建task后，task在加入事件循环之前是pending状态，
 `asyncio.ensure_future(coroutine)` 和 `loop.create_task(coroutine)`都可以创建一个task，
 `run_until_complete`的参数是一个futrue对象。当传入一个协程，其内部会自动封装成task，task是Future的子类。
 `isinstance(task, asyncio.Future)`将会输出True。
+
 ```python
 import asyncio
 import time
- 
+
 now = lambda: time.time()
- 
+
 async def do_some_work(x):
     print('Waiting: ', x)
- 
+
 start = now()
 # 协程对象
 coroutine = do_some_work(2)
@@ -199,14 +215,16 @@ print('TIME: ', now() - start)
 ```
 
 ### 绑定回调
+
 绑定回调，在task执行完毕的时候可以获取执行的结果，回调的最后一个参数是future对象，
 通过该对象可以获取协程返回值。如果回调需要多个参数，可以通过偏函数导入。
+
 ```python
 import time
 import asyncio
- 
+
 now = lambda : time.time()
- 
+
 async def do_some_work(x):
     print('Waiting: ', x)
     return 'Done after {}s'.format(x)
